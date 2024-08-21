@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "DM_Engine.h"
+
 #include "DM_Window.h"
 #include "DM_WndProcs.h"
 
@@ -9,6 +10,7 @@ namespace DM
 
     void GameLoop(MSG message);
     void TranslateMessage(HACCEL hAccelTable, MSG message);
+    void CheckMemoryLeak();
 }
 
 
@@ -21,6 +23,11 @@ INT APIENTRY wWinMain(
     UNREFERENCED_PARAMETER(hPrevInstance);
     UNREFERENCED_PARAMETER(lpCmdLine);
 
+    DM::CheckMemoryLeak();
+
+
+
+
 
     DM::Window::SetInstance(hInstance);
 
@@ -29,8 +36,15 @@ INT APIENTRY wWinMain(
 
     DM::mainWindow->Show(nCmdShow);
 
+
+
+
+
     MSG message = {};
     DM::GameLoop(message);
+
+
+
 
 
     delete DM::mainWindow;
@@ -86,6 +100,18 @@ void DM::TranslateMessage(HACCEL hAccelTable, MSG message)
 
     TranslateMessage(&message);
     DispatchMessage(&message);
+
+    return;
+}
+
+
+
+
+
+void DM::CheckMemoryLeak()
+{
+
+    _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
     return;
 }

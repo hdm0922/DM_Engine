@@ -18,6 +18,7 @@ namespace DM
 DM::Window::Window(const WCHAR* name, WNDPROC WndProc, bool renderWindow)
 	: name(name)
     , renderWindow(renderWindow)
+    , size(1024, 768)
     , subWindows({})
 {
 
@@ -27,7 +28,8 @@ DM::Window::Window(const WCHAR* name, WNDPROC WndProc, bool renderWindow)
 		this->GetName(), this->GetName(),
 		WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT, 0,
-		CW_USEDEFAULT, 0,
+		this->GetSize().x,
+        this->GetSize().y,
 		nullptr, nullptr,
 		Window::GetInstance(),
 		nullptr);

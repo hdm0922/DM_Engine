@@ -13,8 +13,11 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="소스 파일\Frame">
-      <UniqueIdentifier>{4c7297ac-e40f-44d0-9095-52f80e8d72bb}</UniqueIdentifier>
+    <Filter Include="헤더 파일\Frame">
+      <UniqueIdentifier>{a5672baf-28c0-425b-96a5-baebdd7876fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Utility">
+      <UniqueIdentifier>{0af32de0-ea00-418d-9399-6a9828a8b716}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -28,24 +31,30 @@
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="DM_Engine.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\Frame</Filter>
     </ClInclude>
     <ClInclude Include="DM_Window.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\Frame</Filter>
     </ClInclude>
     <ClInclude Include="DM_WndProcs.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="DM_Math.h">
+      <Filter>헤더 파일\Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DM_Math.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
     <ClCompile Include="DM_Engine.cpp">
-      <Filter>소스 파일\Frame</Filter>
+      <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="DM_Window.cpp">
-      <Filter>소스 파일\Frame</Filter>
+      <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="DM_WndProcs.cpp">
-      <Filter>소스 파일\Frame</Filter>
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

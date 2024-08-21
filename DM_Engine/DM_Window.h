@@ -26,11 +26,13 @@ public:
 	static void SetInstance(HINSTANCE instance) { Window::instance = instance; }
 	void SetHandle(HWND handle) { this->handle = handle; }
 	void SetRenderWindow(bool render) { this->renderWindow = render; }
+	void SetSize(const Math::Vector2<UINT>& size) { this->size = size; }
 
 	static HINSTANCE GetInstance() { return Window::instance; }
 	HWND GetHandle() const { return this->handle; }
 	const WCHAR* GetName() const { return this->name; }
 	bool GetRenderWindow() const { return this->renderWindow; }
+	Math::Vector2<UINT> GetSize() const { return this->size; }
 	Window* GetSubWindow(const WCHAR* name);
 
 
@@ -46,6 +48,7 @@ private:
 	HWND handle;
 	const WCHAR* name;
 	bool renderWindow;
+	Math::Vector2<UINT> size;
 
 	std::map<const WCHAR*, Window*> subWindows;
 };
