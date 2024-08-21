@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClInclude Include="DM_Engine.h" />
     <ClInclude Include="DM_Window.h" />
+    <ClInclude Include="DM_WndProcs.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
@@ -136,6 +137,7 @@
   <ItemGroup>
     <ClCompile Include="DM_Engine.cpp" />
     <ClCompile Include="DM_Window.cpp" />
+    <ClCompile Include="DM_WndProcs.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="DM_Engine.rc" />

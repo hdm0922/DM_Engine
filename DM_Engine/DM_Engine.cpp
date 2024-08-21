@@ -1,11 +1,12 @@
 ﻿#pragma once
 #include "DM_Engine.h"
 #include "DM_Window.h"
+#include "DM_WndProcs.h"
 
-
-DM::Window* mainWindow;
-
-
+namespace DM
+{
+    Window* mainWindow;
+}
 
 
 int APIENTRY wWinMain(
@@ -20,9 +21,10 @@ int APIENTRY wWinMain(
 
     DM::Window::SetInstance(hInstance);
 
-    mainWindow = new DM::Window(L"Main Window");
+    DM::mainWindow = new DM::Window(L"Main Window", DM::WndProc_Engine, true);
+    DM::mainWindow->AddSubWindow(L"Sub Window", DM::WndProc_Engine, true);
 
-    mainWindow->Show(nCmdShow);
+    DM::mainWindow->Show(nCmdShow);
 
 
     HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_DMENGINE));
@@ -36,9 +38,8 @@ int APIENTRY wWinMain(
             DispatchMessage(&msg);
         }
     }
+
+    delete DM::mainWindow;
+
     return (int) msg.wParam;
-
-
-
-
 }
