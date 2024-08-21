@@ -6,10 +6,13 @@
 namespace DM
 {
     Window* mainWindow;
+
+    void GameLoop(MSG message);
+    void TranslateMessage(HACCEL hAccelTable, MSG message);
 }
 
 
-int APIENTRY wWinMain(
+INT APIENTRY wWinMain(
     _In_        HINSTANCE hInstance,
     _In_opt_    HINSTANCE hPrevInstance,
     _In_        LPWSTR    lpCmdLine,
@@ -26,20 +29,63 @@ int APIENTRY wWinMain(
 
     DM::mainWindow->Show(nCmdShow);
 
+    MSG message = {};
+    DM::GameLoop(message);
 
-    HACCEL hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_DMENGINE));
-
-    MSG msg;
-    while (GetMessage(&msg, nullptr, 0, 0))
-    {
-        if (!TranslateAccelerator(msg.hwnd, hAccelTable, &msg))
-        {
-            TranslateMessage(&msg);
-            DispatchMessage(&msg);
-        }
-    }
 
     delete DM::mainWindow;
 
-    return (int) msg.wParam;
+    return static_cast<INT>(message.wParam);
+}
+
+
+
+
+
+void DM::GameLoop(MSG message)
+{
+
+    HACCEL hAccelTable = LoadAccelerators(
+        Window::GetInstance(),
+        MAKEINTRESOURCE(IDC_DMENGINE)
+    );
+
+    while (true)
+    {
+
+        if (PeekMessage(&message, nullptr, 0, 0, PM_REMOVE))
+        {
+
+            if (message.message == WM_QUIT) break;
+
+            DM::TranslateMessage(hAccelTable, message);
+
+        }
+
+        else
+        {
+
+            //PE::Application::Run();
+
+        }
+
+    }
+
+
+    return;
+}
+
+
+
+
+
+void DM::TranslateMessage(HACCEL hAccelTable, MSG message)
+{
+
+    if (TranslateAccelerator(message.hwnd, hAccelTable, &message)) return;
+
+    TranslateMessage(&message);
+    DispatchMessage(&message);
+
+    return;
 }
