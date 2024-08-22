@@ -63,7 +63,7 @@ void DM::Input::createKeys()
 
 		key.keyCode = iter;
 		key.keyState = Enums::keyState::None;
-		key.bPressed = false;
+		key.keyHold = false;
 
 		keys.push_back(key);
 	}
@@ -79,10 +79,10 @@ void DM::Input::createKeys()
 void DM::Input::updateKey(Key& key)
 {
 
-	bool bKeyPressed = (GetAsyncKeyState(key.keyCode) & 0x8000);
+	BOOL keyPressed = (GetAsyncKeyState(key.keyCode) & 0x8000);
 
-	std::function<void(Key&)> UpdateKeyState = bKeyPressed ?
-		Input::updateKeyState_Down : Input::updateKeyState_Up;
+	std::function<void(Key&)> UpdateKeyState = keyPressed ?
+		Input::updateKeyState_Pressed : Input::updateKeyState_Up;
 
 	UpdateKeyState(key);
 
@@ -120,10 +120,10 @@ void DM::Input::updateCursor()
 void DM::Input::updateKeyState_Up(Key& key)
 {
 
-	keys[key.keyCode].keyState = key.bPressed ?
+	keys[key.keyCode].keyState = key.keyHold ?
 		Enums::keyState::Up : Enums::keyState::None;
 
-	keys[key.keyCode].bPressed = false;
+	keys[key.keyCode].keyHold = false;
 
 	return;
 }
@@ -132,13 +132,13 @@ void DM::Input::updateKeyState_Up(Key& key)
 
 
 
-void DM::Input::updateKeyState_Down(Key& key)
+void DM::Input::updateKeyState_Pressed(Key& key)
 {
 
-	keys[key.keyCode].keyState = key.bPressed ?
-		Enums::keyState::Pressed : Enums::keyState::Down;
+	keys[key.keyCode].keyState = key.keyHold ?
+		Enums::keyState::Hold : Enums::keyState::Pressed;
 
-	keys[key.keyCode].bPressed = true;
+	keys[key.keyCode].keyHold = true;
 
 	return;
 
@@ -168,11 +168,11 @@ void DM::Input::resetKeyState(Key& key)
 
 	switch (key.keyState)
 	{
-	case Enums::keyState::Down:
+	case Enums::keyState::Pressed:
 		key.keyState = Enums::keyState::Up;
 		break;
 
-	case Enums::keyState::Pressed:
+	case Enums::keyState::Hold:
 		key.keyState = Enums::keyState::Up;
 		break;
 

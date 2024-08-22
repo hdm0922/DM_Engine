@@ -1,5 +1,7 @@
 #include "DM_UI_Button.h"
 
+#include "DM_Input.h"
+
 
 
 
@@ -31,6 +33,9 @@ void DM::UI_Button::Initialize()
 
 void DM::UI_Button::Update()
 {
+
+	if (Input::GetKeyDown())
+
 }
 
 

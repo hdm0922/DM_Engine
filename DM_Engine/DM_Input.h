@@ -17,9 +17,9 @@ public:
 
 	struct Key
 	{
-		int keyCode;
+		INT keyCode;
 		Enums::keyState keyState;
-		bool bPressed;
+		BOOL keyHold;
 	};
 
 
@@ -31,7 +31,7 @@ public:
 
 public:
 
-	static BOOL GetKeyDown(int keyCode)		{ return Input::keys[keyCode].keyState == Enums::keyState::Down; }
+	static BOOL GetKeyHold(int keyCode)		{ return Input::keys[keyCode].keyState == Enums::keyState::Hold; }
 	static BOOL GetKeyUp(int keyCode)		{ return Input::keys[keyCode].keyState == Enums::keyState::Up; }
 	static BOOL GetKeyPressed(int keyCode)	{ return Input::keys[keyCode].keyState == Enums::keyState::Pressed; }
 
@@ -44,7 +44,7 @@ private:
 	static void updateKey(Key& key);
 	static void updateCursor();
 	static void updateKeyState_Up(Key& key);
-	static void updateKeyState_Down(Key& key);
+	static void updateKeyState_Pressed(Key& key);
 	static void resetKeyStates();
 	static void resetKeyState(Key& key);
 

@@ -14,8 +14,8 @@ namespace DM
 
 enum class DM::Enums::keyState
 {
-	Down,
 	Pressed,
+	Hold,
 	Up,
 
 	None
