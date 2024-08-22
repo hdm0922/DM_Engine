@@ -42,6 +42,9 @@
     <ClInclude Include="DM_Math.h">
       <Filter>헤더 파일\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="DM_Application.h">
+      <Filter>헤더 파일\Frame</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DM_Math.cpp">
@@ -56,18 +59,8 @@
     <ClCompile Include="DM_WndProcs.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="DM_Engine.rc">
-      <Filter>리소스 파일</Filter>
-    </ResourceCompile>
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="small.ico">
-      <Filter>리소스 파일</Filter>
-    </Image>
-    <Image Include="DM_Engine.ico">
-      <Filter>리소스 파일</Filter>
-    </Image>
+    <ClCompile Include="DM_Application.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

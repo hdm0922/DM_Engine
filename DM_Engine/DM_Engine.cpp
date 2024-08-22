@@ -3,7 +3,7 @@
 
 #include "DM_Window.h"
 #include "DM_WndProcs.h"
-
+#include "DM_Application.h"
 
 
 namespace DM
@@ -42,11 +42,9 @@ INT APIENTRY wWinMain(
     DM::mainWindow->Show(nCmdShow);
 
 
+
     MSG message = {};
     DM::GameLoop(message);
-
-
-
 
 
     delete DM::mainWindow;
@@ -68,25 +66,13 @@ void DM::GameLoop(MSG message)
 
     while (true)
     {
-
         if (PeekMessage(&message, nullptr, 0, 0, PM_REMOVE))
         {
-
             if (message.message == WM_QUIT) break;
-
             DM::TranslateMessage(hAccelTable, message);
-
         }
-
-        else
-        {
-
-            //PE::Application::Run();
-
-        }
-
+        else { DM::Application::Run(); }
     }
-
 
     return;
 }

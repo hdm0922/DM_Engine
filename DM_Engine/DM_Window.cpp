@@ -18,6 +18,7 @@ namespace DM
 DM::Window::Window(const WCHAR* name, WNDPROC WndProc, bool renderWindow)
 	: name(name)
     , renderWindow(renderWindow)
+    , topLeft(0, 0)
     , size(1024, 768)
     , subWindows({})
 {
@@ -92,7 +93,10 @@ void DM::Window::AddSubWindow(const WCHAR* name, WNDPROC WndProc, bool renderWin
 void DM::Window::ResizeWindow(UINT x, UINT y)
 {
 
-    this->ResizeWindow(Math::Vector2<UINT>(x, y));
+    this->RearrangeWindow(
+        this->GetTopLeft(),
+        Math::Vector2<UINT>(x, y)
+    );
 
     return;
 }
@@ -104,14 +108,32 @@ void DM::Window::ResizeWindow(UINT x, UINT y)
 void DM::Window::ResizeWindow(const Math::Vector2<UINT> size)
 {
 
+    this->RearrangeWindow(
+        this->GetTopLeft(),
+        size
+    );
+
+    return;
+}
+
+
+
+
+
+void DM::Window::RearrangeWindow(const Math::Vector2<UINT> topLeft, const Math::Vector2<UINT> size)
+{
+
+    this->SetTopLeft(topLeft);
     this->SetSize(size);
 
-    RECT windowRect = { 0,0,this->GetSize().x, this->GetSize().y};
+    RECT windowRect = { 0,0,this->GetSize().x, this->GetSize().y };
     AdjustWindowRect(&windowRect, WS_OVERLAPPEDWINDOW, false);
 
     SetWindowPos(
         this->GetHandle(),
-        nullptr, 0, 0,
+        nullptr,
+        topLeft.x,
+        topLeft.y,
         windowRect.right - windowRect.left,
         windowRect.bottom - windowRect.top,
         0

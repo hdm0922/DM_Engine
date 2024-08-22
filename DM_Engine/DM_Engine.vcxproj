@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="DM_Application.h" />
     <ClInclude Include="DM_Engine.h" />
     <ClInclude Include="DM_Math.h" />
     <ClInclude Include="DM_Window.h" />
@@ -136,17 +137,11 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="DM_Application.cpp" />
     <ClCompile Include="DM_Engine.cpp" />
     <ClCompile Include="DM_Math.cpp" />
     <ClCompile Include="DM_Window.cpp" />
     <ClCompile Include="DM_WndProcs.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ResourceCompile Include="DM_Engine.rc" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="DM_Engine.ico" />
-    <Image Include="small.ico" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
