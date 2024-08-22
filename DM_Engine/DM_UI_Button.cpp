@@ -39,6 +39,10 @@ void DM::UI_Button::Update()
 
 void DM::UI_Button::Render(HDC hdc)
 {
+
+	Rectangle(hdc, 100, 100, 200, 200);
+
+	return;
 }
 
 

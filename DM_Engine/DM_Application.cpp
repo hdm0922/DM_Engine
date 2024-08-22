@@ -57,7 +57,7 @@ void DM::Application::Render()
 	);
 
 	// render all objects
-	UI_Manager::Render(Application::GetDeviceContext());
+	UI_Manager::Render(Application::getDeviceContext_Back());
 
 	Application::copyRenderTarget(
 		Application::getDeviceContext_Back(),

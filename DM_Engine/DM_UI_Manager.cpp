@@ -1,7 +1,7 @@
 #include "DM_UI_Manager.h"
 
 #include "DM_UI_Frame.h"
-
+#include "DM_UI_Button.h"
 
 
 namespace DM
@@ -17,6 +17,8 @@ namespace DM
 
 void DM::UI_Manager::Initialize()
 {
+
+	UI_Manager::UI_loadQueue.push(new UI_Button());
 
 	return;
 }
