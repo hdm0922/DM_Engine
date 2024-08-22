@@ -132,6 +132,7 @@
     <ClInclude Include="DM_Entity.h" />
     <ClInclude Include="DM_Math.h" />
     <ClInclude Include="DM_UI_Frame.h" />
+    <ClInclude Include="DM_UI_Manager.h" />
     <ClInclude Include="DM_Window.h" />
     <ClInclude Include="DM_WndProcs.h" />
     <ClInclude Include="framework.h" />
@@ -143,6 +144,7 @@
     <ClCompile Include="DM_Engine.cpp" />
     <ClCompile Include="DM_Math.cpp" />
     <ClCompile Include="DM_UI_Frame.cpp" />
+    <ClCompile Include="DM_UI_Manager.cpp" />
     <ClCompile Include="DM_Window.cpp" />
     <ClCompile Include="DM_WndProcs.cpp" />
   </ItemGroup>

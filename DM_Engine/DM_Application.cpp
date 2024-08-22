@@ -1,6 +1,9 @@
 #include "DM_Application.h"
 
 #include "DM_Window.h"
+#include "DM_UI_Manager.h"
+
+
 
 namespace DM
 {
@@ -21,8 +24,7 @@ void DM::Application::Initialize(Window* mainWindow)
 	Application::mainWindow = mainWindow;
 
 	Application::initializeWindow();
-
-
+	UI_Manager::Initialize();
 
 
 	return;
@@ -34,6 +36,8 @@ void DM::Application::Initialize(Window* mainWindow)
 
 void DM::Application::Update()
 {
+
+	UI_Manager::Update();
 
 	return;
 }
@@ -50,6 +54,7 @@ void DM::Application::Render()
 	);
 
 	// render all objects
+	UI_Manager::Render(Application::GetDeviceContext());
 
 	Application::copyRenderTarget(
 		Application::getDeviceContext_Back(),
