@@ -2,7 +2,7 @@
 
 #include "DM_Window.h"
 #include "DM_UI_Manager.h"
-
+#include "DM_Input.h"
 
 
 namespace DM
@@ -24,8 +24,9 @@ void DM::Application::Initialize(Window* mainWindow)
 	Application::mainWindow = mainWindow;
 
 	Application::initializeWindow();
-	UI_Manager::Initialize();
+	Input::Initialize();
 
+	UI_Manager::Initialize();
 
 	return;
 }
@@ -36,6 +37,8 @@ void DM::Application::Initialize(Window* mainWindow)
 
 void DM::Application::Update()
 {
+
+	Input::Update();
 
 	UI_Manager::Update();
 

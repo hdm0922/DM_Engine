@@ -130,11 +130,13 @@
     <ClInclude Include="DM_Application.h" />
     <ClInclude Include="DM_Engine.h" />
     <ClInclude Include="DM_Entity.h" />
+    <ClInclude Include="DM_Input.h" />
     <ClInclude Include="DM_Math.h" />
     <ClInclude Include="DM_UI_Frame.h" />
     <ClInclude Include="DM_UI_Manager.h" />
     <ClInclude Include="DM_Window.h" />
     <ClInclude Include="DM_WndProcs.h" />
+    <ClInclude Include="DM_Enums.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="targetver.h" />
@@ -142,6 +144,7 @@
   <ItemGroup>
     <ClCompile Include="DM_Application.cpp" />
     <ClCompile Include="DM_Engine.cpp" />
+    <ClCompile Include="DM_Input.cpp" />
     <ClCompile Include="DM_Math.cpp" />
     <ClCompile Include="DM_UI_Frame.cpp" />
     <ClCompile Include="DM_UI_Manager.cpp" />

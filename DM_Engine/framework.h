@@ -10,6 +10,7 @@
 #include <memory.h>
 #include <tchar.h>
 
+#include <functional>
 #include <string>
 #include <vector>
 #include <queue>
@@ -19,3 +20,4 @@
 
 
 #include "DM_Math.h"
+#include "DM_Enums.h"

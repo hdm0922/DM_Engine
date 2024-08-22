@@ -57,6 +57,12 @@
     <ClInclude Include="DM_UI_Manager.h">
       <Filter>헤더 파일\UI</Filter>
     </ClInclude>
+    <ClInclude Include="DM_Enums.h">
+      <Filter>헤더 파일\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="DM_Input.h">
+      <Filter>헤더 파일\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DM_Math.cpp">
@@ -78,6 +84,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="DM_UI_Manager.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_Input.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
