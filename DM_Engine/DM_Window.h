@@ -19,7 +19,8 @@ public:
 
 	void Show(INT nCmdShow) const;
 	void AddSubWindow(const WCHAR* name, WNDPROC WndProc, bool renderWindow);
-
+	void ResizeWindow(UINT x, UINT y);
+	void ResizeWindow(const Math::Vector2<UINT> size);
 
 public:
 

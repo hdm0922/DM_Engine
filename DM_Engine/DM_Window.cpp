@@ -89,6 +89,41 @@ void DM::Window::AddSubWindow(const WCHAR* name, WNDPROC WndProc, bool renderWin
 
 
 
+void DM::Window::ResizeWindow(UINT x, UINT y)
+{
+
+    this->ResizeWindow(Math::Vector2<UINT>(x, y));
+
+    return;
+}
+
+
+
+
+
+void DM::Window::ResizeWindow(const Math::Vector2<UINT> size)
+{
+
+    this->SetSize(size);
+
+    RECT windowRect = { 0,0,this->GetSize().x, this->GetSize().y};
+    AdjustWindowRect(&windowRect, WS_OVERLAPPEDWINDOW, false);
+
+    SetWindowPos(
+        this->GetHandle(),
+        nullptr, 0, 0,
+        windowRect.right - windowRect.left,
+        windowRect.bottom - windowRect.top,
+        0
+    );
+
+    return;
+}
+
+
+
+
+
 DM::Window* DM::Window::GetSubWindow(const WCHAR* name)
 {
     return nullptr;

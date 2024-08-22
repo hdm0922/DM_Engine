@@ -4,6 +4,8 @@
 #include "DM_Window.h"
 #include "DM_WndProcs.h"
 
+
+
 namespace DM
 {
     Window* mainWindow;
@@ -12,6 +14,9 @@ namespace DM
     void TranslateMessage(HACCEL hAccelTable, MSG message);
     void CheckMemoryLeak();
 }
+
+
+
 
 
 INT APIENTRY wWinMain(
@@ -35,9 +40,6 @@ INT APIENTRY wWinMain(
     DM::mainWindow->AddSubWindow(L"Sub Window", DM::WndProc_Engine, true);
 
     DM::mainWindow->Show(nCmdShow);
-
-
-
 
 
     MSG message = {};
