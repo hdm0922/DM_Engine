@@ -1,14 +1,16 @@
 ﻿#pragma once
 
-#include "targetver.h"
 #define WIN32_LEAN_AND_MEAN
+#define _CRTDBG_MAP_ALLOC
 
+#include "targetver.h"
 #include <windows.h>
 
 #include <stdlib.h>
 #include <malloc.h>
 #include <memory.h>
 #include <tchar.h>
+#include <crtdbg.h>
 
 #include <functional>
 #include <string>

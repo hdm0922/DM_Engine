@@ -107,7 +107,7 @@ void DM::Input::updateCursor()
 	Input::cursorPosition = (
 		(0 <= cursorPoint.x) && (cursorPoint.x <= mainWindow->GetSize().x) &&
 		(0 <= cursorPoint.y) && (cursorPoint.y <= mainWindow->GetSize().y)
-		) ? Math::Vector2<FLOAT>(cursorPoint.x, cursorPoint.y) :
+		) ? Math::Vector2<FLOAT>(static_cast<FLOAT>(cursorPoint.x), static_cast<FLOAT>(cursorPoint.y)) :
 			Math::Vector2<FLOAT>(-1.0f);
 
 	return;
