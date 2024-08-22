@@ -19,7 +19,7 @@ public:
 	~Window();
 
 	void Show(INT nCmdShow) const;
-	void AddSubWindow(const WCHAR* name, WNDPROC WndProc, bool renderWindow);
+	void CreateSubWindow(const std::wstring& name, WNDPROC WndProc, bool renderWindow);
 	void ResizeWindow(UINT x, UINT y);
 	void ResizeWindow(const Math::Vector2<UINT> size);
 	void RearrangeWindow(const Math::Vector2<UINT> topLeft, const Math::Vector2<UINT> size);
@@ -38,7 +38,7 @@ public:
 	bool GetRenderWindow() const { return this->renderWindow; }
 	Math::Vector2<UINT> GetTopLeft() const { return this->topLeft; }
 	Math::Vector2<UINT> GetSize() const { return this->size; }
-	Window* GetSubWindow(const WCHAR* name);
+	Window* GetSubWindow(const std::wstring& name);
 
 
 private:
@@ -56,5 +56,5 @@ private:
 	Math::Vector2<UINT> topLeft;
 	Math::Vector2<UINT> size;
 
-	std::map<const WCHAR*, Window*> subWindows;
+	std::map<const std::wstring, Window*> subWindows;
 };

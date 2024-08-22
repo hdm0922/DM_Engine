@@ -48,6 +48,12 @@ DM::Window::Window(const std::wstring& name, WNDPROC WndProc, bool renderWindow)
 DM::Window::~Window()
 {
 
+    for (auto iter = this->subWindows.begin(); iter != this->subWindows.end();)
+    {
+        delete iter->second;
+        iter = this->subWindows.erase(iter);
+    }
+
 }
 
 
@@ -75,7 +81,7 @@ void DM::Window::Show(INT nCmdShow) const
 
 
 
-void DM::Window::AddSubWindow(const WCHAR* name, WNDPROC WndProc, bool renderWindow)
+void DM::Window::CreateSubWindow(const std::wstring& name, WNDPROC WndProc, bool renderWindow)
 {
 
     Window* subWindow = this->GetSubWindow(name);
@@ -153,7 +159,7 @@ void DM::Window::RearrangeWindow(const Math::Vector2<UINT> topLeft, const Math::
 
 
 
-DM::Window* DM::Window::GetSubWindow(const WCHAR* name)
+DM::Window* DM::Window::GetSubWindow(const std::wstring& name)
 {
     return nullptr;
 }

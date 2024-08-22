@@ -37,7 +37,7 @@ INT APIENTRY wWinMain(
     DM::Window::SetInstance(hInstance);
 
     DM::mainWindow = new DM::Window(L"Main Window", DM::WndProc_Engine, true);
-    DM::mainWindow->AddSubWindow(L"Sub Window", DM::WndProc_Engine, true);
+    DM::mainWindow->CreateSubWindow(L"Sub Window", DM::WndProc_Engine, true);
 
     DM::mainWindow->Show(nCmdShow);
 
@@ -100,6 +100,6 @@ void DM::CheckMemoryLeak()
 {
 
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
-    _CrtSetBreakAlloc(232);
+    //_CrtSetBreakAlloc(232);
     return;
 }
