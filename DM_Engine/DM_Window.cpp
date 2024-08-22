@@ -51,6 +51,8 @@ DM::Window::~Window()
     for (auto iter = this->subWindows.begin(); iter != this->subWindows.end();)
     {
         delete iter->second;
+        iter->second = nullptr;
+
         iter = this->subWindows.erase(iter);
     }
 

@@ -48,6 +48,7 @@ INT APIENTRY wWinMain(
 
 
     delete DM::mainWindow;
+    DM::mainWindow = nullptr;
 
     return static_cast<INT>(message.wParam);
 }
