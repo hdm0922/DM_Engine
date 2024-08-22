@@ -16,7 +16,7 @@ class DM::UI_Frame:
 
 public:
 
-    UI_Frame();
+    UI_Frame(const std::wstring& name = L"");
     virtual ~UI_Frame();
 
     virtual void Initialize();
@@ -26,9 +26,29 @@ public:
     virtual void Load();
     virtual void Kill();
 
+    template <typename T>
+    void Create_UI();
+
 private:
 
-    std::vector<UI_Frame*> subUIs;
+    std::vector<UI_Frame*> sub_UIs;
 
 };
 
+
+
+
+
+template <typename T>
+void DM::UI_Frame::Create_UI()
+{
+
+    UI_Frame* sub_UI = dynamic_cast<UI_Frame*>(new T());
+
+    sub_UI->Load();
+    sub_UI->Initialize();
+
+    this->sub_UIs.push_back(sub_UI);
+
+    return;
+}
