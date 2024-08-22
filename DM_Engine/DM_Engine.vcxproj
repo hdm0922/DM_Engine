@@ -129,6 +129,7 @@
   <ItemGroup>
     <ClInclude Include="DM_Application.h" />
     <ClInclude Include="DM_Engine.h" />
+    <ClInclude Include="DM_Entity.h" />
     <ClInclude Include="DM_Math.h" />
     <ClInclude Include="DM_Window.h" />
     <ClInclude Include="DM_WndProcs.h" />
