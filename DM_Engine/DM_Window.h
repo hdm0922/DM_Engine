@@ -1,5 +1,5 @@
 #pragma once
-#include "framework.h"
+#include "DM_Entity.h"
 #include "Resource.h"
 
 namespace DM
@@ -10,11 +10,12 @@ namespace DM
 
 
 class DM::Window
+	: public Entity
 {
 
 public:
 
-	Window(const WCHAR* name, WNDPROC WndProc, bool renderWindow);
+	Window(const std::wstring& name, WNDPROC WndProc, bool renderWindow);
 	~Window();
 
 	void Show(INT nCmdShow) const;
@@ -33,7 +34,6 @@ public:
 	void SetSize(const Math::Vector2<UINT>& size) { this->size = size; }
 
 	static HINSTANCE GetInstance() { return Window::instance; }
-	const WCHAR* GetName() const { return this->name; }
 	HWND GetHandle() const { return this->handle; }
 	bool GetRenderWindow() const { return this->renderWindow; }
 	Math::Vector2<UINT> GetTopLeft() const { return this->topLeft; }
@@ -50,7 +50,6 @@ private:
 
 	static HINSTANCE instance;
 
-	const WCHAR* name;
 	HWND handle;
 
 	bool renderWindow;

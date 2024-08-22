@@ -15,8 +15,8 @@ namespace DM
 
 
 
-DM::Window::Window(const WCHAR* name, WNDPROC WndProc, bool renderWindow)
-	: name(name)
+DM::Window::Window(const std::wstring& name, WNDPROC WndProc, bool renderWindow)
+	: Entity(name)
     , renderWindow(renderWindow)
     , topLeft(0, 0)
     , size(1024, 768)
@@ -25,8 +25,10 @@ DM::Window::Window(const WCHAR* name, WNDPROC WndProc, bool renderWindow)
 
     this->registerWindow(WndProc);
 
+
 	HWND hWnd = CreateWindowW(
-		this->GetName(), this->GetName(),
+		this->GetName().c_str(),
+        this->GetName().c_str(),
 		WS_OVERLAPPEDWINDOW,
 		CW_USEDEFAULT, 0,
 		this->GetSize().x,
@@ -126,7 +128,12 @@ void DM::Window::RearrangeWindow(const Math::Vector2<UINT> topLeft, const Math::
     this->SetTopLeft(topLeft);
     this->SetSize(size);
 
-    RECT windowRect = { 0,0,this->GetSize().x, this->GetSize().y };
+    RECT windowRect = { 
+        0,0,
+        static_cast<LONG>(this->GetSize().x),
+        static_cast<LONG>(this->GetSize().y)
+    };
+
     AdjustWindowRect(&windowRect, WS_OVERLAPPEDWINDOW, false);
 
     SetWindowPos(
@@ -157,7 +164,7 @@ DM::Window* DM::Window::GetSubWindow(const WCHAR* name)
 
 ATOM DM::Window::registerWindow(WNDPROC proc) const
 {
-    WNDCLASSEXW wcex;
+    WNDCLASSEXW wcex = {};
 
     wcex.cbSize = sizeof(WNDCLASSEX);
 
@@ -170,7 +177,7 @@ ATOM DM::Window::registerWindow(WNDPROC proc) const
     wcex.hCursor = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground = (HBRUSH)(COLOR_WINDOW + 1);
     wcex.lpszMenuName = MAKEINTRESOURCEW(IDC_DMENGINE);
-    wcex.lpszClassName = this->GetName();
+    wcex.lpszClassName = this->GetName().c_str();
     wcex.hIconSm = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
     return RegisterClassExW(&wcex);
