@@ -19,6 +19,9 @@
     <Filter Include="헤더 파일\Utility">
       <UniqueIdentifier>{0af32de0-ea00-418d-9399-6a9828a8b716}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\UI">
+      <UniqueIdentifier>{b792d9e6-7955-4957-b6cf-b72e49e36525}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -48,6 +51,9 @@
     <ClInclude Include="DM_Entity.h">
       <Filter>헤더 파일\Frame</Filter>
     </ClInclude>
+    <ClInclude Include="DM_UI_Frame.h">
+      <Filter>헤더 파일\UI</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DM_Math.cpp">
@@ -63,6 +69,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="DM_Application.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_UI_Frame.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
