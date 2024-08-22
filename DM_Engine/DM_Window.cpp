@@ -132,10 +132,10 @@ void DM::Window::RearrangeWindow(const Math::Vector2<UINT> topLeft, const Math::
     SetWindowPos(
         this->GetHandle(),
         nullptr,
-        topLeft.x,
-        topLeft.y,
-        windowRect.right - windowRect.left,
-        windowRect.bottom - windowRect.top,
+        this->GetTopLeft().x,
+        this->GetTopLeft().y,
+        this->GetSize().x,
+        this->GetSize().y,
         0
     );
 

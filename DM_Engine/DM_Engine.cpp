@@ -41,7 +41,7 @@ INT APIENTRY wWinMain(
 
     DM::mainWindow->Show(nCmdShow);
 
-
+    DM::Application::Initialize(DM::mainWindow);
 
     MSG message = {};
     DM::GameLoop(message);

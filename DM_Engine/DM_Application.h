@@ -23,11 +23,26 @@ public:
 
 public:
 
-	static DM::Window* GetMainWindow() { return Application::mainWindow; }
+	static Window* GetMainWindow() { return Application::mainWindow; }
+	static HDC GetDeviceContext() { return Application::device_context; }
+
+
+private:
+
+	static void initializeWindow();
+	static void clearRenderTarget(HDC hdc);
+	static void copyRenderTarget(HDC sourceDC, HDC destDC);
+
+	static HDC getDeviceContext_Back() { return Application::device_context_back; }
+
 
 private:
 
 	static DM::Window* mainWindow;
+
+	static HDC device_context;
+	static HDC device_context_back;
+	static HBITMAP buffer_back;
 
 };
 
