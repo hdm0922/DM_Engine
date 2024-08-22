@@ -29,7 +29,16 @@ public:
     template <typename T>
     void Create_UI();
 
+
+public:
+
+    void SetParent_UI(UI_Frame* UI) { this->parent_UI = UI; }
+
+    UI_Frame* GetParent_UI() const { return this->parent_UI; }
+
 private:
+
+    UI_Frame* parent_UI;
 
     std::vector<UI_Frame*> sub_UIs;
 
