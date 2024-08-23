@@ -17,7 +17,7 @@ class DM::UI_Frame:
 public:
 
     UI_Frame(const std::wstring& name = L"");
-    virtual ~UI_Frame();
+    virtual ~UI_Frame() override;
 
     virtual void Initialize();
     virtual void Update();

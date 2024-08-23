@@ -22,6 +22,9 @@
     <Filter Include="헤더 파일\UI">
       <UniqueIdentifier>{b792d9e6-7955-4957-b6cf-b72e49e36525}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Component">
+      <UniqueIdentifier>{9085bfee-6ba4-4c4e-a0b1-8b710ecd092d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -69,6 +72,9 @@
     <ClInclude Include="DM_RandomGenerator.h">
       <Filter>헤더 파일\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="DM_Component.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DM_Math.cpp">
@@ -99,6 +105,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="DM_RandomGenerator.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_Component.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

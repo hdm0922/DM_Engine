@@ -16,7 +16,7 @@ class DM::Entity
 public:
 
 	Entity(const std::wstring& name = L"") : name(name) {};
-
+	virtual ~Entity() {};
 
 public:
 

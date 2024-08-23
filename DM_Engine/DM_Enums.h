@@ -14,11 +14,24 @@ namespace DM
 
 
 
+
+
 enum class DM::Enums::KeyState
 {
 	Pressed,
 	Hold,
 	Up,
+
+	None
+};
+
+
+
+
+
+enum class DM::Enums::ComponentType
+{
+	Transform,
 
 	None
 };
