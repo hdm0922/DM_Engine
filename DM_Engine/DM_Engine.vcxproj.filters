@@ -25,6 +25,9 @@
     <Filter Include="헤더 파일\Component">
       <UniqueIdentifier>{9085bfee-6ba4-4c4e-a0b1-8b710ecd092d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Object">
+      <UniqueIdentifier>{38ff4baf-3c48-4688-b7c3-1b4e837e5287}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -78,6 +81,9 @@
     <ClInclude Include="DM_ObjectTree.h">
       <Filter>헤더 파일\Frame</Filter>
     </ClInclude>
+    <ClInclude Include="DM_GameObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DM_Math.cpp">
@@ -114,6 +120,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="DM_ObjectTree.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_GameObject.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

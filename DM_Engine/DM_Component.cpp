@@ -4,9 +4,13 @@
 
 
 
-DM::Component::Component(const std::wstring& name, const Enums::ComponentType componentType)
+DM::Component::Component(
+	const GameObject* owner,
+	const std::wstring& name,
+	const Enums::ComponentType componentType)
 	: Entity(name)
 	, componentType(componentType)
+	, owner(owner)
 {
 }
 
