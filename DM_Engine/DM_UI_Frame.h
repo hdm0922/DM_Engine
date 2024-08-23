@@ -29,6 +29,11 @@ public:
     virtual void Render(HDC hdc) const override;
     virtual void Destroy() override;
 
+    //virtual void SetParent(UI_Frame* parent) override
+    //{
+    //    this->ObjectTree<UI_Frame>::parentNode = parent;
+    //    return;
+    //}
 
 protected:
 

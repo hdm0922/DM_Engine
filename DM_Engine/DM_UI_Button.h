@@ -32,9 +32,10 @@ public:
 
 
 public:
-
-    void SetClickEvent(const std::function<void()>& function) { this->clickEvent = function; }
-
+    //template <class _Fx, class... _Types>
+    //void SetClickEvent(_Fx&& function, _Types&&... UI) { clickEvent = std::move(std::bind(function, UI)); }
+    //void SetClickEvent(const std::function<void()>& function) { this->clickEvent = function; }
+    std::function<void()> clickEvent;
 
 protected:
 
@@ -43,7 +44,7 @@ protected:
 
 private:
 
-    std::function<void()> clickEvent;
+    
 
     // temp
     Math::Vector2<FLOAT> size;

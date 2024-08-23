@@ -2,6 +2,10 @@
 
 #include "DM_UI_Frame.h"
 #include "DM_UI_Button.h"
+#include "DM_UI_Status.h"
+
+
+
 
 
 namespace DM
@@ -18,7 +22,7 @@ namespace DM
 void DM::UI_Manager::Initialize()
 {
 
-	UI_Manager::Create_UI<UI_Button>();
+	UI_Manager::Create_UI<UI_Status>();
 
 	return;
 }

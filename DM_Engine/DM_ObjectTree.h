@@ -28,22 +28,26 @@ public:
 	virtual void Render(HDC hdc) const;
 	virtual void Destroy();
 
+	void Hide();
+	void Show();
+
 	template <typename T2>
-	void Create();
+	T2* Create();
 
 
 public:
 
-	void SetParent(T* node) { this->parentNode = node; }
+	virtual void SetParent(T* node) { this->parentNode = node; }
+	void SetHidden(BOOL hidden) { this->hidden = true; }
 
 	T* GetParent() const { return this->parentNode; }
-
+	BOOL GetHidden() const { return this->hidden; }
 
 private:
 
 	T* parentNode;
 	std::vector<T*> subNodes;
-
+	BOOL hidden;
 
 };
 
@@ -55,6 +59,7 @@ template<typename T>
 inline DM::ObjectTree<T>::ObjectTree()
 	: parentNode(nullptr)
 	, subNodes({})
+	, hidden(false)
 {
 }
 
@@ -128,14 +133,39 @@ inline void DM::ObjectTree<T>::Destroy()
 
 
 
-template<typename T> template <typename T2>
-inline void DM::ObjectTree<T>::Create()
+template<typename T>
+inline void DM::ObjectTree<T>::Hide()
 {
-	T* subNode = dynamic_cast<T>(new T2());
-	assert(subNode); // DEBUG
+		
+	for (T* subNode : this->subNodes)
+	{
+		subNode->ObjectTree<T>::SetHidden(true);
+	}
 
-	subNode->SetParent(this);
-	this->subNodes.push_back(subNode);
+	this->SetHidden(true);
+}
 
-	return;
+
+
+
+
+template<typename T>
+inline void DM::ObjectTree<T>::Show()
+{
+	this->SetHidden(false);
+}
+
+
+
+
+// T = UI_Frame | T2 = UI_Button
+template<typename T> template <typename T2>
+inline T2* DM::ObjectTree<T>::Create()
+{
+	T2* subNode = new T2();
+	assert(static_cast<T*>(subNode)); // DEBUG
+
+	this->subNodes.push_back(static_cast<T*>(subNode));
+
+	return subNode;
 }

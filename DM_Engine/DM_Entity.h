@@ -20,7 +20,7 @@ public:
 
 public:
 
-	const std::wstring& GetName() const { return this->name; }
+		const std::wstring& GetName() const { return this->name; }
 
 
 private:
