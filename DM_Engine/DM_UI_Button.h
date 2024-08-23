@@ -23,8 +23,6 @@ public:
     virtual void Update() override;
     virtual void Render(HDC hdc) const override;
 
-    virtual void Load() override;
-    virtual void Kill() override;
 
     virtual void OnEvent_Click();
 
@@ -32,6 +30,11 @@ public:
 public:
 
     void SetClickEvent(const std::function<void()>& function) { this->clickEvent = function; }
+
+
+protected:
+
+    //virtual void load() override;
 
 
 private:

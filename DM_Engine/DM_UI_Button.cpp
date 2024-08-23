@@ -29,6 +29,8 @@ void DM::UI_Button::Initialize()
 	this->topLeft = { 100.0f, 100.0f };
 	this->size = { 100.0f, 100.0f };
 
+	UI_Frame::Initialize();
+
 	return;
 }
 
@@ -39,7 +41,6 @@ void DM::UI_Button::Initialize()
 void DM::UI_Button::Update()
 {
 
-	UI_Frame::Update();
 
 	if (Input::GetKeyPressed(VK_LBUTTON))
 	{
@@ -51,6 +52,8 @@ void DM::UI_Button::Update()
 		if (cursorInButton) { this->OnEvent_Click(); }		
 	}
 
+	UI_Frame::Update();
+
 	return;
 }
 
@@ -61,29 +64,13 @@ void DM::UI_Button::Update()
 void DM::UI_Button::Render(HDC hdc) const
 {
 
-	UI_Frame::Render(hdc);
-
 	Math::Vector2<FLOAT> bottomRight = this->topLeft + this->size;
 
 	Rectangle(hdc, (INT)topLeft.x, (INT)topLeft.y, (INT)bottomRight.x, (INT)bottomRight.y);
 
+	UI_Frame::Render(hdc);
+
 	return;
-}
-
-
-
-
-
-void DM::UI_Button::Load()
-{
-}
-
-
-
-
-
-void DM::UI_Button::Kill()
-{
 }
 
 

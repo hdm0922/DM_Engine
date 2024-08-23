@@ -81,7 +81,6 @@ void DM::UI_Manager::load()
 	UI_Frame* UI = UI_Manager::UI_loadQueue.front();
 	UI_Manager::UI_loadQueue.pop();
 
-	UI->Load();
 	UI->Initialize();
 
 	UI_Manager::UI_renderQueue.push(UI);
@@ -110,7 +109,7 @@ void DM::UI_Manager::kill()
 		UI_Frame* UI = UI_Manager::UI_renderQueue.front();
 		UI_Manager::UI_renderQueue.pop();
 
-		if (UI == UI_to_kill) { UI->Kill(); }
+		if (UI == UI_to_kill) { UI->Destroy(); }
 		else { copyQueue.push(UI); }
 	}
 

@@ -6,8 +6,7 @@
 
 DM::UI_Frame::UI_Frame(const std::wstring& name)
 	: Entity(name)
-	, parent_UI(nullptr)
-	, sub_UIs({})
+	, ObjectTree<UI_Frame>()
 {
 }
 
@@ -17,12 +16,6 @@ DM::UI_Frame::UI_Frame(const std::wstring& name)
 
 DM::UI_Frame::~UI_Frame()
 {
-	
-	for (UI_Frame* UI : this->sub_UIs)
-	{
-		delete UI;
-		UI = nullptr;
-	}
 }
 
 
@@ -31,6 +24,11 @@ DM::UI_Frame::~UI_Frame()
 
 void DM::UI_Frame::Initialize()
 {
+	this->load();
+
+	ObjectTree<UI_Frame>::Initialize();
+
+	return;
 }
 
 
@@ -40,10 +38,7 @@ void DM::UI_Frame::Initialize()
 void DM::UI_Frame::Update()
 {
 
-	for (UI_Frame* UI : this->sub_UIs)
-	{
-		UI->Update();
-	}
+	ObjectTree<UI_Frame>::Update();
 
 	return;
 }
@@ -55,10 +50,8 @@ void DM::UI_Frame::Update()
 void DM::UI_Frame::Render(HDC hdc) const
 {
 
-	for (UI_Frame* UI : this->sub_UIs)
-	{
-		UI->Render(hdc);
-	}
+	ObjectTree<UI_Frame>::Render(hdc);
+
 
 	return;
 }
@@ -69,27 +62,15 @@ void DM::UI_Frame::Render(HDC hdc) const
 
 void DM::UI_Frame::Destroy()
 {
-}
-
-
-
-
-
-void DM::UI_Frame::Load()
-{
-}
-
-
-
-
-
-void DM::UI_Frame::Kill()
-{
-
-	for (UI_Frame* UI : this->sub_UIs)
-	{
-		UI->Kill();
-	}
+	ObjectTree<UI_Frame>::Destroy();
 
 	return;
+}
+
+
+
+
+
+void DM::UI_Frame::load()
+{
 }
