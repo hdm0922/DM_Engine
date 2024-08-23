@@ -54,5 +54,5 @@ class DM::Math::CollisionChecker
 
 public:
 
-	static BOOL Point_Box_2D(Vector2<FLOAT> point, Vector2<FLOAT> boxTopLeft, Vector2<FLOAT> boxSize);
+	static BOOL Point_Box_2D(Vector2<FLOAT> point, Vector2<FLOAT> boxTopLeft, Vector2<FLOAT> boxBottomRight);
 };

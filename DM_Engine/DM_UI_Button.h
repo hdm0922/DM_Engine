@@ -25,5 +25,11 @@ public:
 
     virtual void Load() override;
     virtual void Kill() override;
-};
+
+
+    // temp
+    Math::Vector2<FLOAT> topLeft;
+    Math::Vector2<FLOAT> size;
+
+}
 

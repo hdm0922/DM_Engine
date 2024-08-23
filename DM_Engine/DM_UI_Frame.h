@@ -57,6 +57,7 @@ void DM::UI_Frame::Create_UI()
     sub_UI->Load();
     sub_UI->Initialize();
 
+    sub_UI->SetParent_UI(this);
     this->sub_UIs.push_back(sub_UI);
 
     return;

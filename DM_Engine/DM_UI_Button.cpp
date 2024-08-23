@@ -36,8 +36,21 @@ void DM::UI_Button::Update()
 
 	if (Input::GetKeyPressed(VK_LBUTTON))
 	{
+		Math::Vector2<FLOAT> topLeft = { 100.0f,100.0f };
+		Math::Vector2<FLOAT> bottomRight = { 200.0f,200.0f };
 
-		int a = 0;
+		if (Math::CollisionChecker::Point_Box_2D(
+			Input::GetCursorPosition(),
+			topLeft, bottomRight
+		))
+		{
+			// Click Event !
+
+			//this->Create_UI<UI_Button>();
+
+		}
+
+		
 	}
 
 }
