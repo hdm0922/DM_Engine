@@ -62,7 +62,7 @@ void DM::Input::createKeys()
 		Key key = {};
 
 		key.keyCode = iter;
-		key.keyState = Enums::keyState::None;
+		key.keyState = Enums::KeyState::None;
 		key.keyHold = false;
 
 		keys.push_back(key);
@@ -121,7 +121,7 @@ void DM::Input::updateKeyState_Up(Key& key)
 {
 
 	keys[key.keyCode].keyState = key.keyHold ?
-		Enums::keyState::Up : Enums::keyState::None;
+		Enums::KeyState::Up : Enums::KeyState::None;
 
 	keys[key.keyCode].keyHold = false;
 
@@ -136,7 +136,7 @@ void DM::Input::updateKeyState_Pressed(Key& key)
 {
 
 	keys[key.keyCode].keyState = key.keyHold ?
-		Enums::keyState::Hold : Enums::keyState::Pressed;
+		Enums::KeyState::Hold : Enums::KeyState::Pressed;
 
 	keys[key.keyCode].keyHold = true;
 
@@ -168,16 +168,16 @@ void DM::Input::resetKeyState(Key& key)
 
 	switch (key.keyState)
 	{
-	case Enums::keyState::Pressed:
-		key.keyState = Enums::keyState::Up;
+	case Enums::KeyState::Pressed:
+		key.keyState = Enums::KeyState::Up;
 		break;
 
-	case Enums::keyState::Hold:
-		key.keyState = Enums::keyState::Up;
+	case Enums::KeyState::Hold:
+		key.keyState = Enums::KeyState::Up;
 		break;
 
-	case Enums::keyState::Up:
-		key.keyState = Enums::keyState::None;
+	case Enums::KeyState::Up:
+		key.keyState = Enums::KeyState::None;
 		break;
 	}
 

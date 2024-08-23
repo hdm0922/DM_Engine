@@ -18,7 +18,7 @@ public:
 	struct Key
 	{
 		INT keyCode;
-		Enums::keyState keyState;
+		Enums::KeyState keyState;
 		BOOL keyHold;
 	};
 
@@ -31,9 +31,9 @@ public:
 
 public:
 
-	static BOOL GetKeyHold(int keyCode)		{ return Input::keys[keyCode].keyState == Enums::keyState::Hold; }
-	static BOOL GetKeyUp(int keyCode)		{ return Input::keys[keyCode].keyState == Enums::keyState::Up; }
-	static BOOL GetKeyPressed(int keyCode)	{ return Input::keys[keyCode].keyState == Enums::keyState::Pressed; }
+	static BOOL GetKeyHold(int keyCode)		{ return Input::keys[keyCode].keyState == Enums::KeyState::Hold; }
+	static BOOL GetKeyUp(int keyCode)		{ return Input::keys[keyCode].keyState == Enums::KeyState::Up; }
+	static BOOL GetKeyPressed(int keyCode)	{ return Input::keys[keyCode].keyState == Enums::KeyState::Pressed; }
 
 	static Math::Vector2<FLOAT> GetCursorPosition() { return Input::cursorPosition; }
 

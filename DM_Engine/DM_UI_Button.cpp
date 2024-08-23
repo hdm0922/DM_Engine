@@ -8,15 +8,7 @@
 DM::UI_Button::UI_Button(const std::wstring& name)
 	: UI_Frame(name)
 {
-	//this->topLeft = {
-	//RandomGenerator::GetRandom<FLOAT>(50.0f, 100.0f),
-	//RandomGenerator::GetRandom<FLOAT>(50.0f, 100.0f)
-	//};
 
-	//this->size = {
-	//	RandomGenerator::GetRandom<FLOAT>(50.0f, 100.0f),
-	//	RandomGenerator::GetRandom<FLOAT>(50.0f, 100.0f)
-	//};
 }
 
 

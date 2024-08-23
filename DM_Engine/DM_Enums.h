@@ -6,13 +6,15 @@ namespace DM
 {
 	namespace Enums
 	{
-		enum class keyState;
+		enum class ComponentType;
+
+		enum class KeyState;
 	}
 }
 
 
 
-enum class DM::Enums::keyState
+enum class DM::Enums::KeyState
 {
 	Pressed,
 	Hold,
