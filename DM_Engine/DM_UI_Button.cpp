@@ -4,6 +4,12 @@
 #include "DM_RandomGenerator.h"
 #include "DM_TransformComponent.h"
 
+#include "DM_Application.h"
+#include "DM_Window.h"
+
+
+
+
 
 
 DM::UI_Button::UI_Button(const std::wstring& name)

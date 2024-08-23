@@ -1,12 +1,20 @@
 #pragma once
 #include "framework.h"
 
+#include "DM_Application.h"
+
+
+
 
 
 namespace DM
 {
 	class Input;
+	class Application;
+	class Window;	
 }
+
+
 
 
 
@@ -31,9 +39,9 @@ public:
 
 public:
 
-	static BOOL GetKeyHold(int keyCode)		{ return Input::keys[keyCode].keyState == Enums::KeyState::Hold; }
-	static BOOL GetKeyUp(int keyCode)		{ return Input::keys[keyCode].keyState == Enums::KeyState::Up; }
-	static BOOL GetKeyPressed(int keyCode)	{ return Input::keys[keyCode].keyState == Enums::KeyState::Pressed; }
+	static BOOL GetKeyHold(int keyCode, Window* activeWindow = Application::GetMainWindow());
+	static BOOL GetKeyUp(int keyCode, Window* activeWindow = Application::GetMainWindow());
+	static BOOL GetKeyPressed(int keyCode, Window* activeWindow = Application::GetMainWindow());
 
 	static Math::Vector2<FLOAT> GetCursorPosition() { return Input::cursorPosition; }
 

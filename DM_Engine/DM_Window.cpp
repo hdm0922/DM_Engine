@@ -163,7 +163,10 @@ void DM::Window::RearrangeWindow(const Math::Vector2<UINT> topLeft, const Math::
 
 DM::Window* DM::Window::GetSubWindow(const std::wstring& name)
 {
-    return nullptr;
+
+    auto iter = this->subWindows.find(name);
+
+    return (iter == this->subWindows.end()) ? nullptr : iter->second;
 }
 
 

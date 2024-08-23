@@ -52,6 +52,39 @@ void DM::Input::Update()
 
 
 
+BOOL DM::Input::GetKeyHold(int keyCode, Window* activeWindow)
+{
+	BOOL correctWindow = (GetActiveWindow() == activeWindow->GetHandle());
+	BOOL correctKeyState = (Input::keys[keyCode].keyState == Enums::KeyState::Hold);
+	return (correctWindow && correctKeyState);
+}
+
+
+
+
+
+BOOL DM::Input::GetKeyUp(int keyCode, Window* activeWindow)
+{
+	BOOL correctWindow = (GetActiveWindow() == activeWindow->GetHandle());
+	BOOL correctKeyState = (Input::keys[keyCode].keyState == Enums::KeyState::Up);
+	return (correctWindow && correctKeyState);
+}
+
+
+
+
+
+BOOL DM::Input::GetKeyPressed(int keyCode, Window* activeWindow)
+{
+	BOOL correctWindow = (GetActiveWindow() == activeWindow->GetHandle());
+	BOOL correctKeyState = (Input::keys[keyCode].keyState == Enums::KeyState::Pressed);
+	return (correctWindow && correctKeyState);
+}
+
+
+
+
+
 void DM::Input::createKeys()
 {
 
@@ -102,13 +135,12 @@ void DM::Input::updateCursor()
 	POINT cursorPoint = {};
 
 	GetCursorPos(&cursorPoint);
-	ScreenToClient(mainWindow->GetHandle(), &cursorPoint);
+	ScreenToClient(GetActiveWindow(), &cursorPoint);
 
-	Input::cursorPosition = (
-		(0 <= cursorPoint.x) && (cursorPoint.x <= (INT)mainWindow->GetSize().x) &&
-		(0 <= cursorPoint.y) && (cursorPoint.y <= (INT)mainWindow->GetSize().y)
-		) ? Math::Vector2<FLOAT>(static_cast<FLOAT>(cursorPoint.x), static_cast<FLOAT>(cursorPoint.y)) :
-			Math::Vector2<FLOAT>(-1.0f);
+	Input::cursorPosition = Math::Vector2<FLOAT>(
+		static_cast<FLOAT>(cursorPoint.x),
+		static_cast<FLOAT>(cursorPoint.y)
+	);
 
 	return;
 }
