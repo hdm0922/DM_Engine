@@ -31,5 +31,5 @@ public:
     Math::Vector2<FLOAT> topLeft;
     Math::Vector2<FLOAT> size;
 
-}
+};
 

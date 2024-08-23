@@ -5,7 +5,6 @@
 
 
 
-
 DM::UI_Button::UI_Button(const std::wstring& name)
 	: UI_Frame(name)
 {
@@ -47,7 +46,12 @@ void DM::UI_Button::Update()
 			// Click Event !
 
 			//this->Create_UI<UI_Button>();
+			//Math::Vector2<FLOAT> rand = {
+			//	RandomGenerator::GetRandom<FLOAT>(100.0f, 500.0f),
+			//	RandomGenerator::GetRandom<FLOAT>(100.0f, 500.0f)
+			//};
 
+			int a = 0;
 		}
 
 		
