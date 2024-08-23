@@ -73,7 +73,10 @@
       <Filter>헤더 파일\Utility</Filter>
     </ClInclude>
     <ClInclude Include="DM_Component.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="DM_Object.h">
+      <Filter>헤더 파일\Frame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -108,6 +111,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="DM_Component.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_Object.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

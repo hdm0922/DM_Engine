@@ -141,6 +141,7 @@
     <ClInclude Include="DM_Entity.h" />
     <ClInclude Include="DM_Input.h" />
     <ClInclude Include="DM_Math.h" />
+    <ClInclude Include="DM_Object.h" />
     <ClInclude Include="DM_RandomGenerator.h" />
     <ClInclude Include="DM_UI_Button.h" />
     <ClInclude Include="DM_UI_Frame.h" />
@@ -158,6 +159,7 @@
     <ClCompile Include="DM_Engine.cpp" />
     <ClCompile Include="DM_Input.cpp" />
     <ClCompile Include="DM_Math.cpp" />
+    <ClCompile Include="DM_Object.cpp" />
     <ClCompile Include="DM_RandomGenerator.cpp" />
     <ClCompile Include="DM_UI_Button.cpp" />
     <ClCompile Include="DM_UI_Frame.cpp" />
