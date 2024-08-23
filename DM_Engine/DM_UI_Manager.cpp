@@ -79,6 +79,8 @@ void DM::UI_Manager::load()
 	if (UI_Manager::UI_loadQueue.empty()) return;
 
 	UI_Frame* UI = UI_Manager::UI_loadQueue.front();
+	UI_Manager::UI_loadQueue.pop();
+
 	UI->Load();
 
 	UI_Manager::UI_renderQueue.push(UI);

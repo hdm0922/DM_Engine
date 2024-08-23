@@ -28,17 +28,19 @@ struct DM::Math::Vector2
 	Vector2(T _x) : Vector2(_x, _x) {}
 	Vector2(T _x, T _y) : x(_x), y(_y) {}
 
-	Vector2<T> operator+(const Vector2<T>& other) { return { this->x + other->x, this->y + other->y }; }
-	Vector2<T> operator-(const Vector2<T>& other) { return { this->x - other->x, this->y - other->y }; }
-	Vector2<T> operator*(const Vector2<T>& other) { return { this->x * other->x, this->y * other->y }; }
-	Vector2<T> operator*(const T& scalar) { return { this->x * scalar, this->y * scalar }; }
-	Vector2<T> operator/(const T& scalar) { return { this->x / scalar, this->y / scalar }; }
+	Vector2<T> operator+(const Vector2<T>& other)	const { return { this->x + other.x, this->y + other.y }; }
+	Vector2<T> operator-(const Vector2<T>& other)	const { return { this->x - other.x, this->y - other.y }; }
+	T operator*(const Vector2<T>& other)			const { return (this->x * other.x) + (this->y * other.y); }
+	Vector2<T> operator*(const T& scalar)			const { return { this->x * scalar, this->y * scalar }; }
+	Vector2<T> operator/(const T& scalar)			const { return { this->x / scalar, this->y / scalar }; }
 
-	Vector2<T> operator+=(const Vector2<T>& other) { return { this->x += other->x, this->y += other->y }; }
-	Vector2<T> operator-=(const Vector2<T>& other) { return { this->x -= other->x, this->y -= other->y }; }
-	Vector2<T> operator*=(const Vector2<T>& other) { return { this->x *= other->x, this->y *= other->y }; }
-	Vector2<T> operator*=(const T& scalar) { return { this->x *= scalar, this->y *= scalar }; }
-	Vector2<T> operator/=(const T& scalar) { return { this->x /= scalar, this->y /= scalar }; }
+	Vector2<T>& operator+=(const Vector2<T>& other)	{ this->x += other.x; this->y += other.y; return *this; }
+	Vector2<T>& operator-=(const Vector2<T>& other)	{ this->x -= other.x; this->y -= other.y; return *this; }
+	Vector2<T>& operator*=(const T& scalar)			{ this->x *= scalar; this->y *= scalar; return *this; }
+	Vector2<T>& operator/=(const T& scalar)			{ this->x /= scalar; this->y /= scalar; return *this; }
+
+	Vector2<T>& operator=(const Vector2<T>& other)	{ this->x = other.x; this->y = other.y; return *this; }
+	BOOL operator==(const Vector2<T>& other)		{ return (this->x == other.x) && (this->y == other.y); }
 
 	T x;
 	T y;

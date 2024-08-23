@@ -9,6 +9,7 @@
 #include <stdlib.h>
 #include <malloc.h>
 #include <memory.h>
+#include <time.h>
 #include <tchar.h>
 #include <crtdbg.h>
 
