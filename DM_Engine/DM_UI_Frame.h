@@ -49,7 +49,7 @@ private:
 
 
 template <typename T>
-void DM::UI_Frame::Create_UI()
+inline void DM::UI_Frame::Create_UI()
 {
 
     UI_Frame* sub_UI = dynamic_cast<UI_Frame*>(new T());

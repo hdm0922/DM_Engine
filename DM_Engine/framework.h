@@ -12,6 +12,7 @@
 #include <time.h>
 #include <tchar.h>
 #include <crtdbg.h>
+#include <cassert>
 
 #include <functional>
 #include <random>

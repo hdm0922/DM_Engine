@@ -18,7 +18,7 @@ namespace DM
 void DM::UI_Manager::Initialize()
 {
 
-	UI_Manager::UI_loadQueue.push(new UI_Button());
+	UI_Manager::Create_UI<UI_Button>();
 
 	return;
 }
@@ -82,6 +82,7 @@ void DM::UI_Manager::load()
 	UI_Manager::UI_loadQueue.pop();
 
 	UI->Load();
+	UI->Initialize();
 
 	UI_Manager::UI_renderQueue.push(UI);
 
