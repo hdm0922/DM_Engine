@@ -39,14 +39,13 @@ public:
 protected:
 
     virtual void load() override;
-
+    
 
 private:
 
     std::function<void()> clickEvent;
 
     // temp
-    Math::Vector2<FLOAT> topLeft;
     Math::Vector2<FLOAT> size;
 };
 

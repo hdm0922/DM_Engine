@@ -2,6 +2,7 @@
 
 #include "DM_Input.h"
 #include "DM_RandomGenerator.h"
+#include "DM_TransformComponent.h"
 
 
 
@@ -25,8 +26,7 @@ DM::UI_Button::~UI_Button()
 
 void DM::UI_Button::Initialize()
 {
-
-	this->topLeft = { 100.0f, 100.0f };
+	this->GetComponent<TransformComponent>()->SetPosition({ 200.0f, 100.0f });
 	this->size = { 100.0f, 100.0f };
 
 	UI_Frame::Initialize();
@@ -44,9 +44,11 @@ void DM::UI_Button::Update()
 
 	if (Input::GetKeyPressed(VK_LBUTTON))
 	{
+		auto topLeft = this->GetComponent<TransformComponent>()->GetPosition();
+
 		BOOL cursorInButton = Math::CollisionChecker::Point_Box_2D(
 			Input::GetCursorPosition(),
-			this->topLeft, this->topLeft + this->size
+			topLeft, topLeft + this->size
 		);
 
 		if (cursorInButton) { this->OnEvent_Click(); }		
@@ -63,8 +65,8 @@ void DM::UI_Button::Update()
 
 void DM::UI_Button::Render(HDC hdc) const
 {
-
-	Math::Vector2<FLOAT> bottomRight = this->topLeft + this->size;
+	auto topLeft = this->GetComponent<TransformComponent>()->GetPosition();
+	Math::Vector2<FLOAT> bottomRight = topLeft + this->size;
 
 	Rectangle(hdc, (INT)topLeft.x, (INT)topLeft.y, (INT)bottomRight.x, (INT)bottomRight.y);
 

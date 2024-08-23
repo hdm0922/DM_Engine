@@ -144,6 +144,7 @@
     <ClInclude Include="DM_Math.h" />
     <ClInclude Include="DM_ObjectTree.h" />
     <ClInclude Include="DM_RandomGenerator.h" />
+    <ClInclude Include="DM_TransformComponent.h" />
     <ClInclude Include="DM_UI_Button.h" />
     <ClInclude Include="DM_UI_Frame.h" />
     <ClInclude Include="DM_UI_Manager.h" />
@@ -163,6 +164,7 @@
     <ClCompile Include="DM_Math.cpp" />
     <ClCompile Include="DM_ObjectTree.cpp" />
     <ClCompile Include="DM_RandomGenerator.cpp" />
+    <ClCompile Include="DM_TransformComponent.cpp" />
     <ClCompile Include="DM_UI_Button.cpp" />
     <ClCompile Include="DM_UI_Frame.cpp" />
     <ClCompile Include="DM_UI_Manager.cpp" />

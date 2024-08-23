@@ -1,5 +1,5 @@
 #pragma once
-#include "DM_Entity.h"
+#include "DM_GameObject.h"
 #include "DM_ObjectTree.h"
 
 
@@ -15,7 +15,7 @@ namespace DM
 
 
 class DM::UI_Frame:
-    public Entity,
+    public GameObject,
     public ObjectTree<UI_Frame>
 {
 

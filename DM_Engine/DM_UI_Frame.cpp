@@ -5,7 +5,7 @@
 
 
 DM::UI_Frame::UI_Frame(const std::wstring& name)
-	: Entity(name)
+	: GameObject(name)
 	, ObjectTree<UI_Frame>()
 {
 }
