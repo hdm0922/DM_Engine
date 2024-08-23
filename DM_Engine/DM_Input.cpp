@@ -105,8 +105,8 @@ void DM::Input::updateCursor()
 	ScreenToClient(mainWindow->GetHandle(), &cursorPoint);
 
 	Input::cursorPosition = (
-		(0 <= cursorPoint.x) && (cursorPoint.x <= mainWindow->GetSize().x) &&
-		(0 <= cursorPoint.y) && (cursorPoint.y <= mainWindow->GetSize().y)
+		(0 <= cursorPoint.x) && (cursorPoint.x <= (INT)mainWindow->GetSize().x) &&
+		(0 <= cursorPoint.y) && (cursorPoint.y <= (INT)mainWindow->GetSize().y)
 		) ? Math::Vector2<FLOAT>(static_cast<FLOAT>(cursorPoint.x), static_cast<FLOAT>(cursorPoint.y)) :
 			Math::Vector2<FLOAT>(-1.0f);
 

@@ -34,7 +34,11 @@ void DM::UI_Button::Initialize()
 void DM::UI_Button::Update()
 {
 
-	if (Input::GetKeyDown())
+	if (Input::GetKeyPressed(VK_LBUTTON))
+	{
+
+		int a = 0;
+	}
 
 }
 

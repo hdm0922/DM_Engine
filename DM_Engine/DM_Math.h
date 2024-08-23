@@ -1,4 +1,9 @@
 #pragma once
+#include <windows.h>
+
+
+
+
 
 namespace DM
 {
@@ -6,8 +11,13 @@ namespace DM
 	{
 		template <typename T>
 		struct Vector2;
+
+		class CollisionChecker;
 	}
 }
+
+
+
 
 
 template <typename T>
@@ -33,4 +43,16 @@ struct DM::Math::Vector2
 	T x;
 	T y;
 
+};
+
+
+
+
+
+class DM::Math::CollisionChecker
+{
+
+public:
+
+	static BOOL Point_Box_2D(Vector2<FLOAT> point, Vector2<FLOAT> boxTopLeft, Vector2<FLOAT> boxSize);
 };
