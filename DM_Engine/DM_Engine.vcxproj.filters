@@ -28,6 +28,9 @@
     <Filter Include="헤더 파일\Object">
       <UniqueIdentifier>{38ff4baf-3c48-4688-b7c3-1b4e837e5287}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\ZZZ_External">
+      <UniqueIdentifier>{7cebb97a-16b4-4e72-aee6-afea3d743b9f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -81,14 +84,14 @@
     <ClInclude Include="DM_ObjectTree.h">
       <Filter>헤더 파일\Frame</Filter>
     </ClInclude>
-    <ClInclude Include="DM_UI_Status.h">
-      <Filter>헤더 파일\UI</Filter>
-    </ClInclude>
     <ClInclude Include="DM_GameObject.h">
       <Filter>헤더 파일\Object</Filter>
     </ClInclude>
     <ClInclude Include="DM_TransformComponent.h">
       <Filter>헤더 파일\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="DM_UI_Status.h">
+      <Filter>헤더 파일\ZZZ_External</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

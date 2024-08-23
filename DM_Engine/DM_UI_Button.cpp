@@ -32,8 +32,8 @@ DM::UI_Button::~UI_Button()
 
 void DM::UI_Button::Initialize()
 {
-	this->GetComponent<TransformComponent>()->SetPosition({ 200.0f, 100.0f });
-	this->size = { 100.0f, 100.0f };
+	this->GetComponent<TransformComponent>()->SetPosition({ 500.0f, 100.0f });
+	this->size = { 50.0f, 50.0f };
 
 	UI_Frame::Initialize();
 
@@ -71,6 +71,9 @@ void DM::UI_Button::Update()
 
 void DM::UI_Button::Render(HDC hdc) const
 {
+
+	if (this->ObjectTree<UI_Frame>::GetHidden()) return;
+
 	auto topLeft = this->GetComponent<TransformComponent>()->GetPosition();
 	Math::Vector2<FLOAT> bottomRight = topLeft + this->size;
 

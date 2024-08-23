@@ -33,7 +33,7 @@ protected:
 
     virtual void load();
 
-    void close() { ObjectTree<UI_Frame>::Hide(); }
+    void close() { this->ObjectTree<UI_Frame>::Hide(); }
 
 private:
 

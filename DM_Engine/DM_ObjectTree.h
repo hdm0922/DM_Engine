@@ -158,7 +158,7 @@ inline void DM::ObjectTree<T>::Show()
 
 
 
-// T = UI_Frame | T2 = UI_Button
+
 template<typename T> template <typename T2>
 inline T2* DM::ObjectTree<T>::Create()
 {
