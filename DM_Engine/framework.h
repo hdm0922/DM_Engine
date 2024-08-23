@@ -13,8 +13,8 @@
 #include <crtdbg.h>
 
 #include <functional>
-//#include <random>
-//#include <type_traits>
+#include <random>
+#include <type_traits>
 
 #include <string>
 #include <vector>
