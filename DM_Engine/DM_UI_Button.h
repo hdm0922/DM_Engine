@@ -26,10 +26,20 @@ public:
     virtual void Load() override;
     virtual void Kill() override;
 
+    virtual void OnEvent_Click();
+
+
+public:
+
+    void SetClickEvent(const std::function<void()>& function) { this->clickEvent = function; }
+
+
+private:
+
+    std::function<void()> clickEvent;
 
     // temp
     Math::Vector2<FLOAT> topLeft;
     Math::Vector2<FLOAT> size;
-
 };
 

@@ -46,24 +46,19 @@ void DM::UI_Button::Initialize()
 void DM::UI_Button::Update()
 {
 
+	UI_Frame::Update();
+
 	if (Input::GetKeyPressed(VK_LBUTTON))
 	{
-
-		if (Math::CollisionChecker::Point_Box_2D(
+		BOOL cursorInButton = Math::CollisionChecker::Point_Box_2D(
 			Input::GetCursorPosition(),
 			this->topLeft, this->topLeft + this->size
-		))
-		{
-			// Click Event !
+		);
 
-			this->Create_UI<UI_Button>();
-
-			int a = 0;
-		}
-
-		
+		if (cursorInButton) { this->OnEvent_Click(); }		
 	}
 
+	return;
 }
 
 
@@ -77,7 +72,7 @@ void DM::UI_Button::Render(HDC hdc)
 
 	Math::Vector2<FLOAT> bottomRight = this->topLeft + this->size;
 
-	Rectangle(hdc, topLeft.x, topLeft.y, bottomRight.x, bottomRight.y);
+	Rectangle(hdc, (INT)topLeft.x, (INT)topLeft.y, (INT)bottomRight.x, (INT)bottomRight.y);
 
 	return;
 }
@@ -96,4 +91,16 @@ void DM::UI_Button::Load()
 
 void DM::UI_Button::Kill()
 {
+}
+
+
+
+
+
+void DM::UI_Button::OnEvent_Click()
+{
+
+	if (this->clickEvent) { this->clickEvent(); }
+	
+	return;
 }
