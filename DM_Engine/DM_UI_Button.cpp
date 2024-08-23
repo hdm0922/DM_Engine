@@ -58,7 +58,7 @@ void DM::UI_Button::Update()
 
 
 
-void DM::UI_Button::Render(HDC hdc)
+void DM::UI_Button::Render(HDC hdc) const
 {
 
 	UI_Frame::Render(hdc);

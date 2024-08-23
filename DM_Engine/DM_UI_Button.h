@@ -21,7 +21,7 @@ public:
 
     virtual void Initialize() override;
     virtual void Update() override;
-    virtual void Render(HDC hdc) override;
+    virtual void Render(HDC hdc) const override;
 
     virtual void Load() override;
     virtual void Kill() override;

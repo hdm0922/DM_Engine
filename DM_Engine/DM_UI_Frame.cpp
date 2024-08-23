@@ -52,7 +52,7 @@ void DM::UI_Frame::Update()
 
 
 
-void DM::UI_Frame::Render(HDC hdc)
+void DM::UI_Frame::Render(HDC hdc) const
 {
 
 	for (UI_Frame* UI : this->sub_UIs)
@@ -61,6 +61,14 @@ void DM::UI_Frame::Render(HDC hdc)
 	}
 
 	return;
+}
+
+
+
+
+
+void DM::UI_Frame::Destroy()
+{
 }
 
 

@@ -1,6 +1,6 @@
 #pragma once
 #include "DM_Entity.h"
-
+#include "DM_ObjectTree.h"
 
 
 
@@ -15,7 +15,8 @@ namespace DM
 
 
 class DM::UI_Frame:
-    public Entity
+    public Entity,
+    public ObjectTree<UI_Frame>
 {
 
 public:
@@ -23,9 +24,10 @@ public:
     UI_Frame(const std::wstring& name = L"");
     virtual ~UI_Frame() override;
 
-    virtual void Initialize();
-    virtual void Update();
-    virtual void Render(HDC hdc);
+    virtual void Initialize() override;
+    virtual void Update() override;
+    virtual void Render(HDC hdc) const override;
+    virtual void Destroy() override;
 
     virtual void Load();
     virtual void Kill();
