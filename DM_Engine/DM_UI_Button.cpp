@@ -77,10 +77,30 @@ void DM::UI_Button::Render(HDC hdc) const
 
 
 
+void DM::UI_Button::Destroy()
+{
+
+	UI_Frame::Destroy();
+
+	return;
+}
+
+
+
+
+
 void DM::UI_Button::OnEvent_Click()
 {
 
 	if (this->clickEvent) { this->clickEvent(); }
 	
 	return;
+}
+
+
+
+
+
+void DM::UI_Button::load()
+{
 }

@@ -3,10 +3,14 @@
 
 
 
+
+
 namespace DM
 {
     class UI_Button;
 }
+
+
 
 
 
@@ -22,7 +26,7 @@ public:
     virtual void Initialize() override;
     virtual void Update() override;
     virtual void Render(HDC hdc) const override;
-
+    virtual void Destroy() override;
 
     virtual void OnEvent_Click();
 
@@ -34,7 +38,7 @@ public:
 
 protected:
 
-    //virtual void load() override;
+    virtual void load() override;
 
 
 private:
