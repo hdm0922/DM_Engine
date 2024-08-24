@@ -9,9 +9,9 @@
 DM::UI_Status::UI_Status(const std::wstring& name)
 	: UI_Frame(name)
 {
-	UI_Button* closeButton = this->ObjectTree<UI_Frame>::Create<UI_Button>();
-	closeButton->ObjectTree<UI_Frame>::SetParent(this);
-	closeButton->clickEvent = std::bind(&UI_Status::close, this);
+	//UI_Button* closeButton = this->ObjectTree<UI_Frame>::Create<UI_Button>();
+	//closeButton->ObjectTree<UI_Frame>::SetParent(this);
+	//closeButton->clickEvent = std::bind(&UI_Status::close, this);
 
 }
 
@@ -47,7 +47,7 @@ void DM::UI_Status::Update()
 
 void DM::UI_Status::Render(HDC hdc) const
 {
-	if (this->ObjectTree<UI_Frame>::GetHidden()) return;
+	if (this->GetHidden()) return;
 
 	Rectangle(hdc, 100, 100, 200, 200);
 

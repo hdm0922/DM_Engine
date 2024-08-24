@@ -1,13 +1,12 @@
 #pragma once
 #include "DM_Entity.h"
-#include "DM_ObjectTree.h"
-#include "DM_Component.h"
 
 
 
 namespace DM
 {
     class GameObject;
+	class ComponentHolder;
 }
 
 
@@ -15,8 +14,7 @@ namespace DM
 
 
 class DM::GameObject :
-    public Entity,
-    public ObjectTree<GameObject>
+    public Entity
 {
 
 public:
@@ -29,64 +27,15 @@ public:
 	virtual void Render(HDC hdc) const;
 	virtual void Destroy();
 
-	template <typename T>
-	void AddComponent();
-
 
 public:
 
-	template <typename T>
-	T* GetComponent() const;
+	ComponentHolder* GetComponentHolder() const { return this->componentHolder; }
 
 
 private:
 
-	struct compareFunction
-	{
-		bool operator()(const Component* left, const Component* right) const
-		{
-			return left->GetComponentType() < right->GetComponentType();
-		}
-	};
+	ComponentHolder* componentHolder;
 
-
-private:
-
-	std::set<Component*, compareFunction> components;
 
 };
-
-
-
-
-
-template<typename T>
-inline void DM::GameObject::AddComponent()
-{
-
-	if (this->GetComponent<T>()) return;
-
-	Component* component = static_cast<Component*>(new T(this));
-	assert(component); // DEBUG
-
-	this->components.insert(component);
-
-	return;
-}
-
-
-
-
-
-template<typename T>
-inline T* DM::GameObject::GetComponent() const
-{
-
-	for (Component* component : this->components)
-	{
-		T* component_to_find = dynamic_cast<T*>(component);
-		if (component_to_find) return component_to_find;
-	}
-
-	return nullptr;
-}

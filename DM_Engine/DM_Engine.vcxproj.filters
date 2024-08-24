@@ -93,6 +93,9 @@
     <ClInclude Include="DM_UI_Status.h">
       <Filter>헤더 파일\ZZZ_External</Filter>
     </ClInclude>
+    <ClInclude Include="DM_ComponentHolder.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DM_Math.cpp">
@@ -138,6 +141,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="DM_UI_Status.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_ComponentHolder.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

@@ -1,6 +1,7 @@
 #pragma once
+#include "DM_Entity.h"
 #include "DM_GameObject.h"
-#include "DM_ObjectTree.h"
+
 
 
 
@@ -15,8 +16,7 @@ namespace DM
 
 
 class DM::UI_Frame:
-    public GameObject,
-    public ObjectTree<UI_Frame>
+    public GameObject
 {
 
 public:
@@ -24,20 +24,36 @@ public:
     UI_Frame(const std::wstring& name = L"");
     virtual ~UI_Frame() override;
 
-    virtual void Initialize() override;
-    virtual void Update() override;
-    virtual void Render(HDC hdc) const override;
-    virtual void Destroy() override;
+    virtual void Initialize();
+    virtual void Update();
+    virtual void Render(HDC hdc) const;
+    virtual void Destroy();
 
-    //virtual void SetParent(UI_Frame* parent) override
-    //{
-    //    this->ObjectTree<UI_Frame>::parentNode = parent;
-    //    return;
-    //}
+    void Hide();
+	void Show();
+
+public:
+
+    virtual void SetParent_UI(UI_Frame* node) { this->parent_UI = node; }
+    void SetHidden(BOOL hidden) { this->hidden = true; }
+    void SetPosition(FLOAT x, FLOAT y) const { this->SetPosition(Math::Vector2<FLOAT>(x,y)); }
+    void SetPosition(const Math::Vector2<FLOAT> position) const;
+
+    UI_Frame* GetParent() const { return this->parent_UI; }
+    BOOL GetHidden() const { return this->hidden; }
+    Math::Vector2<FLOAT> GetPosition() const;
+
 
 protected:
 
     virtual void load();
 
+
+private:
+
+    UI_Frame* parent_UI;
+    std::vector<UI_Frame*> sub_UIs;
+
+    BOOL hidden;
 
 };
