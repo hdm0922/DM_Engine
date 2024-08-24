@@ -1,11 +1,18 @@
 직접 만들어 보는 게임 엔진입니다. (C++)
 
 [Error Code]
-C2059 : 'namespace'
+
+
+
+error C2059 : 'namespace'
 
 원인 : 특정 헤더파일의 클래스 선언 이후 세미콜론이 없었다.
 
-C2664 : 형변환 실패
+해결 : 소스 코드에 세미콜론 추가
+
+
+
+error C2664 : 형변환 실패
 
 원인 :
 
@@ -63,4 +70,18 @@ inline T2* DM::ObjectTree<T>::Create()
 
 	return subNode;
 }
+```
+
+error C2338 : std::map 선언 후 빌드가 안됨
+
+원인 : std::map의 선언 형식이 잘못됐다
+
+```C++
+std::map<const std::wstring&, Resource*> resources;
+```
+
+해결 : std::map의 Key로 사용될 타입이 올바르지 않았다. 참조자를 빼고 선언하면 문제가 해결된다.
+
+```C++
+std::map<const std::wstring, Resource*> resources;
 ```
