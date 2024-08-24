@@ -32,6 +32,11 @@ public:
     void Hide();
 	void Show();
 
+    template <typename T>
+    T* CreateSubUI();
+
+
+
 public:
 
     virtual void SetParent_UI(UI_Frame* node) { this->parent_UI = node; }
@@ -57,3 +62,19 @@ private:
     BOOL hidden;
 
 };
+
+
+
+
+
+template<typename T>
+inline T* DM::UI_Frame::CreateSubUI()
+{
+
+    UI_Frame* sub_UI = static_cast<UI_Frame*>(new T());
+    assert(sub_UI);
+
+    this->sub_UIs.push_back(sub_UI);
+
+    return dynamic_cast<T*>(sub_UI);
+}

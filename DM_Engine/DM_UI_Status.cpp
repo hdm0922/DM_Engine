@@ -9,9 +9,9 @@
 DM::UI_Status::UI_Status(const std::wstring& name)
 	: UI_Frame(name)
 {
-	//UI_Button* closeButton = this->ObjectTree<UI_Frame>::Create<UI_Button>();
-	//closeButton->ObjectTree<UI_Frame>::SetParent(this);
-	//closeButton->clickEvent = std::bind(&UI_Status::close, this);
+	UI_Button* closeButton = this->CreateSubUI<UI_Button>();
+	closeButton->SetParent_UI(this);
+	closeButton->clickEvent = std::bind(&UI_Status::close, this);
 
 }
 
