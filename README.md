@@ -4,7 +4,7 @@
 
 
 
-<error C2059> : 'namespace'
+error C2059 : 'namespace'
 
 원인 : 특정 헤더파일의 클래스 선언 이후 세미콜론이 없었다.
 
@@ -12,7 +12,7 @@
 
 
 
-<error C2664> : 형변환 실패
+error C2664 : 형변환 실패
 
 원인 :
 
@@ -72,7 +72,7 @@ inline T2* DM::ObjectTree<T>::Create()
 }
 ```
 
-<error C2338> : std::map 선언 후 빌드가 안됨
+error C2338 : std::map 선언 후 빌드가 안됨
 
 원인 : std::map의 선언 형식이 잘못됐다
 
