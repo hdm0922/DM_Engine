@@ -23,7 +23,7 @@ public:
     Resource(const std::wstring& path, const std::wstring& name = L"");
     virtual ~Resource();
 
-    virtual bool Load(const std::wstring& loadPath) = 0;
+    virtual void Load() = 0;
 
 
 public:

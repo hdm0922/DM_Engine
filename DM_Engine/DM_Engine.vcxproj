@@ -146,6 +146,7 @@
     <ClInclude Include="DM_RandomGenerator.h" />
     <ClInclude Include="DM_Resource.h" />
     <ClInclude Include="DM_ResourceManager.h" />
+    <ClInclude Include="DM_Texture.h" />
     <ClInclude Include="DM_TransformComponent.h" />
     <ClInclude Include="DM_UI_Button.h" />
     <ClInclude Include="DM_UI_Frame.h" />
@@ -169,6 +170,7 @@
     <ClCompile Include="DM_RandomGenerator.cpp" />
     <ClCompile Include="DM_Resource.cpp" />
     <ClCompile Include="DM_ResourceManager.cpp" />
+    <ClCompile Include="DM_Texture.cpp" />
     <ClCompile Include="DM_TransformComponent.cpp" />
     <ClCompile Include="DM_UI_Button.cpp" />
     <ClCompile Include="DM_UI_Frame.cpp" />

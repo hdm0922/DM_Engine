@@ -4,8 +4,8 @@
 #include "DM_Window.h"
 #include "DM_WndProcs.h"
 #include "DM_Application.h"
-
-
+#include "DM_ResourceManager.h"
+#include "DM_Texture.h"
 
 
 
@@ -16,6 +16,7 @@ namespace DM
     void GameLoop(MSG message);
     void TranslateMessage(HACCEL hAccelTable, MSG message);
     void CheckMemoryLeak();
+    void LoadResources();
 }
 
 
@@ -43,6 +44,8 @@ INT APIENTRY wWinMain(
     DM::mainWindow->CreateSubWindow(L"Sub Window", DM::WndProc_Engine, false);
 
     DM::mainWindow->Show(nCmdShow);
+
+    DM::LoadResources();
 
     DM::Application::Initialize(DM::mainWindow);
 
@@ -106,4 +109,19 @@ void DM::CheckMemoryLeak()
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     //_CrtSetBreakAlloc(232);
     return;
+}
+
+
+
+
+
+void DM::LoadResources()
+{
+
+    // TEST
+    //ResourceManager::LoadResource<Texture>(
+    //    DM_TEST_TEXTURE_BMP_NAME,
+    //    DM_TEST_TEXTURE_BMP_PATH
+    //);
+
 }
