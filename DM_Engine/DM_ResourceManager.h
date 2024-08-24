@@ -30,7 +30,7 @@ public:
 
 private:
 
-	static std::map<const std::wstring&, Resource*> resources;
+	static std::map<const std::wstring, Resource*> resources;
 
 
 };
