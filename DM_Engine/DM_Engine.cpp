@@ -141,6 +141,11 @@ void DM::LoadResources()
 
     // TEST
     ResourceManager::LoadResource<Texture>(
+        DM_TEST_TEXTURE_BMP_NAME,
+        DM_TEST_TEXTURE_BMP_PATH
+    );
+
+    ResourceManager::LoadResource<Texture>(
         DM_TEST_TEXTURE_PNG_NAME,
         DM_TEST_TEXTURE_PNG_PATH
     );

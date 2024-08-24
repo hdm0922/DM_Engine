@@ -37,8 +37,6 @@
 #include <gdiplus.h>
 #pragma comment(lib, "gdiplus.lib")
 
-#include <mmsystem.h>
-#pragma comment(lib, "Msimg32.lib")
 
 
 // 사용자 정의

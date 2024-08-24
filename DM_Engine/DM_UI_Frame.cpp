@@ -2,7 +2,7 @@
 
 #include "DM_ComponentHolder.h"
 #include "DM_TransformComponent.h"
-
+#include "DM_Input.h"
 
 
 
@@ -45,6 +45,8 @@ void DM::UI_Frame::Initialize()
 
 void DM::UI_Frame::Update()
 {
+
+	if (!this->GetParent() && this->GetToggleKeyCode()) { this->checkUserInputEvents(); }
 
 	for (UI_Frame* sub_UI : this->sub_UIs)
 	{
@@ -96,6 +98,7 @@ void DM::UI_Frame::Hide()
         subNode->Hide();
     }
 
+	this->hidden_right_before_hide = this->GetHidden();
     this->SetHidden(true);
 
 }
@@ -106,7 +109,12 @@ void DM::UI_Frame::Hide()
 
 void DM::UI_Frame::Show()
 {
-	this->SetHidden(false);
+	this->SetHidden(hidden_right_before_hide);
+
+	for (UI_Frame* subNode : this->sub_UIs)
+	{
+		subNode->Show();
+	}
 }
 
 
@@ -137,4 +145,19 @@ DM::Math::Vector2<FLOAT> DM::UI_Frame::GetPosition() const
 
 void DM::UI_Frame::load()
 {
+}
+
+
+
+
+
+void DM::UI_Frame::checkUserInputEvents()
+{
+
+	if (Input::GetKeyPressed(this->GetToggleKeyCode()))
+	{
+		if (this->GetHidden()) { this->Show(); }
+		else { this->Hide(); }
+	}
+
 }

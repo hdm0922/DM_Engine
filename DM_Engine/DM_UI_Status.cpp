@@ -9,6 +9,8 @@
 DM::UI_Status::UI_Status(const std::wstring& name)
 	: UI_Frame(name)
 {
+	this->SetToggleKeyCode('S');
+
 	UI_Button* closeButton = this->CreateSubUI<UI_Button>();
 	closeButton->SetParent_UI(this);
 	closeButton->clickEvent = std::bind(&UI_Status::close, this);
