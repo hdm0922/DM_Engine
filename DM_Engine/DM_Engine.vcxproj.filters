@@ -31,15 +31,15 @@
     <Filter Include="헤더 파일\ZZZ_External">
       <UniqueIdentifier>{7cebb97a-16b4-4e72-aee6-afea3d743b9f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Resource">
+      <UniqueIdentifier>{f20206c3-a1b7-4627-8429-6422f1e28041}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Resource.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="DM_Engine.h">
@@ -91,6 +91,15 @@
       <Filter>헤더 파일\ZZZ_External</Filter>
     </ClInclude>
     <ClInclude Include="DM_ComponentHolder.h">
+      <Filter>헤더 파일\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="DM_Resource.h">
+      <Filter>헤더 파일\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="DM_ResourceManager.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -138,6 +147,12 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="DM_ComponentHolder.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_Resource.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_ResourceManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
