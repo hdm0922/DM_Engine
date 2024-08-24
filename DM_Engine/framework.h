@@ -37,11 +37,18 @@
 #include <gdiplus.h>
 #pragma comment(lib, "gdiplus.lib")
 
+#include <mmsystem.h>
+#pragma comment(lib, "Msimg32.lib")
 
 
 // 사용자 정의
 #include "DM_Math.h"
 #include "DM_Enums.h"
 
-#define DM_TEST_TEXTURE_BMP_NAME L"TestBMP"
-#define DM_TEST_TEXTURE_BMP_PATH L""
+#define DM_RELATIVE_PATH_FROM_ENGINE_TO_RESOURCES L"..//Resources//"
+
+#define DM_TEST_TEXTURE_BMP_NAME L"Test.bmp"
+#define DM_TEST_TEXTURE_BMP_PATH L"..//Resources//AlphaCat.bmp"
+
+#define DM_TEST_TEXTURE_PNG_NAME L"Test.png"
+#define DM_TEST_TEXTURE_PNG_PATH L"..//Resources//Haley.png"

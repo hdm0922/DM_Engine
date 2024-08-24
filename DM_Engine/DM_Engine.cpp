@@ -38,6 +38,15 @@ INT APIENTRY wWinMain(
 
 
 
+    ULONG_PTR gpToken;
+    Gdiplus::GdiplusStartupInput gpsi;
+    Gdiplus::GdiplusStartup(&gpToken, &gpsi, NULL);
+
+
+
+
+
+
     DM::Window::SetInstance(hInstance);
 
     DM::mainWindow = new DM::Window(L"Main Window", DM::WndProc_Engine, true);
@@ -49,12 +58,24 @@ INT APIENTRY wWinMain(
 
     DM::Application::Initialize(DM::mainWindow);
 
+
+
+
+
     MSG message = {};
     DM::GameLoop(message);
 
 
+
+
+
+    Gdiplus::GdiplusShutdown(gpToken);
     delete DM::mainWindow;
     DM::mainWindow = nullptr;
+
+
+
+
 
     return static_cast<INT>(message.wParam);
 }
@@ -119,9 +140,9 @@ void DM::LoadResources()
 {
 
     // TEST
-    //ResourceManager::LoadResource<Texture>(
-    //    DM_TEST_TEXTURE_BMP_NAME,
-    //    DM_TEST_TEXTURE_BMP_PATH
-    //);
+    ResourceManager::LoadResource<Texture>(
+        DM_TEST_TEXTURE_PNG_NAME,
+        DM_TEST_TEXTURE_PNG_PATH
+    );
 
 }

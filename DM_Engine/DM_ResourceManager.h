@@ -45,7 +45,8 @@ inline T* DM::ResourceManager::GetResource(const std::wstring& name)
 
 	auto iter = ResourceManager::resources.find(name);
 
-	return (iter == ResourceManager::resources.end()) ? nullptr : iter->second;
+	return (iter == ResourceManager::resources.end()) ?
+		nullptr : dynamic_cast<T*>(iter->second);
 }
 
 
