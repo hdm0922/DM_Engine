@@ -4,8 +4,8 @@
 
 
 
-DM::Animation::Animation()
-	: Resource(L"")
+DM::Animation::Animation(const std::wstring& path, const std::wstring& name)
+	: Resource(path, name)
 	, spriteSheet(nullptr)
 	, sprites({})
 	, currentIndex(0)

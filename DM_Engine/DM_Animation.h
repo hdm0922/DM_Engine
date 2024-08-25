@@ -23,7 +23,7 @@ class DM::Animation :
 
 public:
 
-    Animation();
+    Animation(const std::wstring& path, const std::wstring& name);
     virtual ~Animation() override;
 
     virtual void Load() override;

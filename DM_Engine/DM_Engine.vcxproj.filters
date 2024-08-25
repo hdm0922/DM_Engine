@@ -153,6 +153,9 @@
     <ClInclude Include="DM_Animation.h">
       <Filter>헤더 파일\Resource</Filter>
     </ClInclude>
+    <ClInclude Include="DM_AnimationRenderer.h">
+      <Filter>헤더 파일\Component\Render</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DM_UI_Status.cpp">
@@ -231,6 +234,9 @@
       <Filter>소스 파일\source</Filter>
     </ClCompile>
     <ClCompile Include="DM_Animation.cpp">
+      <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_AnimationRenderer.cpp">
       <Filter>소스 파일\source</Filter>
     </ClCompile>
   </ItemGroup>

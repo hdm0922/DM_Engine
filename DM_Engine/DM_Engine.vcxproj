@@ -136,6 +136,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="DM_Animation.h" />
+    <ClInclude Include="DM_AnimationRenderer.h" />
     <ClInclude Include="DM_Application.h" />
     <ClInclude Include="DM_Component.h" />
     <ClInclude Include="DM_ComponentHolder.h" />
@@ -170,6 +171,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DM_Animation.cpp" />
+    <ClCompile Include="DM_AnimationRenderer.cpp" />
     <ClCompile Include="DM_Application.cpp" />
     <ClCompile Include="DM_Component.cpp" />
     <ClCompile Include="DM_ComponentHolder.cpp" />
