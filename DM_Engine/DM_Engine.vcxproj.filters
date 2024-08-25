@@ -40,6 +40,15 @@
     <Filter Include="헤더 파일\___TEST__">
       <UniqueIdentifier>{7cebb97a-16b4-4e72-aee6-afea3d743b9f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\___TEST__\UI">
+      <UniqueIdentifier>{bc88f704-323e-4a67-bcd3-85876145bb4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\___TEST__\Scenes">
+      <UniqueIdentifier>{223e2b1e-1082-40aa-9e85-44851a91d8c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\Manager">
+      <UniqueIdentifier>{fbabf2e2-c2f2-41b4-853d-5a99d8802541}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -69,9 +78,6 @@
     <ClInclude Include="DM_UI_Frame.h">
       <Filter>헤더 파일\UI</Filter>
     </ClInclude>
-    <ClInclude Include="DM_UI_Manager.h">
-      <Filter>헤더 파일\UI</Filter>
-    </ClInclude>
     <ClInclude Include="DM_Enums.h">
       <Filter>헤더 파일\Utility</Filter>
     </ClInclude>
@@ -90,9 +96,6 @@
     <ClInclude Include="DM_GameObject.h">
       <Filter>헤더 파일\Object</Filter>
     </ClInclude>
-    <ClInclude Include="DM_UI_Status.h">
-      <Filter>헤더 파일\___TEST__</Filter>
-    </ClInclude>
     <ClInclude Include="DM_ComponentHolder.h">
       <Filter>헤더 파일\Component</Filter>
     </ClInclude>
@@ -101,9 +104,6 @@
     </ClInclude>
     <ClInclude Include="Resource.h">
       <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="DM_ResourceManager.h">
-      <Filter>헤더 파일\Resource</Filter>
     </ClInclude>
     <ClInclude Include="DM_Texture.h">
       <Filter>헤더 파일\Resource</Filter>
@@ -124,7 +124,19 @@
       <Filter>헤더 파일\Frame</Filter>
     </ClInclude>
     <ClInclude Include="DM_Scene.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\Frame</Filter>
+    </ClInclude>
+    <ClInclude Include="DM_UI_Status.h">
+      <Filter>헤더 파일\___TEST__\UI</Filter>
+    </ClInclude>
+    <ClInclude Include="DM_ResourceManager.h">
+      <Filter>헤더 파일\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="DM_UI_Manager.h">
+      <Filter>헤더 파일\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="DM_SceneManager.h">
+      <Filter>헤더 파일\Manager</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -192,6 +204,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="DM_Scene.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_SceneManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
