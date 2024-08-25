@@ -12,7 +12,7 @@
 DM::SpriteRenderer::SpriteRenderer(const GameObject* owner, const std::wstring& name)
 	: RenderComponent(owner, name)
 	, texture(nullptr)
-	, sprite(nullptr)
+	, sprite(new Sprite())
 {
 }
 
@@ -35,11 +35,11 @@ DM::SpriteRenderer::~SpriteRenderer()
 
 void DM::SpriteRenderer::Initialize()
 {
-
-	Sprite sprite = {};
-	sprite.topLeft	= { 0,0 };
-	sprite.size		= this->GetTexture()->GetSize();
-	sprite.offset	= { 0,0 };
+	{
+		this->sprite->topLeft = { 0,0 };
+		this->sprite->size = this->GetTexture()->GetSize();
+		this->sprite->offset = { 0,0 };
+	}
 
 	return;
 }

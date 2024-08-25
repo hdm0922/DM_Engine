@@ -2,7 +2,7 @@
 #include "framework.h"
 
 #include "DM_Resource.h"
-
+#include "DM_Texture.h"
 
 
 
