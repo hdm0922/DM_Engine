@@ -2,6 +2,7 @@
 
 #include "DM_ComponentHolder.h"
 #include "DM_TransformComponent.h"
+#include "DM_RenderComponent.h"
 
 
 
@@ -44,6 +45,10 @@ void DM::GameObject::Update()
 
 void DM::GameObject::Render(HDC hdc) const
 {
+	RenderComponent* renderComponent =
+		this->GetComponentHolder()->GetComponent<RenderComponent>();
+
+	if (renderComponent) { renderComponent->Render(hdc); }
 }
 
 

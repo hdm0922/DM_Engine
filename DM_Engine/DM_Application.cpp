@@ -4,9 +4,8 @@
 #include "DM_UI_Manager.h"
 #include "DM_Input.h"
 
-#include "DM_GameObject.h"
-#include "DM_SpriteRenderer.h"
-#include "DM_ResourceManager.h"
+
+
 
 
 namespace DM

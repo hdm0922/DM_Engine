@@ -28,9 +28,6 @@
     <Filter Include="헤더 파일\Object">
       <UniqueIdentifier>{38ff4baf-3c48-4688-b7c3-1b4e837e5287}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\ZZZ_External">
-      <UniqueIdentifier>{7cebb97a-16b4-4e72-aee6-afea3d743b9f}</UniqueIdentifier>
-    </Filter>
     <Filter Include="헤더 파일\Resource">
       <UniqueIdentifier>{f20206c3-a1b7-4627-8429-6422f1e28041}</UniqueIdentifier>
     </Filter>
@@ -39,6 +36,9 @@
     </Filter>
     <Filter Include="헤더 파일\Component\Transform">
       <UniqueIdentifier>{1db32361-cc3b-45ea-960f-9d74df3a3834}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\___TEST__">
+      <UniqueIdentifier>{7cebb97a-16b4-4e72-aee6-afea3d743b9f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -91,7 +91,7 @@
       <Filter>헤더 파일\Object</Filter>
     </ClInclude>
     <ClInclude Include="DM_UI_Status.h">
-      <Filter>헤더 파일\ZZZ_External</Filter>
+      <Filter>헤더 파일\___TEST__</Filter>
     </ClInclude>
     <ClInclude Include="DM_ComponentHolder.h">
       <Filter>헤더 파일\Component</Filter>
@@ -114,11 +114,14 @@
     <ClInclude Include="DM_TransformComponent.h">
       <Filter>헤더 파일\Component\Transform</Filter>
     </ClInclude>
-    <ClInclude Include="DM_SpriteRenderer.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="DM_Sprite.h">
       <Filter>헤더 파일\Resource</Filter>
+    </ClInclude>
+    <ClInclude Include="DM_SpriteRenderer.h">
+      <Filter>헤더 파일\Component\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="DM_Layer.h">
+      <Filter>헤더 파일\Frame</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -180,6 +183,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="DM_SpriteRenderer.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_Layer.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

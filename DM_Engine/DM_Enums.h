@@ -7,6 +7,7 @@ namespace DM
 	namespace Enums
 	{
 		enum class ComponentType;
+		enum class LayerType;
 		enum class TextureType;
 
 		enum class KeyState;
@@ -21,6 +22,18 @@ enum class DM::Enums::ComponentType
 {
 	Transform,
 	Render,
+
+	None
+};
+
+
+
+
+
+enum class DM::Enums::LayerType
+{
+	Background,
+	Entity,
 
 	None
 };
