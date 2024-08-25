@@ -9,10 +9,6 @@
 DM::Layer::Layer()
 	: gameObjects({})
 {
-	//for (UINT iter = 0; iter < static_cast<UINT>(Enums::LayerType::Background); iter++)
-	//{
-
-	//}
 }
 
 

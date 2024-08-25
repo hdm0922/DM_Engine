@@ -148,6 +148,7 @@
     <ClInclude Include="DM_RenderComponent.h" />
     <ClInclude Include="DM_Resource.h" />
     <ClInclude Include="DM_ResourceManager.h" />
+    <ClInclude Include="DM_Scene.h" />
     <ClInclude Include="DM_Sprite.h" />
     <ClInclude Include="DM_SpriteRenderer.h" />
     <ClInclude Include="DM_Texture.h" />
@@ -176,6 +177,7 @@
     <ClCompile Include="DM_RenderComponent.cpp" />
     <ClCompile Include="DM_Resource.cpp" />
     <ClCompile Include="DM_ResourceManager.cpp" />
+    <ClCompile Include="DM_Scene.cpp" />
     <ClCompile Include="DM_SpriteRenderer.cpp" />
     <ClCompile Include="DM_Texture.cpp" />
     <ClCompile Include="DM_TransformComponent.cpp" />
