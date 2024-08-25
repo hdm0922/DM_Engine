@@ -1,5 +1,4 @@
 #pragma once
-#include "DM_Entity.h"
 #include "DM_GameObject.h"
 
 
@@ -42,13 +41,10 @@ public:
     virtual void SetParent_UI(UI_Frame* UI) { this->parent_UI = UI; }
     void SetToggleKeyCode(UINT keyCode) { this->toggleKeyCode = keyCode; }
     void SetHidden(BOOL hidden) { this->hidden = hidden; }
-    void SetPosition(FLOAT x, FLOAT y) const { this->SetPosition(Math::Vector2<FLOAT>(x,y)); }
-    void SetPosition(const Math::Vector2<FLOAT> position) const;
 
     UI_Frame* GetParent() const { return this->parent_UI; }
     UINT GetToggleKeyCode() const { return this->toggleKeyCode; }
     BOOL GetHidden() const { return this->hidden; }
-    Math::Vector2<FLOAT> GetPosition() const;
 
 
 protected:

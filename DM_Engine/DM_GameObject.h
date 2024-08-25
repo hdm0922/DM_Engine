@@ -30,6 +30,10 @@ public:
 
 public:
 
+	void SetPosition(FLOAT x, FLOAT y) const { this->SetPosition(Math::Vector2<FLOAT>(x, y)); }
+	void SetPosition(const Math::Vector2<FLOAT> position) const;
+
+	Math::Vector2<FLOAT> GetPosition() const;
 	ComponentHolder* GetComponentHolder() const { return this->componentHolder; }
 
 

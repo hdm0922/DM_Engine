@@ -1,6 +1,7 @@
 #include "DM_GameObject.h"
-#include "DM_ComponentHolder.h"
 
+#include "DM_ComponentHolder.h"
+#include "DM_TransformComponent.h"
 
 
 
@@ -51,4 +52,26 @@ void DM::GameObject::Render(HDC hdc) const
 
 void DM::GameObject::Destroy()
 {
+}
+
+
+
+
+
+void DM::GameObject::SetPosition(const Math::Vector2<FLOAT> position) const
+{
+	this->GetComponentHolder()
+		->GetComponent<TransformComponent>()
+		->SetPosition(position);
+}
+
+
+
+
+
+DM::Math::Vector2<FLOAT> DM::GameObject::GetPosition() const
+{
+	return this->GetComponentHolder()
+		->GetComponent<TransformComponent>()
+		->GetPosition();
 }

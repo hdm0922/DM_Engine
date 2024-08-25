@@ -20,6 +20,7 @@ namespace DM
 enum class DM::Enums::ComponentType
 {
 	Transform,
+	Render,
 
 	None
 };

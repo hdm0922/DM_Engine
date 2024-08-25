@@ -1,7 +1,6 @@
 #include "DM_UI_Frame.h"
 
 #include "DM_ComponentHolder.h"
-#include "DM_TransformComponent.h"
 #include "DM_Input.h"
 
 
@@ -12,6 +11,8 @@ DM::UI_Frame::UI_Frame(const std::wstring& name)
 	, parent_UI(nullptr)
 	, sub_UIs({})
 	, hidden(false)
+	, hidden_right_before_hide(false)
+	, toggleKeyCode(NULL)
 {
 }
 
@@ -115,28 +116,6 @@ void DM::UI_Frame::Show()
 	{
 		subNode->Show();
 	}
-}
-
-
-
-
-
-void DM::UI_Frame::SetPosition(const Math::Vector2<FLOAT> position) const
-{
-	this->GetComponentHolder()
-		->GetComponent<TransformComponent>()
-		->SetPosition(position);
-}
-
-
-
-
-
-DM::Math::Vector2<FLOAT> DM::UI_Frame::GetPosition() const
-{
-	return this->GetComponentHolder()
-		->GetComponent<TransformComponent>()
-		->GetPosition();
 }
 
 

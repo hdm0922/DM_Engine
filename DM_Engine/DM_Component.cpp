@@ -37,11 +37,3 @@ void DM::Component::Initialize()
 void DM::Component::Update()
 {
 }
-
-
-
-
-
-void DM::Component::Render(HDC hdc) const
-{
-}

@@ -144,8 +144,10 @@
     <ClInclude Include="DM_Input.h" />
     <ClInclude Include="DM_Math.h" />
     <ClInclude Include="DM_RandomGenerator.h" />
+    <ClInclude Include="DM_RenderComponent.h" />
     <ClInclude Include="DM_Resource.h" />
     <ClInclude Include="DM_ResourceManager.h" />
+    <ClInclude Include="DM_SpriteRenderer.h" />
     <ClInclude Include="DM_Texture.h" />
     <ClInclude Include="DM_TransformComponent.h" />
     <ClInclude Include="DM_UI_Button.h" />
@@ -168,8 +170,10 @@
     <ClCompile Include="DM_Input.cpp" />
     <ClCompile Include="DM_Math.cpp" />
     <ClCompile Include="DM_RandomGenerator.cpp" />
+    <ClCompile Include="DM_RenderComponent.cpp" />
     <ClCompile Include="DM_Resource.cpp" />
     <ClCompile Include="DM_ResourceManager.cpp" />
+    <ClCompile Include="DM_SpriteRenderer.cpp" />
     <ClCompile Include="DM_Texture.cpp" />
     <ClCompile Include="DM_TransformComponent.cpp" />
     <ClCompile Include="DM_UI_Button.cpp" />
