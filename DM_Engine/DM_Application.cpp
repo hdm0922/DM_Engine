@@ -1,8 +1,9 @@
 #include "DM_Application.h"
 
 #include "DM_Window.h"
-#include "DM_UI_Manager.h"
 #include "DM_Input.h"
+#include "DM_UI_Manager.h"
+#include "DM_SceneManager.h"
 
 
 
@@ -30,6 +31,7 @@ void DM::Application::Initialize(Window* mainWindow)
 	Input::Initialize();
 
 	UI_Manager::Initialize();
+	SceneManager::Initialize();
 
 	return;
 }
@@ -44,6 +46,7 @@ void DM::Application::Update()
 	Input::Update();
 
 	UI_Manager::Update();
+	SceneManager::Update();
 
 	return;
 }
@@ -59,8 +62,7 @@ void DM::Application::Render()
 		Application::getDeviceContext_Back()
 	);
 
-	// render all objects
-	UI_Manager::Render(Application::getDeviceContext_Back());
+	Application::renderGame(Application::getDeviceContext_Back());
 
 	Application::copyRenderTarget(
 		Application::getDeviceContext_Back(),
@@ -132,6 +134,17 @@ void DM::Application::clearRenderTarget(HDC hdc)
 	DeleteObject(brush);
 
 	return;
+}
+
+
+
+
+
+void DM::Application::renderGame(HDC hdc)
+{
+
+	UI_Manager::Render(hdc);
+	SceneManager::Render(hdc);
 }
 
 

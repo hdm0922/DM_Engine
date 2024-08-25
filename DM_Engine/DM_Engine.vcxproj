@@ -152,6 +152,7 @@
     <ClInclude Include="DM_SceneManager.h" />
     <ClInclude Include="DM_Sprite.h" />
     <ClInclude Include="DM_SpriteRenderer.h" />
+    <ClInclude Include="DM_TestScene.h" />
     <ClInclude Include="DM_Texture.h" />
     <ClInclude Include="DM_TransformComponent.h" />
     <ClInclude Include="DM_UI_Button.h" />
@@ -181,6 +182,7 @@
     <ClCompile Include="DM_Scene.cpp" />
     <ClCompile Include="DM_SceneManager.cpp" />
     <ClCompile Include="DM_SpriteRenderer.cpp" />
+    <ClCompile Include="DM_TestScene.cpp" />
     <ClCompile Include="DM_Texture.cpp" />
     <ClCompile Include="DM_TransformComponent.cpp" />
     <ClCompile Include="DM_UI_Button.cpp" />

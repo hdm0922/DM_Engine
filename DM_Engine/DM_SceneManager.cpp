@@ -48,17 +48,6 @@ void DM::SceneManager::Render(HDC hdc)
 
 
 
-DM::Scene* DM::SceneManager::GetScene(const std::wstring& name)
-{
-	auto iter = SceneManager::scenes.find(name);
-	return (iter == SceneManager::scenes.end()) ?
-		nullptr : iter->second;
-}
-
-
-
-
-
 void DM::SceneManager::LoadScene(const std::wstring& name)
 {
 
@@ -70,4 +59,15 @@ void DM::SceneManager::LoadScene(const std::wstring& name)
 	SceneManager::activeScene = loadScene;
 	SceneManager::activeScene->EnterScene();
 
+}
+
+
+
+
+
+DM::Scene* DM::SceneManager::GetScene(const std::wstring& name)
+{
+	auto iter = SceneManager::scenes.find(name);
+	return (iter == SceneManager::scenes.end()) ?
+		nullptr : iter->second;
 }

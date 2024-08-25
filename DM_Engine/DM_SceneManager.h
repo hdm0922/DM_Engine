@@ -28,8 +28,13 @@ public:
 	template <typename T>
 	static void CreateScene(const std::wstring& name);
 
-	static Scene* GetScene(const std::wstring& name);
 	static void LoadScene(const std::wstring& name);
+
+
+public:
+
+	static Scene* GetScene(const std::wstring& name);
+	static Scene* GetActiveScene() { return SceneManager::activeScene; }
 
 
 private:

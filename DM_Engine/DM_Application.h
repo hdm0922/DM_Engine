@@ -21,6 +21,7 @@ public:
 
 	static void Run();
 
+
 public:
 
 	static Window* GetMainWindow() { return Application::mainWindow; }
@@ -31,6 +32,7 @@ private:
 
 	static void initializeWindow();
 	static void clearRenderTarget(HDC hdc);
+	static void renderGame(HDC hdc);
 	static void copyRenderTarget(HDC sourceDC, HDC destDC);
 
 	static HDC getDeviceContext_Back() { return Application::device_context_back; }
@@ -43,6 +45,7 @@ private:
 	static HDC device_context;
 	static HDC device_context_back;
 	static HBITMAP buffer_back;
+
 
 };
 

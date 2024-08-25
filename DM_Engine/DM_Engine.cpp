@@ -5,7 +5,11 @@
 #include "DM_WndProcs.h"
 #include "DM_Application.h"
 #include "DM_ResourceManager.h"
+#include "DM_SceneManager.h"
 #include "DM_Texture.h"
+#include "DM_TestScene.h"
+
+
 
 
 
@@ -17,6 +21,7 @@ namespace DM
     void TranslateMessage(HACCEL hAccelTable, MSG message);
     void CheckMemoryLeak();
     void LoadResources();
+    void LoadScenes();
 }
 
 
@@ -50,11 +55,12 @@ INT APIENTRY wWinMain(
     DM::Window::SetInstance(hInstance);
 
     DM::mainWindow = new DM::Window(L"Main Window", DM::WndProc_Engine, true);
-    DM::mainWindow->CreateSubWindow(L"Sub Window", DM::WndProc_Engine, false);
+    //DM::mainWindow->CreateSubWindow(L"Sub Window", DM::WndProc_Engine, false);
 
     DM::mainWindow->Show(nCmdShow);
 
     DM::LoadResources();
+    DM::LoadScenes();
 
     DM::Application::Initialize(DM::mainWindow);
 
@@ -150,4 +156,16 @@ void DM::LoadResources()
         DM_TEST_TEXTURE_PNG_PATH
     );
 
+}
+
+
+
+
+
+void DM::LoadScenes()
+{
+
+    SceneManager::CreateScene<TestScene>(DM_TEST_SCENE_NAME);
+
+    SceneManager::LoadScene(DM_TEST_SCENE_NAME);
 }

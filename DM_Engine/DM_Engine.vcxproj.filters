@@ -37,17 +37,23 @@
     <Filter Include="헤더 파일\Component\Transform">
       <UniqueIdentifier>{1db32361-cc3b-45ea-960f-9d74df3a3834}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\___TEST__">
-      <UniqueIdentifier>{7cebb97a-16b4-4e72-aee6-afea3d743b9f}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\___TEST__\UI">
-      <UniqueIdentifier>{bc88f704-323e-4a67-bcd3-85876145bb4d}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\___TEST__\Scenes">
-      <UniqueIdentifier>{223e2b1e-1082-40aa-9e85-44851a91d8c6}</UniqueIdentifier>
-    </Filter>
     <Filter Include="헤더 파일\Manager">
       <UniqueIdentifier>{fbabf2e2-c2f2-41b4-853d-5a99d8802541}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\___TEST___">
+      <UniqueIdentifier>{7cebb97a-16b4-4e72-aee6-afea3d743b9f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\___TEST___\UI">
+      <UniqueIdentifier>{bc88f704-323e-4a67-bcd3-85876145bb4d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\___TEST___\Scenes">
+      <UniqueIdentifier>{223e2b1e-1082-40aa-9e85-44851a91d8c6}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\___TEST___">
+      <UniqueIdentifier>{a05d2946-8868-4012-b37c-e5f9d0f625ed}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\source">
+      <UniqueIdentifier>{82567603-e5a9-4599-9872-dd52d45866f5}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -127,7 +133,7 @@
       <Filter>헤더 파일\Frame</Filter>
     </ClInclude>
     <ClInclude Include="DM_UI_Status.h">
-      <Filter>헤더 파일\___TEST__\UI</Filter>
+      <Filter>헤더 파일\___TEST___\UI</Filter>
     </ClInclude>
     <ClInclude Include="DM_ResourceManager.h">
       <Filter>헤더 파일\Manager</Filter>
@@ -138,76 +144,82 @@
     <ClInclude Include="DM_SceneManager.h">
       <Filter>헤더 파일\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="DM_TestScene.h">
+      <Filter>헤더 파일\___TEST___\Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DM_Math.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="DM_UI_Status.cpp">
+      <Filter>소스 파일\___TEST___</Filter>
     </ClCompile>
-    <ClCompile Include="DM_Engine.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="DM_Window.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="DM_WndProcs.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="DM_TestScene.cpp">
+      <Filter>소스 파일\___TEST___</Filter>
     </ClCompile>
     <ClCompile Include="DM_Application.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="DM_UI_Frame.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="DM_UI_Manager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="DM_Input.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="DM_UI_Button.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="DM_RandomGenerator.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\source</Filter>
     </ClCompile>
     <ClCompile Include="DM_Component.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="DM_GameObject.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="DM_TransformComponent.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="DM_UI_Status.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\source</Filter>
     </ClCompile>
     <ClCompile Include="DM_ComponentHolder.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\source</Filter>
     </ClCompile>
-    <ClCompile Include="DM_Resource.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="DM_Engine.cpp">
+      <Filter>소스 파일\source</Filter>
     </ClCompile>
-    <ClCompile Include="DM_ResourceManager.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="DM_GameObject.cpp">
+      <Filter>소스 파일\source</Filter>
     </ClCompile>
-    <ClCompile Include="DM_Texture.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="DM_RenderComponent.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="DM_SpriteRenderer.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="DM_Input.cpp">
+      <Filter>소스 파일\source</Filter>
     </ClCompile>
     <ClCompile Include="DM_Layer.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_Math.cpp">
+      <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_RandomGenerator.cpp">
+      <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_RenderComponent.cpp">
+      <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_Resource.cpp">
+      <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_ResourceManager.cpp">
+      <Filter>소스 파일\source</Filter>
     </ClCompile>
     <ClCompile Include="DM_Scene.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\source</Filter>
     </ClCompile>
     <ClCompile Include="DM_SceneManager.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_SpriteRenderer.cpp">
+      <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_Texture.cpp">
+      <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_TransformComponent.cpp">
+      <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_UI_Button.cpp">
+      <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_UI_Frame.cpp">
+      <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_UI_Manager.cpp">
+      <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_Window.cpp">
+      <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_WndProcs.cpp">
+      <Filter>소스 파일\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
