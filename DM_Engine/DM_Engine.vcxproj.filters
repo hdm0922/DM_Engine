@@ -147,6 +147,9 @@
     <ClInclude Include="DM_TestScene.h">
       <Filter>헤더 파일\___TEST___\Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="DM_Time.h">
+      <Filter>헤더 파일\Utility</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="DM_UI_Status.cpp">
@@ -219,6 +222,9 @@
       <Filter>소스 파일\source</Filter>
     </ClCompile>
     <ClCompile Include="DM_WndProcs.cpp">
+      <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_Time.cpp">
       <Filter>소스 파일\source</Filter>
     </ClCompile>
   </ItemGroup>

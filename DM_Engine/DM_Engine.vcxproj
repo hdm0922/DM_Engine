@@ -154,6 +154,7 @@
     <ClInclude Include="DM_SpriteRenderer.h" />
     <ClInclude Include="DM_TestScene.h" />
     <ClInclude Include="DM_Texture.h" />
+    <ClInclude Include="DM_Time.h" />
     <ClInclude Include="DM_TransformComponent.h" />
     <ClInclude Include="DM_UI_Button.h" />
     <ClInclude Include="DM_UI_Frame.h" />
@@ -184,6 +185,7 @@
     <ClCompile Include="DM_SpriteRenderer.cpp" />
     <ClCompile Include="DM_TestScene.cpp" />
     <ClCompile Include="DM_Texture.cpp" />
+    <ClCompile Include="DM_Time.cpp" />
     <ClCompile Include="DM_TransformComponent.cpp" />
     <ClCompile Include="DM_UI_Button.cpp" />
     <ClCompile Include="DM_UI_Frame.cpp" />

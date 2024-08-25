@@ -57,7 +57,6 @@ inline void DM::SceneManager::CreateScene(const std::wstring& name)
 	if (!createScene) return;
 
 	SceneManager::scenes.insert({ name, createScene });
-	createScene->Initialize();
 
 	return;
 }

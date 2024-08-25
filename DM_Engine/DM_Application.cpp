@@ -2,6 +2,7 @@
 
 #include "DM_Window.h"
 #include "DM_Input.h"
+#include "DM_Time.h"
 #include "DM_UI_Manager.h"
 #include "DM_SceneManager.h"
 
@@ -29,6 +30,7 @@ void DM::Application::Initialize(Window* mainWindow)
 
 	Application::initializeWindow();
 	Input::Initialize();
+	Time::Initialize();
 
 	UI_Manager::Initialize();
 	SceneManager::Initialize();
@@ -44,6 +46,7 @@ void DM::Application::Update()
 {
 
 	Input::Update();
+	Time::Update();
 
 	UI_Manager::Update();
 	SceneManager::Update();
@@ -142,6 +145,8 @@ void DM::Application::clearRenderTarget(HDC hdc)
 
 void DM::Application::renderGame(HDC hdc)
 {
+
+	Time::Render(hdc);
 
 	UI_Manager::Render(hdc);
 	SceneManager::Render(hdc);
