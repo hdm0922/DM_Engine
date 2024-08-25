@@ -147,6 +147,7 @@
     <ClInclude Include="DM_RenderComponent.h" />
     <ClInclude Include="DM_Resource.h" />
     <ClInclude Include="DM_ResourceManager.h" />
+    <ClInclude Include="DM_Sprite.h" />
     <ClInclude Include="DM_SpriteRenderer.h" />
     <ClInclude Include="DM_Texture.h" />
     <ClInclude Include="DM_TransformComponent.h" />

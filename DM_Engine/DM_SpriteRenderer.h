@@ -9,6 +9,8 @@ namespace DM
 {
     class SpriteRenderer;
     class Texture;
+
+    struct Sprite;
 }
 
 
@@ -29,9 +31,25 @@ public:
     virtual void Render(HDC hdc) const override;
 
 
+public:
+
+    void SetTexture(Texture* texture) { this->texture = texture; }
+    void SetSprite(Sprite* sprite) { this->sprite = sprite; }
+
+    const Texture* GetTexture() const { return this->texture; }
+    const Sprite* GetSprite() const { return this->sprite; }
+
+
+private:
+
+    void render_bmp(HDC hdc) const;
+    void render_png(HDC hdc) const;
+
+
 private:
 
     Texture* texture;
+    Sprite* sprite;
 
 };
 

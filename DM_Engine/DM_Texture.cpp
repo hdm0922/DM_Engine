@@ -65,14 +65,9 @@ void DM::Texture::loadImage_bmp()
 	GetObject(this->bitmap, sizeof(BITMAP), &info);
 
 	this->SetSize(info.bmWidth, info.bmHeight);
+	this->bitmap_device_context = CreateCompatibleDC(Application::GetDeviceContext());
 
-	HBITMAP oldBitmap =
-
-		(HBITMAP)SelectObject(
-		CreateCompatibleDC(Application::GetDeviceContext()),
-			this->bitmap
-		);
-
+	HBITMAP oldBitmap = (HBITMAP)SelectObject(this->GetDeviceContext(), this->bitmap);
 	DeleteObject(oldBitmap);
 
 	return;

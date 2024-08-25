@@ -1,12 +1,15 @@
 #pragma once
 #include "DM_Entity.h"
 
+#include "DM_ComponentHolder.h"
+
+
+
 
 
 namespace DM
 {
     class GameObject;
-	class ComponentHolder;
 }
 
 
