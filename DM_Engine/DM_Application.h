@@ -26,7 +26,7 @@ public:
 	static Window* GetMainWindow() { return Application::mainWindow; }
 	static HDC GetDeviceContext() { return Application::device_context; }
 
-	static GameObject* testObject;
+
 private:
 
 	static void initializeWindow();

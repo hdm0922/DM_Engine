@@ -34,6 +34,7 @@ public:
     void SetSize(const Math::Vector2<UINT>& size) { this->size = size; }
 
     HDC GetDeviceContext() const { return this->bitmap_device_context; }
+    Gdiplus::Image* GetImage() const { return this->image; }
     UINT GetHeight() const { return this->size.y; }
     UINT GetWidth() const { return this->size.x; }
     Math::Vector2<UINT> GetSize() const { return this->size; }

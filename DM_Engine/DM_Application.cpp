@@ -16,8 +16,6 @@ namespace DM
 	HDC Application::device_context			= nullptr;
 	HDC Application::device_context_back	= nullptr;
 	HBITMAP Application::buffer_back		= nullptr;
-
-	GameObject* Application::testObject = nullptr;
 }
 
 
@@ -33,24 +31,6 @@ void DM::Application::Initialize(Window* mainWindow)
 	Input::Initialize();
 
 	UI_Manager::Initialize();
-
-
-
-
-	testObject = new GameObject(L"TEST");
-	testObject->GetComponentHolder()->AddComponent<SpriteRenderer>();
-
-	auto spriteRenderer = testObject->GetComponentHolder()->GetComponent<SpriteRenderer>();
-	spriteRenderer->SetTexture(
-		ResourceManager::GetResource<Texture>(DM_TEST_TEXTURE_BMP_NAME)
-	);
-	spriteRenderer->Initialize();
-
-	int a = 0;
-
-
-
-
 
 	return;
 }
@@ -82,9 +62,6 @@ void DM::Application::Render()
 
 	// render all objects
 	UI_Manager::Render(Application::getDeviceContext_Back());
-
-	auto spriteRenderer = testObject->GetComponentHolder()->GetComponent<SpriteRenderer>();
-	if (spriteRenderer) { spriteRenderer->Render(Application::getDeviceContext_Back()); }
 
 	Application::copyRenderTarget(
 		Application::getDeviceContext_Back(),

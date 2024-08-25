@@ -105,4 +105,38 @@ void DM::SpriteRenderer::render_bmp(HDC hdc) const
 
 void DM::SpriteRenderer::render_png(HDC hdc) const
 {
+
+	TransformComponent* transform = this->GetOwner()->
+		GetComponentHolder()->GetComponent<TransformComponent>();
+
+
+	Gdiplus::ImageAttributes image_attribute = {};
+
+	// 투명화 시킬 색의 범위 지정
+	image_attribute.SetColorKey(
+		Gdiplus::Color(255, 0, 255),
+		Gdiplus::Color(255, 0, 255)
+	);
+
+
+	Gdiplus::Graphics graphics(hdc);
+
+	graphics.DrawImage(
+		this->texture->GetImage(),
+
+		Gdiplus::Rect(
+			static_cast<INT>(transform->GetPosition().x),
+			static_cast<INT>(transform->GetPosition().y),
+			static_cast<INT>(texture->GetWidth() * transform->GetScale().x),
+			static_cast<INT>(texture->GetHeight() * transform->GetScale().y)
+		),
+
+		0, 0,
+		static_cast<INT>(texture->GetWidth()),
+		static_cast<INT>(texture->GetHeight()),
+
+		Gdiplus::UnitPixel,
+		&image_attribute
+	);
+
 }
