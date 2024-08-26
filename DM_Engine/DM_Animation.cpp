@@ -65,10 +65,15 @@ void DM::Animation::LoadAnimation(
 
 
 
-void DM::Animation::MoveToNextSprite()
+void DM::Animation::MoveToNextSprite(BOOL hasLoop)
 {
 
 	this->currentIndex++;
-	if (this->currentIndex == this->sprites.size()) { this->currentIndex = 0; }
 
+	if (this->currentIndex == this->sprites.size())
+	{ 
+		this->currentIndex = hasLoop ? 0 : (this->currentIndex - 1);
+	}
+
+	return;
 }

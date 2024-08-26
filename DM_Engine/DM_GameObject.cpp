@@ -97,6 +97,19 @@ void DM::GameObject::SetPosition(const Math::Vector2<FLOAT> position) const
 
 
 
+DM::Animation* DM::GameObject::GetAnimation(const std::wstring& name)
+{
+
+	auto iter = GameObject::animationPool.find(name);
+
+	return (iter == GameObject::animationPool.end()) ?
+		nullptr : iter->second;
+}
+
+
+
+
+
 DM::Math::Vector2<FLOAT> DM::GameObject::GetPosition() const
 {
 	return this->GetComponentHolder()

@@ -29,11 +29,12 @@ public:
     virtual void Load() override;
     
     void LoadAnimation(Texture* spriteSheet, Sprite* firstSpriteInfo, UINT numberOfSprites, FLOAT spriteDuration);
-    void MoveToNextSprite();
+    void MoveToNextSprite(BOOL hasLoop);
 
 
 public:
 
+    Texture* GetTexture() const { return this->spriteSheet; }
     Sprite* GetCurrentSprite() const { return this->sprites[currentIndex]; }
     FLOAT GetSpriteDuration() const { return this->spriteDuration; }
 
