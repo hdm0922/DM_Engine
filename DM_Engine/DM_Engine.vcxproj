@@ -141,6 +141,7 @@
     <ClInclude Include="DM_Component.h" />
     <ClInclude Include="DM_ComponentHolder.h" />
     <ClInclude Include="DM_Engine.h" />
+    <ClInclude Include="DM_Engine_Macro.h" />
     <ClInclude Include="DM_Entity.h" />
     <ClInclude Include="DM_GameLoadManager.h" />
     <ClInclude Include="DM_GameObject.h" />
