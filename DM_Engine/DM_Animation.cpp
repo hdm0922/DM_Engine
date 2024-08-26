@@ -1,5 +1,7 @@
 #include "DM_Animation.h"
 
+#include "DM_ResourceManager.h"
+
 
 
 
@@ -27,6 +29,36 @@ DM::Animation::~Animation()
 
 void DM::Animation::Load()
 {
+}
+
+
+
+
+
+void DM::Animation::LoadAnimation(
+	Texture* spriteSheet,
+	Sprite* firstSpriteInfo,
+	UINT numberOfSprites,
+	FLOAT spriteDuration)
+{
+
+	this->spriteSheet = spriteSheet;
+	this->spriteDuration = spriteDuration;
+
+	for (UINT iter = 0; iter < numberOfSprites; iter++)
+	{
+		Sprite* sprite = new Sprite(
+			firstSpriteInfo->topLeft,
+			firstSpriteInfo->size,
+			firstSpriteInfo->offset
+		);
+
+		sprite->topLeft.x += sprite->size.x * iter;
+
+		this->sprites.push_back(sprite);
+	}
+
+	return;
 }
 
 

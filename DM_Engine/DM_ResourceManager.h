@@ -3,6 +3,8 @@
 
 #include "DM_Resource.h"
 #include "DM_Texture.h"
+#include "DM_Sprite.h"
+
 
 
 
@@ -26,6 +28,7 @@ public:
 
 	template <typename T>
 	static void LoadResource(const std::wstring& name, const std::wstring& path);
+	static void LoadAnimation(const std::wstring& name, Texture* spriteSheet, Sprite* firstSpriteInfo, UINT numberOfSprite, FLOAT spriteDuration);
 
 
 private:

@@ -28,6 +28,7 @@ public:
 
     virtual void Load() override;
     
+    void LoadAnimation(Texture* spriteSheet, Sprite* firstSpriteInfo, UINT numberOfSprites, FLOAT spriteDuration);
     void MoveToNextSprite();
 
 

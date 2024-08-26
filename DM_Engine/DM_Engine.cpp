@@ -156,6 +156,12 @@ void DM::LoadResources()
         DM_TEST_TEXTURE_PNG_PATH
     );
 
+    ResourceManager::LoadAnimation(L"TESTANIMATION",
+        ResourceManager::GetResource<Texture>(DM_TEST_TEXTURE_BMP_NAME),
+        new Sprite({ 0,0 }, { 32,32 }, { 0,0 }), 4, 0.3f
+    );
+
+
 }
 
 
