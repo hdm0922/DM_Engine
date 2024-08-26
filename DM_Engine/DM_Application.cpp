@@ -3,6 +3,7 @@
 #include "DM_Window.h"
 #include "DM_Input.h"
 #include "DM_Time.h"
+#include "DM_GameLoadManager.h"
 #include "DM_UI_Manager.h"
 #include "DM_SceneManager.h"
 
@@ -26,9 +27,11 @@ namespace DM
 void DM::Application::Initialize(Window* mainWindow)
 {
 
-	Application::mainWindow = mainWindow;
+	GameLoadManager::LoadGame();
 
+	Application::mainWindow = mainWindow;
 	Application::initializeWindow();
+
 	Input::Initialize();
 	Time::Initialize();
 

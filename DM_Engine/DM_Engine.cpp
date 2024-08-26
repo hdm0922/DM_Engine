@@ -4,10 +4,8 @@
 #include "DM_Window.h"
 #include "DM_WndProcs.h"
 #include "DM_Application.h"
-#include "DM_ResourceManager.h"
-#include "DM_SceneManager.h"
 #include "DM_Texture.h"
-#include "DM_TestScene.h"
+
 
 
 
@@ -20,8 +18,6 @@ namespace DM
     void GameLoop(MSG message);
     void TranslateMessage(HACCEL hAccelTable, MSG message);
     void CheckMemoryLeak();
-    void LoadResources();
-    void LoadScenes();
 }
 
 
@@ -58,9 +54,6 @@ INT APIENTRY wWinMain(
     //DM::mainWindow->CreateSubWindow(L"Sub Window", DM::WndProc_Engine, false);
 
     DM::mainWindow->Show(nCmdShow);
-
-    DM::LoadResources();
-    DM::LoadScenes();
 
     DM::Application::Initialize(DM::mainWindow);
 
@@ -136,42 +129,4 @@ void DM::CheckMemoryLeak()
     _CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
     //_CrtSetBreakAlloc(232);
     return;
-}
-
-
-
-
-
-void DM::LoadResources()
-{
-
-    // TEST
-    ResourceManager::LoadResource<Texture>(
-        DM_TEST_TEXTURE_BMP_NAME,
-        DM_TEST_TEXTURE_BMP_PATH
-    );
-
-    ResourceManager::LoadResource<Texture>(
-        DM_TEST_TEXTURE_PNG_NAME,
-        DM_TEST_TEXTURE_PNG_PATH
-    );
-
-    ResourceManager::LoadAnimation(L"TESTANIMATION",
-        ResourceManager::GetResource<Texture>(DM_TEST_TEXTURE_BMP_NAME),
-        new Sprite({ 0,0 }, { 32,32 }, { 0,0 }), 4, 0.3f
-    );
-
-
-}
-
-
-
-
-
-void DM::LoadScenes()
-{
-
-    SceneManager::CreateScene<TestScene>(DM_TEST_SCENE_NAME);
-
-    SceneManager::LoadScene(DM_TEST_SCENE_NAME);
 }
