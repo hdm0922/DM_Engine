@@ -3,6 +3,16 @@
 #include "DM_ComponentHolder.h"
 #include "DM_TransformComponent.h"
 #include "DM_RenderComponent.h"
+#include "DM_ResourceManager.h"
+#include "DM_Animation.h"
+
+
+
+
+namespace DM
+{
+	std::map<const std::wstring, Animation*> GameObject::animationPool = {};
+}
 
 
 
@@ -57,6 +67,19 @@ void DM::GameObject::Render(HDC hdc) const
 
 void DM::GameObject::Destroy()
 {
+}
+
+
+
+
+
+void DM::GameObject::RegisterAnimation(const std::wstring& name)
+{
+
+	Animation* animation = ResourceManager::GetResource<Animation>(name);
+	if (!animation) return;
+
+	GameObject::animationPool.insert({name, animation});
 }
 
 

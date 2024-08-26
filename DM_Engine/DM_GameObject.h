@@ -10,6 +10,7 @@
 namespace DM
 {
     class GameObject;
+	class Animation;
 }
 
 
@@ -30,6 +31,8 @@ public:
 	virtual void Render(HDC hdc) const;
 	virtual void Destroy();
 
+	static void RegisterAnimation(const std::wstring& name);
+
 
 public:
 
@@ -41,6 +44,8 @@ public:
 
 
 private:
+
+	static std::map<const std::wstring, Animation*> animationPool;
 
 	ComponentHolder* componentHolder;
 
