@@ -52,8 +52,8 @@ void DM::Time::Update()
 
 void DM::Time::Render(HDC hdc)
 {
-	Time::renderPlayTime(hdc);
-	Time::renderFPS(hdc);
+	//Time::renderPlayTime(hdc);
+	//Time::renderFPS(hdc);
 }
 
 

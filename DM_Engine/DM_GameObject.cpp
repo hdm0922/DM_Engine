@@ -39,6 +39,7 @@ DM::GameObject::~GameObject()
 
 void DM::GameObject::Initialize()
 {
+	this->GetComponentHolder()->Initialize();
 }
 
 
@@ -47,6 +48,7 @@ void DM::GameObject::Initialize()
 
 void DM::GameObject::Update()
 {
+	this->GetComponentHolder()->Update();
 }
 
 
@@ -73,6 +75,19 @@ void DM::GameObject::Destroy()
 
 
 
+DM::Animation* DM::GameObject::GetAnimation(const std::wstring& name) const
+{
+
+	auto iter = GameObject::animationPool.find(name);
+
+	return (iter == GameObject::animationPool.end()) ?
+		nullptr : iter->second;
+}
+
+
+
+
+
 void DM::GameObject::RegisterAnimation(const std::wstring& name)
 {
 
@@ -91,19 +106,6 @@ void DM::GameObject::SetPosition(const Math::Vector2<FLOAT> position) const
 	this->GetComponentHolder()
 		->GetComponent<TransformComponent>()
 		->SetPosition(position);
-}
-
-
-
-
-
-DM::Animation* DM::GameObject::GetAnimation(const std::wstring& name)
-{
-
-	auto iter = GameObject::animationPool.find(name);
-
-	return (iter == GameObject::animationPool.end()) ?
-		nullptr : iter->second;
 }
 
 

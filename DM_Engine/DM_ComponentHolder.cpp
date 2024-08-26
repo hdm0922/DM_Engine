@@ -25,3 +25,27 @@ DM::ComponentHolder::~ComponentHolder()
 		component = nullptr;
 	}
 }
+
+
+
+
+
+void DM::ComponentHolder::Initialize()
+{
+	for (Component* component : this->components)
+	{
+		component->Initialize();
+	}
+}
+
+
+
+
+
+void DM::ComponentHolder::Update()
+{
+	for (Component* component : this->components)
+	{
+		component->Update();
+	}
+}

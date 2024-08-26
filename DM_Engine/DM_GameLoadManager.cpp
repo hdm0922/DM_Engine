@@ -4,6 +4,7 @@
 #include "DM_SceneManager.h"
 
 #include "Test_TestScene.h"
+#include "Test_TestObject.h"
 
 
 
@@ -38,7 +39,7 @@ void DM::GameLoadManager::loadResources()
         DM_TEST_TEXTURE_PNG_PATH
     );
 
-    ResourceManager::LoadAnimation(L"TESTANIMATION",
+    ResourceManager::LoadAnimation(DM_TEST_ANIMATION_NAME,
         ResourceManager::GetResource<Texture>(DM_TEST_TEXTURE_BMP_NAME),
         new Sprite({ 0,0 }, { 32,32 }, { 0,0 }), 4, 0.3f
     );
@@ -62,4 +63,7 @@ void DM::GameLoadManager::loadScenes()
 
 void DM::GameLoadManager::registerAnimations()
 {
+
+    Test::TestObject::RegisterAnimation(DM_TEST_ANIMATION_NAME);
+
 }

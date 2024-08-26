@@ -25,6 +25,9 @@ public:
 	ComponentHolder(const GameObject* owner);
 	~ComponentHolder();
 
+	void Initialize();
+	void Update();
+
 	template <typename Child>
 	void AddComponent();
 

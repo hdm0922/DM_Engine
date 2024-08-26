@@ -2,6 +2,7 @@
 #include "DM_Entity.h"
 
 #include "DM_ComponentHolder.h"
+#include "DM_Animation.h"
 
 
 
@@ -10,7 +11,6 @@
 namespace DM
 {
     class GameObject;
-	class Animation;
 }
 
 
@@ -31,6 +31,7 @@ public:
 	virtual void Render(HDC hdc) const;
 	virtual void Destroy();
 
+	virtual Animation* GetAnimation(const std::wstring& name) const;
 	static void RegisterAnimation(const std::wstring& name);
 
 
@@ -39,7 +40,6 @@ public:
 	void SetPosition(FLOAT x, FLOAT y) const { this->SetPosition(Math::Vector2<FLOAT>(x, y)); }
 	void SetPosition(const Math::Vector2<FLOAT> position) const;
 
-	static Animation* GetAnimation(const std::wstring& name);
 	Math::Vector2<FLOAT> GetPosition() const;
 	ComponentHolder* GetComponentHolder() const { return this->componentHolder; }
 
