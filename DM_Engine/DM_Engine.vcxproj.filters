@@ -55,6 +55,9 @@
     <Filter Include="소스 파일\source">
       <UniqueIdentifier>{82567603-e5a9-4599-9872-dd52d45866f5}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\___TEST___\Objects">
+      <UniqueIdentifier>{4825aceb-b4b7-4f7d-a3b6-a6263345b380}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -132,7 +135,7 @@
     <ClInclude Include="DM_Scene.h">
       <Filter>헤더 파일\Frame</Filter>
     </ClInclude>
-    <ClInclude Include="DM_UI_Status.h">
+    <ClInclude Include="Test_UI_Status.h">
       <Filter>헤더 파일\___TEST___\UI</Filter>
     </ClInclude>
     <ClInclude Include="DM_ResourceManager.h">
@@ -144,7 +147,7 @@
     <ClInclude Include="DM_SceneManager.h">
       <Filter>헤더 파일\Manager</Filter>
     </ClInclude>
-    <ClInclude Include="DM_TestScene.h">
+    <ClInclude Include="Test_TestScene.h">
       <Filter>헤더 파일\___TEST___\Scenes</Filter>
     </ClInclude>
     <ClInclude Include="DM_Time.h">
@@ -159,12 +162,15 @@
     <ClInclude Include="DM_GameLoadManager.h">
       <Filter>헤더 파일\Manager</Filter>
     </ClInclude>
+    <ClInclude Include="Test_TestObject.h">
+      <Filter>헤더 파일\___TEST___\Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="DM_UI_Status.cpp">
+    <ClCompile Include="Test_UI_Status.cpp">
       <Filter>소스 파일\___TEST___</Filter>
     </ClCompile>
-    <ClCompile Include="DM_TestScene.cpp">
+    <ClCompile Include="Test_TestScene.cpp">
       <Filter>소스 파일\___TEST___</Filter>
     </ClCompile>
     <ClCompile Include="DM_Application.cpp">
@@ -244,6 +250,9 @@
     </ClCompile>
     <ClCompile Include="DM_GameLoadManager.cpp">
       <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_TestObject.cpp">
+      <Filter>소스 파일\___TEST___</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

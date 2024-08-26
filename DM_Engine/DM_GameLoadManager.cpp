@@ -3,7 +3,7 @@
 #include "DM_ResourceManager.h"
 #include "DM_SceneManager.h"
 
-#include "DM_TestScene.h"
+#include "Test_TestScene.h"
 
 
 
@@ -51,7 +51,7 @@ void DM::GameLoadManager::loadResources()
 
 void DM::GameLoadManager::loadScenes()
 {
-    SceneManager::CreateScene<TestScene>(DM_TEST_SCENE_NAME);
+    SceneManager::CreateScene<Test::TestScene>(DM_TEST_SCENE_NAME);
 
     SceneManager::LoadScene(DM_TEST_SCENE_NAME);
 }

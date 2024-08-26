@@ -5,7 +5,7 @@
 
 
 
-namespace DM
+namespace Test
 {
     class UI_Status;
 }
@@ -14,8 +14,8 @@ namespace DM
 
 
 
-class DM::UI_Status :
-    public UI_Frame
+class Test::UI_Status :
+    public DM::UI_Frame
 {
 
 public:

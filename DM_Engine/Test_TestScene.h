@@ -5,7 +5,7 @@
 
 
 
-namespace DM
+namespace Test
 {
     class TestScene;
 }
@@ -14,8 +14,8 @@ namespace DM
 
 
 
-class DM::TestScene :
-    public Scene
+class Test::TestScene :
+	public DM::Scene
 {
 
 public:
