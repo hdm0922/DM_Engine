@@ -38,7 +38,7 @@ void Test::TestScene::Initialize()
 
 	DM::AnimationRenderer* animationRenderer =
 		player->GetComponentHolder()->GetComponent<DM::AnimationRenderer>();
-	animationRenderer->PlayAnimation(DM_TEST_ANIMATION_NAME, true);
+	animationRenderer->Play(DM_TEST_ANIMATION_NAME, true);
 
 	player->GetComponentHolder()->AddComponent<DM::AudioListener>();
 	///
@@ -51,7 +51,7 @@ void Test::TestScene::Initialize()
 
 	DM::AnimationRenderer* animationRenderer_monster =
 		monster->GetComponentHolder()->GetComponent<DM::AnimationRenderer>();
-	animationRenderer_monster->PlayAnimation(DM_TEST_ANIMATION_NAME, true);
+	animationRenderer_monster->Play(DM_TEST_ANIMATION_NAME, true);
 
 	DM::TransformComponent* transform_monster =
 		monster->GetComponentHolder()->GetComponent<DM::TransformComponent>();

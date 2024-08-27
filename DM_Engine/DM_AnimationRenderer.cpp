@@ -79,7 +79,7 @@ void DM::AnimationRenderer::Render(HDC hdc) const
 
 
 
-void DM::AnimationRenderer::PlayAnimation(const std::wstring& name, BOOL hasLoop)
+void DM::AnimationRenderer::Play(const std::wstring& name, BOOL hasLoop)
 {
 
 	Animation* animation = this->GetOwner()->GetAnimation(name);

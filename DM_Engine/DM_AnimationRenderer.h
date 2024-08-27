@@ -30,7 +30,7 @@ public:
     virtual void Update() override;
     virtual void Render(HDC hdc) const override;
 
-    void PlayAnimation(const std::wstring& name, BOOL hasLoop);
+    void Play(const std::wstring& name, BOOL hasLoop);
 
 
 public:
