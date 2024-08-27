@@ -105,7 +105,7 @@ void DM::AnimationRenderer::render_bmp(HDC hdc) const
 
 	Sprite* sprite = this->currentAnimation->GetCurrentSprite();
 
-	bool b =TransparentBlt(
+	TransparentBlt(
 
 		hdc,
 		static_cast<INT>(transform->GetPosition().x),
@@ -121,7 +121,7 @@ void DM::AnimationRenderer::render_bmp(HDC hdc) const
 
 		RGB(255, 0, 255)
 	);
-	b;
+
 	return;
 }
 

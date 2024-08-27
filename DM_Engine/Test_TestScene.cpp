@@ -58,13 +58,8 @@ void Test::TestScene::Initialize()
 	transform_monster->SetPosition({ 50, 50 });
 
 	monster->GetComponentHolder()->AddComponent<DM::AudioSource>();
-	auto p = monster->GetComponentHolder()->GetComponent<DM::AudioSource>();
-
 	monster->GetComponentHolder()->GetComponent<DM::AudioSource>()
-		->SetAudio(DM::ResourceManager::GetResource<DM::Audio>(DM_TEST_AUDIO_NAME));
-	monster->GetComponentHolder()->GetComponent<DM::AudioSource>()
-		->Play();
-	/// 
+		->Play(DM_TEST_AUDIO_NAME, true);
 
 	DM::Scene::Initialize();
 }

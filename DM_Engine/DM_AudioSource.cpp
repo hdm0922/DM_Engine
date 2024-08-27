@@ -1,6 +1,7 @@
 #include "DM_AudioSource.h"
 #include "DM_Audio.h"
 
+#include "DM_ResourceManager.h"
 #include "DM_GameObject.h"
 #include "DM_TransformComponent.h"
 
@@ -10,8 +11,7 @@
 
 DM::AudioSource::AudioSource(const GameObject* owner, const std::wstring& name)
 	: AudioComponent(owner, name)
-	, audio(nullptr)
-	, loopAudio(false)
+	, currentAudio(nullptr)
 {
 }
 
@@ -53,17 +53,16 @@ void DM::AudioSource::Update()
 
 
 
-void DM::AudioSource::Play() const
+void DM::AudioSource::Play(const std::wstring& name, BOOL loopAudio)
 {
 
-	this->GetAudio()->GetSound()->setMode(
-		this->loopAudio ? FMOD_LOOP_NORMAL : FMOD_LOOP_OFF
-	);
+	Audio* audio = ResourceManager::GetResource<Audio>(name);
 
-	FMod::PlaySound_(
-		this->GetAudio()->GetSound(),
-		this->GetAudio()->GetChannel()
-	);
+	if (!audio) return;
+
+	this->currentAudio = audio;
+	audio->GetSound()->setMode(loopAudio ? FMOD_LOOP_NORMAL : FMOD_LOOP_OFF);
+	FMod::PlaySound_(audio->GetSound(), audio->GetChannel());
 
 	return;
 }
