@@ -142,6 +142,10 @@ copy "$(SolutionDir)\External\FMod\x64\fmodstudioL.dll" "$(SolutionDir)\x64\Debu
     <ClInclude Include="DM_Animation.h" />
     <ClInclude Include="DM_AnimationRenderer.h" />
     <ClInclude Include="DM_Application.h" />
+    <ClInclude Include="DM_Audio.h" />
+    <ClInclude Include="DM_AudioComponent.h" />
+    <ClInclude Include="DM_AudioListener.h" />
+    <ClInclude Include="DM_AudioSource.h" />
     <ClInclude Include="DM_Component.h" />
     <ClInclude Include="DM_ComponentHolder.h" />
     <ClInclude Include="DM_Engine.h" />
@@ -182,6 +186,10 @@ copy "$(SolutionDir)\External\FMod\x64\fmodstudioL.dll" "$(SolutionDir)\x64\Debu
     <ClCompile Include="DM_Animation.cpp" />
     <ClCompile Include="DM_AnimationRenderer.cpp" />
     <ClCompile Include="DM_Application.cpp" />
+    <ClCompile Include="DM_Audio.cpp" />
+    <ClCompile Include="DM_AudioComponent.cpp" />
+    <ClCompile Include="DM_AudioListener.cpp" />
+    <ClCompile Include="DM_AudioSource.cpp" />
     <ClCompile Include="DM_Component.cpp" />
     <ClCompile Include="DM_ComponentHolder.cpp" />
     <ClCompile Include="DM_Engine.cpp" />

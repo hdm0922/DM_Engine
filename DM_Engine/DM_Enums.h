@@ -22,6 +22,7 @@ enum class DM::Enums::ComponentType
 {
 	Transform,
 	Render,
+	Audio,
 
 	None
 };
