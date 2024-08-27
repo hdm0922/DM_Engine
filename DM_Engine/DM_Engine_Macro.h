@@ -9,5 +9,8 @@
 #define DM_TEST_TEXTURE_PNG_NAME								L"Test.png"
 #define DM_TEST_TEXTURE_PNG_PATH								L"..//Resources//Haley.png"
 
-#define DM_TEST_ANIMATION_NAME									L"TESTANIMATION"
+#define DM_TEST_ANIMATION_NAME									L"TestAnimation"
 #define DM_TEST_SCENE_NAME										L"TestScene"
+
+#define DM_TEST_AUDIO_NAME										L"TestAudio"
+#define DM_TEST_AUDIO_PATH										L"..//Resources//babbling_brook.wav"

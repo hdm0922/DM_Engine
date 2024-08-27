@@ -24,9 +24,16 @@ public:
 
 private:
 
+	static void loadExternalStates();
 	static void loadResources();
 	static void loadScenes();
-	static void registerAnimations();
+	static void registerResources();
+
+	static void loadResources_Texture();
+	static void loadResources_Animation();
+	static void loadResources_Audio();
+
+	static void registerResources_Animation();
 
 
 };

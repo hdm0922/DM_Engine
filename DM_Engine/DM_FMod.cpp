@@ -14,7 +14,7 @@ namespace DM
 
 
 
-void DM::FMod::Initialize()
+void DM::FMod::Load()
 {
 	FMOD::Studio::System::create(&FMod::system);
 	FMod::system->getCoreSystem(&FMod::coreSystem);

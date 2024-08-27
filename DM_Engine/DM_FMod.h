@@ -31,7 +31,7 @@ class DM::FMod
 
 public:
 
-	static void Initialize();
+	static void Load();
 	static bool CreateSound(const std::wstring& path, FMOD::Sound** sound);
 	static void PlaySound_(FMOD::Sound* sound, FMOD::Channel* channel);
 	static void SetListnerAttributes_2D(Math::Vector2<FLOAT> pos);

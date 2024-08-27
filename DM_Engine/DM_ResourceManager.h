@@ -2,6 +2,7 @@
 #include "framework.h"
 
 #include "DM_Resource.h"
+#include "DM_Audio.h"
 #include "DM_Texture.h"
 #include "DM_Sprite.h"
 
