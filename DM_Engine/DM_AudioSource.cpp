@@ -40,9 +40,7 @@ void DM::AudioSource::Update()
 	if (!this->GetAudio()) return;
 
 	Math::Vector2<FLOAT> position =
-		this->GetOwner()->GetComponentHolder()
-		->GetComponent<TransformComponent>()
-		->GetPosition();
+		this->GetOwner()->GetComponent<TransformComponent>()->GetPosition();
 
 	this->GetAudio()->SetAttributes_2D(position);
 

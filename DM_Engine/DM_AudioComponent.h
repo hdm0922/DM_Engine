@@ -20,9 +20,7 @@ class DM::AudioComponent :
 
 public:
 
-    AudioComponent(const GameObject* owner,
-        const std::wstring& name = L"");
-
+    AudioComponent(const GameObject* owner, const std::wstring& name = L"");
     virtual ~AudioComponent() override;
 
     virtual void Initialize() override;

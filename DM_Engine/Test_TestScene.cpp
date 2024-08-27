@@ -37,10 +37,10 @@ void Test::TestScene::Initialize()
 	this->AddGameObject(player, DM::Enums::LayerType::Entity);
 
 	DM::AnimationRenderer* animationRenderer =
-		player->GetComponentHolder()->GetComponent<DM::AnimationRenderer>();
+		player->GetComponent<DM::AnimationRenderer>();
 	animationRenderer->Play(DM_TEST_ANIMATION_NAME, true);
 
-	player->GetComponentHolder()->AddComponent<DM::AudioListener>();
+	player->AddComponent<DM::AudioListener>();
 	///
 
 
@@ -50,16 +50,15 @@ void Test::TestScene::Initialize()
 	this->AddGameObject(monster, DM::Enums::LayerType::Entity);
 
 	DM::AnimationRenderer* animationRenderer_monster =
-		monster->GetComponentHolder()->GetComponent<DM::AnimationRenderer>();
+		monster->GetComponent<DM::AnimationRenderer>();
 	animationRenderer_monster->Play(DM_TEST_ANIMATION_NAME, true);
 
 	DM::TransformComponent* transform_monster =
-		monster->GetComponentHolder()->GetComponent<DM::TransformComponent>();
+		monster->GetComponent<DM::TransformComponent>();
 	transform_monster->SetPosition({ 50, 50 });
 
-	monster->GetComponentHolder()->AddComponent<DM::AudioSource>();
-	monster->GetComponentHolder()->GetComponent<DM::AudioSource>()
-		->Play(DM_TEST_AUDIO_NAME, true);
+	monster->AddComponent<DM::AudioSource>();
+	monster->GetComponent<DM::AudioSource>()->Play(DM_TEST_AUDIO_NAME, true);
 
 	DM::Scene::Initialize();
 }

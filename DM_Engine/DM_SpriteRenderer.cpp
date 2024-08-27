@@ -77,8 +77,8 @@ void DM::SpriteRenderer::Render(HDC hdc) const
 void DM::SpriteRenderer::render_bmp(HDC hdc) const
 {
 
-	TransformComponent* transform = this->GetOwner()->
-		GetComponentHolder()->GetComponent<TransformComponent>();
+	TransformComponent* transform = 
+		this->GetOwner()->GetComponent<TransformComponent>();
 
 	TransparentBlt(
 
@@ -106,8 +106,8 @@ void DM::SpriteRenderer::render_bmp(HDC hdc) const
 void DM::SpriteRenderer::render_png(HDC hdc) const
 {
 
-	TransformComponent* transform = this->GetOwner()->
-		GetComponentHolder()->GetComponent<TransformComponent>();
+	TransformComponent* transform = 
+		this->GetOwner()->GetComponent<TransformComponent>();
 
 
 	Gdiplus::ImageAttributes image_attribute = {};

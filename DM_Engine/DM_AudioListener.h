@@ -20,9 +20,7 @@ class DM::AudioListener :
 
 public:
 
-    AudioListener(const GameObject* owner,
-        const std::wstring& name = L"");
-
+    AudioListener(const GameObject* owner, const std::wstring& name = L"");
     virtual ~AudioListener() override;
 
     virtual void Initialize() override;

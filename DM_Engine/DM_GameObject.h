@@ -1,7 +1,7 @@
 #pragma once
 #include "DM_Entity.h"
 
-#include "DM_ComponentHolder.h"
+#include "DM_Component.h"
 #include "DM_Animation.h"
 
 
@@ -34,6 +34,8 @@ public:
 	virtual Animation* GetAnimation(const std::wstring& name) const;
 	static void RegisterAnimation(const std::wstring& name);
 
+	template <typename T>
+	void AddComponent();
 
 public:
 
@@ -41,14 +43,62 @@ public:
 	void SetPosition(const Math::Vector2<FLOAT> position) const;
 
 	Math::Vector2<FLOAT> GetPosition() const;
-	ComponentHolder* GetComponentHolder() const { return this->componentHolder; }
+
+	template <typename T>
+	T* GetComponent() const;
+
+	
+private:
+
+	struct compareFunction
+	{
+		bool operator()(const Component* left, const Component* right) const
+		{
+			return left->GetComponentType() < right->GetComponentType();
+		}
+	};
 
 
 private:
 
 	static std::map<const std::wstring, Animation*> animationPool;
 
-	ComponentHolder* componentHolder;
+	std::set<Component*, compareFunction> components;
 
 
 };
+
+
+
+
+
+template <typename T>
+inline void DM::GameObject::AddComponent()
+{
+
+	if (this->GetComponent<T>()) return;
+
+	Component* component = static_cast<Component*>(new T(this));
+	assert(component); // DEBUG
+
+	this->components.insert(component);
+
+	return;
+}
+
+
+
+
+
+template <typename T>
+inline T* DM::GameObject::GetComponent() const
+{
+
+	for (Component* component : this->components)
+	{
+		T* component_to_find = dynamic_cast<T*>(component);
+		if (component_to_find) return component_to_find;
+	}
+
+	return nullptr;
+}

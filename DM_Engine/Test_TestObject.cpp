@@ -19,7 +19,7 @@ namespace Test
 Test::TestObject::TestObject(const std::wstring& name)
 	: DM::GameObject(name)
 {
-	this->GetComponentHolder()->AddComponent<DM::AnimationRenderer>();
+	this->AddComponent<DM::AnimationRenderer>();
 }
 
 

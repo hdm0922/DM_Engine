@@ -38,9 +38,7 @@ void DM::AudioListener::Update()
 	AudioComponent::Update();
 
 	Math::Vector2<FLOAT> position =
-		this->GetOwner()->GetComponentHolder()
-		->GetComponent<TransformComponent>()
-		->GetPosition();
+		this->GetOwner()->GetComponent<TransformComponent>()->GetPosition();
 
 	FMod::SetListnerAttributes_2D(position);
 

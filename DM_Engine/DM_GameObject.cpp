@@ -20,9 +20,9 @@ namespace DM
 
 DM::GameObject::GameObject(const std::wstring& name)
 	: Entity(name)
-	, componentHolder(new ComponentHolder(this))
+	, components({})
 {
-
+	this->AddComponent<TransformComponent>();
 }
 
 
@@ -39,7 +39,10 @@ DM::GameObject::~GameObject()
 
 void DM::GameObject::Initialize()
 {
-	this->GetComponentHolder()->Initialize();
+	for (Component* component : this->components)
+	{
+		component->Initialize();
+	}
 }
 
 
@@ -48,7 +51,10 @@ void DM::GameObject::Initialize()
 
 void DM::GameObject::Update()
 {
-	this->GetComponentHolder()->Update();
+	for (Component* component : this->components)
+	{
+		component->Update();
+	}
 }
 
 
@@ -58,7 +64,7 @@ void DM::GameObject::Update()
 void DM::GameObject::Render(HDC hdc) const
 {
 	RenderComponent* renderComponent =
-		this->GetComponentHolder()->GetComponent<RenderComponent>();
+		this->GetComponent<RenderComponent>();
 
 	if (renderComponent) { renderComponent->Render(hdc); }
 }
@@ -103,9 +109,7 @@ void DM::GameObject::RegisterAnimation(const std::wstring& name)
 
 void DM::GameObject::SetPosition(const Math::Vector2<FLOAT> position) const
 {
-	this->GetComponentHolder()
-		->GetComponent<TransformComponent>()
-		->SetPosition(position);
+	this->GetComponent<TransformComponent>()->SetPosition(position);
 }
 
 
@@ -114,7 +118,5 @@ void DM::GameObject::SetPosition(const Math::Vector2<FLOAT> position) const
 
 DM::Math::Vector2<FLOAT> DM::GameObject::GetPosition() const
 {
-	return this->GetComponentHolder()
-		->GetComponent<TransformComponent>()
-		->GetPosition();
+	return this->GetComponent<TransformComponent>()->GetPosition();
 }

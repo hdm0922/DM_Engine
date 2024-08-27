@@ -100,8 +100,8 @@ void DM::AnimationRenderer::Play(const std::wstring& name, BOOL hasLoop)
 void DM::AnimationRenderer::render_bmp(HDC hdc) const
 {
 
-	TransformComponent* transform = this->GetOwner()->
-		GetComponentHolder()->GetComponent<TransformComponent>();
+	TransformComponent* transform =
+		this->GetOwner()->GetComponent<TransformComponent>();
 
 	Sprite* sprite = this->currentAnimation->GetCurrentSprite();
 
@@ -132,8 +132,8 @@ void DM::AnimationRenderer::render_bmp(HDC hdc) const
 void DM::AnimationRenderer::render_png(HDC hdc) const
 {
 
-	TransformComponent* transform = this->GetOwner()->
-		GetComponentHolder()->GetComponent<TransformComponent>();
+	TransformComponent* transform = 
+		this->GetOwner()->GetComponent<TransformComponent>();
 
 	Texture* texture = this->currentAnimation->GetTexture();
 	Sprite* sprite = this->currentAnimation->GetCurrentSprite();
