@@ -147,7 +147,6 @@ copy "$(SolutionDir)\External\FMod\x64\fmodstudioL.dll" "$(SolutionDir)\x64\Debu
     <ClInclude Include="DM_AudioListener.h" />
     <ClInclude Include="DM_AudioSource.h" />
     <ClInclude Include="DM_Component.h" />
-    <ClInclude Include="DM_ComponentHolder.h" />
     <ClInclude Include="DM_Engine.h" />
     <ClInclude Include="DM_Engine_Macro.h" />
     <ClInclude Include="DM_Entity.h" />
@@ -191,7 +190,6 @@ copy "$(SolutionDir)\External\FMod\x64\fmodstudioL.dll" "$(SolutionDir)\x64\Debu
     <ClCompile Include="DM_AudioListener.cpp" />
     <ClCompile Include="DM_AudioSource.cpp" />
     <ClCompile Include="DM_Component.cpp" />
-    <ClCompile Include="DM_ComponentHolder.cpp" />
     <ClCompile Include="DM_Engine.cpp" />
     <ClCompile Include="DM_FMod.cpp" />
     <ClCompile Include="DM_GameLoadManager.cpp" />

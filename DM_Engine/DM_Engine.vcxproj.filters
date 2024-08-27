@@ -111,9 +111,6 @@
     <ClInclude Include="DM_GameObject.h">
       <Filter>헤더 파일\Object</Filter>
     </ClInclude>
-    <ClInclude Include="DM_ComponentHolder.h">
-      <Filter>헤더 파일\Component</Filter>
-    </ClInclude>
     <ClInclude Include="DM_Resource.h">
       <Filter>헤더 파일\Resource</Filter>
     </ClInclude>
@@ -204,9 +201,6 @@
       <Filter>소스 파일\source</Filter>
     </ClCompile>
     <ClCompile Include="DM_Component.cpp">
-      <Filter>소스 파일\source</Filter>
-    </ClCompile>
-    <ClCompile Include="DM_ComponentHolder.cpp">
       <Filter>소스 파일\source</Filter>
     </ClCompile>
     <ClCompile Include="DM_Engine.cpp">

@@ -1,6 +1,5 @@
 #include "DM_GameObject.h"
 
-#include "DM_ComponentHolder.h"
 #include "DM_TransformComponent.h"
 #include "DM_RenderComponent.h"
 #include "DM_ResourceManager.h"
