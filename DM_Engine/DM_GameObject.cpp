@@ -8,14 +8,6 @@
 
 
 
-namespace DM
-{
-	std::map<const std::wstring, Animation*> GameObject::animationPool = {};
-}
-
-
-
-
 
 DM::GameObject::GameObject(const std::wstring& name)
 	: Entity(name)
@@ -74,32 +66,6 @@ void DM::GameObject::Render(HDC hdc) const
 
 void DM::GameObject::Destroy()
 {
-}
-
-
-
-
-
-DM::Animation* DM::GameObject::GetAnimation(const std::wstring& name) const
-{
-
-	auto iter = GameObject::animationPool.find(name);
-
-	return (iter == GameObject::animationPool.end()) ?
-		nullptr : iter->second;
-}
-
-
-
-
-
-void DM::GameObject::RegisterAnimation(const std::wstring& name)
-{
-
-	Animation* animation = ResourceManager::GetResource<Animation>(name);
-	if (!animation) return;
-
-	GameObject::animationPool.insert({name, animation});
 }
 
 

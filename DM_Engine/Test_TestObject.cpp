@@ -7,15 +7,6 @@
 
 
 
-namespace Test
-{
-	std::map<const std::wstring, DM::Animation*> TestObject::animationPool = {};
-}
-
-
-
-
-
 Test::TestObject::TestObject(const std::wstring& name)
 	: DM::GameObject(name)
 {
@@ -63,30 +54,4 @@ void Test::TestObject::Render(HDC hdc) const
 
 void Test::TestObject::Destroy()
 {
-}
-
-
-
-
-
-DM::Animation* Test::TestObject::GetAnimation(const std::wstring& name) const
-{
-
-	auto iter = TestObject::animationPool.find(name);
-
-	return (iter == TestObject::animationPool.end()) ?
-		nullptr : iter->second;
-}
-
-
-
-
-
-void Test::TestObject::RegisterAnimation(const std::wstring& name)
-{
-
-	DM::Animation* animation = DM::ResourceManager::GetResource<DM::Animation>(name);
-	if (!animation) return;
-
-	TestObject::animationPool.insert({ name, animation });
 }

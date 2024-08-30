@@ -3,6 +3,7 @@
 
 #include "DM_Component.h"
 #include "DM_Animation.h"
+#include "DM_Audio.h"
 
 
 
@@ -31,9 +32,6 @@ public:
 	virtual void Render(HDC hdc) const;
 	virtual void Destroy();
 
-	virtual Animation* GetAnimation(const std::wstring& name) const;
-	static void RegisterAnimation(const std::wstring& name);
-
 	template <typename T>
 	void AddComponent();
 
@@ -60,8 +58,6 @@ private:
 
 
 private:
-
-	static std::map<const std::wstring, Animation*> animationPool;
 
 	std::set<Component*, compareFunction> components;
 

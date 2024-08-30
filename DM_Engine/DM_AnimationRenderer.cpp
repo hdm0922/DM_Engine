@@ -6,6 +6,7 @@
 #include "DM_Sprite.h"
 #include "DM_Time.h"
 #include "DM_TransformComponent.h"
+#include "DM_ResourceManager.h"
 
 
 
@@ -82,7 +83,7 @@ void DM::AnimationRenderer::Render(HDC hdc) const
 void DM::AnimationRenderer::Play(const std::wstring& name, BOOL hasLoop)
 {
 
-	Animation* animation = this->GetOwner()->GetAnimation(name);
+	Animation* animation = ResourceManager::GetResource<Animation>(name);
 
 	if (!animation) return;
 

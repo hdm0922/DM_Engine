@@ -18,8 +18,6 @@ void DM::GameLoadManager::LoadGame()
 
 	GameLoadManager::loadScenes();
 
-	GameLoadManager::registerResources();
-
 	return;
 }
 
@@ -52,15 +50,6 @@ void DM::GameLoadManager::loadScenes()
     SceneManager::CreateScene<Test::TestScene>(DM_TEST_SCENE_NAME);
 
     SceneManager::LoadScene(DM_TEST_SCENE_NAME);
-}
-
-
-
-
-
-void DM::GameLoadManager::registerResources()
-{
-    GameLoadManager::registerResources_Animation();
 }
 
 
@@ -106,13 +95,4 @@ void DM::GameLoadManager::loadResources_Audio()
         DM_TEST_AUDIO_NAME,
         DM_TEST_AUDIO_PATH
     );
-}
-
-
-
-
-
-void DM::GameLoadManager::registerResources_Animation()
-{
-    Test::TestObject::RegisterAnimation(DM_TEST_ANIMATION_NAME);
 }
