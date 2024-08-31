@@ -2,6 +2,7 @@
 
 #include "DM_TransformComponent.h"
 #include "DM_RenderComponent.h"
+#include "DM_RigidBodyComponent.h"
 #include "DM_ResourceManager.h"
 #include "DM_Animation.h"
 
@@ -14,6 +15,7 @@ DM::GameObject::GameObject(const std::wstring& name)
 	, components({})
 {
 	this->AddComponent<TransformComponent>();
+	this->AddComponent<RigidBodyComponent>();
 }
 
 
