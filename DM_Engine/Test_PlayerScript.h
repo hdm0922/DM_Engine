@@ -31,6 +31,16 @@ public:
     virtual void Initialize() override;
     virtual void Update() override;
 
+    void Walk_Right();
+    void Walk_Left();
+    void Walk_Down();
+    void Walk_Up();
+
+    void Run_Right();
+    void Run_Left();
+    void Run_Down();
+    void Run_Up();
+
 
 public:
 
@@ -41,23 +51,17 @@ public:
 
 private:
 
-    void registerKeyEvents();
-
     void onState_Idle();
     void onState_Walk();
     void onState_Run();
     void onState_Fight();
 
-    void moveRight();
-    void moveLeft();
-    void moveDown();
-    void moveUp();
+
 
 
 private:
 
-    std::map<INT, std::function<void()>> keyEvents;
-
     State state;
+
 
 };

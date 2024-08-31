@@ -9,7 +9,6 @@
 
 Test::PlayerScript::PlayerScript(const DM::GameObject* owner, const std::wstring& name)
 	: ScriptComponent(owner, name)
-	, keyEvents({})
 	, state(State::Idle)
 {
 }
@@ -28,8 +27,6 @@ Test::PlayerScript::~PlayerScript()
 
 void Test::PlayerScript::Initialize()
 {
-	this->registerKeyEvents();
-
 	ScriptComponent::Initialize();
 }
 
@@ -39,13 +36,6 @@ void Test::PlayerScript::Initialize()
 
 void Test::PlayerScript::Update()
 {
-	for (auto& iter : this->keyEvents)
-	{
-		if (DM::Input::GetKeyPressed(iter.first))
-			iter.second();
-	}
-
-
 
 	switch (this->GetState())
 	{
@@ -55,8 +45,6 @@ void Test::PlayerScript::Update()
 	case State::Fight	: this->onState_Fight();	break;
 	}
 
-
-
 	ScriptComponent::Update();
 }
 
@@ -64,24 +52,38 @@ void Test::PlayerScript::Update()
 
 
 
-void Test::PlayerScript::registerKeyEvents()
+void Test::PlayerScript::Walk_Right()
 {
+}
 
-	std::function<void()> eventFunction;
+void Test::PlayerScript::Walk_Left()
+{
+}
 
-	eventFunction = std::bind(&PlayerScript::moveUp, this);
-	this->keyEvents.insert({ 'W', eventFunction });
+void Test::PlayerScript::Walk_Down()
+{
+	int a = 0;
+}
 
-	eventFunction = std::bind(&PlayerScript::moveDown, this);
-	this->keyEvents.insert({ 'S', eventFunction });
+void Test::PlayerScript::Walk_Up()
+{
+}
 
-	eventFunction = std::bind(&PlayerScript::moveRight, this);
-	this->keyEvents.insert({ 'D', eventFunction });
+void Test::PlayerScript::Run_Right()
+{
+}
 
-	eventFunction = std::bind(&PlayerScript::moveLeft, this);
-	this->keyEvents.insert({ 'A', eventFunction });
+void Test::PlayerScript::Run_Left()
+{
+}
 
-	return;
+void Test::PlayerScript::Run_Down()
+{
+	int a = 0;
+}
+
+void Test::PlayerScript::Run_Up()
+{
 }
 
 
@@ -102,27 +104,4 @@ void Test::PlayerScript::onState_Run()
 
 void Test::PlayerScript::onState_Fight()
 {
-}
-
-
-
-
-
-void Test::PlayerScript::moveRight()
-{
-}
-
-void Test::PlayerScript::moveLeft()
-{
-}
-
-void Test::PlayerScript::moveDown()
-{
-	int a = 0;
-}
-
-void Test::PlayerScript::moveUp()
-{
-	int a = 0;
-
 }

@@ -213,6 +213,9 @@
     <ClInclude Include="DM_Collider_Box2D.h">
       <Filter>헤더 파일\Component\Collider</Filter>
     </ClInclude>
+    <ClInclude Include="Test_KeybindComponent.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Test_UI_Status.cpp">
@@ -334,6 +337,9 @@
     </ClCompile>
     <ClCompile Include="DM_Collider_Box2D.cpp">
       <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_KeybindComponent.cpp">
+      <Filter>소스 파일\___TEST___</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

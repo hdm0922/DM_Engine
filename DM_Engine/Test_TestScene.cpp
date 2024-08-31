@@ -61,9 +61,13 @@ void Test::TestScene::Initialize()
 	DM::TransformComponent* transform_monster =
 		monster->GetComponent<DM::TransformComponent>();
 	transform_monster->SetPosition({ 50, 50 });
+	monster->SetSize(32, 32);
+
+	monster->AddComponent<DM::Collider_Box2D>();
 
 	monster->AddComponent<DM::AudioSource>();
 	monster->GetComponent<DM::AudioSource>()->Play(DM_TEST_AUDIO_NAME, true);
+	///
 
 	DM::Scene::Initialize();
 }

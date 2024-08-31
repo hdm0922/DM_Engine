@@ -170,6 +170,7 @@ copy "$(SolutionDir)\External\FMod\x64\fmodstudioL.dll" "$(SolutionDir)\x64\Debu
     <ClInclude Include="DM_ScriptComponent.h" />
     <ClInclude Include="DM_Sprite.h" />
     <ClInclude Include="DM_SpriteRenderer.h" />
+    <ClInclude Include="Test_KeybindComponent.h" />
     <ClInclude Include="Test_Player.h" />
     <ClInclude Include="Test_PlayerScript.h" />
     <ClInclude Include="Test_TestObject.h" />
@@ -216,6 +217,7 @@ copy "$(SolutionDir)\External\FMod\x64\fmodstudioL.dll" "$(SolutionDir)\x64\Debu
     <ClCompile Include="DM_SceneManager.cpp" />
     <ClCompile Include="DM_ScriptComponent.cpp" />
     <ClCompile Include="DM_SpriteRenderer.cpp" />
+    <ClCompile Include="Test_KeybindComponent.cpp" />
     <ClCompile Include="Test_Player.cpp" />
     <ClCompile Include="Test_PlayerScript.cpp" />
     <ClCompile Include="Test_TestObject.cpp" />
