@@ -109,8 +109,8 @@ void DM::AnimationRenderer::render_bmp(HDC hdc) const
 	TransparentBlt(
 
 		hdc,
-		static_cast<INT>(transform->GetPosition().x),
-		static_cast<INT>(transform->GetPosition().y),
+		static_cast<INT>(this->GetOwner()->GetTopLeft().x),
+		static_cast<INT>(this->GetOwner()->GetTopLeft().y),
 		static_cast<INT>(sprite->size.x * transform->GetScale().x),
 		static_cast<INT>(sprite->size.y * transform->GetScale().y),
 
@@ -156,8 +156,8 @@ void DM::AnimationRenderer::render_png(HDC hdc) const
 		texture->GetImage(),
 
 		Gdiplus::Rect(
-			static_cast<INT>(transform->GetPosition().x),
-			static_cast<INT>(transform->GetPosition().y),
+			static_cast<INT>(this->GetOwner()->GetTopLeft().x),
+			static_cast<INT>(this->GetOwner()->GetTopLeft().y),
 			static_cast<INT>(texture->GetWidth() * transform->GetScale().x),
 			static_cast<INT>(texture->GetHeight() * transform->GetScale().y)
 		),

@@ -27,7 +27,6 @@ public:
     virtual void Update() override;
     virtual void Render(HDC hdc) override;
 
-    Math::Vector2<FLOAT> size;
 
 };
 

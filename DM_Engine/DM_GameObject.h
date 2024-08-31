@@ -35,12 +35,19 @@ public:
 	template <typename T>
 	void AddComponent();
 
+
 public:
 
+	void SetSize(FLOAT x, FLOAT y) { this->SetSize(Math::Vector2<FLOAT>(x, y)); }
+	void SetSize(const Math::Vector2<FLOAT>& size) { this->size = size; }
 	void SetPosition(FLOAT x, FLOAT y) const { this->SetPosition(Math::Vector2<FLOAT>(x, y)); }
 	void SetPosition(const Math::Vector2<FLOAT> position) const;
 
+	Math::Vector2<FLOAT> GetSize() const { return this->size; }
 	Math::Vector2<FLOAT> GetPosition() const;
+
+	Math::Vector2<FLOAT> GetTopLeft() const;
+	Math::Vector2<FLOAT> GetBottomRight() const;
 
 	template <typename T>
 	T* GetComponent() const;
@@ -60,6 +67,8 @@ private:
 private:
 
 	std::set<Component*, compareFunction> components;
+
+	Math::Vector2<FLOAT> size;
 
 
 };

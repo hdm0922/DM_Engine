@@ -99,3 +99,22 @@ DM::Math::Vector2<FLOAT> DM::GameObject::GetPosition() const
 {
 	return this->GetComponent<TransformComponent>()->GetPosition();
 }
+
+
+
+
+
+DM::Math::Vector2<FLOAT> DM::GameObject::GetTopLeft() const
+{
+	return this->GetComponent<TransformComponent>()->GetPosition()
+		- this->GetSize() * 0.5f;
+}
+
+
+
+
+
+DM::Math::Vector2<FLOAT> DM::GameObject::GetBottomRight() const
+{
+	return this->GetTopLeft() + this->GetSize();
+}

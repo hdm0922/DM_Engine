@@ -10,7 +10,6 @@
 DM::Collider_Box2D::Collider_Box2D(const GameObject* owner, const std::wstring& name)
 	: ColliderComponent(owner, name, Enums::ColliderType::Box2D)
 {
-	size = { 100,100 };
 }
 
 
@@ -54,22 +53,16 @@ void DM::Collider_Box2D::Render(HDC hdc)
 
 
 
-	Math::Vector2<FLOAT> position =
-		this->GetOwner()->GetComponent<TransformComponent>()
-		->GetPosition();
-
 	Rectangle(hdc,
-		position.x,
-		position.y,
-		position.x + size.x,
-		position.y + size.y
+		this->GetOwner()->GetTopLeft().x,
+		this->GetOwner()->GetTopLeft().y,
+		this->GetOwner()->GetBottomRight().x,
+		this->GetOwner()->GetBottomRight().y
 	);
 
 
 
-
 	SelectObject(hdc, oldBrush);
-
 	SelectObject(hdc, oldPen);
 	DeleteObject(pen);
 

@@ -23,7 +23,7 @@ namespace DM
 void DM::UI_Manager::Initialize()
 {
 
-	UI_Manager::Create_UI<Test::UI_Status>();
+	//UI_Manager::Create_UI<Test::UI_Status>();
 
 	return;
 }
