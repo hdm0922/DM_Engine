@@ -34,9 +34,6 @@
     <Filter Include="헤더 파일\Component\Render">
       <UniqueIdentifier>{d269dee2-fbb8-47ce-8d7e-0aba8627b370}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\Component\Transform">
-      <UniqueIdentifier>{1db32361-cc3b-45ea-960f-9d74df3a3834}</UniqueIdentifier>
-    </Filter>
     <Filter Include="헤더 파일\Manager">
       <UniqueIdentifier>{fbabf2e2-c2f2-41b4-853d-5a99d8802541}</UniqueIdentifier>
     </Filter>
@@ -63,9 +60,6 @@
     </Filter>
     <Filter Include="헤더 파일\Component\Audio">
       <UniqueIdentifier>{9cc34ca4-3ba4-4d71-9e10-9d9e6a48fecc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="헤더 파일\Component\Script">
-      <UniqueIdentifier>{2ba6fd57-dbd0-42b4-b833-62a823d4e679}</UniqueIdentifier>
     </Filter>
     <Filter Include="헤더 파일\___TEST___\Scripts">
       <UniqueIdentifier>{2e31237b-3c31-4e5a-aeb0-924323bb1dcd}</UniqueIdentifier>
@@ -125,9 +119,6 @@
     </ClInclude>
     <ClInclude Include="DM_RenderComponent.h">
       <Filter>헤더 파일\Component\Render</Filter>
-    </ClInclude>
-    <ClInclude Include="DM_TransformComponent.h">
-      <Filter>헤더 파일\Component\Transform</Filter>
     </ClInclude>
     <ClInclude Include="DM_Sprite.h">
       <Filter>헤더 파일\Resource</Filter>
@@ -192,9 +183,6 @@
     <ClInclude Include="DM_AudioSource.h">
       <Filter>헤더 파일\Component\Audio</Filter>
     </ClInclude>
-    <ClInclude Include="DM_ScriptComponent.h">
-      <Filter>헤더 파일\Component\Script</Filter>
-    </ClInclude>
     <ClInclude Include="DM_Enums.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -203,6 +191,15 @@
     </ClInclude>
     <ClInclude Include="Test_Player.h">
       <Filter>헤더 파일\___TEST___\Objects</Filter>
+    </ClInclude>
+    <ClInclude Include="DM_ScriptComponent.h">
+      <Filter>헤더 파일\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="DM_TransformComponent.h">
+      <Filter>헤더 파일\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="DM_RigidBodyComponent.h">
+      <Filter>헤더 파일\Component</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -313,6 +310,9 @@
     </ClCompile>
     <ClCompile Include="Test_Player.cpp">
       <Filter>소스 파일\___TEST___</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_RigidBodyComponent.cpp">
+      <Filter>소스 파일\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

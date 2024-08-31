@@ -21,6 +21,7 @@ namespace DM
 enum class DM::Enums::ComponentType
 {
 	Transform,
+	RigidBody,
 	Script,
 	Render,
 	Audio,

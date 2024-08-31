@@ -161,6 +161,7 @@ copy "$(SolutionDir)\External\FMod\x64\fmodstudioL.dll" "$(SolutionDir)\x64\Debu
     <ClInclude Include="DM_RenderComponent.h" />
     <ClInclude Include="DM_Resource.h" />
     <ClInclude Include="DM_ResourceManager.h" />
+    <ClInclude Include="DM_RigidBodyComponent.h" />
     <ClInclude Include="DM_Scene.h" />
     <ClInclude Include="DM_SceneManager.h" />
     <ClInclude Include="DM_ScriptComponent.h" />
@@ -204,6 +205,7 @@ copy "$(SolutionDir)\External\FMod\x64\fmodstudioL.dll" "$(SolutionDir)\x64\Debu
     <ClCompile Include="DM_RenderComponent.cpp" />
     <ClCompile Include="DM_Resource.cpp" />
     <ClCompile Include="DM_ResourceManager.cpp" />
+    <ClCompile Include="DM_RigidBodyComponent.cpp" />
     <ClCompile Include="DM_Scene.cpp" />
     <ClCompile Include="DM_SceneManager.cpp" />
     <ClCompile Include="DM_ScriptComponent.cpp" />

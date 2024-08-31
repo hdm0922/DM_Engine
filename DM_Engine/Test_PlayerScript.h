@@ -19,10 +19,19 @@ public:
     virtual void Update() override;
 
 
-    void MoveRight();
-    void MoveLeft();
-    void MoveDown();
-    void MoveUp();
+private:
+
+    void registerKeyEvents();
+
+    void moveRight();
+    void moveLeft();
+    void moveDown();
+    void moveUp();
+
+
+private:
+
+    std::map<INT, std::function<void()>> keyEvents;
 
 
 };

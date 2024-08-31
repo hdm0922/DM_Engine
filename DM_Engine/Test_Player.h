@@ -19,14 +19,6 @@ public:
     virtual void Update() override;
 
 
-private:
-
-    void registerKeyEvents();
-
-
-private:
-
-    std::map<INT, std::function<void()>> keyEvents;
 
 
 };
