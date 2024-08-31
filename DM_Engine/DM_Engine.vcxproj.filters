@@ -67,6 +67,9 @@
     <Filter Include="헤더 파일\Component\Script">
       <UniqueIdentifier>{2ba6fd57-dbd0-42b4-b833-62a823d4e679}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\___TEST___\Scripts">
+      <UniqueIdentifier>{2e31237b-3c31-4e5a-aeb0-924323bb1dcd}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -195,6 +198,12 @@
     <ClInclude Include="DM_Enums.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="Test_PlayerScript.h">
+      <Filter>헤더 파일\___TEST___\Scripts</Filter>
+    </ClInclude>
+    <ClInclude Include="Test_Player.h">
+      <Filter>헤더 파일\___TEST___\Objects</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Test_UI_Status.cpp">
@@ -298,6 +307,12 @@
     </ClCompile>
     <ClCompile Include="DM_ScriptComponent.cpp">
       <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_PlayerScript.cpp">
+      <Filter>소스 파일\___TEST___</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_Player.cpp">
+      <Filter>소스 파일\___TEST___</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

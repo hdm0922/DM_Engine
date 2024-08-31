@@ -1,6 +1,7 @@
 #include "Test_TestScene.h"
 
 #include "Test_TestObject.h"
+#include "Test_Player.h"
 
 #include "DM_ResourceManager.h"
 #include "DM_TransformComponent.h"
@@ -33,7 +34,7 @@ void Test::TestScene::Initialize()
 {
 
 	// Test Player
-	TestObject* player = new TestObject(L"Player");
+	Player* player = new Player(L"Player");
 	this->AddGameObject(player, DM::Enums::LayerType::Entity);
 
 	DM::AnimationRenderer* animationRenderer =
