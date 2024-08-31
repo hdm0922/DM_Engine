@@ -10,7 +10,7 @@
 
 Test::KeybindComponent::KeybindComponent(const DM::GameObject* owner, const std::wstring& name)
 	: DM::Component(owner, name, DM::Enums::ComponentType::None)
-	, functions({nullptr})
+	, functions({})
 	, keybindInfo({})
 {
 	this->functions.resize(20);
@@ -55,9 +55,9 @@ void Test::KeybindComponent::Initialize()
 
 void Test::KeybindComponent::Update()
 {
-	for (INT iter = 1; iter < 20; iter++)
+	for (INT iter = 0; iter < 20; iter++)
 	{
-		this->listen_keyEvent(iter);
+		this->listen_keyEvent_Pressed(iter);
 	}
 }
 
@@ -132,6 +132,8 @@ void Test::KeybindComponent::initialize_functions()
 
 	PlayerScript* script = this->GetOwner()->GetComponent<PlayerScript>();
 
+	this->functions[0] = std::bind(&PlayerScript::Stop,			script);
+
 	this->functions[1] = std::bind(&PlayerScript::Walk_Right,	script);
 	this->functions[2] = std::bind(&PlayerScript::Walk_Down,	script);
 	this->functions[3] = std::bind(&PlayerScript::Walk_Left,	script);
@@ -171,42 +173,78 @@ void Test::KeybindComponent::initialize_keybindInfo()
 
 
 
-void Test::KeybindComponent::listen_keyEvent(INT idx)
+void Test::KeybindComponent::listen_keyEvent_Pressed(INT idx)
 {
 
-	BOOL allKeysPressed;
+	if (
+		this->keybindInfo[idx].first &&
+		this->GetAllKeysPressed(*this->keybindInfo[idx].first)
+		)
+		this->functions[idx]();
 
-	if (this->keybindInfo[idx].first)
-	{
-		allKeysPressed = true;
-
-		for (INT key : *this->keybindInfo[idx].first)
-		{
-			if (DM::Input::GetKeyPressed(key) ||
-				DM::Input::GetKeyHold(key)) continue;
-			allKeysPressed = false;
-		}
-
-		if (allKeysPressed) this->functions[idx]();
-	}
-
-
-
-	if (this->keybindInfo[idx].second)
-	{
-		allKeysPressed = true;
-
-		for (INT key : *this->keybindInfo[idx].second)
-		{
-			if (DM::Input::GetKeyPressed(key) ||
-				DM::Input::GetKeyHold(key)) continue;
-			allKeysPressed = false;
-		}
-
-		if (allKeysPressed) this->functions[idx]();
-	}
-
-
+	else if (
+		this->keybindInfo[idx].second &&
+		this->GetAllKeysPressed(*this->keybindInfo[idx].second)
+		)
+		this->functions[idx]();
 
 	return;
+}
+
+
+
+
+
+void Test::KeybindComponent::listen_keyEvent_Released(INT idx)
+{
+
+	if (
+		this->keybindInfo[idx].first &&
+		this->GetAllKeysReleased(*this->keybindInfo[idx].first)
+		)
+		this->functions[idx]();
+
+	else if (
+		this->keybindInfo[idx].second &&
+		this->GetAllKeysReleased(*this->keybindInfo[idx].second)
+		)
+		this->functions[idx]();
+
+	return;
+}
+
+
+
+
+
+BOOL Test::KeybindComponent::GetAllKeysPressed(std::vector<INT>& keyset) const
+{
+
+	BOOL allKeysPressed = true;
+
+	for (INT key : keyset)
+	{
+		if (DM::Input::GetKeyPressed(key) ||
+			DM::Input::GetKeyHold(key)) continue;
+		allKeysPressed = false;
+	}
+
+	return allKeysPressed;
+}
+
+
+
+
+
+BOOL Test::KeybindComponent::GetAllKeysReleased(std::vector<INT>& keyset) const
+{
+	BOOL allKeysReleased = true;
+
+	for (INT key : keyset)
+	{
+		if (DM::Input::GetKeyUp(key)) continue;
+		allKeysReleased = false;
+	}
+
+	return allKeysReleased;
 }

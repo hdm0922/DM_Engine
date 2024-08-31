@@ -31,6 +31,8 @@ public:
     virtual void Initialize() override;
     virtual void Update() override;
 
+    void Stop();
+
     void Walk_Right();
     void Walk_Left();
     void Walk_Down();

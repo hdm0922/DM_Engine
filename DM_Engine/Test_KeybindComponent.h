@@ -35,7 +35,11 @@ private:
     void initialize_functions();
     void initialize_keybindInfo();
 
-    void listen_keyEvent(INT idx);
+    void listen_keyEvent_Pressed(INT idx);
+    void listen_keyEvent_Released(INT idx);
+
+    BOOL GetAllKeysPressed(std::vector<INT>& keyset) const;
+    BOOL GetAllKeysReleased(std::vector<INT>& keyset) const;
 
 private:
 

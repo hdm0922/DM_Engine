@@ -29,8 +29,10 @@ public:
 
 public:
 
-    void SetVelocity(Math::Vector2<FLOAT>& velocity) { this->velocity = velocity; }
-    void SetAccel(Math::Vector2<FLOAT>& accel) { this->accel = accel; }
+    void SetVelocity(FLOAT x, FLOAT y) { this->SetVelocity({ x,y }); }
+    void SetVelocity(Math::Vector2<FLOAT> velocity) { this->velocity = velocity; }
+    void SetAccel(FLOAT x, FLOAT y) { this->SetAccel({ x,y }); }
+    void SetAccel(Math::Vector2<FLOAT> accel) { this->accel = accel; }
     void SetMass(FLOAT mass) { this->mass = mass; }
     void SimulatePhysics(BOOL simulate) { this->simulatePhysics = simulate; }
 

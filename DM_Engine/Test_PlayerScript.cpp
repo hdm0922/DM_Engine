@@ -2,6 +2,7 @@
 
 #include "Test_Player.h"
 #include "DM_Input.h"
+#include "DM_RigidBodyComponent.h"
 
 
 
@@ -52,38 +53,80 @@ void Test::PlayerScript::Update()
 
 
 
+void Test::PlayerScript::Stop()
+{
+}
+
+
+
+
+
 void Test::PlayerScript::Walk_Right()
 {
+	DM::RigidBodyComponent* rigidbody =
+		this->GetOwner()->GetComponent<DM::RigidBodyComponent>();
+
+	rigidbody->SetVelocity(100.0f, 0.0f);
 }
 
 void Test::PlayerScript::Walk_Left()
 {
+	DM::RigidBodyComponent* rigidbody =
+		this->GetOwner()->GetComponent<DM::RigidBodyComponent>();
+
+	rigidbody->SetVelocity(-100.0f, 0.0f);
 }
 
 void Test::PlayerScript::Walk_Down()
 {
-	int a = 0;
+	DM::RigidBodyComponent* rigidbody =
+		this->GetOwner()->GetComponent<DM::RigidBodyComponent>();
+
+	rigidbody->SetVelocity(0.0f, 100.0f);
 }
 
 void Test::PlayerScript::Walk_Up()
 {
+	DM::RigidBodyComponent* rigidbody =
+		this->GetOwner()->GetComponent<DM::RigidBodyComponent>();
+
+	rigidbody->SetVelocity(0.0f, -100.0f);
 }
+
+
+
+
 
 void Test::PlayerScript::Run_Right()
 {
+	this->GetOwner()->SetPosition(
+		this->GetOwner()->GetPosition() +
+		DM::Math::Vector2<FLOAT>(0.05f, 0.0f)
+	);
 }
 
 void Test::PlayerScript::Run_Left()
 {
+	this->GetOwner()->SetPosition(
+		this->GetOwner()->GetPosition() +
+		DM::Math::Vector2<FLOAT>(-0.05f, 0.0f)
+	);
 }
 
 void Test::PlayerScript::Run_Down()
 {
-	int a = 0;
+	this->GetOwner()->SetPosition(
+		this->GetOwner()->GetPosition() +
+		DM::Math::Vector2<FLOAT>(0.0f, 0.05f)
+	);
 }
 
 void Test::PlayerScript::Run_Up()
 {
+	this->GetOwner()->SetPosition(
+		this->GetOwner()->GetPosition() +
+		DM::Math::Vector2<FLOAT>(0.0f, -0.05f)
+	);
 }
 
 

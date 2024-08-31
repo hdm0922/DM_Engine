@@ -67,6 +67,9 @@
     <Filter Include="헤더 파일\Component\Collider">
       <UniqueIdentifier>{7e443ba0-ef82-40ca-b6a8-fc81e922a2f1}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\___TEST___\Components">
+      <UniqueIdentifier>{aa11abce-da12-471e-9d9e-b273277ffc18}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -214,7 +217,7 @@
       <Filter>헤더 파일\Component\Collider</Filter>
     </ClInclude>
     <ClInclude Include="Test_KeybindComponent.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>헤더 파일\___TEST___\Components</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
