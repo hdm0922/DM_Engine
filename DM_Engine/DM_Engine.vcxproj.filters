@@ -64,6 +64,9 @@
     <Filter Include="헤더 파일\Component\Audio">
       <UniqueIdentifier>{9cc34ca4-3ba4-4d71-9e10-9d9e6a48fecc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Component\Script">
+      <UniqueIdentifier>{2ba6fd57-dbd0-42b4-b833-62a823d4e679}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -92,9 +95,6 @@
     </ClInclude>
     <ClInclude Include="DM_UI_Frame.h">
       <Filter>헤더 파일\UI</Filter>
-    </ClInclude>
-    <ClInclude Include="DM_Enums.h">
-      <Filter>헤더 파일\Utility</Filter>
     </ClInclude>
     <ClInclude Include="DM_Input.h">
       <Filter>헤더 파일\Utility</Filter>
@@ -188,6 +188,12 @@
     </ClInclude>
     <ClInclude Include="DM_AudioSource.h">
       <Filter>헤더 파일\Component\Audio</Filter>
+    </ClInclude>
+    <ClInclude Include="DM_ScriptComponent.h">
+      <Filter>헤더 파일\Component\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="DM_Enums.h">
+      <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -288,6 +294,9 @@
       <Filter>소스 파일\source</Filter>
     </ClCompile>
     <ClCompile Include="DM_AudioListener.cpp">
+      <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_ScriptComponent.cpp">
       <Filter>소스 파일\source</Filter>
     </ClCompile>
   </ItemGroup>
