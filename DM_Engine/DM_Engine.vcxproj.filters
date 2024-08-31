@@ -64,6 +64,9 @@
     <Filter Include="헤더 파일\___TEST___\Scripts">
       <UniqueIdentifier>{2e31237b-3c31-4e5a-aeb0-924323bb1dcd}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Component\Collider">
+      <UniqueIdentifier>{7e443ba0-ef82-40ca-b6a8-fc81e922a2f1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -201,6 +204,15 @@
     <ClInclude Include="DM_RigidBodyComponent.h">
       <Filter>헤더 파일\Component</Filter>
     </ClInclude>
+    <ClInclude Include="DM_CollisionManager.h">
+      <Filter>헤더 파일\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="DM_ColliderComponent.h">
+      <Filter>헤더 파일\Component\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="DM_Collider_Box2D.h">
+      <Filter>헤더 파일\Component\Collider</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Test_UI_Status.cpp">
@@ -312,6 +324,15 @@
       <Filter>소스 파일\___TEST___</Filter>
     </ClCompile>
     <ClCompile Include="DM_RigidBodyComponent.cpp">
+      <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_ColliderComponent.cpp">
+      <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_CollisionManager.cpp">
+      <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_Collider_Box2D.cpp">
       <Filter>소스 파일\source</Filter>
     </ClCompile>
   </ItemGroup>

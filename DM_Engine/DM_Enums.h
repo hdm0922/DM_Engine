@@ -9,6 +9,7 @@ namespace DM
 		enum class ComponentType;
 		enum class LayerType;
 		enum class TextureType;
+		enum class ColliderType;
 
 		enum class KeyState;
 	}
@@ -21,6 +22,7 @@ namespace DM
 enum class DM::Enums::ComponentType
 {
 	Transform,
+	Collider,
 	RigidBody,
 	Script,
 	Render,
@@ -62,6 +64,18 @@ enum class DM::Enums::KeyState
 	Pressed,
 	Hold,
 	Up,
+
+	None
+};
+
+
+
+
+
+
+enum class DM::Enums::ColliderType
+{
+	Box2D,
 
 	None
 };

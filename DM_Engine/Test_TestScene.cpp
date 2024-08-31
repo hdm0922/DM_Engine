@@ -5,6 +5,7 @@
 
 #include "DM_ResourceManager.h"
 #include "DM_TransformComponent.h"
+#include "DM_Collider_Box2D.h"
 #include "DM_AnimationRenderer.h"
 #include "DM_AudioListener.h"
 #include "DM_AudioSource.h"
@@ -42,6 +43,7 @@ void Test::TestScene::Initialize()
 	animationRenderer->Play(DM_TEST_ANIMATION_NAME, true);
 
 	player->AddComponent<DM::AudioListener>();
+	player->AddComponent<DM::Collider_Box2D>();
 	///
 
 

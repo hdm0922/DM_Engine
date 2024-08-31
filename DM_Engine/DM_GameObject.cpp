@@ -3,6 +3,7 @@
 #include "DM_TransformComponent.h"
 #include "DM_RenderComponent.h"
 #include "DM_RigidBodyComponent.h"
+#include "DM_ColliderComponent.h"
 #include "DM_ResourceManager.h"
 #include "DM_Animation.h"
 
@@ -56,10 +57,21 @@ void DM::GameObject::Update()
 
 void DM::GameObject::Render(HDC hdc) const
 {
-	RenderComponent* renderComponent =
+	RenderComponent* renderer =
 		this->GetComponent<RenderComponent>();
 
-	if (renderComponent) { renderComponent->Render(hdc); }
+	if (renderer) { renderer->Render(hdc); }
+
+	// DEBUG
+
+	ColliderComponent* collider =
+		this->GetComponent<ColliderComponent>();
+
+	if (collider) { collider->Render(hdc); }
+
+	// END
+
+
 }
 
 
