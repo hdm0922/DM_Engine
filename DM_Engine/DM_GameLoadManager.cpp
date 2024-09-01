@@ -74,8 +74,8 @@ void DM::GameLoadManager::loadResources_Texture()
 void DM::GameLoadManager::loadResources_Animation()
 {
 
-    const Math::Vector2<UINT> SIZE      = { 250, 250 };
-    const Math::Vector2<UINT> OFFSET    = { 95, 60 };
+    const Math::Vector2<UINT> SIZE      = { 250, 250 }; // 65 130
+    const Math::Vector2<UINT> OFFSET    = { 94, 60 };
     const FLOAT TOTAL_DURATION = 1.0f;
   
 

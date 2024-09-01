@@ -41,8 +41,8 @@ void Test::TestScene::Initialize()
 	player->AddComponent<DM::AudioListener>();
 	player->AddComponent<DM::Collider_Box2D>();
 
-	player->SetPosition(150, 150);
-	player->SetSize(80, 150);
+	player->SetPosition(0,0);
+	player->SetSize(65,130);
 	///
 
 

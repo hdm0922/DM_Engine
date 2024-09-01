@@ -111,14 +111,14 @@ void DM::AnimationRenderer::render_bmp(HDC hdc) const
 		hdc,
 		static_cast<INT>(this->GetOwner()->GetTopLeft().x),
 		static_cast<INT>(this->GetOwner()->GetTopLeft().y),
-		static_cast<INT>(sprite->size.x * transform->GetScale().x),
-		static_cast<INT>(sprite->size.y * transform->GetScale().y),
+		static_cast<INT>(this->GetOwner()->GetSize().x * transform->GetScale().x),
+		static_cast<INT>(this->GetOwner()->GetSize().y * transform->GetScale().y),
 
 		this->currentAnimation->GetTexture()->GetDeviceContext(),
-		sprite->topLeft.x,
-		sprite->topLeft.y,
-		sprite->size.x,
-		sprite->size.y,
+		sprite->topLeft.x + sprite->offset.x,
+		sprite->topLeft.y + sprite->offset.y,
+		static_cast<INT>(this->GetOwner()->GetSize().x),
+		static_cast<INT>(this->GetOwner()->GetSize().y),
 
 		RGB(255, 0, 255)
 	);
