@@ -61,13 +61,8 @@ void DM::GameLoadManager::loadResources_Texture()
 {
 
     ResourceManager::LoadResource<Texture>(
-        DM_TEST_TEXTURE_BMP_NAME,
-        DM_TEST_TEXTURE_BMP_PATH
-    );
-
-    ResourceManager::LoadResource<Texture>(
-        DM_TEST_TEXTURE_PNG_NAME,
-        DM_TEST_TEXTURE_PNG_PATH
+        TEST_NAME_TEXTURE_PLAYER,
+        TEST_PATH_TEXTURE_PLAYER
     );
 
 }
@@ -79,11 +74,61 @@ void DM::GameLoadManager::loadResources_Texture()
 void DM::GameLoadManager::loadResources_Animation()
 {
 
-    ResourceManager::LoadAnimation(DM_TEST_ANIMATION_NAME,
-        ResourceManager::GetResource<Texture>(DM_TEST_TEXTURE_BMP_NAME),
-        new Sprite({ 0,0 }, { 32,32 }, { 0,0 }), 4, 0.3f
+    const Math::Vector2<UINT> SIZE      = { 250, 250 };
+    const Math::Vector2<UINT> OFFSET    = { 95, 60 };
+    const FLOAT TOTAL_DURATION = 1.0f;
+  
+
+    // Player Idle
+    ResourceManager::LoadAnimation(TEST_NAME_ANIMATION_PLAYER_IDLE_DOWN,
+        ResourceManager::GetResource<Texture>(TEST_NAME_TEXTURE_PLAYER),
+        new Sprite({ SIZE.x * 8, SIZE.y * 1 }, SIZE, OFFSET), 1, TOTAL_DURATION
     );
 
+    ResourceManager::LoadAnimation(TEST_NAME_ANIMATION_PLAYER_IDLE_UP,
+        ResourceManager::GetResource<Texture>(TEST_NAME_TEXTURE_PLAYER),
+        new Sprite({ SIZE.x * 0, SIZE.y * 1 }, SIZE, OFFSET), 1, TOTAL_DURATION
+    );
+
+    ResourceManager::LoadAnimation(TEST_NAME_ANIMATION_PLAYER_IDLE_RIGHT,
+        ResourceManager::GetResource<Texture>(TEST_NAME_TEXTURE_PLAYER),
+        new Sprite({ SIZE.x * 0, SIZE.y * 0 }, SIZE, OFFSET), 1, TOTAL_DURATION
+    );
+
+    ResourceManager::LoadAnimation(TEST_NAME_ANIMATION_PLAYER_IDLE_LEFT,
+        ResourceManager::GetResource<Texture>(TEST_NAME_TEXTURE_PLAYER),
+        new Sprite({ SIZE.x * 6, SIZE.y * 0 }, SIZE, OFFSET), 1, TOTAL_DURATION
+    );
+
+
+
+    // Player Move
+    ResourceManager::LoadAnimation(TEST_NAME_ANIMATION_PLAYER_MOVE_RIGHT,
+        ResourceManager::GetResource<Texture>(TEST_NAME_TEXTURE_PLAYER),
+        new Sprite({ SIZE.x * 0, SIZE.y * 0 }, SIZE, OFFSET), 6, TOTAL_DURATION / 6
+    );
+
+    ResourceManager::LoadAnimation(TEST_NAME_ANIMATION_PLAYER_MOVE_LEFT,
+        ResourceManager::GetResource<Texture>(TEST_NAME_TEXTURE_PLAYER),
+        new Sprite({ SIZE.x * 6, SIZE.y * 0 }, SIZE, OFFSET), 6, TOTAL_DURATION / 6
+    );
+
+    ResourceManager::LoadAnimation(TEST_NAME_ANIMATION_PLAYER_MOVE_UP,
+        ResourceManager::GetResource<Texture>(TEST_NAME_TEXTURE_PLAYER),
+        new Sprite({ SIZE.x * 0, SIZE.y * 1 }, SIZE, OFFSET), 8, TOTAL_DURATION / 8
+    );
+
+    ResourceManager::LoadAnimation(TEST_NAME_ANIMATION_PLAYER_MOVE_DOWN,
+        ResourceManager::GetResource<Texture>(TEST_NAME_TEXTURE_PLAYER),
+        new Sprite({ SIZE.x * 8, SIZE.y * 1 }, SIZE, OFFSET), 4, TOTAL_DURATION / 7
+    );
+
+    ResourceManager::LoadAnimation(TEST_NAME_ANIMATION_PLAYER_MOVE_DOWN,
+        ResourceManager::GetResource<Texture>(TEST_NAME_TEXTURE_PLAYER),
+        new Sprite({ SIZE.x * 0, SIZE.y * 2 }, SIZE, OFFSET), 3, TOTAL_DURATION / 7
+    );
+
+    return;
 }
 
 

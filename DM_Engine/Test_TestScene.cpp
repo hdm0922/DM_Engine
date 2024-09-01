@@ -38,14 +38,11 @@ void Test::TestScene::Initialize()
 	Player* player = new Player(L"Player");
 	this->AddGameObject(player, DM::Enums::LayerType::Entity);
 
-	DM::AnimationRenderer* animationRenderer =
-		player->GetComponent<DM::AnimationRenderer>();
-	animationRenderer->Play(DM_TEST_ANIMATION_NAME, true);
-
 	player->AddComponent<DM::AudioListener>();
 	player->AddComponent<DM::Collider_Box2D>();
+
 	player->SetPosition(150, 150);
-	player->SetSize(32, 32);
+	player->SetSize(80, 150);
 	///
 
 

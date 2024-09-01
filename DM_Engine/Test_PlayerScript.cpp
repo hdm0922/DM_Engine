@@ -31,6 +31,8 @@ Test::PlayerScript::~PlayerScript()
 void Test::PlayerScript::Initialize()
 {
 
+	this->stateEnterEvent_Idle();
+
 	this->registerStateChangeConditions();
 	this->registerStateEnterEvents();
 
@@ -123,7 +125,8 @@ void Test::PlayerScript::translate(FLOAT speed)
 	if (keybind->GetKeysPressed(KeybindComponent::Action::Walk_Right))	dx++;
 	if (keybind->GetKeysPressed(KeybindComponent::Action::Walk_Left))	dx--;
 
-	rigidBody->SetVelocity(DM::Math::Vector2<FLOAT>(dx, dy) * speed);
+	rigidBody->SetVelocity(DM::Math::Vector2<FLOAT>(
+		static_cast<FLOAT>(dx), static_cast<FLOAT>(dy)) * speed);
 
 	return;
 }
@@ -311,10 +314,10 @@ void Test::PlayerScript::stateEnterEvent_Idle()
 
 	switch (this->direction)
 	{
-	case Enums::Direction::Right:	animationRenderer->Play(TEST_PLAYER_ANIMATION_IDLE_RIGHT, true);	break;
-	case Enums::Direction::Left:	animationRenderer->Play(TEST_PLAYER_ANIMATION_IDLE_LEFT, true);		break;
-	case Enums::Direction::Down:	animationRenderer->Play(TEST_PLAYER_ANIMATION_IDLE_DOWN, true);		break;
-	case Enums::Direction::Up:		animationRenderer->Play(TEST_PLAYER_ANIMATION_IDLE_UP, true);		break;
+	case Enums::Direction::Right:	animationRenderer->Play(TEST_NAME_ANIMATION_PLAYER_IDLE_RIGHT,	false); break;
+	case Enums::Direction::Left:	animationRenderer->Play(TEST_NAME_ANIMATION_PLAYER_IDLE_LEFT,	false); break;
+	case Enums::Direction::Down:	animationRenderer->Play(TEST_NAME_ANIMATION_PLAYER_IDLE_DOWN,	false); break;
+	case Enums::Direction::Up:		animationRenderer->Play(TEST_NAME_ANIMATION_PLAYER_IDLE_UP,		false); break;
 	}
 
 	return;
@@ -327,10 +330,14 @@ void Test::PlayerScript::stateEnterEvent_Idle()
 void Test::PlayerScript::stateEnterEvent_Walk()
 {
 
+	DM::AnimationRenderer* animationRenderer = this->GetOwner()->GetComponent<DM::AnimationRenderer>();
+
 	switch (this->direction)
 	{
-	case Enums::Direction::Right:
-		break;
+	case Enums::Direction::Right:	animationRenderer->Play(TEST_NAME_ANIMATION_PLAYER_MOVE_RIGHT,	true); break;
+	case Enums::Direction::Left:	animationRenderer->Play(TEST_NAME_ANIMATION_PLAYER_MOVE_LEFT,	true); break;
+	case Enums::Direction::Down:	animationRenderer->Play(TEST_NAME_ANIMATION_PLAYER_MOVE_DOWN,	true); break;
+	case Enums::Direction::Up:		animationRenderer->Play(TEST_NAME_ANIMATION_PLAYER_MOVE_UP,		true); break;
 	}
 
 	return;
@@ -343,10 +350,14 @@ void Test::PlayerScript::stateEnterEvent_Walk()
 void Test::PlayerScript::stateEnterEvent_Run()
 {
 
+	DM::AnimationRenderer* animationRenderer = this->GetOwner()->GetComponent<DM::AnimationRenderer>();
+
 	switch (this->direction)
 	{
-	case Enums::Direction::Right:
-		break;
+	case Enums::Direction::Right:	animationRenderer->Play(TEST_NAME_ANIMATION_PLAYER_MOVE_RIGHT,	true); break;
+	case Enums::Direction::Left:	animationRenderer->Play(TEST_NAME_ANIMATION_PLAYER_MOVE_LEFT,	true); break;
+	case Enums::Direction::Down:	animationRenderer->Play(TEST_NAME_ANIMATION_PLAYER_MOVE_DOWN,	true); break;
+	case Enums::Direction::Up:		animationRenderer->Play(TEST_NAME_ANIMATION_PLAYER_MOVE_UP,		true); break;
 	}
 
 	return;
