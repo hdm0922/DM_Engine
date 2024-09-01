@@ -1,7 +1,7 @@
 #pragma once
 #include "DM_ScriptComponent.h"
 
-#include "Test_Enums.h"
+#include "Test_Framework.h"
 
 
 

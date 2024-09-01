@@ -222,6 +222,12 @@
     <ClInclude Include="Test_Enums.h">
       <Filter>헤더 파일\___TEST___</Filter>
     </ClInclude>
+    <ClInclude Include="Test_Macros.h">
+      <Filter>헤더 파일\___TEST___</Filter>
+    </ClInclude>
+    <ClInclude Include="Test_Framework.h">
+      <Filter>헤더 파일\___TEST___</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Test_UI_Status.cpp">

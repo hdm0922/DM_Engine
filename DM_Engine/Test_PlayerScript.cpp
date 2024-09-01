@@ -3,6 +3,7 @@
 #include "Test_Player.h"
 #include "DM_Input.h"
 #include "DM_RigidBodyComponent.h"
+#include "DM_AnimationRenderer.h"
 #include "Test_KeybindComponent.h"
 
 
@@ -305,7 +306,18 @@ BOOL Test::PlayerScript::stateChangeCondition_Run_to_Walk()
 
 void Test::PlayerScript::stateEnterEvent_Idle()
 {
-	int a = 0;
+
+	DM::AnimationRenderer* animationRenderer = this->GetOwner()->GetComponent<DM::AnimationRenderer>();
+
+	switch (this->direction)
+	{
+	case Enums::Direction::Right:	animationRenderer->Play(TEST_PLAYER_ANIMATION_IDLE_RIGHT, true);	break;
+	case Enums::Direction::Left:	animationRenderer->Play(TEST_PLAYER_ANIMATION_IDLE_LEFT, true);		break;
+	case Enums::Direction::Down:	animationRenderer->Play(TEST_PLAYER_ANIMATION_IDLE_DOWN, true);		break;
+	case Enums::Direction::Up:		animationRenderer->Play(TEST_PLAYER_ANIMATION_IDLE_UP, true);		break;
+	}
+
+	return;
 }
 
 
@@ -330,5 +342,12 @@ void Test::PlayerScript::stateEnterEvent_Walk()
 
 void Test::PlayerScript::stateEnterEvent_Run()
 {
-	int a = 0;
+
+	switch (this->direction)
+	{
+	case Enums::Direction::Right:
+		break;
+	}
+
+	return;
 }
