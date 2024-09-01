@@ -6,6 +6,7 @@
 #include "DM_GameLoadManager.h"
 #include "DM_UI_Manager.h"
 #include "DM_SceneManager.h"
+#include "DM_CollisionManager.h"
 
 
 
@@ -37,6 +38,7 @@ void DM::Application::Initialize(Window* mainWindow)
 
 	UI_Manager::Initialize();
 	SceneManager::Initialize();
+	CollisionManager::Initialize();
 
 	return;
 }
@@ -53,6 +55,7 @@ void DM::Application::Update()
 
 	UI_Manager::Update();
 	SceneManager::Update();
+	CollisionManager::Update();
 
 	return;
 }

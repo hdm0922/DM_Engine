@@ -34,6 +34,17 @@ Test::TestScene::~TestScene()
 void Test::TestScene::Initialize()
 {
 
+	// Scene Init
+
+	this->SetLayerCollision(
+		static_cast<UINT>(DM::Enums::LayerType::Entity),
+		static_cast<UINT>(DM::Enums::LayerType::Entity),
+		true
+	);
+
+	//
+
+
 	// Test Player
 	Player* player = new Player(L"Player");
 	this->AddGameObject(player, DM::Enums::LayerType::Entity);
@@ -57,7 +68,7 @@ void Test::TestScene::Initialize()
 
 	DM::TransformComponent* transform_monster =
 		monster->GetComponent<DM::TransformComponent>();
-	transform_monster->SetPosition({ 50, 50 });
+	transform_monster->SetPosition({ 150, 150 });
 	monster->SetSize(32, 32);
 
 	monster->AddComponent<DM::Collider_Box2D>();

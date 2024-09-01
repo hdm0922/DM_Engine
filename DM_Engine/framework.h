@@ -3,6 +3,7 @@
 // Windows
 #define WIN32_LEAN_AND_MEAN
 #define _CRTDBG_MAP_ALLOC
+#define NOMINMAX
 #include "targetver.h"
 #include <windows.h>
 

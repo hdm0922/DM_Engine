@@ -10,11 +10,27 @@
 DM::Scene::Scene(const std::wstring& name)
 	: Entity(name)
 	, layers({})
+	, layerCollisionMatrix(nullptr)
+	, LAYER_SIZE(static_cast<INT>(Enums::LayerType::None))
 {
-	for (INT iter = 0; iter < static_cast<INT>(Enums::LayerType::None); iter++)
+
+	for (INT iter = 0; iter < LAYER_SIZE; iter++)
 	{
 		this->layers.push_back(new Layer());
 	}
+
+
+
+	this->layerCollisionMatrix = new BOOL * [LAYER_SIZE];
+
+	for (INT iter = 0; iter < LAYER_SIZE; iter++)
+	{
+		this->layerCollisionMatrix[iter] = new BOOL[LAYER_SIZE];
+
+		for (INT jter = 0; jter < LAYER_SIZE; jter++)
+			this->layerCollisionMatrix[iter][jter] = false;
+	}
+
 }
 
 
@@ -23,11 +39,18 @@ DM::Scene::Scene(const std::wstring& name)
 
 DM::Scene::~Scene()
 {
+
 	for (Layer* layer : this->layers)
 	{
 		delete layer;
 		layer = nullptr;
 	}
+
+	for (INT iter = 0; iter < LAYER_SIZE; iter++)
+	{
+		delete[] this->layerCollisionMatrix[iter];
+	}	delete[] this->layerCollisionMatrix;
+
 }
 
 

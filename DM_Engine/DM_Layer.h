@@ -29,6 +29,12 @@ public:
 
 	void AddGameObject(GameObject* object);
 
+
+public:
+
+	const std::vector<GameObject*>& GetGameObjects() const { return this->gameObjects; }
+
+
 private:
 
 	std::vector<GameObject*> gameObjects;

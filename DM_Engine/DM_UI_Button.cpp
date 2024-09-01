@@ -48,7 +48,7 @@ void DM::UI_Button::Update()
 	{
 		auto topLeft = this->GetPosition();
 
-		BOOL cursorInButton = Math::CollisionChecker::Point_Box_2D(
+		BOOL cursorInButton = Math::CollisionChecker::Point_Box2D(
 			Input::GetCursorPosition(),
 			topLeft, topLeft + this->size
 		);

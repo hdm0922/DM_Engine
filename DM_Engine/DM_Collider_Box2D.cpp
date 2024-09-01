@@ -54,10 +54,10 @@ void DM::Collider_Box2D::Render(HDC hdc)
 
 
 	Rectangle(hdc,
-		this->GetOwner()->GetTopLeft().x,
-		this->GetOwner()->GetTopLeft().y,
-		this->GetOwner()->GetBottomRight().x,
-		this->GetOwner()->GetBottomRight().y
+		static_cast<INT>(this->GetOwner()->GetTopLeft().x),
+		static_cast<INT>(this->GetOwner()->GetTopLeft().y),
+		static_cast<INT>(this->GetOwner()->GetBottomRight().x),
+		static_cast<INT>(this->GetOwner()->GetBottomRight().y)
 	);
 
 
