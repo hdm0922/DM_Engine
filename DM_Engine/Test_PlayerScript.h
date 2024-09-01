@@ -1,10 +1,20 @@
 #pragma once
 #include "DM_ScriptComponent.h"
 
+#include "Test_Enums.h"
+
+
+
+
+
 namespace Test
 {
     class PlayerScript;
 }
+
+
+
+
 
 class Test::PlayerScript :
     public DM::ScriptComponent
@@ -31,39 +41,35 @@ public:
     virtual void Initialize() override;
     virtual void Update() override;
 
-    void Stop();
-
-    void Walk_Right();
-    void Walk_Left();
-    void Walk_Down();
-    void Walk_Up();
-
-    void Run_Right();
-    void Run_Left();
-    void Run_Down();
-    void Run_Up();
-
-
-public:
-
-    void SetState(State state) { this->state = state; }
-
-    State GetState() const { return this->state; }
-
 
 private:
+
+    void registerStateChangeConditions();
+    void registerStateEnterEvents();
+
+    void translate(FLOAT speed);
 
     void onState_Idle();
     void onState_Walk();
     void onState_Run();
     void onState_Fight();
 
+    BOOL stateChangeCondition_Idle_to_Walk();
+    BOOL stateChangeCondition_Idle_to_Run();
 
+    BOOL stateChangeCondition_Walk_to_Idle();
+    BOOL stateChangeCondition_Walk_to_Run();
+
+    BOOL stateChangeCondition_Run_to_Idle();
+    BOOL stateChangeCondition_Run_to_Walk();
+
+    void stateEnterEvent_Idle();
+    void stateEnterEvent_Walk();
+    void stateEnterEvent_Run();
 
 
 private:
 
-    State state;
-
+    Enums::Direction direction;
 
 };

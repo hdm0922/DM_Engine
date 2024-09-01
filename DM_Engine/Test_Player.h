@@ -1,10 +1,18 @@
 #pragma once
 #include "Test_TestObject.h"
 
+
+
+
+
 namespace Test
 {
     class Player;
 }
+
+
+
+
 
 class Test::Player :
     public TestObject
@@ -17,8 +25,6 @@ public:
 
     virtual void Initialize() override;
     virtual void Update() override;
-
-
 
 
 };

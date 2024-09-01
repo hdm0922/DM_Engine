@@ -3,14 +3,15 @@
 #include "Test_Player.h"
 #include "DM_Input.h"
 #include "DM_RigidBodyComponent.h"
+#include "Test_KeybindComponent.h"
 
 
 
 
 
 Test::PlayerScript::PlayerScript(const DM::GameObject* owner, const std::wstring& name)
-	: ScriptComponent(owner, name)
-	, state(State::Idle)
+	: ScriptComponent(owner, name, static_cast<UINT>(State::None))
+	, direction(Enums::Direction::Down)
 {
 }
 
@@ -28,6 +29,10 @@ Test::PlayerScript::~PlayerScript()
 
 void Test::PlayerScript::Initialize()
 {
+
+	this->registerStateChangeConditions();
+	this->registerStateEnterEvents();
+
 	ScriptComponent::Initialize();
 }
 
@@ -38,7 +43,7 @@ void Test::PlayerScript::Initialize()
 void Test::PlayerScript::Update()
 {
 
-	switch (this->GetState())
+	switch (static_cast<State>(this->GetCurrentState()))
 	{
 	case State::Idle	: this->onState_Idle();		break;
 	case State::Walk	: this->onState_Walk();		break;
@@ -53,80 +58,73 @@ void Test::PlayerScript::Update()
 
 
 
-void Test::PlayerScript::Stop()
+void Test::PlayerScript::registerStateChangeConditions()
 {
+
+	// On State : Idle
+	this->stateChangeConditionMatrix[static_cast<UINT>(State::Idle)][static_cast<UINT>(State::Walk)]
+		= std::bind(&PlayerScript::stateChangeCondition_Idle_to_Walk, this);
+
+	this->stateChangeConditionMatrix[static_cast<UINT>(State::Idle)][static_cast<UINT>(State::Run)]
+		= std::bind(&PlayerScript::stateChangeCondition_Idle_to_Run, this);
+
+	// On State : Walk
+	this->stateChangeConditionMatrix[static_cast<UINT>(State::Walk)][static_cast<UINT>(State::Idle)]
+		= std::bind(&PlayerScript::stateChangeCondition_Walk_to_Idle, this);
+
+	this->stateChangeConditionMatrix[static_cast<UINT>(State::Walk)][static_cast<UINT>(State::Run)]
+		= std::bind(&PlayerScript::stateChangeCondition_Walk_to_Run, this);
+
+	// On State : Run
+	this->stateChangeConditionMatrix[static_cast<UINT>(State::Run)][static_cast<UINT>(State::Idle)]
+		= std::bind(&PlayerScript::stateChangeCondition_Run_to_Idle, this);
+
+	this->stateChangeConditionMatrix[static_cast<UINT>(State::Run)][static_cast<UINT>(State::Walk)]
+		= std::bind(&PlayerScript::stateChangeCondition_Run_to_Walk, this);
+
+	return;
 }
 
 
 
 
 
-void Test::PlayerScript::Walk_Right()
+void Test::PlayerScript::registerStateEnterEvents()
 {
-	DM::RigidBodyComponent* rigidbody =
-		this->GetOwner()->GetComponent<DM::RigidBodyComponent>();
 
-	rigidbody->SetVelocity(100.0f, 0.0f);
-}
+	this->stateEnterEvent[static_cast<UINT>(State::Idle)]
+		= std::bind(&PlayerScript::stateEnterEvent_Idle, this);
 
-void Test::PlayerScript::Walk_Left()
-{
-	DM::RigidBodyComponent* rigidbody =
-		this->GetOwner()->GetComponent<DM::RigidBodyComponent>();
+	this->stateEnterEvent[static_cast<UINT>(State::Walk)]
+		= std::bind(&PlayerScript::stateEnterEvent_Walk, this);
 
-	rigidbody->SetVelocity(-100.0f, 0.0f);
-}
+	this->stateEnterEvent[static_cast<UINT>(State::Run)]
+		= std::bind(&PlayerScript::stateEnterEvent_Run, this);
 
-void Test::PlayerScript::Walk_Down()
-{
-	DM::RigidBodyComponent* rigidbody =
-		this->GetOwner()->GetComponent<DM::RigidBodyComponent>();
-
-	rigidbody->SetVelocity(0.0f, 100.0f);
-}
-
-void Test::PlayerScript::Walk_Up()
-{
-	DM::RigidBodyComponent* rigidbody =
-		this->GetOwner()->GetComponent<DM::RigidBodyComponent>();
-
-	rigidbody->SetVelocity(0.0f, -100.0f);
+	return;
 }
 
 
 
 
 
-void Test::PlayerScript::Run_Right()
+void Test::PlayerScript::translate(FLOAT speed)
 {
-	this->GetOwner()->SetPosition(
-		this->GetOwner()->GetPosition() +
-		DM::Math::Vector2<FLOAT>(0.05f, 0.0f)
-	);
-}
 
-void Test::PlayerScript::Run_Left()
-{
-	this->GetOwner()->SetPosition(
-		this->GetOwner()->GetPosition() +
-		DM::Math::Vector2<FLOAT>(-0.05f, 0.0f)
-	);
-}
+	DM::RigidBodyComponent* rigidBody = this->GetOwner()->GetComponent<DM::RigidBodyComponent>();
+	KeybindComponent* keybind = this->GetOwner()->GetComponent<KeybindComponent>();
 
-void Test::PlayerScript::Run_Down()
-{
-	this->GetOwner()->SetPosition(
-		this->GetOwner()->GetPosition() +
-		DM::Math::Vector2<FLOAT>(0.0f, 0.05f)
-	);
-}
+	INT dx = 0;
+	INT dy = 0;
 
-void Test::PlayerScript::Run_Up()
-{
-	this->GetOwner()->SetPosition(
-		this->GetOwner()->GetPosition() +
-		DM::Math::Vector2<FLOAT>(0.0f, -0.05f)
-	);
+	if (keybind->GetKeysPressed(KeybindComponent::Action::Walk_Up))		dy--;
+	if (keybind->GetKeysPressed(KeybindComponent::Action::Walk_Down))	dy++;
+	if (keybind->GetKeysPressed(KeybindComponent::Action::Walk_Right))	dx++;
+	if (keybind->GetKeysPressed(KeybindComponent::Action::Walk_Left))	dx--;
+
+	rigidBody->SetVelocity(DM::Math::Vector2<FLOAT>(dx, dy) * speed);
+
+	return;
 }
 
 
@@ -135,16 +133,202 @@ void Test::PlayerScript::Run_Up()
 
 void Test::PlayerScript::onState_Idle()
 {
+
+	DM::RigidBodyComponent* rigidBody =
+		this->GetOwner()->GetComponent<DM::RigidBodyComponent>();
+
+	rigidBody->SetVelocity(0, 0);
+
 }
 
 void Test::PlayerScript::onState_Walk()
 {
+	this->translate(100.0f);
+
+	return;
 }
 
 void Test::PlayerScript::onState_Run()
 {
+	this->translate(200.0f);
+
+	return;
 }
 
 void Test::PlayerScript::onState_Fight()
 {
+}
+
+
+
+
+
+BOOL Test::PlayerScript::stateChangeCondition_Idle_to_Walk()
+{
+
+	KeybindComponent* keybind =
+		this->GetOwner()->GetComponent<KeybindComponent>();
+
+
+	if (keybind->GetKeysPressed(KeybindComponent::Action::Walk_Up))
+	{
+		this->direction = Enums::Direction::Up;
+		return true;
+	}
+
+	if (keybind->GetKeysPressed(KeybindComponent::Action::Walk_Left))
+	{
+		this->direction = Enums::Direction::Left;
+		return true;
+	}
+
+	if (keybind->GetKeysPressed(KeybindComponent::Action::Walk_Right))
+	{
+		this->direction = Enums::Direction::Right;
+		return true;
+	}
+
+	if (keybind->GetKeysPressed(KeybindComponent::Action::Walk_Down))
+	{
+		this->direction = Enums::Direction::Down;
+		return true;
+	}
+
+	return false;
+}
+
+
+
+
+
+BOOL Test::PlayerScript::stateChangeCondition_Idle_to_Run()
+{
+	KeybindComponent* keybind =
+		this->GetOwner()->GetComponent<KeybindComponent>();
+
+	if (keybind->GetKeysPressed(KeybindComponent::Action::Run_Up))
+	{
+		this->direction = Enums::Direction::Up;
+		return true;
+	}
+
+	if (keybind->GetKeysPressed(KeybindComponent::Action::Run_Left))
+	{
+		this->direction = Enums::Direction::Left;
+		return true;
+	}
+
+	if (keybind->GetKeysPressed(KeybindComponent::Action::Run_Right))
+	{
+		this->direction = Enums::Direction::Right;
+		return true;
+	}
+
+	if (keybind->GetKeysPressed(KeybindComponent::Action::Run_Down))
+	{
+		this->direction = Enums::Direction::Down;
+		return true;
+	}
+
+	return false;
+}
+
+
+
+
+
+BOOL Test::PlayerScript::stateChangeCondition_Walk_to_Idle()
+{
+
+	KeybindComponent* keybind =
+		this->GetOwner()->GetComponent<KeybindComponent>();
+
+	switch (this->direction)
+	{
+	case Enums::Direction::Down:	return keybind->GetKeysReleased(KeybindComponent::Action::Walk_Down);
+	case Enums::Direction::Up:		return keybind->GetKeysReleased(KeybindComponent::Action::Walk_Up);
+	case Enums::Direction::Left:	return keybind->GetKeysReleased(KeybindComponent::Action::Walk_Left);
+	case Enums::Direction::Right:	return keybind->GetKeysReleased(KeybindComponent::Action::Walk_Right);
+	}
+
+	return false;
+}
+
+
+
+
+
+BOOL Test::PlayerScript::stateChangeCondition_Walk_to_Run()
+{
+
+	KeybindComponent* keybind =
+		this->GetOwner()->GetComponent<KeybindComponent>();
+
+	return keybind->GetKeysPressed(KeybindComponent::Action::Switch_To_Run);
+}
+
+
+
+
+
+BOOL Test::PlayerScript::stateChangeCondition_Run_to_Idle()
+{
+	KeybindComponent* keybind =
+		this->GetOwner()->GetComponent<KeybindComponent>();
+
+	switch (this->direction)
+	{
+	case Enums::Direction::Down:	return keybind->GetKeysReleased(KeybindComponent::Action::Walk_Down);
+	case Enums::Direction::Up:		return keybind->GetKeysReleased(KeybindComponent::Action::Walk_Up);
+	case Enums::Direction::Left:	return keybind->GetKeysReleased(KeybindComponent::Action::Walk_Left);
+	case Enums::Direction::Right:	return keybind->GetKeysReleased(KeybindComponent::Action::Walk_Right);
+	}
+
+	return false;
+}
+
+
+
+
+
+BOOL Test::PlayerScript::stateChangeCondition_Run_to_Walk()
+{
+	KeybindComponent* keybind =
+		this->GetOwner()->GetComponent<KeybindComponent>();
+
+	return keybind->GetKeysReleased(KeybindComponent::Action::Switch_To_Run);
+}
+
+
+
+
+
+void Test::PlayerScript::stateEnterEvent_Idle()
+{
+	int a = 0;
+}
+
+
+
+
+
+void Test::PlayerScript::stateEnterEvent_Walk()
+{
+
+	switch (this->direction)
+	{
+	case Enums::Direction::Right:
+		break;
+	}
+
+	return;
+}
+
+
+
+
+
+void Test::PlayerScript::stateEnterEvent_Run()
+{
+	int a = 0;
 }

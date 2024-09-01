@@ -20,31 +20,44 @@ class Test::KeybindComponent :
 
 public:
 
+    enum class Action
+    {
+        Idle,
+
+        Walk_Up,
+        Walk_Down,
+        Walk_Left,
+        Walk_Right,
+
+        Run_Up,
+        Run_Down,
+        Run_Left,
+        Run_Right,
+
+        Switch_To_Run,
+
+        None
+    };
+
+
+public:
+
     KeybindComponent(const DM::GameObject* owner, const std::wstring& name = L"");
     virtual ~KeybindComponent() override;
 
     virtual void Initialize();
     virtual void Update();
 
-    void ChangeKeybind_FirstSlot(INT idx, std::vector<INT>* keyset);
-    void ChangeKeybind_SecondSlot(INT idx, std::vector<INT>* keyset);
+
+public:
+
+    BOOL GetKeysPressed(Action action) const;
+    BOOL GetKeysReleased(Action action) const;
 
 
 private:
 
-    void initialize_functions();
-    void initialize_keybindInfo();
-
-    void listen_keyEvent_Pressed(INT idx);
-    void listen_keyEvent_Released(INT idx);
-
-    BOOL GetAllKeysPressed(std::vector<INT>& keyset) const;
-    BOOL GetAllKeysReleased(std::vector<INT>& keyset) const;
-
-private:
-
-    std::vector<std::function<void()>> functions;
-    std::vector<std::pair<std::vector<INT>*, std::vector<INT>*>> keybindInfo;
+    std::vector<INT>* keysets;
 
 
 };
