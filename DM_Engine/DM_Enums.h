@@ -63,7 +63,7 @@ enum class DM::Enums::KeyState
 {
 	Pressed,
 	Hold,
-	Up,
+	Released,
 
 	None
 };

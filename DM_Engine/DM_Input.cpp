@@ -63,10 +63,10 @@ BOOL DM::Input::GetKeyHold(int keyCode, Window* activeWindow)
 
 
 
-BOOL DM::Input::GetKeyUp(int keyCode, Window* activeWindow)
+BOOL DM::Input::GetKeyReleased(int keyCode, Window* activeWindow)
 {
 	BOOL correctWindow = (GetActiveWindow() == activeWindow->GetHandle());
-	BOOL correctKeyState = (Input::keys[keyCode].keyState == Enums::KeyState::Up);
+	BOOL correctKeyState = (Input::keys[keyCode].keyState == Enums::KeyState::Released);
 	return (correctWindow && correctKeyState);
 }
 
@@ -153,7 +153,7 @@ void DM::Input::updateKeyState_Up(Key& key)
 {
 
 	keys[key.keyCode].keyState = key.keyHold ?
-		Enums::KeyState::Up : Enums::KeyState::None;
+		Enums::KeyState::Released : Enums::KeyState::None;
 
 	keys[key.keyCode].keyHold = false;
 
@@ -201,14 +201,14 @@ void DM::Input::resetKeyState(Key& key)
 	switch (key.keyState)
 	{
 	case Enums::KeyState::Pressed:
-		key.keyState = Enums::KeyState::Up;
+		key.keyState = Enums::KeyState::Released;
 		break;
 
 	case Enums::KeyState::Hold:
-		key.keyState = Enums::KeyState::Up;
+		key.keyState = Enums::KeyState::Released;
 		break;
 
-	case Enums::KeyState::Up:
+	case Enums::KeyState::Released:
 		key.keyState = Enums::KeyState::None;
 		break;
 	}

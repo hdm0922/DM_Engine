@@ -40,7 +40,7 @@ public:
 public:
 
 	static BOOL GetKeyHold(int keyCode, Window* activeWindow = Application::GetMainWindow());
-	static BOOL GetKeyUp(int keyCode, Window* activeWindow = Application::GetMainWindow());
+	static BOOL GetKeyReleased(int keyCode, Window* activeWindow = Application::GetMainWindow());
 	static BOOL GetKeyPressed(int keyCode, Window* activeWindow = Application::GetMainWindow());
 
 	static Math::Vector2<FLOAT> GetCursorPosition() { return Input::cursorPosition; }
