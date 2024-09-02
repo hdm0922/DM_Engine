@@ -75,14 +75,14 @@ void DM::CollisionManager::simulateCollision(Enums::LayerType layer1, Enums::Lay
 void DM::CollisionManager::simulateCollision(ColliderComponent* collider1, ColliderComponent* collider2)
 {
 
-	bool b =Math::CollisionChecker::Box2D_Box2D(
+	BOOL collision = Math::CollisionChecker::Box2D_Box2D(
 		collider1->GetOwner()->GetTopLeft(), collider1->GetOwner()->GetBottomRight(),
 		collider2->GetOwner()->GetTopLeft(), collider2->GetOwner()->GetBottomRight()
 	);
 
-	if (b) {
-		int a = 0;
-	}
+	if (!collision) return;
+
+
 
 	return;
 }

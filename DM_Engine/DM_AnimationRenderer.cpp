@@ -158,8 +158,8 @@ void DM::AnimationRenderer::render_png(HDC hdc) const
 		Gdiplus::Rect(
 			static_cast<INT>(this->GetOwner()->GetTopLeft().x),
 			static_cast<INT>(this->GetOwner()->GetTopLeft().y),
-			static_cast<INT>(texture->GetWidth() * transform->GetScale().x),
-			static_cast<INT>(texture->GetHeight() * transform->GetScale().y)
+			static_cast<INT>(this->GetOwner()->GetSize().x * transform->GetScale().x),
+			static_cast<INT>(this->GetOwner()->GetSize().y * transform->GetScale().y)
 		),
 
 		sprite->topLeft.x,

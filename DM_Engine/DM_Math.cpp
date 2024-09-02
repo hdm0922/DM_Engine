@@ -29,8 +29,8 @@ BOOL DM::Math::CollisionChecker::Box2D_Box2D(
 	Vector2<FLOAT> center1 = (box1_TopLeft + box1_BottomRight) / 2.0f;
 	Vector2<FLOAT> center2 = (box2_TopLeft + box2_BottomRight) / 2.0f;
 
-	Vector2<FLOAT> size1 = Vector2<FLOAT>::absoluteValue((box1_TopLeft - box1_BottomRight) / 2.0f);
-	Vector2<FLOAT> size2 = Vector2<FLOAT>::absoluteValue((box2_TopLeft - box2_BottomRight) / 2.0f);
+	Vector2<FLOAT> size1 = box1_BottomRight - box1_TopLeft;
+	Vector2<FLOAT> size2 = box2_BottomRight - box2_TopLeft;
 
 	const Math::Vector2<FLOAT> CENTER_DIFF = Vector2<FLOAT>::absoluteValue(center1 - center2);
 

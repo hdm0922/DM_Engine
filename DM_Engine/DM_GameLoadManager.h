@@ -32,6 +32,8 @@ private:
 	static void loadResources_Animation();
 	static void loadResources_Audio();
 
+	static void loadResources_Animation_PLayer();
+	static void loadResources_Animation_Monster();
 
 };
 

@@ -64,15 +64,20 @@ void Test::TestScene::Initialize()
 
 	DM::AnimationRenderer* animationRenderer_monster =
 		monster->GetComponent<DM::AnimationRenderer>();
-	animationRenderer_monster->Play(DM_TEST_ANIMATION_NAME, true);
+
+	animationRenderer_monster->Play(TEST_NAME_ANIMATION_MONSTER_MOVE_DOWN, true);
+
+
 
 	DM::TransformComponent* transform_monster =
 		monster->GetComponent<DM::TransformComponent>();
+
 	transform_monster->SetPosition({ 150, 150 });
-	monster->SetSize(32, 32);
+	monster->SetSize(16, 32);
+
+
 
 	monster->AddComponent<DM::Collider_Box2D>();
-
 	monster->AddComponent<DM::AudioSource>();
 	monster->GetComponent<DM::AudioSource>()->Play(DM_TEST_AUDIO_NAME, true);
 	///
