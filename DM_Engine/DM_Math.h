@@ -32,6 +32,7 @@ struct DM::Math::Vector2
 	
 	Vector2<T> operator+(const Vector2<T>& other)	const { return { this->x + other.x, this->y + other.y }; }
 	Vector2<T> operator-(const Vector2<T>& other)	const { return { this->x - other.x, this->y - other.y }; }
+	Vector2<T> operator-()							const { return { -this->x, -this->y }; }
 	T operator*(const Vector2<T>& other)			const { return (this->x * other.x) + (this->y * other.y); }
 	Vector2<T> operator*(const T& scalar)			const { return { this->x * scalar, this->y * scalar }; }
 	Vector2<T> operator/(const T& scalar)			const { return { this->x / scalar, this->y / scalar }; }

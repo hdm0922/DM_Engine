@@ -1,8 +1,10 @@
 #include "DM_Collider_Box2D.h"
 
 #include "DM_TransformComponent.h"
+#include "DM_RigidBodyComponent.h"
 #include "DM_GameObject.h"
 
+#include "Test_Player.h"
 
 
 

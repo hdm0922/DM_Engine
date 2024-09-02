@@ -1,5 +1,8 @@
 #include "DM_ColliderComponent.h"
 
+#include "DM_GameObject.h"
+#include "DM_ScriptComponent.h"
+
 
 
 
@@ -45,6 +48,10 @@ void DM::ColliderComponent::Update()
 
 void DM::ColliderComponent::CollisionEvent_Enter(const GameObject* other)
 {
+	ScriptComponent* script = this->GetOwner()->GetComponent<ScriptComponent>();
+	if (script) script->CollisionEvent_Enter(other);
+
+	return;
 }
 
 
@@ -53,6 +60,10 @@ void DM::ColliderComponent::CollisionEvent_Enter(const GameObject* other)
 
 void DM::ColliderComponent::CollisionEvent_Collide(const GameObject* other)
 {
+	ScriptComponent* script = this->GetOwner()->GetComponent<ScriptComponent>();
+	if (script) script->CollisionEvent_Collide(other);
+
+	return;
 }
 
 
@@ -61,5 +72,8 @@ void DM::ColliderComponent::CollisionEvent_Collide(const GameObject* other)
 
 void DM::ColliderComponent::CollisionEvent_Exit(const GameObject* other)
 {
-	int a = 0;
+	ScriptComponent* script = this->GetOwner()->GetComponent<ScriptComponent>();
+	if (script) script->CollisionEvent_Exit(other);
+
+	return;
 }

@@ -61,6 +61,46 @@ void Test::PlayerScript::Update()
 
 
 
+void Test::PlayerScript::CollisionEvent_Enter(const DM::GameObject* other)
+{
+}
+
+
+
+
+
+void Test::PlayerScript::CollisionEvent_Collide(const DM::GameObject* other)
+{
+
+	DM::Math::Vector2<FLOAT> overlap;
+
+	overlap.x = std::min(this->GetOwner()->GetBottomRight().x, other->GetBottomRight().x) 
+		- std::max(this->GetOwner()->GetTopLeft().x, other->GetTopLeft().x);
+
+	overlap.y = std::min(this->GetOwner()->GetBottomRight().y, other->GetBottomRight().y)
+		- std::max(this->GetOwner()->GetTopLeft().y, other->GetTopLeft().y);
+
+	DM::Math::Vector2<FLOAT> delta = { 0, 0 };
+	if (overlap.x < overlap.y)	delta.x = (this->GetOwner()->GetTopLeft().x > other->GetTopLeft().x) ? overlap.x : -overlap.x;
+	else						delta.y = (this->GetOwner()->GetTopLeft().y > other->GetTopLeft().y) ? overlap.y : -overlap.y;
+
+	this->GetOwner()->SetPosition(this->GetOwner()->GetPosition() + delta);
+
+	return;
+}
+
+
+
+
+
+void Test::PlayerScript::CollisionEvent_Exit(const DM::GameObject* other)
+{
+}
+
+
+
+
+
 void Test::PlayerScript::registerStateChangeConditions()
 {
 

@@ -14,7 +14,7 @@ namespace DM
 
 
 
-class DM::ScriptComponent :
+class DM::ScriptComponent:
     public Component
 {
 
@@ -26,6 +26,9 @@ public:
     virtual void Initialize() override;
     virtual void Update() override;
 
+    virtual void CollisionEvent_Enter(const GameObject* other) {};
+    virtual void CollisionEvent_Collide(const GameObject* other) {};
+    virtual void CollisionEvent_Exit(const GameObject* other) {};
 
 public:
 

@@ -41,6 +41,9 @@ public:
     virtual void Initialize() override;
     virtual void Update() override;
 
+    virtual void CollisionEvent_Enter(const DM::GameObject* other) override;
+    virtual void CollisionEvent_Collide(const DM::GameObject* other) override;
+    virtual void CollisionEvent_Exit(const DM::GameObject* other) override;
 
 private:
 
@@ -71,5 +74,6 @@ private:
 private:
 
     Enums::Direction direction;
+
 
 };
