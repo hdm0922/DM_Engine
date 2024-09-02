@@ -14,6 +14,7 @@
 DM::GameObject::GameObject(const std::wstring& name)
 	: Entity(name)
 	, components({})
+	, originSize()
 {
 	this->AddComponent<TransformComponent>();
 	this->AddComponent<RigidBodyComponent>();
@@ -89,6 +90,21 @@ void DM::GameObject::Destroy()
 void DM::GameObject::SetPosition(const Math::Vector2<FLOAT> position) const
 {
 	this->GetComponent<TransformComponent>()->SetPosition(position);
+}
+
+
+
+
+
+DM::Math::Vector2<FLOAT> DM::GameObject::GetSize() const
+{
+
+	Math::Vector2<FLOAT> scale = this->GetComponent<TransformComponent>()->GetScale();
+
+	return Math::Vector2<FLOAT>(
+		this->GetOriginalSize().x * scale.x,
+		this->GetOriginalSize().y * scale.y
+	);
 }
 
 

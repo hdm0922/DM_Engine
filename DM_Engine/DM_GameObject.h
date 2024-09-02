@@ -38,12 +38,13 @@ public:
 
 public:
 
-	void SetSize(FLOAT x, FLOAT y) { this->SetSize(Math::Vector2<FLOAT>(x, y)); }
-	void SetSize(const Math::Vector2<FLOAT>& size) { this->size = size; }
+	void SetOriginalSize(FLOAT x, FLOAT y) { this->SetOriginalSize(Math::Vector2<FLOAT>(x, y)); }
+	void SetOriginalSize(const Math::Vector2<FLOAT>& originSize) { this->originSize = originSize; }
 	void SetPosition(FLOAT x, FLOAT y) const { this->SetPosition(Math::Vector2<FLOAT>(x, y)); }
 	void SetPosition(const Math::Vector2<FLOAT> position) const;
 
-	Math::Vector2<FLOAT> GetSize() const { return this->size; }
+	Math::Vector2<FLOAT> GetSize() const;
+	Math::Vector2<FLOAT> GetOriginalSize() const { return this->originSize; }
 	Math::Vector2<FLOAT> GetPosition() const;
 
 	Math::Vector2<FLOAT> GetTopLeft() const;
@@ -68,7 +69,7 @@ private:
 
 	std::set<Component*, compareFunction> components;
 
-	Math::Vector2<FLOAT> size;
+	Math::Vector2<FLOAT> originSize;
 
 
 };

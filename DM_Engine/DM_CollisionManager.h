@@ -27,8 +27,9 @@ public:
 
 private:
 
-	static void simulateCollision(Enums::LayerType layer1, Enums::LayerType layer2);
-	static void simulateCollision(ColliderComponent* collider1, ColliderComponent* collider2);
+	static void detectCollision(Enums::LayerType layer);
+	static void detectCollision(Enums::LayerType layer1, Enums::LayerType layer2);
+	static void detectCollision(ColliderComponent* collider1, ColliderComponent* collider2);
 
 
 };

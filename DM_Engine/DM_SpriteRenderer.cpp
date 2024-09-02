@@ -77,22 +77,22 @@ void DM::SpriteRenderer::Render(HDC hdc) const
 void DM::SpriteRenderer::render_bmp(HDC hdc) const
 {
 
-	TransformComponent* transform = 
-		this->GetOwner()->GetComponent<TransformComponent>();
+	const Sprite* sprite = this->GetSprite();
+
 
 	TransparentBlt(
 
 		hdc,
 		static_cast<INT>(this->GetOwner()->GetTopLeft().x),
 		static_cast<INT>(this->GetOwner()->GetTopLeft().y),
-		static_cast<INT>(this->GetSprite()->size.x * transform->GetScale().x),
-		static_cast<INT>(this->GetSprite()->size.y * transform->GetScale().y),
+		static_cast<INT>(this->GetOwner()->GetSize().x),
+		static_cast<INT>(this->GetOwner()->GetSize().y),
 
 		this->GetTexture()->GetDeviceContext(),
-		this->GetSprite()->topLeft.x,
-		this->GetSprite()->topLeft.y,
-		this->GetSprite()->size.x,
-		this->GetSprite()->size.y,
+		sprite->topLeft.x + sprite->offset.x,
+		sprite->topLeft.y + sprite->offset.y,
+		static_cast<INT>(this->GetOwner()->GetOriginalSize().x),
+		static_cast<INT>(this->GetOwner()->GetOriginalSize().y),
 
 		RGB(255, 0, 255)
 	);
@@ -103,6 +103,7 @@ void DM::SpriteRenderer::render_bmp(HDC hdc) const
 
 
 
+// 추후 수정
 void DM::SpriteRenderer::render_png(HDC hdc) const
 {
 

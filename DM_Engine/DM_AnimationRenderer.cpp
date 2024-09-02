@@ -101,9 +101,6 @@ void DM::AnimationRenderer::Play(const std::wstring& name, BOOL hasLoop)
 void DM::AnimationRenderer::render_bmp(HDC hdc) const
 {
 
-	TransformComponent* transform =
-		this->GetOwner()->GetComponent<TransformComponent>();
-
 	Sprite* sprite = this->currentAnimation->GetCurrentSprite();
 
 	TransparentBlt(
@@ -111,14 +108,14 @@ void DM::AnimationRenderer::render_bmp(HDC hdc) const
 		hdc,
 		static_cast<INT>(this->GetOwner()->GetTopLeft().x),
 		static_cast<INT>(this->GetOwner()->GetTopLeft().y),
-		static_cast<INT>(this->GetOwner()->GetSize().x * transform->GetScale().x),
-		static_cast<INT>(this->GetOwner()->GetSize().y * transform->GetScale().y),
+		static_cast<INT>(this->GetOwner()->GetSize().x),
+		static_cast<INT>(this->GetOwner()->GetSize().y),
 
 		this->currentAnimation->GetTexture()->GetDeviceContext(),
 		sprite->topLeft.x + sprite->offset.x,
 		sprite->topLeft.y + sprite->offset.y,
-		static_cast<INT>(this->GetOwner()->GetSize().x),
-		static_cast<INT>(this->GetOwner()->GetSize().y),
+		static_cast<INT>(this->GetOwner()->GetOriginalSize().x),
+		static_cast<INT>(this->GetOwner()->GetOriginalSize().y),
 
 		RGB(255, 0, 255)
 	);
@@ -132,9 +129,6 @@ void DM::AnimationRenderer::render_bmp(HDC hdc) const
 
 void DM::AnimationRenderer::render_png(HDC hdc) const
 {
-
-	TransformComponent* transform = 
-		this->GetOwner()->GetComponent<TransformComponent>();
 
 	Texture* texture = this->currentAnimation->GetTexture();
 	Sprite* sprite = this->currentAnimation->GetCurrentSprite();
@@ -158,8 +152,8 @@ void DM::AnimationRenderer::render_png(HDC hdc) const
 		Gdiplus::Rect(
 			static_cast<INT>(this->GetOwner()->GetTopLeft().x),
 			static_cast<INT>(this->GetOwner()->GetTopLeft().y),
-			static_cast<INT>(this->GetOwner()->GetSize().x * transform->GetScale().x),
-			static_cast<INT>(this->GetOwner()->GetSize().y * transform->GetScale().y)
+			static_cast<INT>(this->GetOwner()->GetSize().x),
+			static_cast<INT>(this->GetOwner()->GetSize().y)
 		),
 
 		sprite->topLeft.x,

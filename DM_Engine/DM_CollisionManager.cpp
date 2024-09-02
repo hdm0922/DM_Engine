@@ -22,17 +22,23 @@ void DM::CollisionManager::Update()
 {
 
 	for (UINT iter = 0; iter < static_cast<UINT>(Enums::LayerType::None); iter++)
-		for (UINT jter = iter; jter < static_cast<UINT>(Enums::LayerType::None); jter++)
+	{
+
+		CollisionManager::detectCollision(static_cast<Enums::LayerType>(iter));
+
+		for (UINT jter = iter + 1; jter < static_cast<UINT>(Enums::LayerType::None); jter++)
 		{
 
 			if (!SceneManager::GetActiveScene()->GetLayerCollision(iter, jter)) continue;
 
-			CollisionManager::simulateCollision(
+			CollisionManager::detectCollision(
 				static_cast<Enums::LayerType>(iter),
 				static_cast<Enums::LayerType>(jter)
 			);
 
 		}
+
+	}
 
 	return;
 }
@@ -41,7 +47,37 @@ void DM::CollisionManager::Update()
 
 
 
-void DM::CollisionManager::simulateCollision(Enums::LayerType layer1, Enums::LayerType layer2)
+void DM::CollisionManager::detectCollision(Enums::LayerType layer)
+{
+
+	const std::vector<GameObject*>& gameObjects = SceneManager::GetActiveScene()->GetLayer(layer)->GetGameObjects();
+
+	for (UINT iter = 0; iter < gameObjects.size(); iter++)
+	{
+
+		ColliderComponent* collider1 = gameObjects[iter]->GetComponent<ColliderComponent>();
+		if (!collider1) continue;
+
+		for (UINT jter = iter + 1; jter < gameObjects.size(); jter++)
+		{
+
+			ColliderComponent* collider2 = gameObjects[jter]->GetComponent<ColliderComponent>();
+			if (!collider2) continue;
+
+			CollisionManager::detectCollision(collider1, collider2);
+
+		}
+
+	}
+
+	return;
+}
+
+
+
+
+
+void DM::CollisionManager::detectCollision(Enums::LayerType layer1, Enums::LayerType layer2)
 {
 
 	const std::vector<GameObject*>& gameObjects1 = SceneManager::GetActiveScene()->GetLayer(layer1)->GetGameObjects();
@@ -58,9 +94,8 @@ void DM::CollisionManager::simulateCollision(Enums::LayerType layer1, Enums::Lay
 
 			ColliderComponent* collider2 = object2->GetComponent<ColliderComponent>();
 			if (!collider2) continue;
-			if (object1 == object2) continue;
 
-			CollisionManager::simulateCollision(collider1, collider2);
+			CollisionManager::detectCollision(collider1, collider2);
 		}
 
 	}
@@ -72,7 +107,7 @@ void DM::CollisionManager::simulateCollision(Enums::LayerType layer1, Enums::Lay
 
 
 
-void DM::CollisionManager::simulateCollision(ColliderComponent* collider1, ColliderComponent* collider2)
+void DM::CollisionManager::detectCollision(ColliderComponent* collider1, ColliderComponent* collider2)
 {
 
 	BOOL collision = Math::CollisionChecker::Box2D_Box2D(
@@ -81,8 +116,6 @@ void DM::CollisionManager::simulateCollision(ColliderComponent* collider1, Colli
 	);
 
 	if (!collision) return;
-
-
 
 	return;
 }

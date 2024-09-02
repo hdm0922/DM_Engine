@@ -53,7 +53,12 @@ void Test::TestScene::Initialize()
 	player->AddComponent<DM::Collider_Box2D>();
 
 	player->SetPosition(0,0);
-	player->SetSize(65,130);
+	player->SetOriginalSize(65,130);
+
+	DM::TransformComponent* transform_player =
+		player->GetComponent<DM::TransformComponent>();
+
+	transform_player->SetScale(0.5f);
 	///
 
 
@@ -73,7 +78,7 @@ void Test::TestScene::Initialize()
 		monster->GetComponent<DM::TransformComponent>();
 
 	transform_monster->SetPosition({ 150, 150 });
-	monster->SetSize(16, 32);
+	monster->SetOriginalSize(16, 32);
 
 
 
