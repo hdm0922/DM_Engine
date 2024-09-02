@@ -40,5 +40,6 @@
 
 // 사용자 정의
 #include "DM_Engine_Macro.h"
+#include "DM_Utility.h"
 #include "DM_Math.h"
 #include "DM_Enums.h"

@@ -10,6 +10,15 @@
 
 
 
+namespace DM
+{
+	std::set<std::pair<UINT64, UINT64>> CollisionManager::objectsInCollision = {};
+}
+
+
+
+
+
 void DM::CollisionManager::Initialize()
 {
 }
@@ -115,7 +124,49 @@ void DM::CollisionManager::detectCollision(ColliderComponent* collider1, Collide
 		collider2->GetOwner()->GetTopLeft(), collider2->GetOwner()->GetBottomRight()
 	);
 
-	if (!collision) return;
+	CollisionManager::handleCollision(collider1, collider2, collision);
+
+	return;
+}
+
+
+
+
+
+void DM::CollisionManager::handleCollision(ColliderComponent* collider1, ColliderComponent* collider2, BOOL collision)
+{
+
+	std::pair<UINT64,UINT64> key = { (UINT64)(collider1), (UINT64)(collider2) };
+	auto iter = CollisionManager::objectsInCollision.find(key);
+
+	if (iter == CollisionManager::objectsInCollision.end())
+	{ // 이전 frame 충돌 X
+
+		if (collision)
+		{
+			CollisionManager::objectsInCollision.insert(key);
+			collider1->CollisionEvent_Enter(collider2->GetOwner());
+			collider2->CollisionEvent_Enter(collider1->GetOwner());
+		}
+
+	}
+	else
+	{ // 이전 frame 충돌 O
+
+		if (collision)
+		{
+			collider1->CollisionEvent_Collide(collider2->GetOwner());
+			collider2->CollisionEvent_Collide(collider1->GetOwner());
+		}
+		else
+		{
+			CollisionManager::objectsInCollision.erase(iter);
+			collider1->CollisionEvent_Exit(collider2->GetOwner());
+			collider2->CollisionEvent_Exit(collider1->GetOwner());
+		}
+
+	}
+
 
 	return;
 }

@@ -62,7 +62,6 @@ void Test::TestScene::Initialize()
 	///
 
 
-
 	/// Test Monster
 	TestObject* monster = new TestObject(L"Monster");
 	this->AddGameObject(monster, DM::Enums::LayerType::Entity);

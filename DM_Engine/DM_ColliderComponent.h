@@ -27,6 +27,10 @@ public:
     virtual void Update() override;
     virtual void Render(HDC hdc) = 0;
 
+    virtual void CollisionEvent_Enter(const GameObject* other);
+    virtual void CollisionEvent_Collide(const GameObject* other);
+    virtual void CollisionEvent_Exit(const GameObject* other);
+
 
 private:
 
