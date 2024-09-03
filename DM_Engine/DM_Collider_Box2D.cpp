@@ -1,5 +1,7 @@
 #include "DM_Collider_Box2D.h"
 
+#include "DM_SceneManager.h"
+#include "DM_Camera.h"
 #include "DM_TransformComponent.h"
 #include "DM_RigidBodyComponent.h"
 #include "DM_GameObject.h"
@@ -53,13 +55,15 @@ void DM::Collider_Box2D::Render(HDC hdc)
 	HPEN pen = (HPEN)CreatePen(PS_SOLID, 2, RGB(0, 255, 0));
 	HPEN oldPen = (HPEN)SelectObject(hdc, pen);
 
+	Math::Vector2<FLOAT> topLeft_relative = this->GetOwner()->GetTopLeft()
+		- SceneManager::GetActiveScene()->GetCamera()->GetTopLeft();
 
 
 	Rectangle(hdc,
-		static_cast<INT>(this->GetOwner()->GetTopLeft().x),
-		static_cast<INT>(this->GetOwner()->GetTopLeft().y),
-		static_cast<INT>(this->GetOwner()->GetBottomRight().x),
-		static_cast<INT>(this->GetOwner()->GetBottomRight().y)
+		static_cast<INT>(topLeft_relative.x),
+		static_cast<INT>(topLeft_relative.y),
+		static_cast<INT>(topLeft_relative.x + this->GetOwner()->GetSize().x),
+		static_cast<INT>(topLeft_relative.y + this->GetOwner()->GetSize().y)
 	);
 
 

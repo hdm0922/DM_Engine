@@ -77,6 +77,8 @@ void DM::Scene::Update()
 	{
 		layer->Update();
 	}
+
+	this->camera->Update();
 }
 
 

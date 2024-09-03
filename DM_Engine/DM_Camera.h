@@ -1,6 +1,9 @@
 #pragma once
 #include "DM_GameObject.h"
 
+#include "DM_Application.h"
+#include "DM_Window.h"
+
 
 
 
@@ -32,6 +35,8 @@ public:
 public:
 
     void SetRenderTarget(GameObject* target) { this->renderTarget = target; }
+
+    virtual Math::Vector2<FLOAT> GetSize() const override;
 
 
 private:

@@ -10,6 +10,7 @@
 #include "DM_AnimationRenderer.h"
 #include "DM_AudioListener.h"
 #include "DM_AudioSource.h"
+#include "DM_Camera.h"
 
 
 
@@ -88,6 +89,12 @@ void Test::TestScene::Initialize()
 
 	GameStateComponent* gameState_monster = monster->GetComponent<GameStateComponent>();
 	gameState_monster->SetPlayerBlocking(true);
+	///
+
+	/// Camera
+	
+	this->GetCamera()->SetRenderTarget(player);
+
 	///
 
 	DM::Scene::Initialize();

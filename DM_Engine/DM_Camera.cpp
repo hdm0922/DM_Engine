@@ -31,3 +31,15 @@ void DM::Camera::Update()
 	if (!this->renderTarget) return;
 	this->SetPosition(this->renderTarget->GetPosition());
 }
+
+
+
+
+
+DM::Math::Vector2<FLOAT> DM::Camera::GetSize() const
+{
+	return Math::Vector2<FLOAT>(
+		static_cast<FLOAT>(Application::GetMainWindow()->GetSize().x),
+		static_cast<FLOAT>(Application::GetMainWindow()->GetSize().y)
+	);
+}

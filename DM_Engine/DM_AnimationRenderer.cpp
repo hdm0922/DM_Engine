@@ -5,8 +5,10 @@
 #include "DM_Texture.h"
 #include "DM_Sprite.h"
 #include "DM_Time.h"
+#include "DM_Camera.h"
 #include "DM_TransformComponent.h"
 #include "DM_ResourceManager.h"
+#include "DM_SceneManager.h"
 
 
 
@@ -103,11 +105,14 @@ void DM::AnimationRenderer::render_bmp(HDC hdc) const
 
 	Sprite* sprite = this->currentAnimation->GetCurrentSprite();
 
+	Math::Vector2<FLOAT> topLeft_relative = this->GetOwner()->GetTopLeft()
+		- SceneManager::GetActiveScene()->GetCamera()->GetTopLeft();
+
 	TransparentBlt(
 
 		hdc,
-		static_cast<INT>(this->GetOwner()->GetTopLeft().x),
-		static_cast<INT>(this->GetOwner()->GetTopLeft().y),
+		static_cast<INT>(topLeft_relative.x),
+		static_cast<INT>(topLeft_relative.y),
 		static_cast<INT>(this->GetOwner()->GetSize().x),
 		static_cast<INT>(this->GetOwner()->GetSize().y),
 
@@ -133,6 +138,9 @@ void DM::AnimationRenderer::render_png(HDC hdc) const
 	Texture* texture = this->currentAnimation->GetTexture();
 	Sprite* sprite = this->currentAnimation->GetCurrentSprite();
 
+	Math::Vector2<FLOAT> topLeft_relative = this->GetOwner()->GetTopLeft()
+		- SceneManager::GetActiveScene()->GetCamera()->GetTopLeft();
+
 
 
 	Gdiplus::ImageAttributes image_attribute = {};
@@ -150,8 +158,8 @@ void DM::AnimationRenderer::render_png(HDC hdc) const
 		texture->GetImage(),
 
 		Gdiplus::Rect(
-			static_cast<INT>(this->GetOwner()->GetTopLeft().x),
-			static_cast<INT>(this->GetOwner()->GetTopLeft().y),
+			static_cast<INT>(topLeft_relative.x),
+			static_cast<INT>(topLeft_relative.y),
 			static_cast<INT>(this->GetOwner()->GetSize().x),
 			static_cast<INT>(this->GetOwner()->GetSize().y)
 		),
