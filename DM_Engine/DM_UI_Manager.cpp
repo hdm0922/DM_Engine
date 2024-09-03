@@ -2,6 +2,7 @@
 
 #include "DM_UI_Frame.h"
 #include "DM_UI_Button.h"
+#include "DM_SceneManager.h"
 
 #include "Test_UI_Status.h"
 
@@ -23,7 +24,14 @@ namespace DM
 void DM::UI_Manager::Initialize()
 {
 
-	//UI_Manager::Create_UI<Test::UI_Status>();
+	UI_Manager::Create_UI<Test::UI_Status>();
+	UI_Button* x = UI_Manager::Create_UI<UI_Button>();
+	x->SetPosition(100, 0);
+	x->clickEvent = std::bind(&SceneManager::ZoomIn);
+
+	UI_Button* y = UI_Manager::Create_UI<UI_Button>();
+	y->SetPosition(10, 0);
+	y->clickEvent = std::bind(&SceneManager::ZoomOut);
 
 	return;
 }
@@ -64,6 +72,11 @@ void DM::UI_Manager::Render(HDC hdc)
 
 	std::queue<UI_Frame*> renderQueue =
 		UI_Manager::UI_renderQueue;
+
+	if (renderQueue.size() == 3)
+	{
+		int a = 0;
+	}
 
 	while (!renderQueue.empty())
 	{

@@ -53,7 +53,7 @@ void DM::UI_Button::Update()
 			topLeft, topLeft + this->size
 		);
 
-		if (cursorInButton) { this->OnEvent_Click(); }		
+		if (cursorInButton) { this->OnEvent_Click(); }
 	}
 
 	UI_Frame::Update();

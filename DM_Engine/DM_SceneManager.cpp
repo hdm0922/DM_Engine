@@ -66,6 +66,24 @@ void DM::SceneManager::LoadScene(const std::wstring& name)
 
 
 
+void DM::SceneManager::ZoomIn()
+{
+	SceneManager::sceneScale += {0.1f, 0.1f};
+}
+
+
+
+
+
+void DM::SceneManager::ZoomOut()
+{
+	SceneManager::sceneScale -= {0.1f, 0.1f};
+}
+
+
+
+
+
 DM::Scene* DM::SceneManager::GetScene(const std::wstring& name)
 {
 	auto iter = SceneManager::scenes.find(name);

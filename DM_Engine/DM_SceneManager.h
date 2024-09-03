@@ -29,6 +29,8 @@ public:
 	static void CreateScene(const std::wstring& name);
 
 	static void LoadScene(const std::wstring& name);
+	static void ZoomIn();
+	static void ZoomOut();
 
 
 public:

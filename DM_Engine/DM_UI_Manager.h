@@ -24,7 +24,7 @@ public:
 	static void RequestKill(UI_Frame* UI) { UI_Manager::UI_killQueue.push(UI); }
 
 	template <typename T>
-	static void Create_UI();
+	static T* Create_UI();
 
 
 private:
@@ -45,13 +45,13 @@ private:
 
 
 template<typename T>
-inline void DM::UI_Manager::Create_UI()
+inline T* DM::UI_Manager::Create_UI()
 {
 
-	UI_Frame* UI = dynamic_cast<UI_Frame*>(new T());
-	assert(UI);
+	T* UI = new T();
+	assert(static_cast<UI_Frame*>(UI));
 
-	UI_Manager::RequestLoad(UI);
+	UI_Manager::RequestLoad(static_cast<UI_Frame*>(UI));
 
-	return;
+	return UI;
 }
