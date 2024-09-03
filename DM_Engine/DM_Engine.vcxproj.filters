@@ -231,6 +231,9 @@
     <ClInclude Include="DM_Utility.h">
       <Filter>헤더 파일\Utility</Filter>
     </ClInclude>
+    <ClInclude Include="Test_GameStateComponent.h">
+      <Filter>헤더 파일\___TEST___\Components</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Test_UI_Status.cpp">
@@ -354,6 +357,9 @@
       <Filter>소스 파일\source</Filter>
     </ClCompile>
     <ClCompile Include="Test_KeybindComponent.cpp">
+      <Filter>소스 파일\___TEST___</Filter>
+    </ClCompile>
+    <ClCompile Include="Test_GameStateComponent.cpp">
       <Filter>소스 파일\___TEST___</Filter>
     </ClCompile>
   </ItemGroup>

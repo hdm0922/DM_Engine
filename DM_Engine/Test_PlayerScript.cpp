@@ -5,6 +5,7 @@
 #include "DM_RigidBodyComponent.h"
 #include "DM_AnimationRenderer.h"
 #include "Test_KeybindComponent.h"
+#include "Test_GameStateComponent.h"
 
 
 
@@ -72,19 +73,8 @@ void Test::PlayerScript::CollisionEvent_Enter(const DM::GameObject* other)
 void Test::PlayerScript::CollisionEvent_Collide(const DM::GameObject* other)
 {
 
-	DM::Math::Vector2<FLOAT> overlap;
-
-	overlap.x = std::min(this->GetOwner()->GetBottomRight().x, other->GetBottomRight().x) 
-		- std::max(this->GetOwner()->GetTopLeft().x, other->GetTopLeft().x);
-
-	overlap.y = std::min(this->GetOwner()->GetBottomRight().y, other->GetBottomRight().y)
-		- std::max(this->GetOwner()->GetTopLeft().y, other->GetTopLeft().y);
-
-	DM::Math::Vector2<FLOAT> delta = { 0, 0 };
-	if (overlap.x < overlap.y)	delta.x = (this->GetOwner()->GetTopLeft().x > other->GetTopLeft().x) ? overlap.x : -overlap.x;
-	else						delta.y = (this->GetOwner()->GetTopLeft().y > other->GetTopLeft().y) ? overlap.y : -overlap.y;
-
-	this->GetOwner()->SetPosition(this->GetOwner()->GetPosition() + delta);
+	GameStateComponent* gameState_other = other->GetComponent<GameStateComponent>();
+	if (gameState_other && gameState_other->BlocksPlayer()) this->blockedByGameObject(other);
 
 	return;
 }
@@ -399,6 +389,27 @@ void Test::PlayerScript::stateEnterEvent_Run()
 	case Enums::Direction::Down:	animationRenderer->Play(TEST_NAME_ANIMATION_PLAYER_MOVE_DOWN,	true); break;
 	case Enums::Direction::Up:		animationRenderer->Play(TEST_NAME_ANIMATION_PLAYER_MOVE_UP,		true); break;
 	}
+
+	return;
+}
+
+
+
+
+
+void Test::PlayerScript::blockedByGameObject(const DM::GameObject* object)
+{
+
+	DM::Math::Vector2<FLOAT> overlap;
+
+	overlap.x = std::min(this->GetOwner()->GetBottomRight().x, object->GetBottomRight().x) - std::max(this->GetOwner()->GetTopLeft().x, object->GetTopLeft().x);
+	overlap.y = std::min(this->GetOwner()->GetBottomRight().y, object->GetBottomRight().y) - std::max(this->GetOwner()->GetTopLeft().y, object->GetTopLeft().y);
+
+	DM::Math::Vector2<FLOAT> delta = { 0, 0 };
+	if (overlap.x < overlap.y)	delta.x = (this->GetOwner()->GetTopLeft().x > object->GetTopLeft().x) ? overlap.x : -overlap.x;
+	else						delta.y = (this->GetOwner()->GetTopLeft().y > object->GetTopLeft().y) ? overlap.y : -overlap.y;
+
+	this->GetOwner()->SetPosition(this->GetOwner()->GetPosition() + delta);
 
 	return;
 }

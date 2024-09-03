@@ -2,6 +2,7 @@
 
 #include "Test_TestObject.h"
 #include "Test_Player.h"
+#include "Test_GameStateComponent.h"
 
 #include "DM_ResourceManager.h"
 #include "DM_TransformComponent.h"
@@ -84,6 +85,9 @@ void Test::TestScene::Initialize()
 	monster->AddComponent<DM::Collider_Box2D>();
 	monster->AddComponent<DM::AudioSource>();
 	monster->GetComponent<DM::AudioSource>()->Play(DM_TEST_AUDIO_NAME, true);
+
+	GameStateComponent* gameState_monster = monster->GetComponent<GameStateComponent>();
+	gameState_monster->SetPlayerBlocking(true);
 	///
 
 	DM::Scene::Initialize();

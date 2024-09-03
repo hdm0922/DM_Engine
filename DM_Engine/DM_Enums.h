@@ -24,6 +24,7 @@ enum class DM::Enums::ComponentType
 	Transform,
 	Collider,
 	RigidBody,
+	State,
 	Script,
 	Render,
 	Audio,

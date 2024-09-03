@@ -45,6 +45,7 @@ public:
     virtual void CollisionEvent_Collide(const DM::GameObject* other) override;
     virtual void CollisionEvent_Exit(const DM::GameObject* other) override;
 
+
 private:
 
     void registerStateChangeConditions();
@@ -69,6 +70,10 @@ private:
     void stateEnterEvent_Idle();
     void stateEnterEvent_Walk();
     void stateEnterEvent_Run();
+
+
+    void blockedByGameObject(const DM::GameObject* object);
+
 
 
 private:
