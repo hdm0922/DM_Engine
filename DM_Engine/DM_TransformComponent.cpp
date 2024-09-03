@@ -1,5 +1,7 @@
 #include "DM_TransformComponent.h"
 
+#include "DM_SceneManager.h"
+
 
 
 
@@ -34,4 +36,16 @@ void DM::TransformComponent::Initialize()
 
 void DM::TransformComponent::Update()
 {
+}
+
+
+
+
+
+DM::Math::Vector2<FLOAT> DM::TransformComponent::GetScale() const
+{
+	return Math::Vector2<FLOAT>(
+		SceneManager::GetSceneScale().x * this->scale.x,
+		SceneManager::GetSceneScale().y * this->scale.y
+	);
 }

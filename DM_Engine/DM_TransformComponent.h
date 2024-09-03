@@ -35,7 +35,7 @@ public:
     void SetRotation(FLOAT rotation) { this->rotation = rotation; }
 
     Math::Vector2<FLOAT> GetPosition() const { return this->position; }
-    Math::Vector2<FLOAT> GetScale() const { return this->scale; }
+    Math::Vector2<FLOAT> GetScale() const;
     FLOAT GetRotation() const { return this->rotation; }
 
 

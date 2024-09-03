@@ -33,14 +33,19 @@ public:
 
 public:
 
+	static void SetSceneScale(Math::Vector2<FLOAT> scale) { SceneManager::sceneScale = scale; }
+
 	static Scene* GetScene(const std::wstring& name);
 	static Scene* GetActiveScene() { return SceneManager::activeScene; }
+	static Math::Vector2<FLOAT> GetSceneScale() { return SceneManager::sceneScale; }
 
 
 private:
 
 	static Scene* activeScene;
 	static std::map<const std::wstring, Scene*> scenes;
+
+	static Math::Vector2<FLOAT> sceneScale;
 
 
 };

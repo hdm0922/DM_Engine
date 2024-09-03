@@ -8,6 +8,7 @@ namespace DM
 {
 	Scene* SceneManager::activeScene = nullptr;
 	std::map<const std::wstring, Scene*> SceneManager::scenes = {};
+	Math::Vector2<FLOAT> SceneManager::sceneScale = { 1.0f, 1.0f };
 }
 
 
