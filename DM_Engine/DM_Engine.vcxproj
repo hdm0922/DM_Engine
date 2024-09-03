@@ -146,6 +146,7 @@ copy "$(SolutionDir)\External\FMod\x64\fmodstudioL.dll" "$(SolutionDir)\x64\Debu
     <ClInclude Include="DM_AudioComponent.h" />
     <ClInclude Include="DM_AudioListener.h" />
     <ClInclude Include="DM_AudioSource.h" />
+    <ClInclude Include="DM_Camera.h" />
     <ClInclude Include="DM_ColliderComponent.h" />
     <ClInclude Include="DM_Collider_Box2D.h" />
     <ClInclude Include="DM_CollisionManager.h" />
@@ -202,6 +203,7 @@ copy "$(SolutionDir)\External\FMod\x64\fmodstudioL.dll" "$(SolutionDir)\x64\Debu
     <ClCompile Include="DM_AudioComponent.cpp" />
     <ClCompile Include="DM_AudioListener.cpp" />
     <ClCompile Include="DM_AudioSource.cpp" />
+    <ClCompile Include="DM_Camera.cpp" />
     <ClCompile Include="DM_ColliderComponent.cpp" />
     <ClCompile Include="DM_Collider_Box2D.cpp" />
     <ClCompile Include="DM_CollisionManager.cpp" />

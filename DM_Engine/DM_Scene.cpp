@@ -2,6 +2,7 @@
 
 #include "DM_Layer.h"
 #include "DM_GameObject.h"
+#include "DM_Camera.h"
 
 
 
@@ -12,6 +13,7 @@ DM::Scene::Scene(const std::wstring& name)
 	, layers({})
 	, layerCollisionMatrix(nullptr)
 	, LAYER_SIZE(static_cast<INT>(Enums::LayerType::None))
+	, camera(new Camera(name + L" Camera"))
 {
 
 	for (INT iter = 0; iter < LAYER_SIZE; iter++)

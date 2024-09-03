@@ -10,6 +10,7 @@ namespace DM
 	class Scene;
 	class Layer;
 	class GameObject;
+	class Camera;
 }
 
 
@@ -41,6 +42,7 @@ public:
 
 	Layer* GetLayer(Enums::LayerType layerType) const { return this->layers[static_cast<UINT>(layerType)]; }
 	BOOL GetLayerCollision(UINT layer1, UINT layer2) const { return this->layerCollisionMatrix[layer1][layer2]; }
+	Camera* GetCamera() const { return this->camera; }
 
 
 private:
@@ -50,6 +52,6 @@ private:
 	BOOL** layerCollisionMatrix;
 	const INT LAYER_SIZE;
 
-
+	Camera* camera;
 };
 
