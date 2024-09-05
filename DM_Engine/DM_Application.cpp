@@ -28,10 +28,10 @@ namespace DM
 void DM::Application::Initialize(Window* mainWindow)
 {
 
-	GameLoadManager::LoadGame();
-
 	Application::mainWindow = mainWindow;
 	Application::initializeWindow();
+
+	GameLoadManager::LoadGame();
 
 	Input::Initialize();
 	Time::Initialize();

@@ -23,6 +23,9 @@ void DM::SceneManager::Initialize()
 		iter.second->Initialize();
 	}
 
+	SceneManager::LoadScene(L"Editor Scene");
+
+	return;
 }
 
 

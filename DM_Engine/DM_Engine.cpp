@@ -49,8 +49,6 @@ INT APIENTRY wWinMain(
     DM::Window::SetInstance(hInstance);
 
     DM::mainWindow = new DM::Window(L"Main Window", DM::WndProc_Engine, true);
-    //DM::mainWindow->CreateSubWindow(L"Sub Window", DM::WndProc_Engine, false);
-
     DM::mainWindow->Show(nCmdShow);
 
     DM::Application::Initialize(DM::mainWindow);

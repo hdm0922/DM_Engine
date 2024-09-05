@@ -20,6 +20,7 @@ DM::Window::Window(const std::wstring& name, WNDPROC WndProc, bool renderWindow)
     , renderWindow(renderWindow)
     , topLeft(0, 0)
     , size(1024, 768)
+    , parentWindow(nullptr)
     , subWindows({})
 {
 
@@ -38,6 +39,7 @@ DM::Window::Window(const std::wstring& name, WNDPROC WndProc, bool renderWindow)
 		nullptr);
 
     this->SetHandle(hWnd);
+    this->RearrangeWindow(this->GetTopLeft(), this->GetSize());
 
 }
 
@@ -91,6 +93,8 @@ void DM::Window::CreateSubWindow(const std::wstring& name, WNDPROC WndProc, bool
     if (subWindow) return;
 
     subWindow = new Window(name, WndProc, renderWindow);
+
+    subWindow->parentWindow = this;
     this->subWindows.insert({ name, subWindow });
 
     return;
@@ -100,12 +104,12 @@ void DM::Window::CreateSubWindow(const std::wstring& name, WNDPROC WndProc, bool
 
 
 
-void DM::Window::ResizeWindow(UINT x, UINT y)
+void DM::Window::ResizeWindow(INT x, INT y)
 {
 
     this->RearrangeWindow(
         this->GetTopLeft(),
-        Math::Vector2<UINT>(x, y)
+        Math::Vector2<INT>(x, y)
     );
 
     return;
@@ -115,7 +119,7 @@ void DM::Window::ResizeWindow(UINT x, UINT y)
 
 
 
-void DM::Window::ResizeWindow(const Math::Vector2<UINT> size)
+void DM::Window::ResizeWindow(const Math::Vector2<INT> size)
 {
 
     this->RearrangeWindow(
@@ -130,10 +134,10 @@ void DM::Window::ResizeWindow(const Math::Vector2<UINT> size)
 
 
 
-void DM::Window::RearrangeWindow(const Math::Vector2<UINT> topLeft, const Math::Vector2<UINT> size)
+void DM::Window::RearrangeWindow(const Math::Vector2<INT> topLeft, const Math::Vector2<INT> size)
 {
 
-    this->SetTopLeft(topLeft);
+    this->SetTopLeft_Relative(topLeft);
     this->SetSize(size);
 
     RECT windowRect = { 
@@ -178,7 +182,7 @@ ATOM DM::Window::registerWindow(WNDPROC proc) const
     WNDCLASSEXW wcex = {};
 
     wcex.cbSize = sizeof(WNDCLASSEX);
-
+    
     wcex.style = CS_HREDRAW | CS_VREDRAW;
     wcex.lpfnWndProc = proc;
     wcex.cbClsExtra = 0;

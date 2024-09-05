@@ -11,6 +11,14 @@
 DM::EditorScene::EditorScene(const std::wstring& name)
 	: Scene(name)
 {
+	Application::GetMainWindow()->CreateSubWindow(L"TileWindow", WndProc_TileWindow, true);
+	this->tileWindow = Application::GetMainWindow()->GetSubWindow(L"TileWindow");
+
+	this->tileWindow->SetTopLeft_Relative({ 100, 0 });
+	this->tileWindow->ResizeWindow(500, 300);
+
+	auto k1 = Application::GetMainWindow()->GetTopLeft();
+	auto k2 = this->tileWindow->GetTopLeft();
 }
 
 
@@ -52,8 +60,7 @@ void DM::EditorScene::Render(HDC hdc) const
 void DM::EditorScene::EnterScene()
 {
 
-	//Application::GetMainWindow()->CreateSubWindow(L"TileWindow", WndProc_Engine, true);
-	//Window* tileWindow = Application::GetMainWindow()->GetSubWindow(L"TileWindow");
+	this->tileWindow->Show();
 
 }
 

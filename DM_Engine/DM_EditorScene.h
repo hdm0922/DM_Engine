@@ -8,6 +8,7 @@
 namespace DM
 {
     class EditorScene;
+	class Window;
 }
 
 
@@ -29,5 +30,11 @@ public:
 
 	virtual void EnterScene() override;
 	virtual void ExitScene() override;
+
+
+private:
+
+	Window* tileWindow;
+
 
 };

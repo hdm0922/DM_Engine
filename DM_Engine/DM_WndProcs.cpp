@@ -44,6 +44,29 @@ LRESULT CALLBACK DM::WndProc_Engine(HWND hWnd, UINT message, WPARAM wParam, LPAR
 
 
 
+LRESULT CALLBACK DM::WndProc_TileWindow(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
+{
+
+    switch (message)
+    {
+    case WM_COMMAND: break;
+    case WM_PAINT: 
+    {
+        PAINTSTRUCT ps;
+        HDC hdc = BeginPaint(hWnd, &ps);
+        EndPaint(hWnd, &ps);
+    }   break;
+    case WM_DESTROY: PostQuitMessage(0); break;
+    default: return DefWindowProc(hWnd, message, wParam, lParam);
+    }
+
+    return 0;
+}
+
+
+
+
+
 INT_PTR CALLBACK DM::About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam)
 {
     UNREFERENCED_PARAMETER(lParam);
