@@ -151,6 +151,7 @@ copy "$(SolutionDir)\External\FMod\x64\fmodstudioL.dll" "$(SolutionDir)\x64\Debu
     <ClInclude Include="DM_Collider_Box2D.h" />
     <ClInclude Include="DM_CollisionManager.h" />
     <ClInclude Include="DM_Component.h" />
+    <ClInclude Include="DM_EditorScene.h" />
     <ClInclude Include="DM_Engine.h" />
     <ClInclude Include="DM_Engine_Macro.h" />
     <ClInclude Include="DM_Entity.h" />
@@ -208,6 +209,7 @@ copy "$(SolutionDir)\External\FMod\x64\fmodstudioL.dll" "$(SolutionDir)\x64\Debu
     <ClCompile Include="DM_Collider_Box2D.cpp" />
     <ClCompile Include="DM_CollisionManager.cpp" />
     <ClCompile Include="DM_Component.cpp" />
+    <ClCompile Include="DM_EditorScene.cpp" />
     <ClCompile Include="DM_Engine.cpp" />
     <ClCompile Include="DM_FMod.cpp" />
     <ClCompile Include="DM_GameLoadManager.cpp" />

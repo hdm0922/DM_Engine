@@ -15,6 +15,9 @@ Test::UI_Status::UI_Status(const std::wstring& name)
 	closeButton->SetParent_UI(this);
 	closeButton->clickEvent = std::bind(&UI_Status::close, this);
 
+	closeButton->SetPosition(200,0);
+	closeButton->SetOriginalSize(50, 50);
+
 }
 
 

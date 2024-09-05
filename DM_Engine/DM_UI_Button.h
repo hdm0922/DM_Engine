@@ -38,11 +38,5 @@ protected:
     virtual void load() override;
     
 
-private:
-
-    
-
-    // temp
-    Math::Vector2<FLOAT> size;
 };
 

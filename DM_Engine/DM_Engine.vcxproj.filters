@@ -70,6 +70,9 @@
     <Filter Include="헤더 파일\___TEST___\Components">
       <UniqueIdentifier>{aa11abce-da12-471e-9d9e-b273277ffc18}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\Scenes">
+      <UniqueIdentifier>{e983beb5-1a13-4002-a8da-54438d64b754}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -237,6 +240,9 @@
     <ClInclude Include="DM_Camera.h">
       <Filter>헤더 파일\Object</Filter>
     </ClInclude>
+    <ClInclude Include="DM_EditorScene.h">
+      <Filter>헤더 파일\Scenes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Test_UI_Status.cpp">
@@ -366,6 +372,9 @@
       <Filter>소스 파일\___TEST___</Filter>
     </ClCompile>
     <ClCompile Include="DM_Camera.cpp">
+      <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_EditorScene.cpp">
       <Filter>소스 파일\source</Filter>
     </ClCompile>
   </ItemGroup>
