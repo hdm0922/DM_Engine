@@ -1,5 +1,11 @@
 #include "DM_WndProcs.h"
+
 #include "DM_Window.h"
+#include "DM_ResourceManager.h"
+
+#include "Test_Framework.h"
+
+
 
 
 
@@ -21,20 +27,10 @@ LRESULT CALLBACK DM::WndProc_Engine(HWND hWnd, UINT message, WPARAM wParam, LPAR
         default:
             return DefWindowProc(hWnd, message, wParam, lParam);
         }
-    }
-    break;
-    case WM_PAINT:
-    {
-        PAINTSTRUCT ps;
-        HDC hdc = BeginPaint(hWnd, &ps);
-        EndPaint(hWnd, &ps);
-    }
-    break;
-    case WM_DESTROY:
-        PostQuitMessage(0);
-        break;
-    default:
-        return DefWindowProc(hWnd, message, wParam, lParam);
+    } break;
+    case WM_PAINT: Paint(hWnd, DM::Paint_Nothing); break;
+    case WM_DESTROY: PostQuitMessage(0); break;
+    default: return DefWindowProc(hWnd, message, wParam, lParam);
     }
     return 0;
 
@@ -50,13 +46,7 @@ LRESULT CALLBACK DM::WndProc_TileWindow(HWND hWnd, UINT message, WPARAM wParam, 
     switch (message)
     {
     case WM_COMMAND: break;
-    case WM_PAINT: 
-    {
-        PAINTSTRUCT ps;
-        HDC hdc = BeginPaint(hWnd, &ps);
-        EndPaint(hWnd, &ps);
-    }   break;
-    case WM_DESTROY: PostQuitMessage(0); break;
+    case WM_PAINT: DM::Paint(hWnd, DM::Paint_Nothing); break;
     default: return DefWindowProc(hWnd, message, wParam, lParam);
     }
 
@@ -84,4 +74,53 @@ INT_PTR CALLBACK DM::About(HWND hDlg, UINT message, WPARAM wParam, LPARAM lParam
         break;
     }
     return (INT_PTR)FALSE;
+}
+
+
+
+
+
+void DM::Paint(HWND hWnd, std::function<void(HDC)> paintFunction)
+{
+    PAINTSTRUCT ps;
+    HDC hdc = BeginPaint(hWnd, &ps);
+    paintFunction(hdc);
+    EndPaint(hWnd, &ps);
+}
+
+
+
+
+
+void DM::Paint_Nothing(HDC hdc)
+{
+}
+
+
+
+
+
+void DM::Paint_TileSheet(HDC hdc)
+{
+
+    Texture* tileSheet = ResourceManager::GetResource<Texture>(L"");
+
+    TransparentBlt(
+
+        hdc,
+        static_cast<INT>(0),
+        static_cast<INT>(0),
+        static_cast<INT>(tileSheet->GetWidth()),
+        static_cast<INT>(tileSheet->GetHeight()),
+
+        tileSheet->GetDeviceContext(),
+        static_cast<INT>(0),
+        static_cast<INT>(0),
+        static_cast<INT>(tileSheet->GetWidth()),
+        static_cast<INT>(tileSheet->GetHeight()),
+
+        RGB(255, 0, 255)
+    );
+
+
 }

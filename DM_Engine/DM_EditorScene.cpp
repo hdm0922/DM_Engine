@@ -3,6 +3,7 @@
 #include "DM_Window.h"
 #include "DM_WndProcs.h"
 #include "DM_Application.h"
+#include "DM_Input.h"
 
 
 
@@ -10,15 +11,14 @@
 
 DM::EditorScene::EditorScene(const std::wstring& name)
 	: Scene(name)
+	, tileWindow(nullptr)
 {
 	Application::GetMainWindow()->CreateSubWindow(L"TileWindow", WndProc_TileWindow, true);
 	this->tileWindow = Application::GetMainWindow()->GetSubWindow(L"TileWindow");
 
-	this->tileWindow->SetTopLeft_Relative({ 100, 0 });
-	this->tileWindow->ResizeWindow(500, 300);
+	this->tileWindow->SetTopLeft_Relative({ Application::GetMainWindow()->GetSize().x, 0 });
+	this->tileWindow->ResizeWindow(300, 500);
 
-	auto k1 = Application::GetMainWindow()->GetTopLeft();
-	auto k2 = this->tileWindow->GetTopLeft();
 }
 
 

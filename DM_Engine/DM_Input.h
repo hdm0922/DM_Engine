@@ -11,7 +11,7 @@ namespace DM
 {
 	class Input;
 	class Application;
-	class Window;	
+	class Window;
 }
 
 
@@ -30,6 +30,13 @@ public:
 		BOOL keyHold;
 	};
 
+	struct DragEvent
+	{
+		BOOL valid;
+		Math::Vector2<FLOAT> startPosition;
+		Math::Vector2<FLOAT> endPosition;
+	};
+
 
 public:
 
@@ -43,6 +50,7 @@ public:
 	static BOOL GetKeyReleased(int keyCode, Window* activeWindow = Application::GetMainWindow());
 	static BOOL GetKeyPressed(int keyCode, Window* activeWindow = Application::GetMainWindow());
 
+	static DragEvent GetDragEvent() { return Input::dragEvent; }
 	static Math::Vector2<FLOAT> GetCursorPosition() { return Input::cursorPosition; }
 
 
@@ -50,9 +58,13 @@ private:
 
 	static void createKeys();
 	static void updateKey(Key& key);
+
+	static void checkDragEvent();
 	static void updateCursor();
+
 	static void updateKeyState_Up(Key& key);
 	static void updateKeyState_Pressed(Key& key);
+
 	static void resetKeyStates();
 	static void resetKeyState(Key& key);
 
@@ -61,5 +73,8 @@ private:
 
 	static std::vector<Key> keys;
 	static Math::Vector2<FLOAT> cursorPosition;
+	static DragEvent dragEvent;
+
+
 };
 

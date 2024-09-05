@@ -11,6 +11,8 @@ namespace DM
 {
 	std::vector<Input::Key> Input::keys = {};
 	Math::Vector2<FLOAT> Input::cursorPosition = {};
+	Input::DragEvent Input::dragEvent = {};
+
 }
 
 
@@ -44,6 +46,7 @@ void DM::Input::Update()
 	}
 
 	Input::updateCursor();
+	Input::checkDragEvent();
 
 	return;
 }
@@ -122,6 +125,24 @@ void DM::Input::updateKey(Key& key)
 	return;
 
 }
+
+
+
+
+void DM::Input::checkDragEvent()
+{
+	
+	if (Input::GetKeyPressed(VK_LBUTTON))
+		Input::dragEvent.startPosition = Input::GetCursorPosition();
+
+	if (Input::GetKeyReleased(VK_LBUTTON))
+		Input::dragEvent.endPosition = Input::GetCursorPosition();
+
+	Input::dragEvent.valid = Input::GetKeyReleased(VK_LBUTTON);
+
+	return;
+}
+
 
 
 

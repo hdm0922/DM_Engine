@@ -6,6 +6,9 @@
 #define TEST_NAME_TEXTURE_MONSTER						L"Monster Texture"
 #define TEST_PATH_TEXTURE_MONSTER						L"..//Resources//texture//Monsters.png"
 
+#define TEST_NAME_TEXTURE_TILESHEET						L"Tile Sheet Texture"
+#define TEST_PATH_TEXTURE_TILESHEET						L""
+
 #define TEST_NAME_ANIMATION_PLAYER_IDLE_RIGHT			L"Player Animation Idle Right"
 #define TEST_NAME_ANIMATION_PLAYER_IDLE_LEFT			L"Player Animation Idle Left"
 #define TEST_NAME_ANIMATION_PLAYER_IDLE_DOWN			L"Player Animation Idle Down"
