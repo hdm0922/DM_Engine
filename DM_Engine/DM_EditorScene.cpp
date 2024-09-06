@@ -5,6 +5,8 @@
 #include "DM_Application.h"
 #include "DM_Input.h"
 
+#include "Test_Framework.h"
+
 
 
 
@@ -51,6 +53,21 @@ void DM::EditorScene::Update()
 
 void DM::EditorScene::Render(HDC hdc) const
 {
+
+	for (UINT iter = 0; iter < 100; iter++)
+	{
+
+		INT position_x = TILE_SIZE.x * iter;
+		MoveToEx(hdc, position_x, 0, nullptr);
+		LineTo(hdc, position_x, 1000);
+
+		INT position_y = TILE_SIZE.y * iter;
+		MoveToEx(hdc, 0, position_y, nullptr);
+		LineTo(hdc, 1000, position_y);
+
+	}
+
+	Scene::Render(hdc);
 }
 
 

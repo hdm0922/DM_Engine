@@ -46,7 +46,7 @@ LRESULT CALLBACK DM::WndProc_TileWindow(HWND hWnd, UINT message, WPARAM wParam, 
     switch (message)
     {
     case WM_COMMAND: break;
-    case WM_PAINT: DM::Paint(hWnd, DM::Paint_Nothing); break;
+    case WM_PAINT: DM::Paint(hWnd, DM::Paint_TileSheet); break;
     default: return DefWindowProc(hWnd, message, wParam, lParam);
     }
 
@@ -102,6 +102,21 @@ void DM::Paint_Nothing(HDC hdc)
 
 void DM::Paint_TileSheet(HDC hdc)
 {
+
+    for (UINT iter = 0; iter < 100; iter++)
+    {
+
+        INT position_x = TILE_SIZE.x * iter;
+        MoveToEx(hdc, position_x, 0, nullptr);
+        LineTo(hdc, position_x, 1000);
+
+        INT position_y = TILE_SIZE.y * iter;
+        MoveToEx(hdc, 0, position_y, nullptr);
+        LineTo(hdc, 1000, position_y);
+
+    }
+
+    return;
 
     Texture* tileSheet = ResourceManager::GetResource<Texture>(L"");
 

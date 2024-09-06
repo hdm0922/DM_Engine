@@ -1,4 +1,5 @@
 #pragma once
+#include "DM_Math.h"
 
 #define TEST_NAME_TEXTURE_PLAYER						L"Player Texture"
 #define TEST_PATH_TEXTURE_PLAYER						L"..//Resources//texture//Player.bmp"
@@ -23,3 +24,5 @@
 #define TEST_NAME_ANIMATION_MONSTER_MOVE_LEFT			L"Monster Animation Move Left"
 #define TEST_NAME_ANIMATION_MONSTER_MOVE_DOWN			L"Monster Animation Move Down"
 #define TEST_NAME_ANIMATION_MONSTER_MOVE_UP				L"Monster Animation Move Up"
+
+#define TILE_SIZE										DM::Math::Vector2<UINT>(16,16)
