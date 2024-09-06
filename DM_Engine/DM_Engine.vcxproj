@@ -173,6 +173,14 @@ copy "$(SolutionDir)\External\FMod\x64\fmodstudioL.dll" "$(SolutionDir)\x64\Debu
     <ClInclude Include="DM_Sprite.h" />
     <ClInclude Include="DM_SpriteRenderer.h" />
     <ClInclude Include="DM_Utility.h" />
+    <ClInclude Include="SDV_Enums.h" />
+    <ClInclude Include="SDV_Framework.h" />
+    <ClInclude Include="SDV_GameStateComponent.h" />
+    <ClInclude Include="SDV_KeybindComponent.h" />
+    <ClInclude Include="SDV_Macros.h" />
+    <ClInclude Include="SDV_Pawn.h" />
+    <ClInclude Include="SDV_Player.h" />
+    <ClInclude Include="SDV_PlayerScript.h" />
     <ClInclude Include="Test_Enums.h" />
     <ClInclude Include="Test_Framework.h" />
     <ClInclude Include="Test_GameStateComponent.h" />
@@ -226,6 +234,11 @@ copy "$(SolutionDir)\External\FMod\x64\fmodstudioL.dll" "$(SolutionDir)\x64\Debu
     <ClCompile Include="DM_SceneManager.cpp" />
     <ClCompile Include="DM_ScriptComponent.cpp" />
     <ClCompile Include="DM_SpriteRenderer.cpp" />
+    <ClCompile Include="SDV_GameStateComponent.cpp" />
+    <ClCompile Include="SDV_KeybindComponent.cpp" />
+    <ClCompile Include="SDV_Pawn.cpp" />
+    <ClCompile Include="SDV_Player.cpp" />
+    <ClCompile Include="SDV_PlayerScript.cpp" />
     <ClCompile Include="Test_GameStateComponent.cpp" />
     <ClCompile Include="Test_KeybindComponent.cpp" />
     <ClCompile Include="Test_Player.cpp" />

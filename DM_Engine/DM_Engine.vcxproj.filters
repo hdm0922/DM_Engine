@@ -73,6 +73,21 @@
     <Filter Include="헤더 파일\Scenes">
       <UniqueIdentifier>{e983beb5-1a13-4002-a8da-54438d64b754}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\__SDV__">
+      <UniqueIdentifier>{e76bc66a-9542-48b1-bfef-c3ca6c1eee82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\__SDV__\Pawn">
+      <UniqueIdentifier>{5e8871da-cc66-437c-8ccf-859dc89f7f7b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="소스 파일\__SDV__">
+      <UniqueIdentifier>{4fcad3da-8d33-4df4-b1ad-3200e851df76}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\__SDV__\Component">
+      <UniqueIdentifier>{46d2524a-ecdc-46f5-98c6-a2e9526c79b7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\__SDV__\Script">
+      <UniqueIdentifier>{623fc324-cd55-4e31-bf0b-b9232d680055}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -243,6 +258,30 @@
     <ClInclude Include="DM_EditorScene.h">
       <Filter>헤더 파일\Scenes</Filter>
     </ClInclude>
+    <ClInclude Include="SDV_Enums.h">
+      <Filter>헤더 파일\__SDV__</Filter>
+    </ClInclude>
+    <ClInclude Include="SDV_Framework.h">
+      <Filter>헤더 파일\__SDV__</Filter>
+    </ClInclude>
+    <ClInclude Include="SDV_Macros.h">
+      <Filter>헤더 파일\__SDV__</Filter>
+    </ClInclude>
+    <ClInclude Include="SDV_Pawn.h">
+      <Filter>헤더 파일\__SDV__\Pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="SDV_GameStateComponent.h">
+      <Filter>헤더 파일\__SDV__\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="SDV_KeybindComponent.h">
+      <Filter>헤더 파일\__SDV__\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="SDV_Player.h">
+      <Filter>헤더 파일\__SDV__\Pawn</Filter>
+    </ClInclude>
+    <ClInclude Include="SDV_PlayerScript.h">
+      <Filter>헤더 파일\__SDV__\Script</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Test_UI_Status.cpp">
@@ -376,6 +415,21 @@
     </ClCompile>
     <ClCompile Include="DM_EditorScene.cpp">
       <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="SDV_Pawn.cpp">
+      <Filter>소스 파일\__SDV__</Filter>
+    </ClCompile>
+    <ClCompile Include="SDV_GameStateComponent.cpp">
+      <Filter>소스 파일\__SDV__</Filter>
+    </ClCompile>
+    <ClCompile Include="SDV_KeybindComponent.cpp">
+      <Filter>소스 파일\__SDV__</Filter>
+    </ClCompile>
+    <ClCompile Include="SDV_Player.cpp">
+      <Filter>소스 파일\__SDV__</Filter>
+    </ClCompile>
+    <ClCompile Include="SDV_PlayerScript.cpp">
+      <Filter>소스 파일\__SDV__</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>
