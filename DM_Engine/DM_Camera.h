@@ -29,8 +29,8 @@ public:
     virtual void Initialize();
     virtual void Update();
 
-    Math::Vector2<FLOAT> GetPosition_Relative(Math::Vector2<FLOAT> position) { return position - this->GetTopLeft(); }
-    //Math::Vector2<FLOAT> GetPosition_Relative(Math::Vector2<FLOAT> position) { return position; }
+    //Math::Vector2<FLOAT> GetPosition_Relative(Math::Vector2<FLOAT> position) { return position - this->GetTopLeft(); }
+    Math::Vector2<FLOAT> GetPosition_Relative(Math::Vector2<FLOAT> position) { return position; }
 
 
 public:

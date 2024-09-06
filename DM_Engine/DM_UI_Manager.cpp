@@ -4,8 +4,6 @@
 #include "DM_UI_Button.h"
 #include "DM_SceneManager.h"
 
-#include "Test_UI_Status.h"
-
 
 
 
@@ -23,9 +21,6 @@ namespace DM
 
 void DM::UI_Manager::Initialize()
 {
-
-	//UI_Manager::Create_UI<Test::UI_Status>();
-
 
 	return;
 }

@@ -3,7 +3,7 @@
 #include "DM_Window.h"
 #include "DM_ResourceManager.h"
 
-#include "Test_Framework.h"
+#include "SDV_Framework.h"
 
 
 
@@ -106,11 +106,11 @@ void DM::Paint_TileSheet(HDC hdc)
     for (UINT iter = 0; iter < 100; iter++)
     {
 
-        INT position_x = TILE_SIZE.x * iter;
+        INT position_x = SDV_TILE_SIZE.x * iter;
         MoveToEx(hdc, position_x, 0, nullptr);
         LineTo(hdc, position_x, 1000);
 
-        INT position_y = TILE_SIZE.y * iter;
+        INT position_y = SDV_TILE_SIZE.y * iter;
         MoveToEx(hdc, 0, position_y, nullptr);
         LineTo(hdc, 1000, position_y);
 

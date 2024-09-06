@@ -2,10 +2,9 @@
 
 #include "DM_ResourceManager.h"
 #include "DM_SceneManager.h"
-
-#include "Test_TestScene.h"
 #include "DM_EditorScene.h"
 
+#include "Test_TestScene.h"
 #include "Test_Framework.h"
 #include "Test_TestObject.h"
 

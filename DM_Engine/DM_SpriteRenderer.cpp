@@ -4,6 +4,9 @@
 #include "DM_TransformComponent.h"
 #include "DM_Texture.h"
 #include "DM_Sprite.h"
+#include "DM_SceneManager.h"
+#include "DM_Scene.h"
+#include "DM_Camera.h"
 
 
 
@@ -77,22 +80,23 @@ void DM::SpriteRenderer::Render(HDC hdc) const
 void DM::SpriteRenderer::render_bmp(HDC hdc) const
 {
 
-	const Sprite* sprite = this->GetSprite();
-
+	Math::Vector2<FLOAT> topLeft_relative = 
+		SceneManager::GetActiveScene()->GetCamera()
+		->GetPosition_Relative(this->GetOwner()->GetTopLeft());
 
 	TransparentBlt(
 
 		hdc,
-		static_cast<INT>(this->GetOwner()->GetTopLeft().x),
-		static_cast<INT>(this->GetOwner()->GetTopLeft().y),
+		static_cast<INT>(topLeft_relative.x),
+		static_cast<INT>(topLeft_relative.y),
 		static_cast<INT>(this->GetOwner()->GetSize().x),
 		static_cast<INT>(this->GetOwner()->GetSize().y),
 
 		this->GetTexture()->GetDeviceContext(),
 		sprite->topLeft.x + sprite->offset.x,
 		sprite->topLeft.y + sprite->offset.y,
-		static_cast<INT>(this->GetOwner()->GetOriginalSize().x),
-		static_cast<INT>(this->GetOwner()->GetOriginalSize().y),
+		static_cast<INT>(sprite->size.x),
+		static_cast<INT>(sprite->size.y),
 
 		RGB(255, 0, 255)
 	);
@@ -107,10 +111,6 @@ void DM::SpriteRenderer::render_bmp(HDC hdc) const
 void DM::SpriteRenderer::render_png(HDC hdc) const
 {
 
-	TransformComponent* transform = 
-		this->GetOwner()->GetComponent<TransformComponent>();
-
-
 	Gdiplus::ImageAttributes image_attribute = {};
 
 	// 투명화 시킬 색의 범위 지정
@@ -119,22 +119,28 @@ void DM::SpriteRenderer::render_png(HDC hdc) const
 		Gdiplus::Color(255, 0, 255)
 	);
 
-
 	Gdiplus::Graphics graphics(hdc);
+
+
+	Math::Vector2<FLOAT> topLeft_relative =
+		SceneManager::GetActiveScene()->GetCamera()
+		->GetPosition_Relative(this->GetOwner()->GetTopLeft());
+
 
 	graphics.DrawImage(
 		this->texture->GetImage(),
 
 		Gdiplus::Rect(
-			static_cast<INT>(this->GetOwner()->GetTopLeft().x),
-			static_cast<INT>(this->GetOwner()->GetTopLeft().y),
-			static_cast<INT>(texture->GetWidth() * transform->GetScale().x),
-			static_cast<INT>(texture->GetHeight() * transform->GetScale().y)
+			static_cast<INT>(topLeft_relative.x),
+			static_cast<INT>(topLeft_relative.y),
+			static_cast<INT>(this->GetOwner()->GetSize().x),
+			static_cast<INT>(this->GetOwner()->GetSize().y)
 		),
 
-		0, 0,
-		static_cast<INT>(texture->GetWidth()),
-		static_cast<INT>(texture->GetHeight()),
+		sprite->topLeft.x + sprite->offset.x,
+		sprite->topLeft.y + sprite->offset.y,
+		static_cast<INT>(sprite->size.x),
+		static_cast<INT>(sprite->size.y),
 
 		Gdiplus::UnitPixel,
 		&image_attribute
