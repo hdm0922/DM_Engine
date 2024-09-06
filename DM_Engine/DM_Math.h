@@ -28,6 +28,9 @@ struct DM::Math::Vector2
 	Vector2(T _x) : Vector2(_x, _x) {}
 	Vector2(T _x, T _y) : x(_x), y(_y) {}
 
+	template <typename U>
+	Vector2(Vector2<U> v) : Vector2(static_cast<T>(v.x), static_cast<T>(v.y)) {}
+
 	static Vector2<T> absoluteValue(Vector2<T> vector);
 	
 	Vector2<T> operator+(const Vector2<T>& other)	const { return { this->x + other.x, this->y + other.y }; }

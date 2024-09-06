@@ -70,6 +70,10 @@ void DM::GameLoadManager::loadResources_Texture()
         TEST_PATH_TEXTURE_MONSTER
     );
 
+    ResourceManager::LoadResource<Texture>(
+        SDV_NAME_TEXTURE_SPRING_OUTDOOR,
+        SDV_PATH_TEXTURE_SPRING_OUTDOOR
+    );
 }
 
 

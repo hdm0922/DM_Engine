@@ -76,9 +76,6 @@
     <Filter Include="헤더 파일\__SDV__">
       <UniqueIdentifier>{e76bc66a-9542-48b1-bfef-c3ca6c1eee82}</UniqueIdentifier>
     </Filter>
-    <Filter Include="헤더 파일\__SDV__\Pawn">
-      <UniqueIdentifier>{5e8871da-cc66-437c-8ccf-859dc89f7f7b}</UniqueIdentifier>
-    </Filter>
     <Filter Include="소스 파일\__SDV__">
       <UniqueIdentifier>{4fcad3da-8d33-4df4-b1ad-3200e851df76}</UniqueIdentifier>
     </Filter>
@@ -87,6 +84,9 @@
     </Filter>
     <Filter Include="헤더 파일\__SDV__\Script">
       <UniqueIdentifier>{623fc324-cd55-4e31-bf0b-b9232d680055}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="헤더 파일\__SDV__\Object">
+      <UniqueIdentifier>{5e8871da-cc66-437c-8ccf-859dc89f7f7b}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -268,7 +268,7 @@
       <Filter>헤더 파일\__SDV__</Filter>
     </ClInclude>
     <ClInclude Include="SDV_Pawn.h">
-      <Filter>헤더 파일\__SDV__\Pawn</Filter>
+      <Filter>헤더 파일\__SDV__\Object</Filter>
     </ClInclude>
     <ClInclude Include="SDV_GameStateComponent.h">
       <Filter>헤더 파일\__SDV__\Component</Filter>
@@ -277,10 +277,13 @@
       <Filter>헤더 파일\__SDV__\Component</Filter>
     </ClInclude>
     <ClInclude Include="SDV_Player.h">
-      <Filter>헤더 파일\__SDV__\Pawn</Filter>
+      <Filter>헤더 파일\__SDV__\Object</Filter>
     </ClInclude>
     <ClInclude Include="SDV_PlayerScript.h">
       <Filter>헤더 파일\__SDV__\Script</Filter>
+    </ClInclude>
+    <ClInclude Include="SDV_TileObject.h">
+      <Filter>헤더 파일\__SDV__\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -429,6 +432,9 @@
       <Filter>소스 파일\__SDV__</Filter>
     </ClCompile>
     <ClCompile Include="SDV_PlayerScript.cpp">
+      <Filter>소스 파일\__SDV__</Filter>
+    </ClCompile>
+    <ClCompile Include="SDV_TileObject.cpp">
       <Filter>소스 파일\__SDV__</Filter>
     </ClCompile>
   </ItemGroup>

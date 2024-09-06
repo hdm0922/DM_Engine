@@ -9,8 +9,8 @@
 #define SDV_NAME_TEXTURE_MONSTER							L"Monster Texture"
 #define SDV_PATH_TEXTURE_MONSTER							L"..//Resources//texture//Monsters.png"
 
-#define SDV_NAME_TEXTURE_TILESHEET							L"Tile Sheet Texture"
-#define SDV_PATH_TEXTURE_TILESHEET							L""
+#define SDV_NAME_TEXTURE_SPRING_OUTDOOR						L"Tile Sheet Texture"
+#define SDV_PATH_TEXTURE_SPRING_OUTDOOR						L"..//Resources//texture//spring//outdoor.png"
 
 #define SDV_NAME_ANIMATION_PLAYER_IDLE_RIGHT				L"Player Animation Idle Right"
 #define SDV_NAME_ANIMATION_PLAYER_IDLE_LEFT					L"Player Animation Idle Left"

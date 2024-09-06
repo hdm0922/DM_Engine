@@ -1,6 +1,8 @@
 #pragma once
 #include "DM_Scene.h"
 
+#include "SDV_Framework.h"
+
 
 
 
@@ -9,6 +11,15 @@ namespace DM
 {
     class EditorScene;
 	class Window;
+}
+
+
+
+
+
+namespace SDV
+{
+	class TileObject;
 }
 
 
@@ -31,10 +42,24 @@ public:
 	virtual void EnterScene() override;
 	virtual void ExitScene() override;
 
+	
 
 private:
 
-	Window* tileWindow;
+	void selectTileObject(Math::Vector2<UINT> index) { this->selectedTileObject = tileObjectContainer[index.y][index.x]; }
 
+	void registerTileObjects();
+	void registerTileObject(SDV::TileObject* tileObject);
+	static Math::Vector2<UINT> getIndex(Math::Vector2<FLOAT> position);
+	static Math::Vector2<UINT> getLocation(Math::Vector2<UINT> index);
+
+
+private:
+
+	SDV::TileObject* tileObjectContainer[104][41];
+	const Math::Vector2<UINT> containerSize;
+
+	Window* tileWindow;
+	SDV::TileObject* selectedTileObject;
 
 };

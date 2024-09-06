@@ -108,34 +108,70 @@ void DM::Paint_TileSheet(HDC hdc)
 
         INT position_x = SDV_TILE_SIZE.x * iter;
         MoveToEx(hdc, position_x, 0, nullptr);
-        LineTo(hdc, position_x, 1000);
+        LineTo(hdc, position_x, 2000);
 
         INT position_y = SDV_TILE_SIZE.y * iter;
         MoveToEx(hdc, 0, position_y, nullptr);
-        LineTo(hdc, 1000, position_y);
+        LineTo(hdc, 2000, position_y);
 
     }
 
-    return;
+    Texture* tileSheet = ResourceManager::GetResource<Texture>(SDV_NAME_TEXTURE_SPRING_OUTDOOR);
 
-    Texture* tileSheet = ResourceManager::GetResource<Texture>(L"");
+    switch (tileSheet->GetTextureType())
+    {
+    case Enums::TextureType::bmp:
+    {
+        TransparentBlt(
 
-    TransparentBlt(
+            hdc,
+            static_cast<INT>(0),
+            static_cast<INT>(0),
+            static_cast<INT>(tileSheet->GetWidth()),
+            static_cast<INT>(tileSheet->GetHeight()),
 
-        hdc,
-        static_cast<INT>(0),
-        static_cast<INT>(0),
-        static_cast<INT>(tileSheet->GetWidth()),
-        static_cast<INT>(tileSheet->GetHeight()),
+            tileSheet->GetDeviceContext(),
+            static_cast<INT>(0),
+            static_cast<INT>(0),
+            static_cast<INT>(tileSheet->GetWidth()),
+            static_cast<INT>(tileSheet->GetHeight()),
 
-        tileSheet->GetDeviceContext(),
-        static_cast<INT>(0),
-        static_cast<INT>(0),
-        static_cast<INT>(tileSheet->GetWidth()),
-        static_cast<INT>(tileSheet->GetHeight()),
+            RGB(255, 0, 255)
+        );
 
-        RGB(255, 0, 255)
-    );
+    } break;
+    case Enums::TextureType::png:
+    {
+        Gdiplus::ImageAttributes image_attribute = {};
 
+        // 투명화 시킬 색의 범위 지정
+        image_attribute.SetColorKey(
+            Gdiplus::Color(255, 0, 255),
+            Gdiplus::Color(255, 0, 255)
+        );
+
+        Gdiplus::Graphics graphics(hdc);
+
+        graphics.DrawImage(
+            tileSheet->GetImage(),
+
+            Gdiplus::Rect(
+                static_cast<INT>(0),
+                static_cast<INT>(0),
+                static_cast<INT>(tileSheet->GetWidth()),
+                static_cast<INT>(tileSheet->GetHeight())
+            ),
+
+            static_cast<INT>(0),
+            static_cast<INT>(0),
+            static_cast<INT>(tileSheet->GetWidth()),
+            static_cast<INT>(tileSheet->GetHeight()),
+
+            Gdiplus::UnitPixel,
+            &image_attribute
+        );
+
+    }break;
+    }
 
 }
