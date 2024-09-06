@@ -17,11 +17,7 @@ DM::Layer::Layer()
 
 DM::Layer::~Layer()
 {
-	for (GameObject* gameObject : this->gameObjects)
-	{
-		delete gameObject;
-		gameObject = nullptr;
-	}
+	this->ClearGameObjects();
 }
 
 
@@ -68,4 +64,18 @@ void DM::Layer::AddGameObject(GameObject* object)
 {
 	if (!object) return;
 	this->gameObjects.push_back(object);
+}
+
+
+
+
+
+void DM::Layer::ClearGameObjects()
+{
+	for (GameObject* gameObject : this->gameObjects)
+	{
+		delete gameObject;
+		gameObject = nullptr;
+	}
+	this->gameObjects.clear();
 }

@@ -3,6 +3,8 @@
 
 #define SDV_TILE_SIZE										DM::Math::Vector2<UINT>(16,16)
 
+#define SDV_PATH_TILEMAP_FARM								L"..//Saves//TileMap//TileMap_Farm.txt"
+
 #define SDV_NAME_TEXTURE_PLAYER								L"Player Texture"
 #define SDV_PATH_TEXTURE_PLAYER								L"..//Resources//texture//Player.bmp"
 

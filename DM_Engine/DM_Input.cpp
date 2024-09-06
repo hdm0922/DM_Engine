@@ -88,7 +88,7 @@ BOOL DM::Input::GetKeyPressed(INT keyCode, Window* activeWindow)
 
 
 
-BOOL DM::Input::GetKeysPressed(std::vector<INT>& keyCodes, Window* activeWindow)
+BOOL DM::Input::GetKeysPressed(const std::vector<INT>& keyCodes, Window* activeWindow)
 {
 
 	if (GetActiveWindow() != activeWindow->GetHandle()) return false;
@@ -108,7 +108,7 @@ BOOL DM::Input::GetKeysPressed(std::vector<INT>& keyCodes, Window* activeWindow)
 
 
 
-BOOL DM::Input::GetKeysReleased(std::vector<INT>& keyCodes, Window* activeWindow)
+BOOL DM::Input::GetKeysReleased(const std::vector<INT>& keyCodes, Window* activeWindow)
 {
 
 	if (GetActiveWindow() != activeWindow->GetHandle()) return false;

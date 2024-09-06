@@ -437,5 +437,8 @@
     <ClCompile Include="SDV_TileObject.cpp">
       <Filter>소스 파일\__SDV__</Filter>
     </ClCompile>
+    <ClCompile Include="DM_Utility.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

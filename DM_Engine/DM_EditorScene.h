@@ -46,12 +46,13 @@ public:
 private:
 
 	void selectTileObject(Math::Vector2<UINT> index) { this->selectedTileObject = tileObjectContainer[index.y][index.x]; }
-	void createTile(SDV::TileObject* tileSource);
+	void createTile(SDV::TileObject* tileSource, Math::Vector2<FLOAT> position);
 
 	void registerTileObjects();
 	void registerTileObject(SDV::TileObject* tileObject);
 
 	void saveTileMap();
+	void loadTileMap(); // Test
 
 	static Math::Vector2<UINT> getIndex(Math::Vector2<FLOAT> position);
 	static Math::Vector2<UINT> getLocation(Math::Vector2<UINT> index);
@@ -65,5 +66,7 @@ private:
 	Window* tileWindow;
 	SDV::TileObject* selectedTileObject;
 	
+	std::vector<SDV::TileObject*> tiles;
+
 
 };

@@ -3,6 +3,7 @@
 #include "DM_Window.h"
 #include "DM_WndProcs.h"
 #include "DM_Application.h"
+#include "DM_Layer.h"
 #include "DM_Input.h"
 #include "DM_Sprite.h"
 
@@ -14,7 +15,7 @@
 #include "DM_SpriteRenderer.h"
 #include "DM_TransformComponent.h"
 
-
+#include <fstream>
 
 
 
@@ -24,6 +25,7 @@ DM::EditorScene::EditorScene(const std::wstring& name)
 	, containerSize({ 41,104 })
 	, tileWindow(nullptr)
 	, selectedTileObject(nullptr)
+	, tiles({})
 {
 
 	// TileWindow
@@ -98,10 +100,17 @@ void DM::EditorScene::Update()
 	if (Input::GetKeyPressed(VK_LBUTTON, this->tileWindow))
 		this->selectTileObject(this->getIndex(Input::GetCursorPosition()));
 
-	if (Input::GetKeyPressed(VK_LBUTTON) || Input::GetKeyHold(VK_LBUTTON))
-		this->createTile(this->selectedTileObject);
+	if (Input::GetKeyPressed(VK_LBUTTON))
+		this->createTile(this->selectedTileObject, Input::GetCursorPosition());
 
-	
+	if (Input::GetKeysPressed({ VK_CONTROL, 'S' }))
+		this->saveTileMap();
+
+	if (Input::GetKeysPressed({ VK_CONTROL, 'L' }))
+		this->loadTileMap();
+
+
+	return;
 }
 
 
@@ -133,9 +142,7 @@ void DM::EditorScene::Render(HDC hdc) const
 
 void DM::EditorScene::EnterScene()
 {
-
 	this->tileWindow->Show();
-
 }
 
 
@@ -150,16 +157,17 @@ void DM::EditorScene::ExitScene()
 
 
 
-void DM::EditorScene::createTile(SDV::TileObject* tileSource)
+void DM::EditorScene::createTile(SDV::TileObject* tileSource, Math::Vector2<FLOAT> position)
 {
 
 	if (!tileSource) return;
 
 	SDV::TileObject* tile = new SDV::TileObject(*tileSource);
 	this->AddGameObject(tile, Enums::LayerType::Tile);
+	this->tiles.push_back(tile);
 
 	tile->SetTopLeft(
-		this->getLocation(this->getIndex(Input::GetCursorPosition()))
+		this->getLocation(this->getIndex(position))
 	);
 
 	return;
@@ -203,6 +211,49 @@ void DM::EditorScene::registerTileObject(SDV::TileObject* tileObject)
 
 void DM::EditorScene::saveTileMap()
 {
+
+	std::ofstream targetFile(SDV_PATH_TILEMAP_FARM);
+	targetFile.clear();
+
+	for (SDV::TileObject* tile : this->tiles)
+	{
+		Math::Vector2<UINT> tileIndex = this->getIndex(tile->GetSprite()->topLeft);
+		Math::Vector2<FLOAT> tilePosition = tile->GetPosition();
+
+		targetFile
+			<< tileIndex.x << ' '
+			<< tileIndex.y << ' '
+			<< tilePosition.x << ' '
+			<< tilePosition.y << '\n';
+	}
+
+	targetFile.close();
+
+	return;
+}
+
+
+
+
+
+void DM::EditorScene::loadTileMap()
+{
+
+	std::ifstream sourceFile(SDV_PATH_TILEMAP_FARM);
+
+	this->GetLayer(Enums::LayerType::Tile)->ClearGameObjects();
+	this->tiles.clear();
+
+	std::string str;
+	while (std::getline(sourceFile, str))
+	{
+		std::vector<std::string> tileData = DM::Utility::Split_String_With_WhiteSpace(str);
+
+		DM::Math::Vector2<UINT> tileIndex = { static_cast<UINT>(std::stoi(tileData[0])), static_cast<UINT>(std::stoi(tileData[1])) };
+		DM::Math::Vector2<FLOAT> tilePosition	= { std::stof(tileData[2]), std::stof(tileData[3]) };
+
+		this->createTile(this->tileObjectContainer[tileIndex.y][tileIndex.x], tilePosition);
+	}
 
 	return;
 }

@@ -28,6 +28,7 @@ public:
 	void Render(HDC hdc) const;
 
 	void AddGameObject(GameObject* object);
+	void ClearGameObjects();
 
 
 public:
