@@ -127,7 +127,7 @@ void DM::SpriteRenderer::render_png(HDC hdc) const
 		->GetPosition_Relative(this->GetOwner()->GetTopLeft());
 
 
-	graphics.DrawImage(
+	 graphics.DrawImage(
 		this->texture->GetImage(),
 
 		Gdiplus::Rect(

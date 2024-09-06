@@ -31,12 +31,15 @@ class SDV::TileObject :
 public:
 
 	TileObject(const DM::Sprite* topLeftSprite, const std::wstring& name = L"");
+	TileObject(const TileObject& tileObject) : TileObject(tileObject.topLeftSprite, tileObject.GetName()) {}
 	virtual ~TileObject();
 
 	virtual void Initialize();
 	virtual void Update();
 	virtual void Render(HDC hdc) const;
 	virtual void Destroy();
+
+	void SetTopLeft(DM::Math::Vector2<FLOAT> topLeft);
 
 
 public:

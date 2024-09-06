@@ -39,6 +39,7 @@ enum class DM::Enums::ComponentType
 enum class DM::Enums::LayerType
 {
 	Background,
+	Tile,
 	Entity,
 
 	None

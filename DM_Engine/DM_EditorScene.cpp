@@ -12,6 +12,7 @@
 #include "DM_ResourceManager.h"
 #include "DM_GameObject.h"
 #include "DM_SpriteRenderer.h"
+#include "DM_TransformComponent.h"
 
 
 
@@ -77,19 +78,19 @@ void DM::EditorScene::Initialize()
 
 	// TEST
 
-	GameObject* testObject = new GameObject(L"TESTOBJECT");
-	this->AddGameObject(testObject, DM::Enums::LayerType::Entity);
+	//GameObject* testObject = new GameObject(L"TESTOBJECT");
+	//this->AddGameObject(testObject, DM::Enums::LayerType::Entity);
 
-	testObject->SetPosition(400, 250);
-	testObject->SetOriginalSize(200, 200);
+	//testObject->SetPosition(400, 250);
+	//testObject->SetOriginalSize(200, 200);
 
-	testObject->AddComponent<SpriteRenderer>();
-	testObject->GetComponent<SpriteRenderer>()->SetTexture(
-		ResourceManager::GetResource<Texture>(SDV_NAME_TEXTURE_MONSTER)
-	);
-	testObject->GetComponent<SpriteRenderer>()->SetSprite(
-		new Sprite({ 150,150 }, { 300,350 }, { 0,0 })
-	);
+	//testObject->AddComponent<SpriteRenderer>();
+	//testObject->GetComponent<SpriteRenderer>()->SetTexture(
+	//	ResourceManager::GetResource<Texture>(SDV_NAME_TEXTURE_MONSTER)
+	//);
+	//testObject->GetComponent<SpriteRenderer>()->SetSprite(
+	//	new Sprite({ 150,150 }, { 300,350 }, { 0,0 })
+	//);
 	//
 
 	Scene::Initialize();
@@ -111,9 +112,14 @@ void DM::EditorScene::Update()
 		);
 	}
 
-	if (Input::GetKeyPressed(VK_LBUTTON))
+	if ((Input::GetKeyPressed(VK_LBUTTON) || Input::GetKeyHold(VK_LBUTTON)) && this->selectedTileObject)
 	{
+		SDV::TileObject* tile = new SDV::TileObject(*this->selectedTileObject);
+		this->AddGameObject(tile, Enums::LayerType::Tile);
 
+		tile->SetTopLeft(
+			this->getLocation(this->getIndex(Input::GetCursorPosition()))
+		);
 	}
 
 }

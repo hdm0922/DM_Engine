@@ -1,6 +1,8 @@
 #include "SDV_TileObject.h"
 
 #include "DM_Sprite.h"
+#include "DM_SpriteRenderer.h"
+#include "DM_ResourceManager.h"
 
 
 
@@ -13,6 +15,13 @@ SDV::TileObject::TileObject(
 	, topLeftSprite(topLeftSprite)
 	, renderTiles({ topLeftSprite->size.x / SDV_TILE_SIZE.x, topLeftSprite->size.y / SDV_TILE_SIZE.y })
 {
+
+	this->SetOriginalSize(topLeftSprite->size);
+
+	this->AddComponent<DM::SpriteRenderer>();
+	DM::SpriteRenderer* spriteRenderer = this->GetComponent<DM::SpriteRenderer>();
+	spriteRenderer->SetTexture(DM::ResourceManager::GetResource<DM::Texture>(SDV_NAME_TEXTURE_SPRING_OUTDOOR));
+	spriteRenderer->SetSprite(new DM::Sprite(*topLeftSprite));
 }
 
 
@@ -57,4 +66,13 @@ void SDV::TileObject::Render(HDC hdc) const
 void SDV::TileObject::Destroy()
 {
 	DM::GameObject::Destroy();
+}
+
+
+
+
+
+void SDV::TileObject::SetTopLeft(DM::Math::Vector2<FLOAT> topLeft)
+{
+	this->SetPosition(topLeft + this->GetOriginalSize()/2);
 }
