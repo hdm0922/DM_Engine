@@ -59,18 +59,8 @@ void SDV::KeybindComponent::Update()
 
 BOOL SDV::KeybindComponent::GetKeysPressed(Action action) const
 {
-
 	UINT actionIdx = static_cast<UINT>(action);
-
-	for (INT key : this->keysets[actionIdx])
-	{
-		if (DM::Input::GetKeyPressed(key) ||
-			DM::Input::GetKeyHold(key)) continue;
-
-		return false;
-	}
-
-	return true;
+	return DM::Input::GetKeysPressed(this->keysets[actionIdx]);
 }
 
 
@@ -79,13 +69,6 @@ BOOL SDV::KeybindComponent::GetKeysPressed(Action action) const
 
 BOOL SDV::KeybindComponent::GetKeysReleased(Action action) const
 {
-
 	UINT actionIdx = static_cast<UINT>(action);
-
-	for (INT key : this->keysets[actionIdx])
-	{
-		if (DM::Input::GetKeyReleased(key)) return true;
-	}
-
-	return false;
+	return DM::Input::GetKeysReleased(this->keysets[actionIdx]);
 }

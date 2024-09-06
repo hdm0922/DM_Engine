@@ -43,13 +43,16 @@ public:
 	virtual void ExitScene() override;
 
 	
-
 private:
 
 	void selectTileObject(Math::Vector2<UINT> index) { this->selectedTileObject = tileObjectContainer[index.y][index.x]; }
+	void createTile(SDV::TileObject* tileSource);
 
 	void registerTileObjects();
 	void registerTileObject(SDV::TileObject* tileObject);
+
+	void saveTileMap();
+
 	static Math::Vector2<UINT> getIndex(Math::Vector2<FLOAT> position);
 	static Math::Vector2<UINT> getLocation(Math::Vector2<UINT> index);
 
@@ -61,5 +64,6 @@ private:
 
 	Window* tileWindow;
 	SDV::TileObject* selectedTileObject;
+	
 
 };

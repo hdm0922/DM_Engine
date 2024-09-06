@@ -18,16 +18,6 @@
 
 
 
-namespace DM
-{
-	//SDV::TileObject* EditorScene::tileObjectContainer[104][41] = {nullptr,};
-	//const Math::Vector2<UINT> EditorScene::containerSize = { 41,104 };
-}
-
-
-
-
-
 DM::EditorScene::EditorScene(const std::wstring& name)
 	: Scene(name)
 	, tileObjectContainer()
@@ -106,22 +96,12 @@ void DM::EditorScene::Update()
 {
 
 	if (Input::GetKeyPressed(VK_LBUTTON, this->tileWindow))
-	{
-		this->selectTileObject(
-			this->getIndex(Input::GetCursorPosition())
-		);
-	}
+		this->selectTileObject(this->getIndex(Input::GetCursorPosition()));
 
-	if ((Input::GetKeyPressed(VK_LBUTTON) || Input::GetKeyHold(VK_LBUTTON)) && this->selectedTileObject)
-	{
-		SDV::TileObject* tile = new SDV::TileObject(*this->selectedTileObject);
-		this->AddGameObject(tile, Enums::LayerType::Tile);
+	if (Input::GetKeyPressed(VK_LBUTTON) || Input::GetKeyHold(VK_LBUTTON))
+		this->createTile(this->selectedTileObject);
 
-		tile->SetTopLeft(
-			this->getLocation(this->getIndex(Input::GetCursorPosition()))
-		);
-	}
-
+	
 }
 
 
@@ -170,6 +150,25 @@ void DM::EditorScene::ExitScene()
 
 
 
+void DM::EditorScene::createTile(SDV::TileObject* tileSource)
+{
+
+	if (!tileSource) return;
+
+	SDV::TileObject* tile = new SDV::TileObject(*tileSource);
+	this->AddGameObject(tile, Enums::LayerType::Tile);
+
+	tile->SetTopLeft(
+		this->getLocation(this->getIndex(Input::GetCursorPosition()))
+	);
+
+	return;
+}
+
+
+
+
+
 void DM::EditorScene::registerTileObjects()
 {
 
@@ -194,6 +193,16 @@ void DM::EditorScene::registerTileObject(SDV::TileObject* tileObject)
 	for (UINT offset_X = 0; offset_X < tileObject->GetRenderTiles().x; offset_X++)
 		for (UINT offset_Y = 0; offset_Y < tileObject->GetRenderTiles().y; offset_Y++)
 			EditorScene::tileObjectContainer[topLeftIndex.y + offset_Y][topLeftIndex.x + offset_X] = tileObject;
+
+	return;
+}
+
+
+
+
+
+void DM::EditorScene::saveTileMap()
+{
 
 	return;
 }

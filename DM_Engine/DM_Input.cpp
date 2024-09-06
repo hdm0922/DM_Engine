@@ -55,7 +55,7 @@ void DM::Input::Update()
 
 
 
-BOOL DM::Input::GetKeyHold(int keyCode, Window* activeWindow)
+BOOL DM::Input::GetKeyHold(INT keyCode, Window* activeWindow)
 {
 	BOOL correctWindow = (GetActiveWindow() == activeWindow->GetHandle());
 	BOOL correctKeyState = (Input::keys[keyCode].keyState == Enums::KeyState::Hold);
@@ -66,7 +66,7 @@ BOOL DM::Input::GetKeyHold(int keyCode, Window* activeWindow)
 
 
 
-BOOL DM::Input::GetKeyReleased(int keyCode, Window* activeWindow)
+BOOL DM::Input::GetKeyReleased(INT keyCode, Window* activeWindow)
 {
 	BOOL correctWindow = (GetActiveWindow() == activeWindow->GetHandle());
 	BOOL correctKeyState = (Input::keys[keyCode].keyState == Enums::KeyState::Released);
@@ -77,11 +77,48 @@ BOOL DM::Input::GetKeyReleased(int keyCode, Window* activeWindow)
 
 
 
-BOOL DM::Input::GetKeyPressed(int keyCode, Window* activeWindow)
+BOOL DM::Input::GetKeyPressed(INT keyCode, Window* activeWindow)
 {
 	BOOL correctWindow = (GetActiveWindow() == activeWindow->GetHandle());
 	BOOL correctKeyState = (Input::keys[keyCode].keyState == Enums::KeyState::Pressed);
 	return (correctWindow && correctKeyState);
+}
+
+
+
+
+
+BOOL DM::Input::GetKeysPressed(std::vector<INT>& keyCodes, Window* activeWindow)
+{
+
+	if (GetActiveWindow() != activeWindow->GetHandle()) return false;
+
+	for (INT key : keyCodes)
+	{
+		if (DM::Input::GetKeyPressed(key) ||
+			DM::Input::GetKeyHold(key)) continue;
+
+		return false;
+	}
+
+	return true;
+}
+
+
+
+
+
+BOOL DM::Input::GetKeysReleased(std::vector<INT>& keyCodes, Window* activeWindow)
+{
+
+	if (GetActiveWindow() != activeWindow->GetHandle()) return false;
+
+	for (INT key : keyCodes)
+	{
+		if (DM::Input::GetKeyReleased(key)) return true;
+	}
+
+	return false;
 }
 
 

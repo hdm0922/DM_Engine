@@ -46,9 +46,12 @@ public:
 
 public:
 
-	static BOOL GetKeyHold(int keyCode, Window* activeWindow = Application::GetMainWindow());
-	static BOOL GetKeyReleased(int keyCode, Window* activeWindow = Application::GetMainWindow());
-	static BOOL GetKeyPressed(int keyCode, Window* activeWindow = Application::GetMainWindow());
+	static BOOL GetKeyHold(INT keyCode, Window* activeWindow = Application::GetMainWindow());
+	static BOOL GetKeyReleased(INT keyCode, Window* activeWindow = Application::GetMainWindow());
+	static BOOL GetKeyPressed(INT keyCode, Window* activeWindow = Application::GetMainWindow());
+
+	static BOOL GetKeysPressed(std::vector<INT>& keyCodes, Window* activeWindow = Application::GetMainWindow());
+	static BOOL GetKeysReleased(std::vector<INT>& keyCodes, Window* activeWindow = Application::GetMainWindow());
 
 	static DragEvent GetDragEvent() { return Input::dragEvent; }
 	static Math::Vector2<FLOAT> GetCursorPosition() { return Input::cursorPosition; }
