@@ -23,7 +23,7 @@ void DM::SceneManager::Initialize()
 		iter.second->Initialize();
 	}
 
-	SceneManager::LoadScene(L"TestScene");
+	SceneManager::LoadScene(L"EditorScene");
 
 	return;
 }

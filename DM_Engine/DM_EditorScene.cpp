@@ -15,16 +15,14 @@
 #include "DM_SpriteRenderer.h"
 #include "DM_TransformComponent.h"
 
-#include <fstream>
+
 
 
 
 DM::EditorScene::EditorScene(const std::wstring& name)
 	: Scene(name)
-	, tileObjectContainer()
-	, containerSize({ 41,104 })
 	, tileWindow(nullptr)
-	, selectedTileObject(nullptr)
+	, selectedTileIndex({ 45,0 })
 	, tiles({})
 {
 
@@ -35,20 +33,9 @@ DM::EditorScene::EditorScene(const std::wstring& name)
 
 	this->tileWindow->SetTopLeft_Relative({ Application::GetMainWindow()->GetSize().x, 0 });
 	this->tileWindow->ResizeWindow({
-		static_cast<INT>(this->containerSize.x * SDV_TILE_SIZE.x),
-		static_cast<INT>(this->containerSize.y * SDV_TILE_SIZE.y)
+		static_cast<INT>(43 * SDV_TILE_SIZE.x),
+		static_cast<INT>(50 * SDV_TILE_SIZE.y)
 	});
-
-	//
-
-
-	// tile Object Container
-
-	for (UINT iter = 0; iter < this->containerSize.y; iter++)
-		for (UINT jter = 0; jter < this->containerSize.x; jter++)
-			this->tileObjectContainer[iter][jter] = nullptr;
-
-	this->registerTileObjects();
 
 	//
 }
@@ -98,17 +85,16 @@ void DM::EditorScene::Update()
 {
 
 	if (Input::GetKeyPressed(VK_LBUTTON, this->tileWindow))
-		this->selectTileObject(this->getIndex(Input::GetCursorPosition()));
+		this->selectTileIndex(this->getIndex(Input::GetCursorPosition()));
 
 	if (Input::GetKeyPressed(VK_LBUTTON))
-		this->createTile(this->selectedTileObject, Input::GetCursorPosition());
+		this->createTile(this->selectedTileIndex, Input::GetCursorPosition());
 
 	if (Input::GetKeysPressed({ VK_CONTROL, 'S' }))
 		this->saveTileMap();
 
 	if (Input::GetKeysPressed({ VK_CONTROL, 'L' }))
 		this->loadTileMap();
-
 
 	return;
 }
@@ -157,50 +143,19 @@ void DM::EditorScene::ExitScene()
 
 
 
-void DM::EditorScene::createTile(SDV::TileObject* tileSource, Math::Vector2<FLOAT> position)
+void DM::EditorScene::createTile(const Math::Vector2<UINT>& tileIndex, Math::Vector2<FLOAT> position)
 {
 
-	if (!tileSource) return;
+	SDV::TileObject* tile = new SDV::TileObject(
+		new Sprite(EditorScene::getLocation(tileIndex), SDV_TILE_SIZE)
+	);
 
-	SDV::TileObject* tile = new SDV::TileObject(*tileSource);
 	this->AddGameObject(tile, Enums::LayerType::Tile);
 	this->tiles.push_back(tile);
 
 	tile->SetTopLeft(
 		this->getLocation(this->getIndex(position))
 	);
-
-	return;
-}
-
-
-
-
-
-void DM::EditorScene::registerTileObjects()
-{
-
-	this->registerTileObject(new SDV::TileObject(
-		new Sprite(EditorScene::getLocation({ 0, 6 }),
-			{ SDV_TILE_SIZE.x * 1, SDV_TILE_SIZE.y * 1 }),
-		L"Tile1"
-	));
-
-	return;
-}
-
-
-
-
-
-void DM::EditorScene::registerTileObject(SDV::TileObject* tileObject)
-{
-	Math::Vector2<UINT> topLeft = tileObject->GetSprite()->topLeft + tileObject->GetSprite()->offset;
-	Math::Vector2<UINT> topLeftIndex = EditorScene::getIndex(topLeft);
-
-	for (UINT offset_X = 0; offset_X < tileObject->GetRenderTiles().x; offset_X++)
-		for (UINT offset_Y = 0; offset_Y < tileObject->GetRenderTiles().y; offset_Y++)
-			EditorScene::tileObjectContainer[topLeftIndex.y + offset_Y][topLeftIndex.x + offset_X] = tileObject;
 
 	return;
 }
@@ -252,7 +207,7 @@ void DM::EditorScene::loadTileMap()
 		DM::Math::Vector2<UINT> tileIndex = { static_cast<UINT>(std::stoi(tileData[0])), static_cast<UINT>(std::stoi(tileData[1])) };
 		DM::Math::Vector2<FLOAT> tilePosition	= { std::stof(tileData[2]), std::stof(tileData[3]) };
 
-		this->createTile(this->tileObjectContainer[tileIndex.y][tileIndex.x], tilePosition);
+		this->createTile(tileIndex, tilePosition);
 	}
 
 	return;
