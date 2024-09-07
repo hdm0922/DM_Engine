@@ -42,6 +42,7 @@ public:
 	void SetOriginalSize(const Math::Vector2<FLOAT>& originSize) { this->originSize = originSize; }
 	void SetPosition(FLOAT x, FLOAT y) const { this->SetPosition(Math::Vector2<FLOAT>(x, y)); }
 	void SetPosition(const Math::Vector2<FLOAT> position) const;
+	void SetTopLeft(const Math::Vector2<FLOAT>& topLeft) const { this->SetPosition(topLeft + this->GetSize() / 2.0f); }
 
 	virtual Math::Vector2<FLOAT> GetSize() const;
 	Math::Vector2<FLOAT> GetOriginalSize() const { return this->originSize; }

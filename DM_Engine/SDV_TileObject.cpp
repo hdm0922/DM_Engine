@@ -1,26 +1,19 @@
 #include "SDV_TileObject.h"
 
-#include "DM_Sprite.h"
-#include "DM_SpriteRenderer.h"
-#include "DM_ResourceManager.h"
+#include "SDV_Tile.h"
 
 
 
 
 
-SDV::TileObject::TileObject(
-	const DM::Sprite* topLeftSprite,
-	const std::wstring& name)
+SDV::TileObject::TileObject(const DM::Math::Vector2<UINT>& containerSize, const std::wstring& name)
 	: DM::GameObject(name)
-	, topLeftSprite(topLeftSprite)
+	, tilesContainer(containerSize)
 {
-
-	this->SetOriginalSize(SDV_TILE_SIZE);
-
-	this->AddComponent<DM::SpriteRenderer>();
-	DM::SpriteRenderer* spriteRenderer = this->GetComponent<DM::SpriteRenderer>();
-	spriteRenderer->SetTexture(DM::ResourceManager::GetResource<DM::Texture>(SDV_NAME_TEXTURE_SPRING_OUTDOOR));
-	spriteRenderer->SetSprite(new DM::Sprite(*topLeftSprite));
+	this->SetOriginalSize(
+		static_cast<FLOAT>(containerSize.x * SDV_TILE_SIZE.x),
+		static_cast<FLOAT>(containerSize.y * SDV_TILE_SIZE.y)
+	);
 }
 
 
@@ -55,6 +48,17 @@ void SDV::TileObject::Update()
 
 void SDV::TileObject::Render(HDC hdc) const
 {
+
+	DM::Math::Vector2<UINT> containerSize = this->tilesContainer.GetContainerSize();
+
+	for (UINT y = 0; y < containerSize.y; y++)
+		for (UINT x = 0; x < containerSize.x; x++)
+		{
+			if (!this->tilesContainer.GetItem(x, y)) continue;
+			this->tilesContainer.GetItem(x, y)->Render(hdc);
+		}
+			
+
 	DM::GameObject::Render(hdc);
 }
 
@@ -71,7 +75,15 @@ void SDV::TileObject::Destroy()
 
 
 
-void SDV::TileObject::SetTopLeft(DM::Math::Vector2<FLOAT> topLeft)
+void SDV::TileObject::SetTile(Tile* tile, const DM::Math::Vector2<UINT>& index)
 {
-	this->SetPosition(topLeft + this->GetOriginalSize()/2);
+
+	DM::Math::Vector2<FLOAT> tilePosition_relative = { 
+		static_cast<FLOAT>(index.x * SDV_TILE_SIZE.x),
+		static_cast<FLOAT>(index.y * SDV_TILE_SIZE.y)
+	};
+
+	tile->SetTopLeft(this->GetTopLeft() + tilePosition_relative);
+	this->tilesContainer.SetItem(index, tile);
+	return;
 }

@@ -1,5 +1,7 @@
 #pragma once
 #include "DM_GameObject.h"
+
+#include "DM_Container2D.h"
 #include "SDV_Framework.h"
 
 
@@ -9,6 +11,7 @@
 namespace SDV
 {
     class TileObject;
+	class Tile;
 }
 
 
@@ -30,8 +33,7 @@ class SDV::TileObject :
 
 public:
 
-	TileObject(const DM::Sprite* topLeftSprite, const std::wstring& name = L"");
-	TileObject(const TileObject& tileObject) : TileObject(tileObject.topLeftSprite, tileObject.GetName()) {}
+	TileObject(const DM::Math::Vector2<UINT>& containerSize, const std::wstring& name = L"");
 	virtual ~TileObject();
 
 	virtual void Initialize() override;
@@ -39,17 +41,12 @@ public:
 	virtual void Render(HDC hdc) const override;
 	virtual void Destroy() override;
 
-	void SetTopLeft(DM::Math::Vector2<FLOAT> topLeft);
-
-
-public:
-
-	const DM::Sprite* GetSprite() const { return this->topLeftSprite; }
-
+	void SetTile(Tile* tile, const DM::Math::Vector2<UINT>& index);
+	DM::Container2D<Tile> tilesContainer;
 
 private:
 
-	const DM::Sprite* topLeftSprite;
+	
 
 
 };

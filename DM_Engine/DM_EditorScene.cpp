@@ -57,10 +57,33 @@ void DM::EditorScene::Initialize()
 {
 
 	// TEST
-	//SDV::Tile* tile = new SDV::Tile({ 0,6 });
+	DM::Math::Vector2<UINT> x = { 0,0 };
+	SDV::Tile* tile = new SDV::Tile(x);
 	//this->AddGameObject(tile, Enums::LayerType::Tile);
-	//tile->SetTexture(ResourceManager::GetResource<Texture>(SDV_NAME_TEXTURE_SPRING_OUTDOOR));
 	//tile->SetTopLeft(EditorScene::getLocation({ 1,1 }));
+	
+	std::vector<SDV::Tile*> temp = {};
+
+	SDV::TileObject* tileObject = new SDV::TileObject({ 3,6 });
+	this->AddGameObject(tileObject, Enums::LayerType::Tile);
+	tileObject->SetTopLeft(EditorScene::getLocation({ 4,4 }));
+	tileObject->SetTile(new SDV::Tile(DM::Math::Vector2<UINT>(0,0)), { 0,0 });
+	tileObject->SetTile(new SDV::Tile({ 0,1 }), { 0,1 });
+	tileObject->SetTile(new SDV::Tile({ 0,2 }), { 0,2 });
+	tileObject->SetTile(new SDV::Tile({ 0,3 }), { 0,3 });
+	tileObject->SetTile(new SDV::Tile({ 0,5 }), { 0,5 });
+	tileObject->SetTile(new SDV::Tile(DM::Math::Vector2<UINT>(1, 0)), { 1,0 });
+	tileObject->SetTile(new SDV::Tile({ 1,1 }), { 1,1 });
+	tileObject->SetTile(new SDV::Tile({ 1,2 }), { 1,2 });
+	tileObject->SetTile(new SDV::Tile({ 1,3 }), { 1,3 });
+	tileObject->SetTile(new SDV::Tile({ 1,4 }), { 1,4 });
+	tileObject->SetTile(new SDV::Tile({ 1,5 }), { 1,5 });
+	tileObject->SetTile(new SDV::Tile(DM::Math::Vector2<UINT>(2, 0)), { 2,0 });
+	tileObject->SetTile(new SDV::Tile({ 2,1 }), { 2,1 });
+	tileObject->SetTile(new SDV::Tile({ 2,2 }), { 2,2 });
+	tileObject->SetTile(new SDV::Tile({ 2,3 }), { 2,3 });
+	tileObject->SetTile(new SDV::Tile({ 2,4 }), { 2,4 });
+
 	//
 
 	Scene::Initialize();
