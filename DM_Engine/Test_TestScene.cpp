@@ -12,7 +12,7 @@
 #include "DM_AudioSource.h"
 #include "DM_Camera.h"
 
-
+#include "SDV_OakTree.h"
 
 
 
@@ -95,6 +95,35 @@ void Test::TestScene::Initialize()
 	/// Camera
 	
 	this->GetCamera()->SetRenderTarget(player);
+
+	///
+
+	///
+
+	SDV::OakTree* tree = new SDV::OakTree();
+	this->AddGameObject(tree, DM::Enums::LayerType::Tile);
+
+	auto loc = DM::Math::Vector2<UINT>(
+		(0 * SDV_TILE_SIZE.x),
+		(1 * SDV_TILE_SIZE.y)
+	);
+
+	tree->SetPosition(DM::Math::PositionCalculator::GetProperPosition(
+		loc,
+		tree->GetOriginalSize(),
+		DM::Enums::FitMode::TopLeft
+	));
+
+	tree->AddComponent<DM::Collider_Box2D>();
+	DM::Collider_Box2D* collider = tree->GetComponent<DM::Collider_Box2D>();
+	collider->SetColliderSize(SDV_TILE_SIZE);
+
+	DM::Math::Vector2<FLOAT> colliderPosition_WorldFixed = DM::Math::PositionCalculator::GetProperPosition(
+		tree->GetPosition(), tree->GetOriginalSize(), collider->GetColliderSize(), DM::Enums::FitMode::BottomCenter
+	);
+
+	collider->SetColliderPosition_Relative(colliderPosition_WorldFixed - tree->GetPosition());
+
 
 	///
 

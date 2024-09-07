@@ -34,8 +34,10 @@ public:
 
 public:
 
-    void SetColliderPosition_Relative(FLOAT x, FLOAT y) { this->colliderPosition_relative = { x, y }; }
-    void SetColliderSize(FLOAT x, FLOAT y) { this->colliderSize = { x, y }; }
+    void SetColliderPosition_Relative(FLOAT x, FLOAT y) { this->SetColliderPosition_Relative({ x,y }); }
+    void SetColliderSize(FLOAT x, FLOAT y) { this->SetColliderSize({ x,y }); }
+
+    void SetColliderPosition_Relative(const Math::Vector2<FLOAT>& position) { this->colliderPosition_relative = position; }
     void SetColliderSize(const Math::Vector2<FLOAT>& size) { this->colliderSize = size; }
 
     Math::Vector2<FLOAT> GetColliderPosition() const;

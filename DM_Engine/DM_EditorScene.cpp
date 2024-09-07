@@ -6,6 +6,7 @@
 #include "DM_Layer.h"
 #include "DM_Input.h"
 #include "DM_Sprite.h"
+#include "DM_Collider_Box2D.h"
 
 #include "SDV_Framework.h"
 #include "SDV_TileObject.h"
@@ -67,6 +68,16 @@ void DM::EditorScene::Initialize()
 		tree->GetOriginalSize(),
 		Enums::FitMode::TopLeft
 	));
+
+	tree->AddComponent<DM::Collider_Box2D>();
+	DM::Collider_Box2D* collider = tree->GetComponent<DM::Collider_Box2D>();
+	collider->SetColliderSize(SDV_TILE_SIZE);
+
+	DM::Math::Vector2<FLOAT> colliderPosition_WorldFixed = DM::Math::PositionCalculator::GetProperPosition(
+		tree->GetPosition(), tree->GetOriginalSize(), collider->GetColliderSize(), DM::Enums::FitMode::BottomCenter
+	);
+
+	collider->SetColliderPosition_Relative(colliderPosition_WorldFixed - tree->GetPosition());
 
 	//
 
