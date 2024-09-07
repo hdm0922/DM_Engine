@@ -88,6 +88,9 @@
     <Filter Include="헤더 파일\__SDV__\Object">
       <UniqueIdentifier>{5e8871da-cc66-437c-8ccf-859dc89f7f7b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="헤더 파일\__SDV__\Object\Tree">
+      <UniqueIdentifier>{cc0701fe-eeda-4f25-a438-3360971b98e5}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -285,6 +288,18 @@
     <ClInclude Include="SDV_TileObject.h">
       <Filter>헤더 파일\__SDV__\Object</Filter>
     </ClInclude>
+    <ClInclude Include="SDV_Tree.h">
+      <Filter>헤더 파일\__SDV__\Object\Tree</Filter>
+    </ClInclude>
+    <ClInclude Include="SDV_TileRenderer.h">
+      <Filter>헤더 파일\__SDV__\Component</Filter>
+    </ClInclude>
+    <ClInclude Include="SDV_TileRenderInfo.h">
+      <Filter>헤더 파일\__SDV__</Filter>
+    </ClInclude>
+    <ClInclude Include="SDV_Tile.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Test_UI_Status.cpp">
@@ -439,6 +454,15 @@
     </ClCompile>
     <ClCompile Include="DM_Utility.cpp">
       <Filter>소스 파일\source</Filter>
+    </ClCompile>
+    <ClCompile Include="SDV_Tree.cpp">
+      <Filter>소스 파일\__SDV__</Filter>
+    </ClCompile>
+    <ClCompile Include="SDV_TileRenderer.cpp">
+      <Filter>소스 파일\__SDV__</Filter>
+    </ClCompile>
+    <ClCompile Include="SDV_Tile.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

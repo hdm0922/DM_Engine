@@ -9,6 +9,7 @@
 
 #include "SDV_Framework.h"
 #include "SDV_TileObject.h"
+#include "SDV_Tile.h"
 
 #include "DM_ResourceManager.h"
 #include "DM_GameObject.h"
@@ -56,20 +57,10 @@ void DM::EditorScene::Initialize()
 {
 
 	// TEST
-
-	//GameObject* testObject = new GameObject(L"TESTOBJECT");
-	//this->AddGameObject(testObject, DM::Enums::LayerType::Entity);
-
-	//testObject->SetPosition(400, 250);
-	//testObject->SetOriginalSize(200, 200);
-
-	//testObject->AddComponent<SpriteRenderer>();
-	//testObject->GetComponent<SpriteRenderer>()->SetTexture(
-	//	ResourceManager::GetResource<Texture>(SDV_NAME_TEXTURE_MONSTER)
-	//);
-	//testObject->GetComponent<SpriteRenderer>()->SetSprite(
-	//	new Sprite({ 150,150 }, { 300,350 }, { 0,0 })
-	//);
+	//SDV::Tile* tile = new SDV::Tile({ 0,6 });
+	//this->AddGameObject(tile, Enums::LayerType::Tile);
+	//tile->SetTexture(ResourceManager::GetResource<Texture>(SDV_NAME_TEXTURE_SPRING_OUTDOOR));
+	//tile->SetTopLeft(EditorScene::getLocation({ 1,1 }));
 	//
 
 	Scene::Initialize();
@@ -146,9 +137,7 @@ void DM::EditorScene::ExitScene()
 void DM::EditorScene::createTile(const Math::Vector2<UINT>& tileIndex, Math::Vector2<FLOAT> position)
 {
 
-	SDV::TileObject* tile = new SDV::TileObject(
-		new Sprite(EditorScene::getLocation(tileIndex), SDV_TILE_SIZE)
-	);
+	SDV::Tile* tile = new SDV::Tile(tileIndex);
 
 	this->AddGameObject(tile, Enums::LayerType::Tile);
 	this->tiles.push_back(tile);
@@ -170,9 +159,9 @@ void DM::EditorScene::saveTileMap()
 	std::ofstream targetFile(SDV_PATH_TILEMAP_FARM);
 	targetFile.clear();
 
-	for (SDV::TileObject* tile : this->tiles)
+	for (SDV::Tile* tile : this->tiles)
 	{
-		Math::Vector2<UINT> tileIndex = this->getIndex(tile->GetSprite()->topLeft);
+		Math::Vector2<UINT> tileIndex = tile->GetTextureIndex();
 		Math::Vector2<FLOAT> tilePosition = tile->GetPosition();
 
 		targetFile

@@ -13,10 +13,9 @@ SDV::TileObject::TileObject(
 	const std::wstring& name)
 	: DM::GameObject(name)
 	, topLeftSprite(topLeftSprite)
-	, renderTiles({ topLeftSprite->size.x / SDV_TILE_SIZE.x, topLeftSprite->size.y / SDV_TILE_SIZE.y })
 {
 
-	this->SetOriginalSize(topLeftSprite->size);
+	this->SetOriginalSize(SDV_TILE_SIZE);
 
 	this->AddComponent<DM::SpriteRenderer>();
 	DM::SpriteRenderer* spriteRenderer = this->GetComponent<DM::SpriteRenderer>();

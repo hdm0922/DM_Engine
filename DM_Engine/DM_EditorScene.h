@@ -19,7 +19,7 @@ namespace DM
 
 namespace SDV
 {
-	class TileObject;
+	class Tile;
 }
 
 
@@ -60,7 +60,7 @@ private:
 	Window* tileWindow;
 
 	Math::Vector2<UINT> selectedTileIndex;
-	std::vector<SDV::TileObject*> tiles;
+	std::vector<SDV::Tile*> tiles;
 
 
 };

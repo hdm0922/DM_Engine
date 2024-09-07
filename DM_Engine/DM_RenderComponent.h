@@ -20,9 +20,7 @@ class DM::RenderComponent abstract:
 
 public:
 
-    RenderComponent(const GameObject* owner,
-        const std::wstring& name = L"");
-
+    RenderComponent(const GameObject* owner, const std::wstring& name = L"");
     virtual ~RenderComponent() override;
 
     virtual void Initialize() override;

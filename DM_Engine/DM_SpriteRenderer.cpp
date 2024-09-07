@@ -126,6 +126,8 @@ void DM::SpriteRenderer::render_png(HDC hdc) const
 		SceneManager::GetActiveScene()->GetCamera()
 		->GetPosition_Relative(this->GetOwner()->GetTopLeft());
 
+	auto k1 = this->GetOwner()->GetSize();
+	auto k2 = sprite->size.x;
 
 	 graphics.DrawImage(
 		this->texture->GetImage(),
