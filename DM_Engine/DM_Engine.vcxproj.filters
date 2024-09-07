@@ -291,9 +291,6 @@
     <ClInclude Include="SDV_Tree.h">
       <Filter>헤더 파일\__SDV__\Object\Tree</Filter>
     </ClInclude>
-    <ClInclude Include="SDV_TileRenderer.h">
-      <Filter>헤더 파일\__SDV__\Component</Filter>
-    </ClInclude>
     <ClInclude Include="DM_Container2D.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
@@ -459,9 +456,6 @@
       <Filter>소스 파일\source</Filter>
     </ClCompile>
     <ClCompile Include="SDV_Tree.cpp">
-      <Filter>소스 파일\__SDV__</Filter>
-    </ClCompile>
-    <ClCompile Include="SDV_TileRenderer.cpp">
       <Filter>소스 파일\__SDV__</Filter>
     </ClCompile>
     <ClCompile Include="DM_Container2D.cpp">

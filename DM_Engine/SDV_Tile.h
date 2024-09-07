@@ -42,7 +42,6 @@ public:
 public:
 
 	void SetTexture(DM::Texture* texture);
-	void SetTopLeft(DM::Math::Vector2<FLOAT> topLeft) { this->SetPosition(topLeft + this->GetSize() / 2.0f); }
 
 	DM::Math::Vector2<UINT> GetTextureIndex() const { return this->textureIndex; }
 	DM::Math::Vector2<FLOAT> GetPosition_Relative() const { return this->DM::GameObject::GetPosition(); }

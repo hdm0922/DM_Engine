@@ -42,9 +42,6 @@ public:
     Math::Vector2<FLOAT> GetColliderPosition_Relative() const { return this->colliderPosition_relative; }
     Math::Vector2<FLOAT> GetColliderSize() const;
 
-    Math::Vector2<FLOAT> GetTopLeft() const { return this->GetColliderPosition() - this->GetColliderSize() / 2.0f; }
-    Math::Vector2<FLOAT> GetBottomRight() const { return this->GetTopLeft() + this->GetColliderSize(); }
-
 
 private:
 

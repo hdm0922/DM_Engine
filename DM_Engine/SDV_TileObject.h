@@ -42,11 +42,11 @@ public:
 	virtual void Destroy() override;
 
 	void SetTile(Tile* tile, const DM::Math::Vector2<UINT>& index);
-	DM::Container2D<Tile> tilesContainer;
+
 
 private:
 
-	
+	DM::Container2D<Tile> tilesContainer;
 
 
 };

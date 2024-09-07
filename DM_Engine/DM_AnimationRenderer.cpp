@@ -105,7 +105,7 @@ void DM::AnimationRenderer::render_bmp(HDC hdc) const
 
 	Sprite* sprite = this->currentAnimation->GetCurrentSprite();
 
-	Math::Vector2<FLOAT> topLeft_relative = this->GetOwner()->GetTopLeft()
+	Math::Vector2<FLOAT> topLeft_relative = this->GetOwner()->GetTopLeft();
 		- SceneManager::GetActiveScene()->GetCamera()->GetTopLeft();
 
 	TransparentBlt(

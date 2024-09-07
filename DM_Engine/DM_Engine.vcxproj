@@ -185,7 +185,6 @@ copy "$(SolutionDir)\External\FMod\x64\fmodstudioL.dll" "$(SolutionDir)\x64\Debu
     <ClInclude Include="SDV_PlayerScript.h" />
     <ClInclude Include="SDV_Tile.h" />
     <ClInclude Include="SDV_TileObject.h" />
-    <ClInclude Include="SDV_TileRenderer.h" />
     <ClInclude Include="SDV_Tree.h" />
     <ClInclude Include="Test_Enums.h" />
     <ClInclude Include="Test_Framework.h" />
@@ -250,7 +249,6 @@ copy "$(SolutionDir)\External\FMod\x64\fmodstudioL.dll" "$(SolutionDir)\x64\Debu
     <ClCompile Include="SDV_PlayerScript.cpp" />
     <ClCompile Include="SDV_Tile.cpp" />
     <ClCompile Include="SDV_TileObject.cpp" />
-    <ClCompile Include="SDV_TileRenderer.cpp" />
     <ClCompile Include="SDV_Tree.cpp" />
     <ClCompile Include="Test_GameStateComponent.cpp" />
     <ClCompile Include="Test_KeybindComponent.cpp" />

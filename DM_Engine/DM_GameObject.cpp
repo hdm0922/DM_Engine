@@ -115,33 +115,3 @@ DM::Math::Vector2<FLOAT> DM::GameObject::GetPosition() const
 {
 	return this->GetComponent<TransformComponent>()->GetPosition();
 }
-
-
-
-
-
-DM::Math::Vector2<FLOAT> DM::GameObject::GetTopLeft() const
-{
-	auto k = this->GetPosition();
-	auto kk = this->GetSize() * 0.5f;
-	return this->GetPosition() - this->GetSize() * 0.5f;
-}
-
-
-
-
-
-DM::Math::Vector2<FLOAT> DM::GameObject::GetBottomRight() const
-{
-	return this->GetTopLeft() + this->GetSize();
-}
-
-
-
-
-
-
-DM::Math::Vector2<FLOAT> DM::GameObject::GetBottomCenter() const
-{
-	return this->GetBottomRight() - Math::Vector2<FLOAT>(this->GetSize().x / 2.0f, 0.0f);
-}

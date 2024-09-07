@@ -55,7 +55,8 @@ void DM::Collider_Box2D::Render(HDC hdc)
 	HPEN pen = (HPEN)CreatePen(PS_SOLID, 2, RGB(0, 255, 0));
 	HPEN oldPen = (HPEN)SelectObject(hdc, pen);
 
-	Math::Vector2<FLOAT> topLeft_relative = this->GetTopLeft()
+	Math::Vector2<FLOAT> topLeft_relative =
+		Math::PositionCalculator::GetLocation(this->GetColliderPosition(), this->GetColliderSize(), Enums::FitMode::TopLeft)
 		- SceneManager::GetActiveScene()->GetCamera()->GetTopLeft();
 
 

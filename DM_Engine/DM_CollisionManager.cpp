@@ -120,8 +120,10 @@ void DM::CollisionManager::detectCollision(ColliderComponent* collider1, Collide
 {
 
 	BOOL collision = Math::CollisionChecker::Box2D_Box2D(
-		collider1->GetTopLeft(), collider1->GetBottomRight(),
-		collider2->GetTopLeft(), collider2->GetBottomRight()
+		Math::PositionCalculator::GetLocation(collider1->GetColliderPosition(), collider1->GetColliderSize(), Enums::FitMode::TopLeft),
+		Math::PositionCalculator::GetLocation(collider1->GetColliderPosition(), collider1->GetColliderSize(), Enums::FitMode::BottomRight),
+		Math::PositionCalculator::GetLocation(collider2->GetColliderPosition(), collider2->GetColliderSize(), Enums::FitMode::TopLeft),
+		Math::PositionCalculator::GetLocation(collider2->GetColliderPosition(), collider2->GetColliderSize(), Enums::FitMode::BottomRight)
 	);
 
 	CollisionManager::handleCollision(collider1, collider2, collision);

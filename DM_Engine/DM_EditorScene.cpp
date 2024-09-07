@@ -149,9 +149,11 @@ void DM::EditorScene::createTile(const Math::Vector2<UINT>& tileIndex, Math::Vec
 	this->AddGameObject(tile, Enums::LayerType::Tile);
 	this->tiles.push_back(tile);
 
-	tile->SetTopLeft(
-		this->getLocation(this->getIndex(position))
-	);
+	tile->SetPosition(Math::PositionCalculator::GetProperPosition(
+		this->getLocation(this->getIndex(position)),
+		tile->GetOriginalSize(),
+		Enums::FitMode::TopLeft
+	));
 
 	return;
 }

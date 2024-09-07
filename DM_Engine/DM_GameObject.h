@@ -48,9 +48,9 @@ public:
 	virtual Math::Vector2<FLOAT> GetSize() const;
 	virtual Math::Vector2<FLOAT> GetPosition() const;
 
-	Math::Vector2<FLOAT> GetTopLeft() const;
-	Math::Vector2<FLOAT> GetBottomRight() const;
-	Math::Vector2<FLOAT> GetBottomCenter() const;
+	Math::Vector2<FLOAT> GetTopLeft()		const { return Math::PositionCalculator::GetLocation(this->GetPosition(), this->GetOriginalSize(), Enums::FitMode::TopLeft); }
+	Math::Vector2<FLOAT> GetBottomRight()	const { return Math::PositionCalculator::GetLocation(this->GetPosition(), this->GetOriginalSize(), Enums::FitMode::BottomRight); }
+	Math::Vector2<FLOAT> GetBottomCenter()	const { return Math::PositionCalculator::GetLocation(this->GetPosition(), this->GetOriginalSize(), Enums::FitMode::BottomCenter); }
 
 	template <typename T>
 	T* GetComponent() const;
