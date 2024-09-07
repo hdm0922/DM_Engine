@@ -2,6 +2,7 @@
 
 #include "DM_GameObject.h"
 #include "DM_ScriptComponent.h"
+#include "DM_TransformComponent.h"
 
 
 
@@ -13,6 +14,8 @@ DM::ColliderComponent::ColliderComponent(
 	const Enums::ColliderType colliderType)
 	: Component(owner, name, Enums::ComponentType::Collider)
 	, colliderType(colliderType)
+	, colliderPosition_relative({0,0})
+	, colliderSize(owner->GetOriginalSize())
 {
 }
 
@@ -76,4 +79,27 @@ void DM::ColliderComponent::CollisionEvent_Exit(const GameObject* other)
 	if (script) script->CollisionEvent_Exit(other);
 
 	return;
+}
+
+
+
+
+
+DM::Math::Vector2<FLOAT> DM::ColliderComponent::GetColliderPosition() const
+{
+	return this->GetOwner()->GetPosition() + this->colliderPosition_relative;
+}
+
+
+
+
+
+DM::Math::Vector2<FLOAT> DM::ColliderComponent::GetColliderSize() const
+{
+	Math::Vector2<FLOAT> scale = this->GetOwner()->GetComponent<TransformComponent>()->GetScale();
+
+	return Math::Vector2<FLOAT>(
+		this->colliderSize.x * scale.x,
+		this->colliderSize.y * scale.y
+	);
 }

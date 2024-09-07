@@ -120,8 +120,8 @@ void DM::CollisionManager::detectCollision(ColliderComponent* collider1, Collide
 {
 
 	BOOL collision = Math::CollisionChecker::Box2D_Box2D(
-		collider1->GetOwner()->GetTopLeft(), collider1->GetOwner()->GetBottomRight(),
-		collider2->GetOwner()->GetTopLeft(), collider2->GetOwner()->GetBottomRight()
+		collider1->GetTopLeft(), collider1->GetBottomRight(),
+		collider2->GetTopLeft(), collider2->GetBottomRight()
 	);
 
 	CollisionManager::handleCollision(collider1, collider2, collision);

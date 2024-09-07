@@ -49,8 +49,8 @@ void DM::GameLoadManager::loadResources()
 
 void DM::GameLoadManager::loadScenes()
 {
-    SceneManager::CreateScene<Test::TestScene>(DM_TEST_SCENE_NAME);
-    SceneManager::CreateScene<DM::EditorScene>(L"Editor Scene");
+    SceneManager::CreateScene<Test::TestScene>(L"TestScene");
+    SceneManager::CreateScene<DM::EditorScene>(L"EditorScene");
 }
 
 

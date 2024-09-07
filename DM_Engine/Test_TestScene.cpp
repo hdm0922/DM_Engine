@@ -47,20 +47,21 @@ void Test::TestScene::Initialize()
 	//
 
 
-	// Test Player
+	// Test Player 1. 메모리 할당 2. Transform 결정 3. Component들 추가
 	Player* player = new Player(L"Player");
 	this->AddGameObject(player, DM::Enums::LayerType::Entity);
-
-	player->AddComponent<DM::AudioListener>();
-	player->AddComponent<DM::Collider_Box2D>();
-
-	player->SetPosition(0,0);
-	player->SetOriginalSize(65,130);
 
 	DM::TransformComponent* transform_player =
 		player->GetComponent<DM::TransformComponent>();
 
 	transform_player->SetScale(0.5f);
+	player->SetPosition(0, 0);
+	player->SetOriginalSize(65, 130);
+
+	player->AddComponent<DM::AudioListener>();
+	player->AddComponent<DM::Collider_Box2D>();
+
+
 	///
 
 

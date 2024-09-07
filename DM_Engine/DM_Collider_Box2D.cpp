@@ -55,15 +55,15 @@ void DM::Collider_Box2D::Render(HDC hdc)
 	HPEN pen = (HPEN)CreatePen(PS_SOLID, 2, RGB(0, 255, 0));
 	HPEN oldPen = (HPEN)SelectObject(hdc, pen);
 
-	Math::Vector2<FLOAT> topLeft_relative = this->GetOwner()->GetTopLeft()
+	Math::Vector2<FLOAT> topLeft_relative = this->GetTopLeft()
 		- SceneManager::GetActiveScene()->GetCamera()->GetTopLeft();
 
 
 	Rectangle(hdc,
 		static_cast<INT>(topLeft_relative.x),
 		static_cast<INT>(topLeft_relative.y),
-		static_cast<INT>(topLeft_relative.x + this->GetOwner()->GetSize().x),
-		static_cast<INT>(topLeft_relative.y + this->GetOwner()->GetSize().y)
+		static_cast<INT>(topLeft_relative.x + this->GetColliderSize().x),
+		static_cast<INT>(topLeft_relative.y + this->GetColliderSize().y)
 	);
 
 
