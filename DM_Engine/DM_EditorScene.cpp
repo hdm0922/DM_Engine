@@ -10,6 +10,7 @@
 #include "SDV_Framework.h"
 #include "SDV_TileObject.h"
 #include "SDV_Tile.h"
+#include "SDV_OakTree.h"
 
 #include "DM_ResourceManager.h"
 #include "DM_GameObject.h"
@@ -57,32 +58,15 @@ void DM::EditorScene::Initialize()
 {
 
 	// TEST
-	DM::Math::Vector2<UINT> x = { 0,0 };
-	SDV::Tile* tile = new SDV::Tile(x);
-	//this->AddGameObject(tile, Enums::LayerType::Tile);
-	//tile->SetTopLeft(EditorScene::getLocation({ 1,1 }));
-	
-	std::vector<SDV::Tile*> temp = {};
+		
+	SDV::OakTree* tree = new SDV::OakTree();
+	this->AddGameObject(tree, Enums::LayerType::Tile);
 
-	SDV::TileObject* tileObject = new SDV::TileObject({ 3,6 });
-	this->AddGameObject(tileObject, Enums::LayerType::Tile);
-	tileObject->SetTopLeft(EditorScene::getLocation({ 4,4 }));
-	tileObject->SetTile(new SDV::Tile(DM::Math::Vector2<UINT>(0,0)), { 0,0 });
-	tileObject->SetTile(new SDV::Tile({ 0,1 }), { 0,1 });
-	tileObject->SetTile(new SDV::Tile({ 0,2 }), { 0,2 });
-	tileObject->SetTile(new SDV::Tile({ 0,3 }), { 0,3 });
-	tileObject->SetTile(new SDV::Tile({ 0,5 }), { 0,5 });
-	tileObject->SetTile(new SDV::Tile(DM::Math::Vector2<UINT>(1, 0)), { 1,0 });
-	tileObject->SetTile(new SDV::Tile({ 1,1 }), { 1,1 });
-	tileObject->SetTile(new SDV::Tile({ 1,2 }), { 1,2 });
-	tileObject->SetTile(new SDV::Tile({ 1,3 }), { 1,3 });
-	tileObject->SetTile(new SDV::Tile({ 1,4 }), { 1,4 });
-	tileObject->SetTile(new SDV::Tile({ 1,5 }), { 1,5 });
-	tileObject->SetTile(new SDV::Tile(DM::Math::Vector2<UINT>(2, 0)), { 2,0 });
-	tileObject->SetTile(new SDV::Tile({ 2,1 }), { 2,1 });
-	tileObject->SetTile(new SDV::Tile({ 2,2 }), { 2,2 });
-	tileObject->SetTile(new SDV::Tile({ 2,3 }), { 2,3 });
-	tileObject->SetTile(new SDV::Tile({ 2,4 }), { 2,4 });
+	tree->SetPosition(Math::PositionCalculator::GetProperPosition(
+		EditorScene::getLocation({ 0,1 }),
+		tree->GetOriginalSize(),
+		Enums::FitMode::TopLeft
+	));
 
 	//
 

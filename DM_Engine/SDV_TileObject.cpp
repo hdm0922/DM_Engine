@@ -83,7 +83,10 @@ void SDV::TileObject::SetTile(Tile* tile, const DM::Math::Vector2<UINT>& index)
 		static_cast<FLOAT>(index.y * SDV_TILE_SIZE.y)
 	};
 
-	tile->SetTopLeft(this->GetTopLeft() + tilePosition_relative);
+	DM::Math::Vector2<FLOAT> topLeft_tile = tile->GetOwner()->GetTopLeft() + tilePosition_relative;
+	DM::Math::Vector2<FLOAT> position_tile = topLeft_tile + tile->GetOriginalSize() / 2.0f;
+
+	tile->SetPosition(position_tile - tile->GetOwner()->GetPosition());
 	this->tilesContainer.SetItem(index, tile);
 	return;
 }

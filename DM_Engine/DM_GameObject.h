@@ -39,17 +39,18 @@ public:
 public:
 
 	void SetOriginalSize(FLOAT x, FLOAT y) { this->SetOriginalSize(Math::Vector2<FLOAT>(x, y)); }
-	void SetOriginalSize(const Math::Vector2<FLOAT>& originSize) { this->originSize = originSize; }
 	void SetPosition(FLOAT x, FLOAT y) const { this->SetPosition(Math::Vector2<FLOAT>(x, y)); }
-	void SetPosition(const Math::Vector2<FLOAT> position) const;
-	void SetTopLeft(const Math::Vector2<FLOAT>& topLeft) const { this->SetPosition(topLeft + this->GetSize() / 2.0f); }
 
-	virtual Math::Vector2<FLOAT> GetSize() const;
+	void SetOriginalSize(const Math::Vector2<FLOAT>& originSize) { this->originSize = originSize; }
+	void SetPosition(const Math::Vector2<FLOAT> position) const;
+
 	Math::Vector2<FLOAT> GetOriginalSize() const { return this->originSize; }
-	Math::Vector2<FLOAT> GetPosition() const;
+	virtual Math::Vector2<FLOAT> GetSize() const;
+	virtual Math::Vector2<FLOAT> GetPosition() const;
 
 	Math::Vector2<FLOAT> GetTopLeft() const;
 	Math::Vector2<FLOAT> GetBottomRight() const;
+	Math::Vector2<FLOAT> GetBottomCenter() const;
 
 	template <typename T>
 	T* GetComponent() const;

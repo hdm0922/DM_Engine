@@ -12,6 +12,8 @@ namespace DM
 		enum class ColliderType;
 
 		enum class KeyState;
+
+		enum class FitMode;
 	}
 }
 
@@ -78,6 +80,20 @@ enum class DM::Enums::KeyState
 enum class DM::Enums::ColliderType
 {
 	Box2D,
+
+	None
+};
+
+
+
+
+
+enum class DM::Enums::FitMode
+{
+	Center,
+	TopLeft,
+	BottomRight,
+	BottomCenter,
 
 	None
 };
