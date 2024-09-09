@@ -51,6 +51,8 @@ public:
 
 public:
 
+    void SetKeys(Action action, const std::vector<INT>& keys) { this->keysets[static_cast<UINT>(action)] = keys; }
+
     BOOL GetKeysPressed(Action action) const;
     BOOL GetKeysReleased(Action action) const;
 

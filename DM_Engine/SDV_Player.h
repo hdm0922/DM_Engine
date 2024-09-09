@@ -27,5 +27,9 @@ public:
     virtual void Update() override;
 
 
+private:
+
+    void bindKeys();
+
 };
 

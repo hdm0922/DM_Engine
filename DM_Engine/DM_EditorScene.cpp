@@ -106,6 +106,8 @@ void DM::EditorScene::Update()
 	if (Input::GetKeysPressed({ VK_CONTROL, 'L' }))
 		this->loadTileMap();
 
+	Scene::Update();
+
 	return;
 }
 

@@ -30,17 +30,7 @@ SDV::KeybindComponent::~KeybindComponent()
 void SDV::KeybindComponent::Initialize()
 {
 
-	this->keysets[static_cast<UINT>(Action::Walk_Down)] = { 'S' };
-	this->keysets[static_cast<UINT>(Action::Walk_Left)] = { 'A' };
-	this->keysets[static_cast<UINT>(Action::Walk_Right)] = { 'D' };
-	this->keysets[static_cast<UINT>(Action::Walk_Up)] = { 'W' };
 
-	this->keysets[static_cast<UINT>(Action::Run_Down)] = { VK_SHIFT, 'S' };
-	this->keysets[static_cast<UINT>(Action::Run_Left)] = { VK_SHIFT, 'A' };
-	this->keysets[static_cast<UINT>(Action::Run_Right)] = { VK_SHIFT, 'D' };
-	this->keysets[static_cast<UINT>(Action::Run_Up)] = { VK_SHIFT, 'W' };
-
-	this->keysets[static_cast<UINT>(Action::Switch_To_Run)] = { VK_SHIFT };
 
 	return;
 }

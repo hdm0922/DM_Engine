@@ -65,6 +65,8 @@ void DM::Scene::Initialize()
 	{
 		layer->Initialize();
 	}
+
+	this->camera->Initialize();
 }
 
 
