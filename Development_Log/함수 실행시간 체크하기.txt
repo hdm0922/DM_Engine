@@ -1,0 +1,33 @@
+
+내 엔진에서 게임에 배치할 타일맵을 제작하는데, 60개정도만 배치했음에도 FPS가 600 -> 25로 급감함을 확인했다.
+
+이대로는 정상적인 게임플레이가 안될 듯 하여, 구조를 고치기로 했다.
+
+타일을 배치해서 발생하는 문제기에 당연히 SDV::Tile 클래스와 관련이 있겠거니 했으나,
+이번 기회에 특정 함수들이 실행될 때 걸리는 시간을 측정하는 툴을 새로이 만들어보고자 한다.
+
+해당 로직을 관장하는 클래스는 DM::PerformanceChecker 클래스로 두었다.
+
+winapi의 QueryPerformanceCounter를 이용해 함수의 시작과 끝에서 CPU 진동수를 기록한다.
+
+적당한 동작 로직은 아래와 같다 :
+
+
+void SomeClass::FunctionToCheckPerformance()
+{
+
+    DM::PerformanceChecker::Start();
+
+    // 함수 로직...
+
+    DM::PerformanceChecker::End();
+    DM::PerformanceChecker::Record(
+        std::bind(&SomeClass::FunctionToCheckPerformance, this)
+    );
+
+    return;
+}
+
+
+이후 해당 함수와 함수의 실행 시간을 함께 저장하여 비주얼 스튜디오의 디버그 화면에서
+어떤 함수가 DeltaTime의 비중을 얼마나 잡아먹었는지 확인하는 것이 목표가 되겠다.

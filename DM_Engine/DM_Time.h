@@ -28,11 +28,17 @@ public:
 	static LARGE_INTEGER GetCPUClockCounter() { return Time::CPU_frequency_prev; }
 
 
+	static UINT functionIdx;
+	static std::vector<LARGE_INTEGER> freq_functionStart;
+	static std::vector<LARGE_INTEGER> freq_functionEnd;
+
+
 private:
 
 	static void renderPlayTime(HDC hdc);
 	static void renderFPS(HDC hdc);
 
+	static void checkFunctionsPerformance();
 
 private:
 

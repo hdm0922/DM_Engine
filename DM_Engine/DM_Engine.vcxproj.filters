@@ -291,14 +291,17 @@
     <ClInclude Include="SDV_Tree.h">
       <Filter>헤더 파일\__SDV__\Object\Tree</Filter>
     </ClInclude>
-    <ClInclude Include="DM_Container2D.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="SDV_OakTree.h">
       <Filter>헤더 파일\__SDV__\Object\Tree</Filter>
     </ClInclude>
     <ClInclude Include="SDV_Tile.h">
       <Filter>헤더 파일\__SDV__\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="DM_Container2D.h">
+      <Filter>헤더 파일\Utility</Filter>
+    </ClInclude>
+    <ClInclude Include="DM_PerformanceChecker.h">
+      <Filter>헤더 파일\Utility</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -466,6 +469,9 @@
     </ClCompile>
     <ClCompile Include="SDV_OakTree.cpp">
       <Filter>소스 파일\__SDV__</Filter>
+    </ClCompile>
+    <ClCompile Include="DM_PerformanceChecker.cpp">
+      <Filter>소스 파일\source</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

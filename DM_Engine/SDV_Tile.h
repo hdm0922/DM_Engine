@@ -55,5 +55,4 @@ private:
 	DM::Math::Vector2<UINT> textureIndex;
 
 	const TileObject* owner;
-
 };

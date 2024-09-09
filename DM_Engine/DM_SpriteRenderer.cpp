@@ -8,6 +8,8 @@
 #include "DM_Scene.h"
 #include "DM_Camera.h"
 
+#include "DM_PerformanceChecker.h"
+
 
 
 
@@ -64,11 +66,16 @@ void DM::SpriteRenderer::Render(HDC hdc) const
 
 	if (!this->GetTexture()) return;
 
+	PerformanceChecker::Start();
+
 	switch (this->GetTexture()->GetTextureType())
 	{
 	case Enums::TextureType::bmp: this->render_bmp(hdc); break;
 	case Enums::TextureType::png: this->render_png(hdc); break;
 	}
+
+	PerformanceChecker::End();
+	PerformanceChecker::Record([this](HDC hdc) { this->Render(hdc); }, hdc);
 
 	return;
 }
@@ -126,24 +133,18 @@ void DM::SpriteRenderer::render_png(HDC hdc) const
 		SceneManager::GetActiveScene()->GetCamera()
 		->GetPosition_Relative(this->GetOwner()->GetTopLeft());
 
-	auto k1 = this->GetOwner()->GetTopLeft();
-	auto k2 = sprite->size.x;
-
 	 graphics.DrawImage(
 		this->texture->GetImage(),
-
 		Gdiplus::Rect(
 			static_cast<INT>(topLeft_relative.x),
 			static_cast<INT>(topLeft_relative.y),
 			static_cast<INT>(this->GetOwner()->GetSize().x),
 			static_cast<INT>(this->GetOwner()->GetSize().y)
 		),
-
 		sprite->topLeft.x + sprite->offset.x,
 		sprite->topLeft.y + sprite->offset.y,
 		static_cast<INT>(sprite->size.x),
 		static_cast<INT>(sprite->size.y),
-
 		Gdiplus::UnitPixel,
 		&image_attribute
 	);

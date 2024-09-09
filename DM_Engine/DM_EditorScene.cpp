@@ -18,6 +18,7 @@
 #include "DM_GameObject.h"
 #include "DM_SpriteRenderer.h"
 #include "DM_TransformComponent.h"
+#include "DM_PerformanceChecker.h"
 
 
 
@@ -60,28 +61,33 @@ void DM::EditorScene::Initialize()
 {
 
 	// TEST
-		
+
 	//SDV::OakTree* tree = new SDV::OakTree();
 	//this->AddGameObject(tree, Enums::LayerType::Tile);
-
 	//tree->SetPosition(Math::PositionCalculator::GetProperPosition(
 	//	EditorScene::getLocation({ 0,1 }),
 	//	tree->GetOriginalSize(),
 	//	Enums::FitMode::TopLeft
 	//));
-
 	//tree->AddComponent<DM::Collider_Box2D>();
 	//DM::Collider_Box2D* collider = tree->GetComponent<DM::Collider_Box2D>();
 	//collider->SetColliderSize(SDV_TILE_SIZE);
-
 	//DM::Math::Vector2<FLOAT> colliderPosition_WorldFixed = DM::Math::PositionCalculator::GetProperPosition(
 	//	tree->GetPosition(), tree->GetOriginalSize(), collider->GetColliderSize(), DM::Enums::FitMode::BottomCenter
 	//);
-
 	//collider->SetColliderPosition_Relative(colliderPosition_WorldFixed - tree->GetPosition());
 
 	//
 
+	for (UINT x = 0; x < 10; x++)
+		for (UINT y = 0; y < 10; y++)
+		{
+			Math::Vector2<UINT> idx = Math::Vector2<UINT>(x,y);
+			createTile(idx, this->getLocation(idx) + Math::Vector2<UINT>(100,100));
+		}
+
+
+	//this->loadTileMap();
 	Scene::Initialize();
 
 	return;
@@ -106,9 +112,12 @@ void DM::EditorScene::Update()
 	if (Input::GetKeysPressed({ VK_CONTROL, 'L' }))
 		this->loadTileMap();
 
-	if (Input::GetKeyPressed('D'))
+	auto& k = PerformanceChecker::GetOccupancyRatio();
+
+	if (Input::GetKeyPressed('D')) // DEBUG
 	{
-		auto k = this->GetLayer(Enums::LayerType::Tile)->GetGameObjects();
+		
+		int a = 0;
 	}
 
 	Scene::Update();

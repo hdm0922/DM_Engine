@@ -1,5 +1,7 @@
 #include "DM_Time.h"
 
+#include "DM_Input.h"
+
 
 
 
@@ -11,6 +13,10 @@ namespace DM
 	LARGE_INTEGER Time::CPU_frequency_curr	= {};
 
 	FLOAT Time::DeltaTime = 0.0f;
+
+	UINT Time::functionIdx = 0;
+	std::vector<LARGE_INTEGER> Time::freq_functionStart = {};
+	std::vector<LARGE_INTEGER> Time::freq_functionEnd = {};
 }
 
 
@@ -25,6 +31,8 @@ void DM::Time::Initialize()
 
 	QueryPerformanceCounter(&Time::CPU_frequency_prev);
 
+	Time::freq_functionStart.resize(500);
+	Time::freq_functionEnd.resize(500);
 }
 
 
@@ -44,6 +52,8 @@ void DM::Time::Update()
 
 	Time::CPU_frequency_prev = Time::CPU_frequency_curr;
 
+	// DEBUG
+	Time::checkFunctionsPerformance();
 }
 
 
@@ -89,4 +99,31 @@ void DM::Time::renderFPS(HDC hdc)
 	TextOut(hdc, 0, 20, wstring_FPS,
 		static_cast<INT>(wcsnlen_s(wstring_FPS, 50)));
 
+}
+
+
+
+
+
+void DM::Time::checkFunctionsPerformance()
+{
+
+	std::vector<FLOAT> timesPercent;
+
+	for (UINT idx = 0; idx < Time::freq_functionEnd.size(); idx++)
+	{
+		FLOAT diff_frequency_idx = static_cast<FLOAT>(
+			Time::freq_functionEnd[idx].QuadPart -
+			Time::freq_functionStart[idx].QuadPart
+			);
+		FLOAT time_real = diff_frequency_idx / static_cast<FLOAT>(Time::CPU_frequency.QuadPart);
+		timesPercent.push_back(time_real * 100.0f / Time::DeltaTime);
+	}
+
+	if (Input::GetKeyPressed('Q'))
+	{
+		int a = 0;
+	}
+
+	return;
 }
