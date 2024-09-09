@@ -38,13 +38,15 @@ void DM::Camera::Update()
 	{
 		this->SetPosition(this->renderTarget->GetPosition());
 		return;
-	} 
+	}
 
 	const FLOAT DELTA = 0.7f;
 	if (Input::GetKeysPressed({ VK_UP }))		this->SetPosition(this->GetPosition() + Math::Vector2<FLOAT>(0.0f, -DELTA));
 	if (Input::GetKeysPressed({ VK_DOWN }))		this->SetPosition(this->GetPosition() + Math::Vector2<FLOAT>(0.0f, DELTA));
 	if (Input::GetKeysPressed({ VK_LEFT }))		this->SetPosition(this->GetPosition() + Math::Vector2<FLOAT>(-DELTA, 0.0f));
 	if (Input::GetKeysPressed({ VK_RIGHT }))	this->SetPosition(this->GetPosition() + Math::Vector2<FLOAT>(DELTA, 0.0f));
+
+	return;
 }
 
 

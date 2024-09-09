@@ -61,24 +61,24 @@ void DM::EditorScene::Initialize()
 
 	// TEST
 		
-	SDV::OakTree* tree = new SDV::OakTree();
-	this->AddGameObject(tree, Enums::LayerType::Tile);
+	//SDV::OakTree* tree = new SDV::OakTree();
+	//this->AddGameObject(tree, Enums::LayerType::Tile);
 
-	tree->SetPosition(Math::PositionCalculator::GetProperPosition(
-		EditorScene::getLocation({ 0,1 }),
-		tree->GetOriginalSize(),
-		Enums::FitMode::TopLeft
-	));
+	//tree->SetPosition(Math::PositionCalculator::GetProperPosition(
+	//	EditorScene::getLocation({ 0,1 }),
+	//	tree->GetOriginalSize(),
+	//	Enums::FitMode::TopLeft
+	//));
 
-	tree->AddComponent<DM::Collider_Box2D>();
-	DM::Collider_Box2D* collider = tree->GetComponent<DM::Collider_Box2D>();
-	collider->SetColliderSize(SDV_TILE_SIZE);
+	//tree->AddComponent<DM::Collider_Box2D>();
+	//DM::Collider_Box2D* collider = tree->GetComponent<DM::Collider_Box2D>();
+	//collider->SetColliderSize(SDV_TILE_SIZE);
 
-	DM::Math::Vector2<FLOAT> colliderPosition_WorldFixed = DM::Math::PositionCalculator::GetProperPosition(
-		tree->GetPosition(), tree->GetOriginalSize(), collider->GetColliderSize(), DM::Enums::FitMode::BottomCenter
-	);
+	//DM::Math::Vector2<FLOAT> colliderPosition_WorldFixed = DM::Math::PositionCalculator::GetProperPosition(
+	//	tree->GetPosition(), tree->GetOriginalSize(), collider->GetColliderSize(), DM::Enums::FitMode::BottomCenter
+	//);
 
-	collider->SetColliderPosition_Relative(colliderPosition_WorldFixed - tree->GetPosition());
+	//collider->SetColliderPosition_Relative(colliderPosition_WorldFixed - tree->GetPosition());
 
 	//
 
@@ -98,13 +98,18 @@ void DM::EditorScene::Update()
 		this->selectTileIndex(this->getIndex(Input::GetCursorPosition()));
 
 	if (Input::GetKeyPressed(VK_LBUTTON))
-		this->createTile(this->selectedTileIndex, Input::GetCursorPosition());
+		this->createTile(this->selectedTileIndex, this->GetCamera()->GetWorldPosition(Input::GetCursorPosition()));
 
 	if (Input::GetKeysPressed({ VK_CONTROL, 'S' }))
 		this->saveTileMap();
 
 	if (Input::GetKeysPressed({ VK_CONTROL, 'L' }))
 		this->loadTileMap();
+
+	if (Input::GetKeyPressed('D'))
+	{
+		auto k = this->GetLayer(Enums::LayerType::Tile)->GetGameObjects();
+	}
 
 	Scene::Update();
 
@@ -118,19 +123,19 @@ void DM::EditorScene::Update()
 void DM::EditorScene::Render(HDC hdc) const
 {
 
-	for (UINT iter = 0; iter < 100; iter++)
+	for (INT iter = -100; iter < 100; iter++)
 	{
 
 		Math::Vector2<FLOAT> position = this->GetCamera()->
 			GetPosition_Relative(Math::Vector2<FLOAT>(
-				static_cast<FLOAT>(SDV_TILE_SIZE.x * iter), 
-				static_cast<FLOAT>(SDV_TILE_SIZE.y * iter)
+				static_cast<FLOAT>(static_cast<INT>(SDV_TILE_SIZE.x) * iter),
+				static_cast<FLOAT>(static_cast<INT>(SDV_TILE_SIZE.y) * iter)
 			));
 
-		MoveToEx(hdc, static_cast<INT>(position.x), 0, nullptr);
+		MoveToEx(hdc, static_cast<INT>(position.x), -2000, nullptr);
 		LineTo(hdc, static_cast<INT>(position.x), 2000);
 
-		MoveToEx(hdc, 0, static_cast<INT>(position.y), nullptr);
+		MoveToEx(hdc, -2000, static_cast<INT>(position.y), nullptr);
 		LineTo(hdc, 2000, static_cast<INT>(position.y));
 
 	}

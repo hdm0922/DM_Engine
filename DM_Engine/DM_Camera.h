@@ -30,6 +30,7 @@ public:
     virtual void Update();
 
     Math::Vector2<FLOAT> GetPosition_Relative(Math::Vector2<FLOAT> position) { return position - this->GetTopLeft(); }
+    Math::Vector2<FLOAT> GetWorldPosition(Math::Vector2<FLOAT> position) { return position + this->GetTopLeft(); }
     //Math::Vector2<FLOAT> GetPosition_Relative(Math::Vector2<FLOAT> position) { return position; }
 
 
