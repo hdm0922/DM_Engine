@@ -51,5 +51,6 @@ private:
     Texture* texture;
     Sprite* sprite;
 
+    /*void (SpriteRenderer::* function_absoluteAddress)(HDC) const = &SpriteRenderer::Render;*/
 };
 

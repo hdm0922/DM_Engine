@@ -25,7 +25,7 @@ public:
 
 	static FLOAT GetDeltaTime() { return Time::DeltaTime; }
 
-	static LARGE_INTEGER GetCPUClockCounter() { return Time::CPU_frequency_prev; }
+	static LARGE_INTEGER GetCPUClockCounter() { return Time::CPU_frequency; }
 
 
 	static UINT functionIdx;

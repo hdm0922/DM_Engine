@@ -1,5 +1,6 @@
 #pragma once
 #include "framework.h"
+#include "DM_Entity.h"
 
 
 
@@ -19,28 +20,37 @@ class DM::PerformanceChecker
 
 public:
 
-	struct compareFunction
+	struct Function
 	{
-		bool operator()(const std::function<void(HDC)>& left, const std::function<void(HDC)>& right) const
+
+		Function(Entity* obj, void* address) : object(obj), memberFunctionAddress(address) {}
+
+		BOOL operator<(const Function& other) const
 		{
-			return (INT64)(&left) < (INT64)(&right);
+			return (this->object == other.object) ?
+				((INT64)(this->memberFunctionAddress) < (INT64)(other.memberFunctionAddress)) :
+				((INT64)(this->object) < (INT64)(other.object));
 		}
+
+		Entity* object;
+		void* memberFunctionAddress;
 	};
+
 
 public:
 
 	static void Start() { QueryPerformanceCounter(&PerformanceChecker::frequency_start); }
 	static void End()	{ QueryPerformanceCounter(&PerformanceChecker::frequency_end); }
 
-	static void Record(std::function<void(HDC)> function, HDC hdc);
+	static void Record(const Function& functionInfo);
 
-	static const std::map<std::function<void(HDC)>, FLOAT, PerformanceChecker::compareFunction>& GetOccupancyRatio() { return PerformanceChecker::occupancyRatio; }
-
+	static const std::map<Function, FLOAT>& GetOccupancyRatio() { return PerformanceChecker::occupancyRatio; }
+	static FLOAT GetTotalTimeRatio();
 
 private:
 
 	static LARGE_INTEGER frequency_start;
 	static LARGE_INTEGER frequency_end;
 
-	static std::map<std::function<void(HDC)>, FLOAT, compareFunction> occupancyRatio;
+	static std::map<Function, FLOAT> occupancyRatio;
 };

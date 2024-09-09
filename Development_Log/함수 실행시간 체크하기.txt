@@ -31,3 +31,82 @@ void SomeClass::FunctionToCheckPerformance()
 
 이후 해당 함수와 함수의 실행 시간을 함께 저장하여 비주얼 스튜디오의 디버그 화면에서
 어떤 함수가 DeltaTime의 비중을 얼마나 잡아먹었는지 확인하는 것이 목표가 되겠다.
+
+
+
+=====
+
+
+
+PerformanceChecker는 std::map<std::function<...>, float> 을 두어
+모든 함수들의 DeltaTime 비중을 관리하고 있다.
+
+하지만 디버깅 결과, 매 프레임마다 100개(현재 씬에 그려지는 타일 개수)의 새로운 정보가 map에
+추가되고 있었다.
+
+원인은 아래 코드 조각 두 개였다 :
+
+
+void DM::PerformanceChecker::Record(const std::function<...>& function)
+{
+    //...
+    auto iter = PerformanceChecker::occupancyRatio.find(function);
+    if (iter == PerformanceChecker::occupancyRatio.end())
+        iter = PerformanceChecker::occupancyRatio.insert({ function, 0.0f }).first;
+    //...
+}
+
+
+void DM::SpriteRenderer::Render(HDC hdc) const
+{
+
+    // ...
+    PerformanceChecker::Record(std::bind(&SpriteRenderer::Render, this, hdc));
+
+    return;
+}
+
+
+std::bind(&SpriteRenderer::Render, this, hdc) 가 새로운 std::function 객체를 만들어 전달하므로,
+새로운 메모리 주소에 객체가 생성되며, 
+그 객체가 PerformanceChecker::Record에 매개변수로 전달되기에
+iter가 항상 PerformanceChecker::occupancyRatio.end()로 나타나던 것이었다.
+
+원하던 결과가 아니었으므로 PerformanceChecker의 구조를 변경해야한다.
+std::function은 적절한 구조가 아니었다.
+
+
+
+=====
+
+
+
+일반적으로 멤버함수도 static 함수, 전역 함수와 마찬가지로 메모리 영역 중 "코드 영역"에 위치한다.
+그러나 멤버함수의 경우 객체에 의존해야 하므로 다른 함수들과는 구조가 다르다.
+
+이 때문인지 C++ 표준에서는 멤버함수의 주소값을 안전하게 얻는 방법을 정의하고 있지 않다.
+
+이와 관련한 stackoverflow의 흥미로운 글을 읽었는데, "void*&" 형변환 연산자를 사용해 함수에 접근하는 기발한 아이디어를 얻게 해줬다.
+(https://stackoverflow.com/questions/8121320/get-memory-address-of-member-function)
+
+이 아이디어를 채용해서 코드를 약간 수정했다 :
+
+
+void DM::SpriteRenderer::Render(HDC hdc) const
+{
+
+    // ...
+    void (SpriteRenderer:: * function_absoluteAddress)(HDC) const = &SpriteRenderer::Render;
+
+    PerformanceChecker::Function functionInfo;
+    functionInfo.object = (Entity*)(this);
+    functionInfo.memberFunctionAddress = (void*&)(function_absoluteAddress);
+
+    PerformanceChecker::Record(functionInfo);
+
+    return;
+}
+
+
+이제 프로그램이 원활하게 실행된다. 이렇게 멤버함수의 주소를 강제로 뱉는 연산은 비표준이며 위험하지만,
+내 프로그램은 오로지 "특정 객체의 특정 함수"를 고유히 구분하고자 메모리 주소가 필요했기에 이러한 방법을 사용했다.

@@ -79,8 +79,8 @@ void DM::EditorScene::Initialize()
 
 	//
 
-	for (UINT x = 0; x < 10; x++)
-		for (UINT y = 0; y < 10; y++)
+	for (UINT x = 0; x < 20; x++)
+		for (UINT y = 0; y < 20; y++)
 		{
 			Math::Vector2<UINT> idx = Math::Vector2<UINT>(x,y);
 			createTile(idx, this->getLocation(idx) + Math::Vector2<UINT>(100,100));
@@ -113,6 +113,7 @@ void DM::EditorScene::Update()
 		this->loadTileMap();
 
 	auto& k = PerformanceChecker::GetOccupancyRatio();
+	auto k2 = PerformanceChecker::GetTotalTimeRatio();
 
 	if (Input::GetKeyPressed('D')) // DEBUG
 	{

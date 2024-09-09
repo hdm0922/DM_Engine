@@ -75,7 +75,13 @@ void DM::SpriteRenderer::Render(HDC hdc) const
 	}
 
 	PerformanceChecker::End();
-	PerformanceChecker::Record([this](HDC hdc) { this->Render(hdc); }, hdc);
+	
+	void (SpriteRenderer:: * function_absoluteAddress)(HDC) const = &SpriteRenderer::Render;
+
+	PerformanceChecker::Record(PerformanceChecker::Function(
+		(Entity*)(this),
+		(void*&)(function_absoluteAddress)
+	));
 
 	return;
 }

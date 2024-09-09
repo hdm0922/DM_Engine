@@ -27,8 +27,8 @@ SDV::Tile::Tile(const DM::Math::Vector2<UINT>& index, const TileObject* owner, c
 		SDV_TILE_SIZE
 	));
 	
-	spriteRenderer->SetTexture(DM::ResourceManager::GetResource<DM::Texture>(SDV_NAME_TEXTURE_SPRING_OUTDOOR));
-	//spriteRenderer->SetTexture(DM::ResourceManager::GetResource<DM::Texture>(L"Player Texture"));
+	//spriteRenderer->SetTexture(DM::ResourceManager::GetResource<DM::Texture>(SDV_NAME_TEXTURE_SPRING_OUTDOOR));
+	spriteRenderer->SetTexture(DM::ResourceManager::GetResource<DM::Texture>(L"Player Texture"));
 
 }
 

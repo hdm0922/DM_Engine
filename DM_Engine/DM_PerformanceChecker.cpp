@@ -10,14 +10,14 @@ namespace DM
 	LARGE_INTEGER PerformanceChecker::frequency_start = {};
 	LARGE_INTEGER PerformanceChecker::frequency_end = {};
 
-	std::map<std::function<void(HDC)>, FLOAT, PerformanceChecker::compareFunction> PerformanceChecker::occupancyRatio = {};
+	std::map<PerformanceChecker::Function, FLOAT> PerformanceChecker::occupancyRatio = {};
 }
 
 
 
 
 
-void DM::PerformanceChecker::Record(std::function<void(HDC)> function, HDC hdc)
+void DM::PerformanceChecker::Record(const Function& functionInfo)
 {
 
 	FLOAT frequencyDifference = static_cast<FLOAT>(
@@ -27,11 +27,26 @@ void DM::PerformanceChecker::Record(std::function<void(HDC)> function, HDC hdc)
 
 	FLOAT timePassed = frequencyDifference / static_cast<FLOAT>(Time::GetCPUClockCounter().QuadPart);
 
-	auto iter = PerformanceChecker::occupancyRatio.find(function);
+	auto iter = PerformanceChecker::occupancyRatio.find(functionInfo);
 	if (iter == PerformanceChecker::occupancyRatio.end())
-		iter = PerformanceChecker::occupancyRatio.insert({ function, 0.0f }).first;
+		iter = PerformanceChecker::occupancyRatio.insert({ functionInfo, 0.0f }).first;
 
 	iter->second = (timePassed * 100.0f) / Time::GetDeltaTime();
 
 	return;
+}
+
+
+
+
+
+FLOAT DM::PerformanceChecker::GetTotalTimeRatio()
+{
+
+	FLOAT totalTimeRatio = 0.0f;
+
+	for (auto& iter : PerformanceChecker::occupancyRatio)
+		totalTimeRatio += iter.second;
+
+	return totalTimeRatio;
 }
