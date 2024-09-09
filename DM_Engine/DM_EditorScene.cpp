@@ -5,6 +5,7 @@
 #include "DM_Application.h"
 #include "DM_Layer.h"
 #include "DM_Input.h"
+#include "DM_Camera.h"
 #include "DM_Sprite.h"
 #include "DM_Collider_Box2D.h"
 
@@ -118,13 +119,17 @@ void DM::EditorScene::Render(HDC hdc) const
 	for (UINT iter = 0; iter < 100; iter++)
 	{
 
-		INT position_x = SDV_TILE_SIZE.x * iter;
-		MoveToEx(hdc, position_x, 0, nullptr);
-		LineTo(hdc, position_x, 2000);
+		Math::Vector2<FLOAT> position = this->GetCamera()->
+			GetPosition_Relative(Math::Vector2<FLOAT>(
+				static_cast<FLOAT>(SDV_TILE_SIZE.x * iter), 
+				static_cast<FLOAT>(SDV_TILE_SIZE.y * iter)
+			));
 
-		INT position_y = SDV_TILE_SIZE.y * iter;
-		MoveToEx(hdc, 0, position_y, nullptr);
-		LineTo(hdc, 2000, position_y);
+		MoveToEx(hdc, static_cast<INT>(position.x), 0, nullptr);
+		LineTo(hdc, static_cast<INT>(position.x), 2000);
+
+		MoveToEx(hdc, 0, static_cast<INT>(position.y), nullptr);
+		LineTo(hdc, 2000, static_cast<INT>(position.y));
 
 	}
 

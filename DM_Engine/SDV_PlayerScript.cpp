@@ -15,6 +15,8 @@ SDV::PlayerScript::PlayerScript(const DM::GameObject* owner, const std::wstring&
 	: ScriptComponent(owner, name, static_cast<UINT>(State::None))
 	, direction(Enums::Direction::Down)
 {
+	this->registerStateChangeConditions();
+	this->registerStateEnterEvents();
 }
 
 
@@ -33,11 +35,9 @@ void SDV::PlayerScript::Initialize()
 {
 
 	this->stateEnterEvent_Idle();
-
-	this->registerStateChangeConditions();
-	this->registerStateEnterEvents();
-
 	ScriptComponent::Initialize();
+
+	return;
 }
 
 
